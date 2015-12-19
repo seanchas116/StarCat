@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE989A311C24F61B00EF013F /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE989A301C24F61B00EF013F /* NewsTableViewController.swift */; };
 		BED813351C24EE6D0028F8B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED813341C24EE6D0028F8B0 /* AppDelegate.swift */; };
 		BED813371C24EE6D0028F8B0 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED813361C24EE6D0028F8B0 /* FirstViewController.swift */; };
 		BED813391C24EE6D0028F8B0 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED813381C24EE6D0028F8B0 /* SecondViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE989A301C24F61B00EF013F /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		BED813311C24EE6D0028F8B0 /* StarCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BED813341C24EE6D0028F8B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BED813361C24EE6D0028F8B0 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				BED8133D1C24EE6D0028F8B0 /* Assets.xcassets */,
 				BED8133F1C24EE6D0028F8B0 /* LaunchScreen.storyboard */,
 				BED813421C24EE6D0028F8B0 /* Info.plist */,
+				BE989A301C24F61B00EF013F /* NewsTableViewController.swift */,
 			);
 			path = StarCat;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE989A311C24F61B00EF013F /* NewsTableViewController.swift in Sources */,
 				BED813391C24EE6D0028F8B0 /* SecondViewController.swift in Sources */,
 				BED813351C24EE6D0028F8B0 /* AppDelegate.swift in Sources */,
 				BED813371C24EE6D0028F8B0 /* FirstViewController.swift in Sources */,
@@ -486,6 +490,7 @@
 				BED8135D1C24EE6D0028F8B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BED8135E1C24EE6D0028F8B0 /* Build configuration list for PBXNativeTarget "StarCatTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +499,7 @@
 				BED813601C24EE6D0028F8B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BED813611C24EE6D0028F8B0 /* Build configuration list for PBXNativeTarget "StarCatUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +508,7 @@
 				BED813631C24EE6D0028F8B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
