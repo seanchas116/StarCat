@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--News-->
+        <!--News View Controller-->
         <scene sceneID="rPT-aw-w7a">
             <objects>
-                <tableViewController storyboardIdentifier="aaa" id="DFs-Ny-QAM" userLabel="News" customClass="NewsTableViewController" customModule="StarCat" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="aaa" id="DFs-Ny-QAM" userLabel="News View Controller" customClass="NewsTableViewController" customModule="StarCat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="5R1-26-fCm">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,10 +34,10 @@
             </objects>
             <point key="canvasLocation" x="380" y="-480"/>
         </scene>
-        <!--View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="VC6-VM-HDx">
             <objects>
-                <viewController id="VuT-K2-JCA" sceneMemberID="viewController">
+                <viewController id="VuT-K2-JCA" userLabel="Search View Controller" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bGq-xh-S4i"/>
                         <viewControllerLayoutGuide type="bottom" id="tWs-0l-yJA"/>
@@ -53,10 +53,10 @@
             </objects>
             <point key="canvasLocation" x="380" y="191"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Stars View Controller-->
         <scene sceneID="bUO-lb-05a">
             <objects>
-                <tableViewController id="m9J-On-whw" sceneMemberID="viewController">
+                <tableViewController id="m9J-On-whw" userLabel="Stars View Controller" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hFI-93-EUA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="380" y="855"/>
         </scene>
-        <!--View Controller-->
+        <!--Me View Controller-->
         <scene sceneID="KdC-7F-xk3">
             <objects>
-                <viewController id="aoa-gb-Eik" sceneMemberID="viewController">
+                <viewController id="aoa-gb-Eik" userLabel="Me View Controller" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="URp-k3-2Ih"/>
                         <viewControllerLayoutGuide type="bottom" id="6nO-Qb-Aax"/>

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9F1AA334A1CC62E55B141A9F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D70162D3C8EADEC46ABB2C6 /* Pods.framework */; };
+		BE95A6111C269B3C00C77A4D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE95A6101C269B3C00C77A4D /* LoginViewController.swift */; };
 		BE989A311C24F61B00EF013F /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE989A301C24F61B00EF013F /* NewsTableViewController.swift */; };
 		BED813351C24EE6D0028F8B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED813341C24EE6D0028F8B0 /* AppDelegate.swift */; };
 		BED8133C1C24EE6D0028F8B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BED8133A1C24EE6D0028F8B0 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 		0A959F1A7D8EB2EA20E7CDA3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		2D70162D3C8EADEC46ABB2C6 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45D4651B526DB97C5A7B6211 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		BE95A6101C269B3C00C77A4D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BE989A301C24F61B00EF013F /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		BED813311C24EE6D0028F8B0 /* StarCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BED813341C24EE6D0028F8B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				BED8133F1C24EE6D0028F8B0 /* LaunchScreen.storyboard */,
 				BED813421C24EE6D0028F8B0 /* Info.plist */,
 				BE989A301C24F61B00EF013F /* NewsTableViewController.swift */,
+				BE95A6101C269B3C00C77A4D /* LoginViewController.swift */,
 			);
 			path = StarCat;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE95A6111C269B3C00C77A4D /* LoginViewController.swift in Sources */,
 				BE989A311C24F61B00EF013F /* NewsTableViewController.swift in Sources */,
 				BED813351C24EE6D0028F8B0 /* AppDelegate.swift in Sources */,
 			);
