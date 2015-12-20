@@ -7,15 +7,39 @@
 //
 
 import UIKit
+import KeychainAccess
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let keychain = Keychain(service: "com.seanchas116.starcat")
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        print("init")
+        let token = keychain["githubToken"];
+        if token == nil {
+            let githubAuthURL = NSURL.fromQueries("https://github.com/login/oauth/authorize", queries: [
+                "client_id": Constants.githubClientID,
+                "redirect_uri": "\(Constants.appURLScheme):///auth",
+            ])
+            UIApplication.sharedApplication().openURL(githubAuthURL)
+        }
+        
         // Override point for customization after application launch.
+        return true
+    }
+    
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        print(url)
+        if url.scheme == Constants.appURLScheme {
+            if url.path == "/auth" {
+                let code = url.getQueryParameter("code")!
+                print("code \(code)")
+            }
+            print("hoge")
+        }
         return true
     }
 

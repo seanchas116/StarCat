@@ -4,6 +4,7 @@
 use_frameworks!
 
 pod 'APIKit', '~> 1.1.2'
+pod 'KeychainAccess'
 
 target 'StarCat' do
 end
