@@ -86,10 +86,14 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-StarCatUITests/APIKit.framework"
   install_framework "Pods-StarCatUITests/KeychainAccess.framework"
+  install_framework "Pods-StarCatUITests/RequestKit.framework"
+  install_framework "Pods-StarCatUITests/Octokit.framework"
   install_framework "Pods-StarCatUITests/Result.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-StarCatUITests/APIKit.framework"
   install_framework "Pods-StarCatUITests/KeychainAccess.framework"
+  install_framework "Pods-StarCatUITests/RequestKit.framework"
+  install_framework "Pods-StarCatUITests/Octokit.framework"
   install_framework "Pods-StarCatUITests/Result.framework"
 fi

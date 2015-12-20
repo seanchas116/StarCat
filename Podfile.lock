@@ -2,15 +2,21 @@ PODS:
   - APIKit (1.1.2):
     - Result (~> 1.0.1)
   - KeychainAccess (2.3.3)
+  - NBNRequestKit (0.1.1)
+  - OctoKit.swift (0.5.0):
+    - NBNRequestKit (~> 0.1.0)
   - Result (1.0.1)
 
 DEPENDENCIES:
   - APIKit (~> 1.1.2)
   - KeychainAccess
+  - OctoKit.swift
 
 SPEC CHECKSUMS:
   APIKit: d6e313f1ca3b0cae30a7059f872f7780d8a147ec
   KeychainAccess: 9b7e49e48277e329b1b3195e54697ed313d30acf
+  NBNRequestKit: 1fe77c6569bd11f13604fdabb7cbab5ef719cf47
+  OctoKit.swift: 8a53a0d6bd8ba5254c9c6abbf7ff4a256324a247
   Result: caef80340451e1f07492fa1e89117f83613bce24
 
 COCOAPODS: 0.39.0

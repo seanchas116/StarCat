@@ -86,10 +86,14 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/APIKit.framework"
   install_framework "Pods/KeychainAccess.framework"
+  install_framework "Pods/RequestKit.framework"
+  install_framework "Pods/Octokit.framework"
   install_framework "Pods/Result.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/APIKit.framework"
   install_framework "Pods/KeychainAccess.framework"
+  install_framework "Pods/RequestKit.framework"
+  install_framework "Pods/Octokit.framework"
   install_framework "Pods/Result.framework"
 fi

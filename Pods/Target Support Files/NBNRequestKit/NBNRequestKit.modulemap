@@ -1,0 +1,6 @@
+framework module RequestKit {
+  umbrella header "NBNRequestKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

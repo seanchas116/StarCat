@@ -5,6 +5,7 @@ use_frameworks!
 
 pod 'APIKit', '~> 1.1.2'
 pod 'KeychainAccess'
+pod 'OctoKit.swift'
 
 target 'StarCat' do
 end
