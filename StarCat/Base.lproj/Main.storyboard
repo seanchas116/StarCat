@@ -28,11 +28,78 @@
                             <outlet property="delegate" destination="DFs-Ny-QAM" id="nHi-2c-fMY"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" image="home" id="5aO-cB-0zI"/>
+                    <tabBarItem key="tabBarItem" title="" image="home" id="5aO-cB-0zI"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0kh-CE-TSB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="380" y="-480"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="VC6-VM-HDx">
+            <objects>
+                <viewController id="VuT-K2-JCA" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bGq-xh-S4i"/>
+                        <viewControllerLayoutGuide type="bottom" id="tWs-0l-yJA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6YZ-JQ-y1E">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="search" id="RI4-Mr-aJV"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9mh-92-EZp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="380" y="191"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="bUO-lb-05a">
+            <objects>
+                <tableViewController id="m9J-On-whw" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hFI-93-EUA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="rOG-Vo-rCF">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rOG-Vo-rCF" id="MbQ-in-iw9">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="m9J-On-whw" id="hhK-0q-XuC"/>
+                            <outlet property="delegate" destination="m9J-On-whw" id="ka7-qk-Qzc"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="" image="star" id="M2K-g7-yLh"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="naj-2p-tLw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="380" y="855"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="KdC-7F-xk3">
+            <objects>
+                <viewController id="aoa-gb-Eik" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="URp-k3-2Ih"/>
+                        <viewControllerLayoutGuide type="bottom" id="6nO-Qb-Aax"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3XD-mW-2DG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="user" id="mD1-WP-j2L"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eiv-O5-yop" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="380" y="1530"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -46,6 +113,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="DFs-Ny-QAM" kind="relationship" relationship="viewControllers" id="gsb-e6-3c8"/>
+                        <segue destination="VuT-K2-JCA" kind="relationship" relationship="viewControllers" id="wlV-g7-X7B"/>
+                        <segue destination="m9J-On-whw" kind="relationship" relationship="viewControllers" id="lJ3-ZM-bM3"/>
+                        <segue destination="aoa-gb-Eik" kind="relationship" relationship="viewControllers" id="CZW-Cd-kvZ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -55,5 +125,8 @@
     </scenes>
     <resources>
         <image name="home" width="25" height="25"/>
+        <image name="search" width="25" height="25"/>
+        <image name="star" width="25" height="25"/>
+        <image name="user" width="25" height="25"/>
     </resources>
 </document>
