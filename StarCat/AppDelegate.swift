@@ -8,23 +8,21 @@
 
 import UIKit
 import KeychainAccess
+import Octokit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let keychain = Keychain(service: "com.seanchas116.starcat")
-
+    let config = OAuthConfiguration(token: Constants.githubClientID, secret: Constants.githubClientSecret, scopes: ["repo"])
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         print("init")
         let token = keychain["githubToken"];
         if token == nil {
-            let githubAuthURL = NSURL.fromQueries("https://github.com/login/oauth/authorize", queries: [
-                "client_id": Constants.githubClientID,
-                "redirect_uri": "\(Constants.appURLScheme):///auth",
-            ])
-            UIApplication.sharedApplication().openURL(githubAuthURL)
+            print("authenticate")
+            UIApplication.sharedApplication().openURL(config.authenticate()!)
         }
         
         // Override point for customization after application launch.
@@ -32,15 +30,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
-        print(url)
-        if url.scheme == Constants.appURLScheme {
-            if url.path == "/auth" {
-                let code = url.getQueryParameter("code")!
-                print("code \(code)")
-            }
-            print("hoge")
+        print("loadurl")
+        config.handleOpenURL(url) { config in
+            self.loadCurrentUser(config)
         }
-        return true
+        return false
+    }
+    
+    func loadCurrentUser(config: TokenConfiguration) {
+        Octokit(config).me() { response in
+            switch response {
+            case .Success(let user):
+                print(user.login)
+            case .Failure(let error):
+                print(error)
+            }
+        }
     }
 
     func applicationWillResignActive(application: UIApplication) {
