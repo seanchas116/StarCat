@@ -13,6 +13,7 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         centerTabBarItems()
+        UITabBar.appearance().tintColor = UIColor.whiteColor()
     }
     func centerTabBarItems() {
         for vc in viewControllers! {
