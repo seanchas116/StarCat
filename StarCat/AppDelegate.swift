@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func loadCurrentUser(config: TokenConfiguration) {
+        keychain["githubToken"] = config.accessToken
         Octokit(config).me() { response in
             switch response {
             case .Success(let user):
