@@ -107,12 +107,12 @@
 		BED813281C24EE6D0028F8B0 = {
 			isa = PBXGroup;
 			children = (
+				2060859843867025B484F1E3 /* Frameworks */,
+				7D4B06B873C4F768014DF1DB /* Pods */,
+				BED813321C24EE6D0028F8B0 /* Products */,
 				BED813331C24EE6D0028F8B0 /* StarCat */,
 				BED8134A1C24EE6D0028F8B0 /* StarCatTests */,
 				BED813551C24EE6D0028F8B0 /* StarCatUITests */,
-				BED813321C24EE6D0028F8B0 /* Products */,
-				7D4B06B873C4F768014DF1DB /* Pods */,
-				2060859843867025B484F1E3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,15 +129,15 @@
 		BED813331C24EE6D0028F8B0 /* StarCat */ = {
 			isa = PBXGroup;
 			children = (
-				BED608221C2A597B0097F8CE /* GitHubAPI.swift */,
 				BED813341C24EE6D0028F8B0 /* AppDelegate.swift */,
-				BED8133A1C24EE6D0028F8B0 /* Main.storyboard */,
 				BED8133D1C24EE6D0028F8B0 /* Assets.xcassets */,
-				BED8133F1C24EE6D0028F8B0 /* LaunchScreen.storyboard */,
-				BED813421C24EE6D0028F8B0 /* Info.plist */,
-				BE989A301C24F61B00EF013F /* NewsTableViewController.swift */,
-				BEBA2A6E1C26A4E600F64F05 /* NSURL+Queries.swift */,
 				BEBA2A701C26AACB00F64F05 /* Constants.swift */,
+				BED608221C2A597B0097F8CE /* GitHubAPI.swift */,
+				BED813421C24EE6D0028F8B0 /* Info.plist */,
+				BED8133F1C24EE6D0028F8B0 /* LaunchScreen.storyboard */,
+				BED8133A1C24EE6D0028F8B0 /* Main.storyboard */,
+				BEBA2A6E1C26A4E600F64F05 /* NSURL+Queries.swift */,
+				BE989A301C24F61B00EF013F /* NewsTableViewController.swift */,
 				BE39BA211C291BF40000A87F /* TabBarController.swift */,
 			);
 			path = StarCat;
@@ -146,8 +146,8 @@
 		BED8134A1C24EE6D0028F8B0 /* StarCatTests */ = {
 			isa = PBXGroup;
 			children = (
-				BED8134B1C24EE6D0028F8B0 /* StarCatTests.swift */,
 				BED8134D1C24EE6D0028F8B0 /* Info.plist */,
+				BED8134B1C24EE6D0028F8B0 /* StarCatTests.swift */,
 			);
 			path = StarCatTests;
 			sourceTree = "<group>";
@@ -155,8 +155,8 @@
 		BED813551C24EE6D0028F8B0 /* StarCatUITests */ = {
 			isa = PBXGroup;
 			children = (
-				BED813561C24EE6D0028F8B0 /* StarCatUITests.swift */,
 				BED813581C24EE6D0028F8B0 /* Info.plist */,
+				BED813561C24EE6D0028F8B0 /* StarCatUITests.swift */,
 			);
 			path = StarCatUITests;
 			sourceTree = "<group>";
@@ -391,6 +391,7 @@
 				BED8133B1C24EE6D0028F8B0 /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		BED8133F1C24EE6D0028F8B0 /* LaunchScreen.storyboard */ = {
@@ -399,6 +400,7 @@
 				BED813401C24EE6D0028F8B0 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
