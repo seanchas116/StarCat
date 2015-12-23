@@ -12,6 +12,7 @@
 		BE989A311C24F61B00EF013F /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE989A301C24F61B00EF013F /* NewsTableViewController.swift */; };
 		BEBA2A6F1C26A4E600F64F05 /* NSURL+Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA2A6E1C26A4E600F64F05 /* NSURL+Queries.swift */; };
 		BEBA2A711C26AACB00F64F05 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA2A701C26AACB00F64F05 /* Constants.swift */; };
+		BED608231C2A597B0097F8CE /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED608221C2A597B0097F8CE /* GitHubAPI.swift */; };
 		BED813351C24EE6D0028F8B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED813341C24EE6D0028F8B0 /* AppDelegate.swift */; };
 		BED8133C1C24EE6D0028F8B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BED8133A1C24EE6D0028F8B0 /* Main.storyboard */; };
 		BED8133E1C24EE6D0028F8B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BED8133D1C24EE6D0028F8B0 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		BE989A301C24F61B00EF013F /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		BEBA2A6E1C26A4E600F64F05 /* NSURL+Queries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+Queries.swift"; sourceTree = "<group>"; };
 		BEBA2A701C26AACB00F64F05 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BED608221C2A597B0097F8CE /* GitHubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubAPI.swift; sourceTree = "<group>"; };
 		BED813311C24EE6D0028F8B0 /* StarCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BED813341C24EE6D0028F8B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BED8133B1C24EE6D0028F8B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		BED813331C24EE6D0028F8B0 /* StarCat */ = {
 			isa = PBXGroup;
 			children = (
+				BED608221C2A597B0097F8CE /* GitHubAPI.swift */,
 				BED813341C24EE6D0028F8B0 /* AppDelegate.swift */,
 				BED8133A1C24EE6D0028F8B0 /* Main.storyboard */,
 				BED8133D1C24EE6D0028F8B0 /* Assets.xcassets */,
@@ -342,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEBA2A6F1C26A4E600F64F05 /* NSURL+Queries.swift in Sources */,
+				BED608231C2A597B0097F8CE /* GitHubAPI.swift in Sources */,
 				BE989A311C24F61B00EF013F /* NewsTableViewController.swift in Sources */,
 				BED813351C24EE6D0028F8B0 /* AppDelegate.swift in Sources */,
 				BE39BA221C291BF40000A87F /* TabBarController.swift in Sources */,
