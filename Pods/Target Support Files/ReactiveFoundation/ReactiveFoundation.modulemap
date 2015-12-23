@@ -1,0 +1,6 @@
+framework module ReactiveFoundation {
+  umbrella header "ReactiveFoundation-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -88,6 +88,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/KeychainAccess.framework"
   install_framework "Pods/RequestKit.framework"
   install_framework "Pods/Octokit.framework"
+  install_framework "Pods/ReactiveFoundation.framework"
+  install_framework "Pods/ReactiveKit.framework"
+  install_framework "Pods/ReactiveUIKit.framework"
   install_framework "Pods/Result.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -95,5 +98,8 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/KeychainAccess.framework"
   install_framework "Pods/RequestKit.framework"
   install_framework "Pods/Octokit.framework"
+  install_framework "Pods/ReactiveFoundation.framework"
+  install_framework "Pods/ReactiveKit.framework"
+  install_framework "Pods/ReactiveUIKit.framework"
   install_framework "Pods/Result.framework"
 fi

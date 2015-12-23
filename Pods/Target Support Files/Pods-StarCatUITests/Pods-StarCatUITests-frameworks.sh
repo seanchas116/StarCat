@@ -88,6 +88,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-StarCatUITests/KeychainAccess.framework"
   install_framework "Pods-StarCatUITests/RequestKit.framework"
   install_framework "Pods-StarCatUITests/Octokit.framework"
+  install_framework "Pods-StarCatUITests/ReactiveFoundation.framework"
+  install_framework "Pods-StarCatUITests/ReactiveKit.framework"
+  install_framework "Pods-StarCatUITests/ReactiveUIKit.framework"
   install_framework "Pods-StarCatUITests/Result.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -95,5 +98,8 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-StarCatUITests/KeychainAccess.framework"
   install_framework "Pods-StarCatUITests/RequestKit.framework"
   install_framework "Pods-StarCatUITests/Octokit.framework"
+  install_framework "Pods-StarCatUITests/ReactiveFoundation.framework"
+  install_framework "Pods-StarCatUITests/ReactiveKit.framework"
+  install_framework "Pods-StarCatUITests/ReactiveUIKit.framework"
   install_framework "Pods-StarCatUITests/Result.framework"
 fi

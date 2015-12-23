@@ -1,0 +1,6 @@
+framework module ReactiveUIKit {
+  umbrella header "ReactiveUIKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
