@@ -23,21 +23,6 @@ extension GitHubRequest {
     }
 }
 
-struct User {
-    let id: Int
-    let login: String
-    let avatarURL: NSURL
-}
-
-struct Repo {
-    let id: Int
-    let name: String
-}
-
-enum Event {
-    case Star(User, Repo)
-}
-
 extension User {
     static func fromDictionary(dict: [String: AnyObject]) -> User {
         let id = dict["id"] as! Int

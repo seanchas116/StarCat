@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		9F1AA334A1CC62E55B141A9F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D70162D3C8EADEC46ABB2C6 /* Pods.framework */; };
 		BE39BA221C291BF40000A87F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE39BA211C291BF40000A87F /* TabBarController.swift */; };
+		BE3F45441C2A992500DD1863 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F45431C2A992500DD1863 /* User.swift */; };
+		BE3F45461C2A993400DD1863 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F45451C2A993400DD1863 /* Repo.swift */; };
+		BE3F45491C2A994500DD1863 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F45481C2A994500DD1863 /* Event.swift */; };
 		BE989A311C24F61B00EF013F /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE989A301C24F61B00EF013F /* NewsTableViewController.swift */; };
 		BEBA2A6F1C26A4E600F64F05 /* NSURL+Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA2A6E1C26A4E600F64F05 /* NSURL+Queries.swift */; };
 		BEBA2A711C26AACB00F64F05 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA2A701C26AACB00F64F05 /* Constants.swift */; };
@@ -43,6 +46,9 @@
 		2D70162D3C8EADEC46ABB2C6 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45D4651B526DB97C5A7B6211 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BE39BA211C291BF40000A87F /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		BE3F45431C2A992500DD1863 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BE3F45451C2A993400DD1863 /* Repo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
+		BE3F45481C2A994500DD1863 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		BE989A301C24F61B00EF013F /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		BEBA2A6E1C26A4E600F64F05 /* NSURL+Queries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+Queries.swift"; sourceTree = "<group>"; };
 		BEBA2A701C26AACB00F64F05 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -104,6 +110,33 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BE3F45401C2A98FC00DD1863 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BE989A301C24F61B00EF013F /* NewsTableViewController.swift */,
+				BE39BA211C291BF40000A87F /* TabBarController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		BE3F45411C2A990700DD1863 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				BED608221C2A597B0097F8CE /* GitHubAPI.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		BE3F45421C2A991B00DD1863 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BE3F45481C2A994500DD1863 /* Event.swift */,
+				BE3F45451C2A993400DD1863 /* Repo.swift */,
+				BE3F45431C2A992500DD1863 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		BED813281C24EE6D0028F8B0 = {
 			isa = PBXGroup;
 			children = (
@@ -129,16 +162,16 @@
 		BED813331C24EE6D0028F8B0 /* StarCat */ = {
 			isa = PBXGroup;
 			children = (
+				BE3F45421C2A991B00DD1863 /* Models */,
+				BE3F45411C2A990700DD1863 /* Services */,
+				BE3F45401C2A98FC00DD1863 /* ViewControllers */,
 				BED813341C24EE6D0028F8B0 /* AppDelegate.swift */,
 				BED8133D1C24EE6D0028F8B0 /* Assets.xcassets */,
 				BEBA2A701C26AACB00F64F05 /* Constants.swift */,
-				BED608221C2A597B0097F8CE /* GitHubAPI.swift */,
 				BED813421C24EE6D0028F8B0 /* Info.plist */,
 				BED8133F1C24EE6D0028F8B0 /* LaunchScreen.storyboard */,
 				BED8133A1C24EE6D0028F8B0 /* Main.storyboard */,
 				BEBA2A6E1C26A4E600F64F05 /* NSURL+Queries.swift */,
-				BE989A301C24F61B00EF013F /* NewsTableViewController.swift */,
-				BE39BA211C291BF40000A87F /* TabBarController.swift */,
 			);
 			path = StarCat;
 			sourceTree = "<group>";
@@ -345,11 +378,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEBA2A6F1C26A4E600F64F05 /* NSURL+Queries.swift in Sources */,
+				BE3F45491C2A994500DD1863 /* Event.swift in Sources */,
 				BED608231C2A597B0097F8CE /* GitHubAPI.swift in Sources */,
 				BE989A311C24F61B00EF013F /* NewsTableViewController.swift in Sources */,
+				BE3F45461C2A993400DD1863 /* Repo.swift in Sources */,
 				BED813351C24EE6D0028F8B0 /* AppDelegate.swift in Sources */,
 				BE39BA221C291BF40000A87F /* TabBarController.swift in Sources */,
 				BEBA2A711C26AACB00F64F05 /* Constants.swift in Sources */,
+				BE3F45441C2A992500DD1863 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
