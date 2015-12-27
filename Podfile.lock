@@ -5,30 +5,29 @@ PODS:
   - NBNRequestKit (0.1.1)
   - OctoKit.swift (0.5.0):
     - NBNRequestKit (~> 0.1.0)
-  - ReactiveFoundation (1.0.4):
-    - ReactiveKit
-  - ReactiveKit (1.1.0)
-  - ReactiveUIKit (1.0.9):
-    - ReactiveFoundation
-    - ReactiveKit
   - Result (1.0.1)
+  - RxBlocking (2.0.0-beta.4):
+    - RxSwift (~> 2.0.0-beta)
+  - RxCocoa (2.0.0-beta.4):
+    - RxSwift (~> 2.0.0-beta)
+  - RxSwift (2.0.0-beta.4)
 
 DEPENDENCIES:
   - APIKit (~> 1.1.2)
   - KeychainAccess
   - OctoKit.swift
-  - ReactiveFoundation (~> 1.0)
-  - ReactiveKit (~> 1.0)
-  - ReactiveUIKit (~> 1.0)
+  - RxBlocking (~> 2.0.0-beta)
+  - RxCocoa (~> 2.0.0-beta)
+  - RxSwift (~> 2.0.0-beta)
 
 SPEC CHECKSUMS:
   APIKit: d6e313f1ca3b0cae30a7059f872f7780d8a147ec
   KeychainAccess: 9b7e49e48277e329b1b3195e54697ed313d30acf
   NBNRequestKit: 1fe77c6569bd11f13604fdabb7cbab5ef719cf47
   OctoKit.swift: 8a53a0d6bd8ba5254c9c6abbf7ff4a256324a247
-  ReactiveFoundation: ea146bd578c3e9c9c5d0b2fc87320f10ac7917bb
-  ReactiveKit: 7cab8ace32a13ec64e62ddf2b8af442af8cac83d
-  ReactiveUIKit: c8d1ef5f09981a1b70dc03f0fa263dafa06ee000
   Result: caef80340451e1f07492fa1e89117f83613bce24
+  RxBlocking: 234b0c161315ff3ade25c11e48d74e9ca83158b5
+  RxCocoa: 4a3e433e6dfe116362ff54423c841cc0f209e009
+  RxSwift: 191c6b06da783a8671433cf35a54d2ad2fd2d9de
 
 COCOAPODS: 0.39.0

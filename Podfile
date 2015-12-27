@@ -6,9 +6,9 @@ use_frameworks!
 pod 'APIKit', '~> 1.1.2'
 pod 'KeychainAccess'
 pod 'OctoKit.swift'
-pod 'ReactiveKit', '~> 1.0'
-pod 'ReactiveUIKit', '~> 1.0'
-pod 'ReactiveFoundation', '~> 1.0'
+pod 'RxSwift', '~> 2.0.0-beta'
+pod 'RxCocoa', '~> 2.0.0-beta'
+pod 'RxBlocking', '~> 2.0.0-beta'
 
 target 'StarCat' do
 end
