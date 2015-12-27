@@ -12,7 +12,6 @@
 		BE3F45441C2A992500DD1863 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F45431C2A992500DD1863 /* User.swift */; };
 		BE3F45461C2A993400DD1863 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F45451C2A993400DD1863 /* Repo.swift */; };
 		BE3F45491C2A994500DD1863 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F45481C2A994500DD1863 /* Event.swift */; };
-		BE989A311C24F61B00EF013F /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE989A301C24F61B00EF013F /* NewsTableViewController.swift */; };
 		BEBA2A6F1C26A4E600F64F05 /* NSURL+Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA2A6E1C26A4E600F64F05 /* NSURL+Queries.swift */; };
 		BEBA2A711C26AACB00F64F05 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA2A701C26AACB00F64F05 /* Constants.swift */; };
 		BED608231C2A597B0097F8CE /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED608221C2A597B0097F8CE /* GitHubAPI.swift */; };
@@ -22,6 +21,8 @@
 		BED813411C24EE6D0028F8B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BED8133F1C24EE6D0028F8B0 /* LaunchScreen.storyboard */; };
 		BED8134C1C24EE6D0028F8B0 /* StarCatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED8134B1C24EE6D0028F8B0 /* StarCatTests.swift */; };
 		BED813571C24EE6D0028F8B0 /* StarCatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED813561C24EE6D0028F8B0 /* StarCatUITests.swift */; };
+		BEF605131C3023F70014D633 /* NewsTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF605121C3023F70014D633 /* NewsTabViewModel.swift */; };
+		BEF605151C30248E0014D633 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF605141C30248E0014D633 /* EventViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +50,6 @@
 		BE3F45431C2A992500DD1863 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BE3F45451C2A993400DD1863 /* Repo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		BE3F45481C2A994500DD1863 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		BE989A301C24F61B00EF013F /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		BEBA2A6E1C26A4E600F64F05 /* NSURL+Queries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+Queries.swift"; sourceTree = "<group>"; };
 		BEBA2A701C26AACB00F64F05 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BED608221C2A597B0097F8CE /* GitHubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubAPI.swift; sourceTree = "<group>"; };
@@ -65,6 +65,8 @@
 		BED813521C24EE6D0028F8B0 /* StarCatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarCatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BED813561C24EE6D0028F8B0 /* StarCatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarCatUITests.swift; sourceTree = "<group>"; };
 		BED813581C24EE6D0028F8B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEF605121C3023F70014D633 /* NewsTabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTabViewModel.swift; sourceTree = "<group>"; };
+		BEF605141C30248E0014D633 /* EventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +115,6 @@
 		BE3F45401C2A98FC00DD1863 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				BE989A301C24F61B00EF013F /* NewsTableViewController.swift */,
 				BE39BA211C291BF40000A87F /* TabBarController.swift */,
 			);
 			path = ViewControllers;
@@ -165,6 +166,7 @@
 				BE3F45421C2A991B00DD1863 /* Models */,
 				BE3F45411C2A990700DD1863 /* Services */,
 				BE3F45401C2A98FC00DD1863 /* ViewControllers */,
+				BEF605111C30239E0014D633 /* ViewModels */,
 				BED813341C24EE6D0028F8B0 /* AppDelegate.swift */,
 				BED8133D1C24EE6D0028F8B0 /* Assets.xcassets */,
 				BEBA2A701C26AACB00F64F05 /* Constants.swift */,
@@ -192,6 +194,15 @@
 				BED813561C24EE6D0028F8B0 /* StarCatUITests.swift */,
 			);
 			path = StarCatUITests;
+			sourceTree = "<group>";
+		};
+		BEF605111C30239E0014D633 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BEF605141C30248E0014D633 /* EventViewModel.swift */,
+				BEF605121C3023F70014D633 /* NewsTabViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,7 +391,8 @@
 				BEBA2A6F1C26A4E600F64F05 /* NSURL+Queries.swift in Sources */,
 				BE3F45491C2A994500DD1863 /* Event.swift in Sources */,
 				BED608231C2A597B0097F8CE /* GitHubAPI.swift in Sources */,
-				BE989A311C24F61B00EF013F /* NewsTableViewController.swift in Sources */,
+				BEF605151C30248E0014D633 /* EventViewModel.swift in Sources */,
+				BEF605131C3023F70014D633 /* NewsTabViewModel.swift in Sources */,
 				BE3F45461C2A993400DD1863 /* Repo.swift in Sources */,
 				BED813351C24EE6D0028F8B0 /* AppDelegate.swift in Sources */,
 				BE39BA221C291BF40000A87F /* TabBarController.swift in Sources */,
