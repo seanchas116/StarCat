@@ -85,9 +85,12 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-StarCatUITests/APIKit.framework"
+  install_framework "Pods-StarCatUITests/Himotoki.framework"
   install_framework "Pods-StarCatUITests/KeychainAccess.framework"
   install_framework "Pods-StarCatUITests/RequestKit.framework"
+  install_framework "Pods-StarCatUITests/OMGHTTPURLRQ.framework"
   install_framework "Pods-StarCatUITests/Octokit.framework"
+  install_framework "Pods-StarCatUITests/PromiseKit.framework"
   install_framework "Pods-StarCatUITests/Result.framework"
   install_framework "Pods-StarCatUITests/RxBlocking.framework"
   install_framework "Pods-StarCatUITests/RxCocoa.framework"
@@ -95,9 +98,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-StarCatUITests/APIKit.framework"
+  install_framework "Pods-StarCatUITests/Himotoki.framework"
   install_framework "Pods-StarCatUITests/KeychainAccess.framework"
   install_framework "Pods-StarCatUITests/RequestKit.framework"
+  install_framework "Pods-StarCatUITests/OMGHTTPURLRQ.framework"
   install_framework "Pods-StarCatUITests/Octokit.framework"
+  install_framework "Pods-StarCatUITests/PromiseKit.framework"
   install_framework "Pods-StarCatUITests/Result.framework"
   install_framework "Pods-StarCatUITests/RxBlocking.framework"
   install_framework "Pods-StarCatUITests/RxCocoa.framework"

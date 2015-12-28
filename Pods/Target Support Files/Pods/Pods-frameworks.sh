@@ -85,9 +85,12 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/APIKit.framework"
+  install_framework "Pods/Himotoki.framework"
   install_framework "Pods/KeychainAccess.framework"
   install_framework "Pods/RequestKit.framework"
+  install_framework "Pods/OMGHTTPURLRQ.framework"
   install_framework "Pods/Octokit.framework"
+  install_framework "Pods/PromiseKit.framework"
   install_framework "Pods/Result.framework"
   install_framework "Pods/RxBlocking.framework"
   install_framework "Pods/RxCocoa.framework"
@@ -95,9 +98,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/APIKit.framework"
+  install_framework "Pods/Himotoki.framework"
   install_framework "Pods/KeychainAccess.framework"
   install_framework "Pods/RequestKit.framework"
+  install_framework "Pods/OMGHTTPURLRQ.framework"
   install_framework "Pods/Octokit.framework"
+  install_framework "Pods/PromiseKit.framework"
   install_framework "Pods/Result.framework"
   install_framework "Pods/RxBlocking.framework"
   install_framework "Pods/RxCocoa.framework"

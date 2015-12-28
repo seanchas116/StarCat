@@ -1,10 +1,30 @@
 PODS:
   - APIKit (1.1.2):
     - Result (~> 1.0.1)
+  - Himotoki (1.3.2)
   - KeychainAccess (2.3.3)
   - NBNRequestKit (0.1.1)
   - OctoKit.swift (0.5.0):
     - NBNRequestKit (~> 0.1.0)
+  - OMGHTTPURLRQ (3.0.2):
+    - OMGHTTPURLRQ/RQ (= 3.0.2)
+  - OMGHTTPURLRQ/FormURLEncode (3.0.2)
+  - OMGHTTPURLRQ/RQ (3.0.2):
+    - OMGHTTPURLRQ/FormURLEncode
+    - OMGHTTPURLRQ/UserAgent
+  - OMGHTTPURLRQ/UserAgent (3.0.2)
+  - PromiseKit (3.0.0):
+    - PromiseKit/Foundation (= 3.0.0)
+    - PromiseKit/QuartzCore (= 3.0.0)
+    - PromiseKit/UIKit (= 3.0.0)
+  - PromiseKit/CorePromise (3.0.0)
+  - PromiseKit/Foundation (3.0.0):
+    - OMGHTTPURLRQ (~> 3.0.0)
+    - PromiseKit/CorePromise
+  - PromiseKit/QuartzCore (3.0.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (3.0.0):
+    - PromiseKit/CorePromise
   - Result (1.0.1)
   - RxBlocking (2.0.0-beta.4):
     - RxSwift (~> 2.0.0-beta)
@@ -13,18 +33,23 @@ PODS:
   - RxSwift (2.0.0-beta.4)
 
 DEPENDENCIES:
-  - APIKit (~> 1.1.2)
+  - APIKit
+  - Himotoki
   - KeychainAccess
   - OctoKit.swift
+  - PromiseKit
   - RxBlocking (~> 2.0.0-beta)
   - RxCocoa (~> 2.0.0-beta)
   - RxSwift (~> 2.0.0-beta)
 
 SPEC CHECKSUMS:
   APIKit: d6e313f1ca3b0cae30a7059f872f7780d8a147ec
+  Himotoki: e803d71cdf0cf6a1c4f5004d949b659231abcc5b
   KeychainAccess: 9b7e49e48277e329b1b3195e54697ed313d30acf
   NBNRequestKit: 1fe77c6569bd11f13604fdabb7cbab5ef719cf47
   OctoKit.swift: 8a53a0d6bd8ba5254c9c6abbf7ff4a256324a247
+  OMGHTTPURLRQ: 8376dc887d76a5a7e2a67881dc788f917a2f437c
+  PromiseKit: 665540a1eb43156446872dcf49ed7dee6ebbe13b
   Result: caef80340451e1f07492fa1e89117f83613bce24
   RxBlocking: 234b0c161315ff3ade25c11e48d74e9ca83158b5
   RxCocoa: 4a3e433e6dfe116362ff54423c841cc0f209e009

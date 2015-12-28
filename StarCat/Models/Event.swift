@@ -9,5 +9,6 @@
 import Foundation
 
 enum Event {
-    case Star(User, Repo)
+    case Star(UserSummary, RepoSummary)
+    case Unknown
 }

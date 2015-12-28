@@ -10,5 +10,10 @@ import Foundation
 
 struct Repo {
     let id: Int
+    let owner: UserSummary
     let name: String
+    let fullName: String
+    let description: String
+    let starsCount: Int
+    let language: String
 }
