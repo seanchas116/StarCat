@@ -217,12 +217,12 @@
 		BEF6051A1C3113DF0014D633 /* GitHubAPI */ = {
 			isa = PBXGroup;
 			children = (
+				BEF605211C3116950014D633 /* Authentication.swift */,
 				BEF6051B1C3113F30014D633 /* Decodables.swift */,
 				BEF6051D1C3114220014D633 /* Requests.swift */,
 				BEF6051F1C31146D0014D633 /* Session+Promise.swift */,
-				BEF605211C3116950014D633 /* Authentication.swift */,
 			);
-			name = GitHubAPI;
+			path = GitHubAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
