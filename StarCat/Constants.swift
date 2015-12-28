@@ -2,7 +2,7 @@
 //  Constants.swift
 //  StarCat
 //
-//  Created by 池上涼平 on 2015/12/20.
+//  Created by Ryohei Ikegami on 2015/12/20.
 //  Copyright © 2015年 seanchas116. All rights reserved.
 //
 

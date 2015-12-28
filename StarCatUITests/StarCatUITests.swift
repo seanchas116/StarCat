@@ -2,7 +2,7 @@
 //  StarCatUITests.swift
 //  StarCatUITests
 //
-//  Created by 池上涼平 on 2015/12/19.
+//  Created by Ryohei Ikegami on 2015/12/19.
 //  Copyright © 2015年 seanchas116. All rights reserved.
 //
 
