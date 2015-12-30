@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import APIKit
+import Haneke
 
 class RepoViewModel {
     let event = Variable<Event?>(nil)
@@ -25,6 +26,9 @@ class RepoViewModel {
             self.starsCount.value = repo.starsCount
             self.description.value = repo.description ?? ""
             self.language.value = repo.language
+            Shared.imageCache.fetch(URL: repo.owner.avatarURL).promise().then { image -> Void in
+                self.avatarImage.value = image
+            }
         }
     }
 }
