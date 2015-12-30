@@ -70,8 +70,8 @@
 		BED813521C24EE6D0028F8B0 /* StarCatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarCatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BED813561C24EE6D0028F8B0 /* StarCatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarCatUITests.swift; sourceTree = "<group>"; };
 		BED813581C24EE6D0028F8B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BEE0C0AA1C33EF1A0014986D /* RepoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepoCell.swift; path = Views/RepoCell.swift; sourceTree = "<group>"; };
-		BEE0C0AB1C33EF1A0014986D /* RepoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RepoCell.xib; path = Views/RepoCell.xib; sourceTree = "<group>"; };
+		BEE0C0AA1C33EF1A0014986D /* RepoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoCell.swift; sourceTree = "<group>"; };
+		BEE0C0AB1C33EF1A0014986D /* RepoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoCell.xib; sourceTree = "<group>"; };
 		BEF605121C3023F70014D633 /* NewsTabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTabViewModel.swift; sourceTree = "<group>"; };
 		BEF605161C3034820014D633 /* RepoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoViewModel.swift; sourceTree = "<group>"; };
 		BEF605181C30FCBB0014D633 /* RepoSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoSummary.swift; sourceTree = "<group>"; };
@@ -127,8 +127,8 @@
 		BE3F45401C2A98FC00DD1863 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				BE39BA211C291BF40000A87F /* TabBarController.swift */,
 				BE32EFD21C33D0F7005964FE /* NewsTabViewController.swift */,
+				BE39BA211C291BF40000A87F /* TabBarController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -137,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				BEF6051A1C3113DF0014D633 /* GitHubAPI */,
+				BEF6051F1C31146D0014D633 /* Session+Promise.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -177,11 +178,11 @@
 		BED813331C24EE6D0028F8B0 /* StarCat */ = {
 			isa = PBXGroup;
 			children = (
-				BEE0C0A41C33E0210014986D /* Views */,
 				BE3F45421C2A991B00DD1863 /* Models */,
 				BE3F45411C2A990700DD1863 /* Services */,
 				BE3F45401C2A98FC00DD1863 /* ViewControllers */,
 				BEF605111C30239E0014D633 /* ViewModels */,
+				BEE0C0A41C33E0210014986D /* Views */,
 				BED813341C24EE6D0028F8B0 /* AppDelegate.swift */,
 				BED8133D1C24EE6D0028F8B0 /* Assets.xcassets */,
 				BEBA2A701C26AACB00F64F05 /* Constants.swift */,
@@ -216,7 +217,7 @@
 				BEE0C0AA1C33EF1A0014986D /* RepoCell.swift */,
 				BEE0C0AB1C33EF1A0014986D /* RepoCell.xib */,
 			);
-			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		BEF605111C30239E0014D633 /* ViewModels */ = {
@@ -234,7 +235,6 @@
 				BEF605211C3116950014D633 /* Authentication.swift */,
 				BEF6051B1C3113F30014D633 /* Decodables.swift */,
 				BEF6051D1C3114220014D633 /* Requests.swift */,
-				BEF6051F1C31146D0014D633 /* Session+Promise.swift */,
 			);
 			path = GitHubAPI;
 			sourceTree = "<group>";
