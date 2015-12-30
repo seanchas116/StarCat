@@ -7,15 +7,32 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class NewsTabViewController: UIViewController {
 
     @IBOutlet var reposView: UITableView!
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        reposView.registerNib(UINib(nibName: "RepoCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
 
-        // Do any additional setup after loading the view.
+        let viewModel = NewsTabViewModel()
+        
+        viewModel.repos.bindTo(reposView.rx_itemsWithCellIdentifier("RepoCell")) { row, elem, cell in
+            (cell as! RepoCell).viewModel = elem
+        }.addDisposableTo(disposeBag)
+        
+        viewModel.repos.subscribeNext { repos in
+            print("repos updated")
+            for repo in repos {
+                print(repo.name.value)
+            }
+        }
+        viewModel.loadEvents()
     }
 
     override func didReceiveMemoryWarning() {

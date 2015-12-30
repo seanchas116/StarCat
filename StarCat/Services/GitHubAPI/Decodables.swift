@@ -31,10 +31,10 @@ extension Repo: Decodable {
             id: e <| "id",
             owner: e <| "owner",
             name: e <| "name",
-            fullName: e <| "fullName",
-            description: e <| "description",
+            fullName: e <| "full_name",
+            description: e <|? "description",
             starsCount: e <| "stargazers_count",
-            language: e <| "language"
+            language: e <|? "language"
         )
     }
 }

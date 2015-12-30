@@ -13,7 +13,7 @@ struct Repo {
     let owner: UserSummary
     let name: String
     let fullName: String
-    let description: String
+    let description: String?
     let starsCount: Int
-    let language: String
+    let language: String?
 }

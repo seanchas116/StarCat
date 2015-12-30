@@ -21,7 +21,9 @@ extension GitHubRequest {
         return .GET
     }
     func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-        URLRequest.setValue("token \(Authentication.accessToken)", forHTTPHeaderField: "Authorization")
+        if let token = Authentication.accessToken {
+            URLRequest.setValue("token \(token)", forHTTPHeaderField: "Authorization")
+        }
         return URLRequest
     }
 }

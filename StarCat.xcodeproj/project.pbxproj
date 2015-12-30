@@ -20,6 +20,8 @@
 		BED813411C24EE6D0028F8B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BED8133F1C24EE6D0028F8B0 /* LaunchScreen.storyboard */; };
 		BED8134C1C24EE6D0028F8B0 /* StarCatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED8134B1C24EE6D0028F8B0 /* StarCatTests.swift */; };
 		BED813571C24EE6D0028F8B0 /* StarCatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED813561C24EE6D0028F8B0 /* StarCatUITests.swift */; };
+		BEE0C0A71C33E1D90014986D /* RepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE0C0A51C33E1D90014986D /* RepoCell.swift */; };
+		BEE0C0A81C33E1D90014986D /* RepoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEE0C0A61C33E1D90014986D /* RepoCell.xib */; };
 		BEF605131C3023F70014D633 /* NewsTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF605121C3023F70014D633 /* NewsTabViewModel.swift */; };
 		BEF605171C3034820014D633 /* RepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF605161C3034820014D633 /* RepoViewModel.swift */; };
 		BEF605191C30FCBB0014D633 /* RepoSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF605181C30FCBB0014D633 /* RepoSummary.swift */; };
@@ -68,6 +70,8 @@
 		BED813521C24EE6D0028F8B0 /* StarCatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarCatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BED813561C24EE6D0028F8B0 /* StarCatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarCatUITests.swift; sourceTree = "<group>"; };
 		BED813581C24EE6D0028F8B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEE0C0A51C33E1D90014986D /* RepoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepoCell.swift; path = Views/RepoCell.swift; sourceTree = "<group>"; };
+		BEE0C0A61C33E1D90014986D /* RepoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RepoCell.xib; path = Views/RepoCell.xib; sourceTree = "<group>"; };
 		BEF605121C3023F70014D633 /* NewsTabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTabViewModel.swift; sourceTree = "<group>"; };
 		BEF605161C3034820014D633 /* RepoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoViewModel.swift; sourceTree = "<group>"; };
 		BEF605181C30FCBB0014D633 /* RepoSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoSummary.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 		BED813331C24EE6D0028F8B0 /* StarCat */ = {
 			isa = PBXGroup;
 			children = (
+				BEE0C0A41C33E0210014986D /* Views */,
 				BE3F45421C2A991B00DD1863 /* Models */,
 				BE3F45411C2A990700DD1863 /* Services */,
 				BE3F45401C2A98FC00DD1863 /* ViewControllers */,
@@ -203,6 +208,15 @@
 				BED813561C24EE6D0028F8B0 /* StarCatUITests.swift */,
 			);
 			path = StarCatUITests;
+			sourceTree = "<group>";
+		};
+		BEE0C0A41C33E0210014986D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BEE0C0A51C33E1D90014986D /* RepoCell.swift */,
+				BEE0C0A61C33E1D90014986D /* RepoCell.xib */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		BEF605111C30239E0014D633 /* ViewModels */ = {
@@ -336,6 +350,7 @@
 				BED813411C24EE6D0028F8B0 /* LaunchScreen.storyboard in Resources */,
 				BED8133E1C24EE6D0028F8B0 /* Assets.xcassets in Resources */,
 				BED8133C1C24EE6D0028F8B0 /* Main.storyboard in Resources */,
+				BEE0C0A81C33E1D90014986D /* RepoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +428,7 @@
 				BEF605191C30FCBB0014D633 /* RepoSummary.swift in Sources */,
 				BE3F45491C2A994500DD1863 /* Event.swift in Sources */,
 				BEF6051E1C3114220014D633 /* Requests.swift in Sources */,
+				BEE0C0A71C33E1D90014986D /* RepoCell.swift in Sources */,
 				BEF605171C3034820014D633 /* RepoViewModel.swift in Sources */,
 				BEF605131C3023F70014D633 /* NewsTabViewModel.swift in Sources */,
 				BEF605221C3116950014D633 /* Authentication.swift in Sources */,
