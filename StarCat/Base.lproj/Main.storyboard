@@ -76,17 +76,26 @@
         <!--Home View Controller-->
         <scene sceneID="AIc-87-T60">
             <objects>
-                <viewController id="wHd-je-2HZ" userLabel="Home View Controller" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="l4h-Kq-I8d"/>
-                        <viewControllerLayoutGuide type="bottom" id="0qi-vq-8oz"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="pdL-LP-KEv">
+                <viewController id="wHd-je-2HZ" userLabel="Home View Controller" customClass="NewsTabViewController" customModule="StarCat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="111" sectionHeaderHeight="28" sectionFooterHeight="28" id="whf-y6-j8c">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="kE4-R8-UxD">
+                                <rect key="frame" x="0.0" y="92" width="600" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kE4-R8-UxD" id="pGc-8w-veI">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
                     <navigationItem key="navigationItem" title="Home" id="4IC-m3-1wr"/>
+                    <connections>
+                        <outlet property="reposView" destination="whf-y6-j8c" id="Vdf-dk-Sqc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CM0-9h-ChB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

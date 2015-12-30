@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9F1AA334A1CC62E55B141A9F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D70162D3C8EADEC46ABB2C6 /* Pods.framework */; };
+		BE32EFD31C33D0F7005964FE /* NewsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE32EFD21C33D0F7005964FE /* NewsTabViewController.swift */; };
 		BE39BA221C291BF40000A87F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE39BA211C291BF40000A87F /* TabBarController.swift */; };
 		BE3F45441C2A992500DD1863 /* UserSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F45431C2A992500DD1863 /* UserSummary.swift */; };
 		BE3F45461C2A993400DD1863 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F45451C2A993400DD1863 /* Repo.swift */; };
@@ -49,6 +50,7 @@
 		0A959F1A7D8EB2EA20E7CDA3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		2D70162D3C8EADEC46ABB2C6 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45D4651B526DB97C5A7B6211 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		BE32EFD21C33D0F7005964FE /* NewsTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTabViewController.swift; sourceTree = "<group>"; };
 		BE39BA211C291BF40000A87F /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		BE3F45431C2A992500DD1863 /* UserSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSummary.swift; sourceTree = "<group>"; };
 		BE3F45451C2A993400DD1863 /* Repo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				BE39BA211C291BF40000A87F /* TabBarController.swift */,
+				BE32EFD21C33D0F7005964FE /* NewsTabViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEF6051C1C3113F30014D633 /* Decodables.swift in Sources */,
+				BE32EFD31C33D0F7005964FE /* NewsTabViewController.swift in Sources */,
 				BEF605191C30FCBB0014D633 /* RepoSummary.swift in Sources */,
 				BE3F45491C2A994500DD1863 /* Event.swift in Sources */,
 				BEF6051E1C3114220014D633 /* Requests.swift in Sources */,
