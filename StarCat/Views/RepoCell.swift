@@ -30,11 +30,10 @@ class RepoCell: UITableViewCell {
     
     var viewModel: RepoViewModel! {
         didSet {
-            let disposeBag = DisposeBag()
+            disposeBag = DisposeBag()
             viewModel.name.bindTo(titleLabel.rx_text).addDisposableTo(disposeBag)
             viewModel.description.bindTo(descriptionLabel.rx_text).addDisposableTo(disposeBag)
             viewModel.avatarImage.bindTo(avatarImage.rx_image).addDisposableTo(disposeBag)
-            self.disposeBag = disposeBag
         }
     }
     

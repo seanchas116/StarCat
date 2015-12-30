@@ -14,19 +14,12 @@ class NewsTabViewController: UIViewController {
 
     @IBOutlet var reposView: UITableView!
     let disposeBag = DisposeBag()
+    let viewModel = NewsTabViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        reposView.estimatedRowHeight = 68.0
-        reposView.rowHeight = UITableViewAutomaticDimension
-        reposView.registerNib(UINib(nibName: "RepoCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
-
-        let viewModel = NewsTabViewModel()
-        
-        viewModel.repos.bindTo(reposView.rx_itemsWithCellIdentifier("RepoCell")) { row, elem, cell in
-            (cell as! RepoCell).viewModel = elem
-        }.addDisposableTo(disposeBag)
+        setupReposView()
         
         viewModel.repos.subscribeNext { repos in
             print("repos updated")
@@ -35,6 +28,17 @@ class NewsTabViewController: UIViewController {
             }
         }
         viewModel.loadEvents()
+    }
+    
+    private func setupReposView() {
+        reposView.estimatedRowHeight = 68.0
+        reposView.rowHeight = UITableViewAutomaticDimension
+        reposView.registerNib(UINib(nibName: "RepoCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
+        
+        viewModel.repos.bindTo(reposView.rx_itemsWithCellIdentifier("RepoCell")) { row, elem, cell in
+            (cell as! RepoCell).viewModel = elem
+            }.addDisposableTo(disposeBag)
+
     }
 
     override func didReceiveMemoryWarning() {
