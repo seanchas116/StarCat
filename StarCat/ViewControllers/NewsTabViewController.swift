@@ -18,6 +18,8 @@ class NewsTabViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        reposView.estimatedRowHeight = 68.0
+        reposView.rowHeight = UITableViewAutomaticDimension
         reposView.registerNib(UINib(nibName: "RepoCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
 
         let viewModel = NewsTabViewModel()

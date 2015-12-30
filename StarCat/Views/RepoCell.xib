@@ -3,40 +3,68 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="179" id="KGk-i7-Jjw" customClass="RepoCell" customModule="StarCat" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="179"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="91" id="KGk-i7-Jjw" customClass="RepoCell" customModule="StarCat" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="178.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="90.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2zt-sZ-hSX">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2zt-sZ-hSX">
                         <rect key="frame" x="8" y="8" width="48" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="48" id="IGF-UG-O4j"/>
+                            <constraint firstAttribute="height" constant="48" id="iDV-AX-mHZ"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="seanchas116/StarCat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VB-So-Ioy">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="seanchas116/StarCat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VB-So-Ioy">
                         <rect key="frame" x="64" y="8" width="248" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="48" id="Jwk-OP-WJf"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Browse GitHub repos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlK-ge-05X">
-                        <rect key="frame" x="8" y="64" width="163" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browse GitHub repos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlK-ge-05X">
+                        <rect key="frame" x="8" y="64" width="304" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="B8K-bQ-aGA"/>
+                            <constraint firstAttribute="height" constant="18" id="YEe-Rl-NpQ"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="B8K-bQ-aGA"/>
+                            </mask>
+                        </variation>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="wlK-ge-05X" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="3Oo-cO-Bbm"/>
+                    <constraint firstItem="7VB-So-Ioy" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="67L-mR-b7c"/>
+                    <constraint firstItem="2zt-sZ-hSX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="BDA-Jt-Yla"/>
+                    <constraint firstItem="7VB-So-Ioy" firstAttribute="leading" secondItem="2zt-sZ-hSX" secondAttribute="trailing" constant="8" id="GdK-Ik-Sso"/>
+                    <constraint firstItem="7VB-So-Ioy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="LCZ-WR-usS"/>
+                    <constraint firstItem="2zt-sZ-hSX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="LDa-EW-ohI"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="wlK-ge-05X" secondAttribute="bottom" id="ZpF-o1-xWj"/>
+                    <constraint firstItem="wlK-ge-05X" firstAttribute="top" secondItem="7VB-So-Ioy" secondAttribute="bottom" constant="8" id="i8l-6a-CDM"/>
+                    <constraint firstItem="wlK-ge-05X" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="te2-9C-qjJ"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="avatarImage" destination="2zt-sZ-hSX" id="1bS-6D-8z2"/>
                 <outlet property="descriptionLabel" destination="wlK-ge-05X" id="tXO-tm-ccu"/>
                 <outlet property="titleLabel" destination="7VB-So-Ioy" id="2Pf-RZ-0S7"/>
             </connections>
-            <point key="canvasLocation" x="368" y="516.5"/>
+            <point key="canvasLocation" x="368" y="472.5"/>
         </tableViewCell>
     </objects>
 </document>
