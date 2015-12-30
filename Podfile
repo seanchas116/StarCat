@@ -11,6 +11,7 @@ pod 'RxBlocking', '~> 2.0.0-beta'
 pod 'PromiseKit'
 pod 'APIKit'
 pod 'Himotoki'
+pod 'HanekeSwift'
 
 target 'StarCat' do
 end

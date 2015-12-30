@@ -1,6 +1,7 @@
 PODS:
   - APIKit (1.1.2):
     - Result (~> 1.0.1)
+  - HanekeSwift (0.10.0)
   - Himotoki (1.3.2)
   - KeychainAccess (2.3.3)
   - NBNRequestKit (0.1.1)
@@ -34,6 +35,7 @@ PODS:
 
 DEPENDENCIES:
   - APIKit
+  - HanekeSwift
   - Himotoki
   - KeychainAccess
   - OctoKit.swift
@@ -44,6 +46,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   APIKit: d6e313f1ca3b0cae30a7059f872f7780d8a147ec
+  HanekeSwift: d6f5bdf9dbdbbc09d59623b2c1d533e46463dd4d
   Himotoki: e803d71cdf0cf6a1c4f5004d949b659231abcc5b
   KeychainAccess: 9b7e49e48277e329b1b3195e54697ed313d30acf
   NBNRequestKit: 1fe77c6569bd11f13604fdabb7cbab5ef719cf47

@@ -85,6 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-StarCat/APIKit.framework"
+  install_framework "Pods-StarCat/Haneke.framework"
   install_framework "Pods-StarCat/Himotoki.framework"
   install_framework "Pods-StarCat/KeychainAccess.framework"
   install_framework "Pods-StarCat/RequestKit.framework"
@@ -98,6 +99,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-StarCat/APIKit.framework"
+  install_framework "Pods-StarCat/Haneke.framework"
   install_framework "Pods-StarCat/Himotoki.framework"
   install_framework "Pods-StarCat/KeychainAccess.framework"
   install_framework "Pods-StarCat/RequestKit.framework"
