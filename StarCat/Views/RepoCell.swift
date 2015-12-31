@@ -15,6 +15,9 @@ class RepoCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var ownerNameLabel: UILabel!
+    @IBOutlet weak var eventInfoView: UIView!
+    @IBOutlet weak var eventActorLabel: UILabel!
+    @IBOutlet weak var eventVerbLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
