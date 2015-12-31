@@ -20,7 +20,10 @@ class NewsTabViewModel {
             let promises = events.flatMap { e -> Promise<RepoViewModel>? in
                 switch e {
                 case .Star(_, let repoSummary):
-                    return RepoViewModel.fetchFromSummary(repoSummary)
+                    return RepoViewModel.fetchFromSummary(repoSummary).then { repo -> RepoViewModel in
+                        repo.event.value = e
+                        return repo
+                    }
                 default:
                     return nil
                 }

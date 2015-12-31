@@ -20,6 +20,22 @@ class RepoViewModel {
     let language = Variable<String?>(nil)
     let avatarImage = Variable<UIImage?>(nil)
     let ownerName = Variable("")
+    let eventActor: Observable<UserSummary?>
+    let eventActorName: Observable<String>
+    
+    init() {
+        eventActor = event.map { event in
+            event.flatMap { e -> UserSummary? in
+                switch e {
+                case .Star(let user, _):
+                    return user
+                default:
+                    return nil
+                }
+            }
+        }.shareReplay(1)
+        eventActorName = eventActor.map { actor in actor?.login ?? "" }.shareReplay(1)
+    }
     
     static func fetchFromSummary(repo: RepoSummary) -> Promise<RepoViewModel> {
         let viewModel = RepoViewModel()
@@ -33,6 +49,7 @@ class RepoViewModel {
             Shared.imageCache.fetch(URL: repo.owner.avatarURL).promise().then { image -> Void in
                 viewModel.avatarImage.value = image
             }
+            
             return viewModel
         }
     }
