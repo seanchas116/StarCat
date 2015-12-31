@@ -9,21 +9,25 @@
 import Foundation
 import RxSwift
 import APIKit
+import PromiseKit
 
 class NewsTabViewModel {
     let repos = Variable<[RepoViewModel]>([])
     
     func loadEvents() {
         let request = GetUserEventsRequest(userName: "seanchas116")
-        Session.sendRequestPromise(request).then { events -> Void in
-            self.repos.value = events.flatMap { e -> RepoViewModel? in
+        Session.sendRequestPromise(request).then { events -> Promise<[RepoViewModel]> in
+            let promises = events.flatMap { e -> Promise<RepoViewModel>? in
                 switch e {
                 case .Star(_, let repoSummary):
-                    return RepoViewModel(repo: repoSummary)
+                    return RepoViewModel.fetchFromSummary(repoSummary)
                 default:
                     return nil
                 }
             }
+            return when(promises)
+        }.then { events in
+            self.repos.value = events
         }
     }
 }

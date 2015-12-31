@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import APIKit
 import Haneke
+import PromiseKit
 
 class RepoViewModel {
     let event = Variable<Event?>(nil)
@@ -18,17 +19,21 @@ class RepoViewModel {
     let description = Variable("")
     let language = Variable<String?>(nil)
     let avatarImage = Variable<UIImage?>(nil)
+    let ownerName = Variable("")
     
-    init(repo: RepoSummary) {
-        name.value = repo.fullName
+    static func fetchFromSummary(repo: RepoSummary) -> Promise<RepoViewModel> {
+        let viewModel = RepoViewModel()
         let repoRequest = GetRepoRequest(fullName: repo.fullName)
-        Session.sendRequestPromise(repoRequest).then { repo -> Void in
-            self.starsCount.value = repo.starsCount
-            self.description.value = repo.description ?? ""
-            self.language.value = repo.language
+        return Session.sendRequestPromise(repoRequest).then { repo -> RepoViewModel in
+            viewModel.name.value = repo.name
+            viewModel.starsCount.value = repo.starsCount
+            viewModel.description.value = repo.description ?? ""
+            viewModel.language.value = repo.language
+            viewModel.ownerName.value = repo.owner.login
             Shared.imageCache.fetch(URL: repo.owner.avatarURL).promise().then { image -> Void in
-                self.avatarImage.value = image
+                viewModel.avatarImage.value = image
             }
+            return viewModel
         }
     }
 }
