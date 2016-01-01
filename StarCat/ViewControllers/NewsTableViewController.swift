@@ -18,16 +18,10 @@ class NewsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupReposView()
+        setupRefreshControl()
+        setupTableView()
+        refresh()
         
-        viewModel.repos.subscribeNext { repos in
-            print("repos updated")
-            for repo in repos {
-                print(repo.name.value)
-            }
-        }
-        viewModel.loadEvents()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -107,7 +101,12 @@ class NewsTableViewController: UITableViewController {
     }
     */
     
-    private func setupReposView() {
+    private func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    private func setupTableView() {
         tableView.delegate = nil
         tableView.dataSource = nil
         tableView.estimatedRowHeight = 100
@@ -117,5 +116,16 @@ class NewsTableViewController: UITableViewController {
         viewModel.repos.bindTo(tableView.rx_itemsWithCellIdentifier("RepoCell")) { row, elem, cell in
             (cell as RepoCell).viewModel = elem
         }.addDisposableTo(disposeBag)
+    }
+    
+    func refresh() {
+        viewModel.repos.subscribeNext { [weak self] repos in
+            print("repos updated")
+            for repo in repos {
+                print(repo.name.value)
+            }
+            self?.refreshControl?.endRefreshing()
+        }
+        viewModel.loadEvents()
     }
 }
