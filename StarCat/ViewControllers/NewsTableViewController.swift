@@ -18,6 +18,10 @@ class NewsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.repos.subscribeNext { [weak self] _ in
+            self?.refreshDone()
+        }.addDisposableTo(disposeBag)
+        
         setupRefreshControl()
         setupTableView()
         refresh()
@@ -119,13 +123,10 @@ class NewsTableViewController: UITableViewController {
     }
     
     func refresh() {
-        viewModel.repos.subscribeNext { [weak self] repos in
-            print("repos updated")
-            for repo in repos {
-                print(repo.name.value)
-            }
-            self?.refreshControl?.endRefreshing()
-        }
         viewModel.loadEvents()
+    }
+    
+    func refreshDone() {
+        refreshControl?.endRefreshing()
     }
 }
