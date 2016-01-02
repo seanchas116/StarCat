@@ -13,10 +13,11 @@ import PromiseKit
 
 class NewsTabViewModel {
     let repos = Variable<[RepoViewModel]>([])
+    var count = 0
     
-    func loadEvents() {
+    func loadEvents() -> Promise<Void> {
         let request = GetUserEventsRequest(userName: "seanchas116")
-        Session.sendRequestPromise(request).then { events -> Promise<[RepoViewModel]> in
+        return Session.sendRequestPromise(request).then { events -> Promise<[RepoViewModel]> in
             let promises = events.flatMap { e -> Promise<RepoViewModel>? in
                 switch e {
                 case .Star(_, let repoSummary):
@@ -29,7 +30,7 @@ class NewsTabViewModel {
                 }
             }
             return when(promises)
-        }.then { events in
+        }.then { events -> Void in
             self.repos.value = events
         }
     }

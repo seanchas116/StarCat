@@ -18,10 +18,6 @@ class NewsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.repos.subscribeNext { [weak self] _ in
-            self?.refreshDone()
-        }.addDisposableTo(disposeBag)
-        
         setupRefreshControl()
         setupTableView()
         refresh()
@@ -108,7 +104,7 @@ class NewsTableViewController: UITableViewController {
     private func setupRefreshControl() {
         refreshControl = UIRefreshControl()
         refreshControl?.rx_controlEvents(UIControlEvents.ValueChanged).subscribeNext { _ in
-            self.refreshDone()
+            self.refresh()
         }.addDisposableTo(disposeBag)
     }
     
@@ -125,10 +121,8 @@ class NewsTableViewController: UITableViewController {
     }
     
     func refresh() {
-        viewModel.loadEvents()
-    }
-    
-    func refreshDone() {
-        refreshControl?.endRefreshing()
+        viewModel.loadEvents().then { [weak self] in
+            self?.refreshControl?.endRefreshing()
+        }
     }
 }
