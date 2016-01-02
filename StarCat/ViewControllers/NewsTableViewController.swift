@@ -107,7 +107,9 @@ class NewsTableViewController: UITableViewController {
     
     private func setupRefreshControl() {
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.rx_controlEvents(UIControlEvents.ValueChanged).subscribeNext { _ in
+            self.refreshDone()
+        }.addDisposableTo(disposeBag)
     }
     
     private func setupTableView() {

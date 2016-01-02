@@ -16,10 +16,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JPg-8b-stZ">
-                        <rect key="frame" x="8" y="8" width="304" height="208"/>
+                        <rect key="frame" x="12" y="8" width="296" height="208"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpv-jG-K6e">
-                                <rect key="frame" x="0.0" y="0.0" width="304" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="296" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="seanchas116" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FxG-6g-a2N">
                                         <rect key="frame" x="40" y="0.0" width="84" height="19.5"/>
@@ -61,7 +61,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CTf-qU-20Q">
-                                <rect key="frame" x="0.0" y="28" width="304" height="48"/>
+                                <rect key="frame" x="0.0" y="28" width="296" height="48"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2zt-sZ-hSX">
                                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
@@ -71,13 +71,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StarCat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VB-So-Ioy">
-                                        <rect key="frame" x="56" y="22" width="248" height="22"/>
+                                        <rect key="frame" x="60" y="22" width="236" height="22"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="seanchas116" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9J1-pH-mXk">
-                                        <rect key="frame" x="56" y="4" width="248" height="19.5"/>
+                                        <rect key="frame" x="60" y="4" width="236" height="19.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                         <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -88,14 +88,14 @@
                                     <constraint firstItem="2zt-sZ-hSX" firstAttribute="leading" secondItem="CTf-qU-20Q" secondAttribute="leading" id="5Zc-Qb-WPl"/>
                                     <constraint firstItem="2zt-sZ-hSX" firstAttribute="top" secondItem="CTf-qU-20Q" secondAttribute="top" id="EMo-0P-ggd"/>
                                     <constraint firstItem="7VB-So-Ioy" firstAttribute="top" secondItem="CTf-qU-20Q" secondAttribute="top" constant="19" id="IFb-ao-TlL"/>
-                                    <constraint firstItem="9J1-pH-mXk" firstAttribute="leading" secondItem="2zt-sZ-hSX" secondAttribute="trailing" constant="8" id="ODg-0P-3Js"/>
+                                    <constraint firstItem="9J1-pH-mXk" firstAttribute="leading" secondItem="2zt-sZ-hSX" secondAttribute="trailing" constant="12" id="ODg-0P-3Js"/>
                                     <constraint firstItem="9J1-pH-mXk" firstAttribute="top" secondItem="CTf-qU-20Q" secondAttribute="top" constant="4" id="Sd7-Qn-NSE"/>
                                     <constraint firstAttribute="bottom" secondItem="7VB-So-Ioy" secondAttribute="bottom" constant="4" id="ZO9-Qw-Ale"/>
                                     <constraint firstAttribute="bottom" secondItem="7VB-So-Ioy" secondAttribute="bottom" id="cWj-vL-Tw1"/>
                                     <constraint firstAttribute="trailing" secondItem="7VB-So-Ioy" secondAttribute="trailing" id="hMe-ON-nf2"/>
                                     <constraint firstAttribute="height" constant="48" id="iNT-Cu-8iB"/>
                                     <constraint firstAttribute="trailing" secondItem="9J1-pH-mXk" secondAttribute="trailing" id="p9M-t2-aqj"/>
-                                    <constraint firstItem="7VB-So-Ioy" firstAttribute="leading" secondItem="2zt-sZ-hSX" secondAttribute="trailing" constant="8" id="zgh-Gd-n5E"/>
+                                    <constraint firstItem="7VB-So-Ioy" firstAttribute="leading" secondItem="2zt-sZ-hSX" secondAttribute="trailing" constant="12" id="zgh-Gd-n5E"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -111,7 +111,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Swift" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SwN-ve-ADn">
-                                <rect key="frame" x="0.0" y="188" width="31.5" height="19.5"/>
+                                <rect key="frame" x="0.0" y="188.5" width="31.5" height="19.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -133,9 +133,9 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="JPg-8b-stZ" secondAttribute="trailing" id="MIL-al-we4"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="JPg-8b-stZ" secondAttribute="trailing" constant="4" id="MIL-al-we4"/>
                     <constraint firstAttribute="bottomMargin" secondItem="JPg-8b-stZ" secondAttribute="bottom" id="lh7-CG-4lb"/>
-                    <constraint firstItem="JPg-8b-stZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="rHp-kq-HX9"/>
+                    <constraint firstItem="JPg-8b-stZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="4" id="rHp-kq-HX9"/>
                     <constraint firstItem="JPg-8b-stZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="tq7-cU-Idj"/>
                 </constraints>
             </tableViewCellContentView>
