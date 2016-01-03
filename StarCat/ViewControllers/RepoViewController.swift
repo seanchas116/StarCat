@@ -13,10 +13,10 @@ import RxCocoa
 class RepoViewController: UIViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var websiteButton: UIButton!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var miscInfoLabel: UILabel!
-    @IBOutlet weak var ownerButton: UIButton!
+    @IBOutlet weak var ownerLabel: UILabel!
+    @IBOutlet weak var homepageLabel: UILabel!
     
     let disposeBag = DisposeBag()
     var viewModel: RepoViewModel!
@@ -27,13 +27,9 @@ class RepoViewController: UIViewController {
         viewModel.name.bindTo(titleLabel.rx_text).addDisposableTo(disposeBag)
         viewModel.description.bindTo(descriptionLabel.rx_text).addDisposableTo(disposeBag)
         viewModel.avatarImage.bindTo(avatarImageView.rx_image).addDisposableTo(disposeBag)
-        viewModel.ownerName.subscribeNext { [weak self] name in
-            self?.ownerButton.setTitle(name, forState: UIControlState.Normal)
-        }.addDisposableTo(disposeBag)
-        viewModel.homepage.subscribeNext { [weak self] url in
-            self?.websiteButton.setTitle(url?.absoluteString ?? "", forState: UIControlState.Normal)
-        }.addDisposableTo(disposeBag)
-        viewModel.homepage.map { h in h == nil }.bindTo(websiteButton.rx_hidden).addDisposableTo(disposeBag)
+        viewModel.ownerName.bindTo(ownerLabel.rx_text).addDisposableTo(disposeBag)
+        viewModel.homepage.map {h in h?.absoluteString ?? ""}.bindTo(homepageLabel.rx_text).addDisposableTo(disposeBag)
+        viewModel.homepage.map { h in h == nil }.bindTo(homepageLabel.rx_hidden).addDisposableTo(disposeBag)
 
         // Do any additional setup after loading the view.
     }
