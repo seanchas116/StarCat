@@ -34,7 +34,8 @@ extension Repo: Decodable {
             fullName: e <| "full_name",
             description: e <|? "description",
             starsCount: e <| "stargazers_count",
-            language: e <|? "language"
+            language: e <|? "language",
+            homepage: e <|? "homepage"
         )
     }
 }

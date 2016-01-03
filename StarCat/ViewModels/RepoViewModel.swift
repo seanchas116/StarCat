@@ -12,7 +12,7 @@ import APIKit
 import Haneke
 import PromiseKit
 
-class RepoCellViewModel {
+class RepoViewModel {
     let event = Variable<Event?>(nil)
     let name = Variable("")
     let starsCount = Variable(0)
@@ -20,13 +20,22 @@ class RepoCellViewModel {
     let language = Variable<String?>(nil)
     let avatarImage = Variable<UIImage?>(nil)
     let ownerName = Variable("")
+    let homepage = Variable<NSURL?>(nil)
     let eventActor: Observable<UserSummary?>
     let eventActorName: Observable<String>
     
-    var repoSummary: RepoSummary?
-    var repo: Repo?
+    let repo: Repo
     
-    init() {
+    init(repo: Repo) {
+        self.repo = repo
+        
+        name.value = repo.name
+        starsCount.value = repo.starsCount
+        description.value = repo.description ?? ""
+        language.value = repo.language
+        ownerName.value = repo.owner.login
+        homepage.value = repo.homepage
+
         eventActor = event.map { event in
             event.flatMap { e -> UserSummary? in
                 switch e {
@@ -38,24 +47,9 @@ class RepoCellViewModel {
             }
         }.shareReplay(1)
         eventActorName = eventActor.map { actor in actor?.login ?? "" }.shareReplay(1)
-    }
-    
-    static func fetchFromSummary(summary: RepoSummary) -> Promise<RepoCellViewModel> {
-        let viewModel = RepoCellViewModel()
-        let repoRequest = GetRepoRequest(fullName: summary.fullName)
-        return Session.sendRequestPromise(repoRequest).then { repo -> RepoCellViewModel in
-            viewModel.name.value = repo.name
-            viewModel.starsCount.value = repo.starsCount
-            viewModel.description.value = repo.description ?? ""
-            viewModel.language.value = repo.language
-            viewModel.ownerName.value = repo.owner.login
-            Shared.imageCache.fetch(URL: repo.owner.avatarURL).promise().then { image -> Void in
-                viewModel.avatarImage.value = image
-            }
-            
-            viewModel.repoSummary = summary
-            viewModel.repo = repo
-            return viewModel
+        
+        Shared.imageCache.fetch(URL: repo.owner.avatarURL).promise().then { image -> Void in
+            self.avatarImage.value = image
         }
     }
 }

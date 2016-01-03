@@ -33,7 +33,7 @@ class RepoCell: UITableViewCell {
     
     var disposeBag: DisposeBag!
     
-    var viewModel: RepoCellViewModel! {
+    var viewModel: RepoViewModel! {
         didSet {
             disposeBag = DisposeBag()
             viewModel.name.bindTo(titleLabel.rx_text).addDisposableTo(disposeBag)

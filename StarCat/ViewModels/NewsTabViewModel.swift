@@ -12,19 +12,16 @@ import APIKit
 import PromiseKit
 
 class NewsTabViewModel {
-    let repos = Variable<[RepoCellViewModel]>([])
+    let repos = Variable<[RepoViewModel]>([])
     var count = 0
     
     func loadEvents() -> Promise<Void> {
         let request = GetUserEventsRequest(userName: "seanchas116")
-        return Session.sendRequestPromise(request).then { events -> Promise<[RepoCellViewModel]> in
-            let promises = events.flatMap { e -> Promise<RepoCellViewModel>? in
+        return Session.sendRequestPromise(request).then { events -> Promise<[RepoViewModel]> in
+            let promises = events.flatMap { e -> Promise<RepoViewModel>? in
                 switch e {
                 case .Star(_, let repoSummary):
-                    return RepoCellViewModel.fetchFromSummary(repoSummary).then { repo -> RepoCellViewModel in
-                        repo.event.value = e
-                        return repo
-                    }
+                    return Repo.fetch(repoSummary.fullName).then { repo in RepoViewModel(repo: repo) }
                 default:
                     return nil
                 }
