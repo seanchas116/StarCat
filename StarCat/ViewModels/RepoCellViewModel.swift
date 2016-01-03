@@ -12,7 +12,7 @@ import APIKit
 import Haneke
 import PromiseKit
 
-class RepoViewModel {
+class RepoCellViewModel {
     let event = Variable<Event?>(nil)
     let name = Variable("")
     let starsCount = Variable(0)
@@ -22,6 +22,9 @@ class RepoViewModel {
     let ownerName = Variable("")
     let eventActor: Observable<UserSummary?>
     let eventActorName: Observable<String>
+    
+    var repoSummary: RepoSummary?
+    var repo: Repo?
     
     init() {
         eventActor = event.map { event in
@@ -37,10 +40,10 @@ class RepoViewModel {
         eventActorName = eventActor.map { actor in actor?.login ?? "" }.shareReplay(1)
     }
     
-    static func fetchFromSummary(repo: RepoSummary) -> Promise<RepoViewModel> {
-        let viewModel = RepoViewModel()
-        let repoRequest = GetRepoRequest(fullName: repo.fullName)
-        return Session.sendRequestPromise(repoRequest).then { repo -> RepoViewModel in
+    static func fetchFromSummary(summary: RepoSummary) -> Promise<RepoCellViewModel> {
+        let viewModel = RepoCellViewModel()
+        let repoRequest = GetRepoRequest(fullName: summary.fullName)
+        return Session.sendRequestPromise(repoRequest).then { repo -> RepoCellViewModel in
             viewModel.name.value = repo.name
             viewModel.starsCount.value = repo.starsCount
             viewModel.description.value = repo.description ?? ""
@@ -50,6 +53,8 @@ class RepoViewModel {
                 viewModel.avatarImage.value = image
             }
             
+            viewModel.repoSummary = summary
+            viewModel.repo = repo
             return viewModel
         }
     }

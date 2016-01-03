@@ -14,6 +14,7 @@ class NewsTableViewController: UITableViewController {
     
     let disposeBag = DisposeBag()
     let viewModel = NewsTabViewModel()
+    var selectedRepo: Repo?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,11 +119,27 @@ class NewsTableViewController: UITableViewController {
         viewModel.repos.bindTo(tableView.rx_itemsWithCellIdentifier("RepoCell")) { row, elem, cell in
             (cell as RepoCell).viewModel = elem
         }.addDisposableTo(disposeBag)
+        
+        tableView.rx_itemSelected.subscribeNext { [weak self] path in
+            self?.tableSelected(path)
+        }.addDisposableTo(disposeBag)
     }
     
     func refresh() {
         viewModel.loadEvents().then { [weak self] in
             self?.refreshControl?.endRefreshing()
+        }
+    }
+    
+    private func tableSelected(path: NSIndexPath) {
+        selectedRepo = viewModel.repos.value[path.row].repo
+        performSegueWithIdentifier("showRepo", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "showRepo" && selectedRepo != nil) {
+            let subVC = (segue.destinationViewController as! RepoViewController)
+            subVC.repo = selectedRepo
         }
     }
 }

@@ -9,7 +9,19 @@
 import UIKit
 
 class RepoViewController: UIViewController {
-
+    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var authorButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var websiteButton: UIButton!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var miscInfoLabel: UILabel!
+    
+    var repo: Repo? {
+        didSet {
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
