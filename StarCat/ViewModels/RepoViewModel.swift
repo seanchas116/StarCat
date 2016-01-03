@@ -45,8 +45,8 @@ class RepoViewModel {
                     return nil
                 }
             }
-        }.shareReplay(1)
-        eventActorName = eventActor.map { actor in actor?.login ?? "" }.shareReplay(1)
+        }
+        eventActorName = eventActor.map { actor in actor?.login ?? "" }
         
         Shared.imageCache.fetch(URL: repo.owner.avatarURL).promise().then { image -> Void in
             self.avatarImage.value = image
