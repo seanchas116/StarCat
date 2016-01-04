@@ -12,64 +12,62 @@ import UIKit
 class RoundButton: UIButton {
     
     @IBInspectable
-    var borderWidth: CGFloat {
-        get {
-            return layer.borderWidth
-        }
-        set {
-            layer.borderWidth = newValue
-        }
-    }
-    
-    @IBInspectable
-    var cornerRadius: CGFloat {
-        get {
-            return layer.cornerRadius
-        }
-        set {
-            layer.cornerRadius = newValue
-        }
-    }
-    
-    @IBInspectable
-    var highlightedBorderColor = UIColor.blueColor() {
+    var borderWidth: CGFloat = 1 {
         didSet {
-            updateBorderColor()
+            updateBorderShape()
         }
     }
     
     @IBInspectable
-    var borderColor = UIColor.blackColor() {
+    var cornerRadius: CGFloat = 0 {
         didSet {
-            updateBorderColor()
+            updateBorderShape()
         }
     }
     
     override var highlighted: Bool {
-        get {
-            return super.highlighted
-        }
-        set {
-            super.highlighted = newValue
+        didSet {
             updateBorderColor()
         }
     }
     
+    override var bounds: CGRect {
+        didSet {
+            updateBorderShape()
+        }
+    }
+    
+    let borderLayer = CAShapeLayer()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        updateBorderColor()
+        setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        setup()
+    }
+    
+    private func setup() {
+        borderLayer.fillColor = UIColor.clearColor().CGColor
+        layer.addSublayer(borderLayer)
         updateBorderColor()
+        updateBorderShape()
     }
     
     private func updateBorderColor() {
-        if (highlighted) {
-            layer.borderColor = titleColorForState(.Highlighted)?.CGColor
-        } else {
-            layer.borderColor = titleColorForState(.Normal)?.CGColor
-        }
+        let borderColor = (highlighted ? titleColorForState(.Highlighted) : titleColorForState(.Normal))?.CGColor
+        borderLayer.strokeColor = borderColor
+    }
+    
+    private func updateBorderShape() {
+        let roundingCorners: UIRectCorner = [.TopRight, .TopLeft, .BottomRight, .BottomLeft]
+        borderLayer.path = UIBezierPath(
+            roundedRect: bounds.insetBy(dx: borderWidth * 0.5, dy: borderWidth * 0.5),
+            byRoundingCorners: roundingCorners,
+            cornerRadii: CGSizeMake(cornerRadius, cornerRadius)
+        ).CGPath
+        borderLayer.lineWidth = borderWidth
     }
 }
