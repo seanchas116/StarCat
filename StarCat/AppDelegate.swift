@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         Authentication.accessToken = Constants.githubAccessToken
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "AvenirNext-Medium", size: 18)!]
+        UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UINavigationBar.self])
+            .setTitleTextAttributes([NSFontAttributeName: UIFont(name: "AvenirNext-Medium", size: 18)!], forState: .Normal)
+        UINavigationBar.appearance().tintColor = UIColor.lightGrayColor()
         return true
     }
     
