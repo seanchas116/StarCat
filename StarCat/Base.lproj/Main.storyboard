@@ -197,8 +197,12 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="8"/>
+                                                <real key="value" value="12"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="noLeftBorder" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="noRightBorder" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="hasLeftBorder" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="hasRightBorder" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSR-f1-FfU" customClass="RoundButton" customModule="StarCat" customModuleProvider="target">
