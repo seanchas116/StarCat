@@ -62,7 +62,7 @@ class RepoViewModel {
                 }
             }
         }
-        eventActorName = eventActor.map { actor in actor?.login ?? "" }
+        eventActorName = eventActor.map { $0?.login ?? "" }
         
         Shared.imageCache.fetch(URL: repo.owner.avatarURL).promise().then { image -> Void in
             self.avatarImage.value = image

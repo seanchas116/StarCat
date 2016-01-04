@@ -33,8 +33,8 @@ class RepoViewController: UIViewController {
         viewModel.description.bindTo(descriptionLabel.rx_text).addDisposableTo(disposeBag)
         viewModel.avatarImage.bindTo(avatarImageView.rx_image).addDisposableTo(disposeBag)
         viewModel.ownerName.bindTo(ownerLabel.rx_text).addDisposableTo(disposeBag)
-        viewModel.homepage.map {h in h?.absoluteString ?? ""}.bindTo(homepageLabel.rx_text).addDisposableTo(disposeBag)
-        viewModel.homepage.map { h in h == nil }.bindTo(homepageLabel.rx_hidden).addDisposableTo(disposeBag)
+        viewModel.homepage.map { $0?.absoluteString ?? ""}.bindTo(homepageLabel.rx_text).addDisposableTo(disposeBag)
+        viewModel.homepage.map { $0 == nil }.bindTo(homepageLabel.rx_hidden).addDisposableTo(disposeBag)
         viewModel.starsCount.subscribeNext { [weak self] count in
             self?.stargazersButton.setTitle(String(count), forState: .Normal)
         }.addDisposableTo(disposeBag)
