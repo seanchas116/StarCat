@@ -309,6 +309,7 @@
                         <outlet property="homepageLabel" destination="sdp-78-SQq" id="n91-g1-rGt"/>
                         <outlet property="miscInfoLabel" destination="BXw-at-CKI" id="02c-tX-IWh"/>
                         <outlet property="ownerLabel" destination="atr-Ha-UFo" id="UWh-3e-aVz"/>
+                        <outlet property="stargazersButton" destination="YSR-f1-FfU" id="M8h-dH-cdg"/>
                         <outlet property="titleLabel" destination="LEs-T3-Gea" id="0P7-Qe-om9"/>
                     </connections>
                 </viewController>

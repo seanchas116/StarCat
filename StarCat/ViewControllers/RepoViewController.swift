@@ -17,6 +17,7 @@ class RepoViewController: UIViewController {
     @IBOutlet weak var miscInfoLabel: UILabel!
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var homepageLabel: UILabel!
+    @IBOutlet weak var stargazersButton: RoundButton!
     
     let disposeBag = DisposeBag()
     var viewModel: RepoViewModel!
@@ -30,6 +31,9 @@ class RepoViewController: UIViewController {
         viewModel.ownerName.bindTo(ownerLabel.rx_text).addDisposableTo(disposeBag)
         viewModel.homepage.map {h in h?.absoluteString ?? ""}.bindTo(homepageLabel.rx_text).addDisposableTo(disposeBag)
         viewModel.homepage.map { h in h == nil }.bindTo(homepageLabel.rx_hidden).addDisposableTo(disposeBag)
+        viewModel.starsCount.subscribeNext { [weak self] count in
+            self?.stargazersButton.setTitle(String(count), forState: .Normal)
+        }.addDisposableTo(disposeBag)
 
         // Do any additional setup after loading the view.
     }
