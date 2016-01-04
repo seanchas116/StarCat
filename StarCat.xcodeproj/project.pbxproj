@@ -26,6 +26,7 @@
 		BEE0C0AC1C33EF1A0014986D /* RepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE0C0AA1C33EF1A0014986D /* RepoCell.swift */; };
 		BEE0C0AD1C33EF1A0014986D /* RepoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEE0C0AB1C33EF1A0014986D /* RepoCell.xib */; };
 		BEE0C0B21C3408F80014986D /* PromiseResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE0C0B11C3408F80014986D /* PromiseResults.swift */; };
+		BEF590801C3A940600633417 /* RoundButtonBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5907F1C3A940600633417 /* RoundButtonBorder.swift */; };
 		BEF605131C3023F70014D633 /* NewsTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF605121C3023F70014D633 /* NewsTabViewModel.swift */; };
 		BEF605171C3034820014D633 /* RepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF605161C3034820014D633 /* RepoViewModel.swift */; };
 		BEF605191C30FCBB0014D633 /* RepoSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF605181C30FCBB0014D633 /* RepoSummary.swift */; };
@@ -79,6 +80,7 @@
 		BEE0C0AA1C33EF1A0014986D /* RepoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoCell.swift; sourceTree = "<group>"; };
 		BEE0C0AB1C33EF1A0014986D /* RepoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoCell.xib; sourceTree = "<group>"; };
 		BEE0C0B11C3408F80014986D /* PromiseResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromiseResults.swift; sourceTree = "<group>"; };
+		BEF5907F1C3A940600633417 /* RoundButtonBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButtonBorder.swift; sourceTree = "<group>"; };
 		BEF605121C3023F70014D633 /* NewsTabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTabViewModel.swift; sourceTree = "<group>"; };
 		BEF605161C3034820014D633 /* RepoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoViewModel.swift; sourceTree = "<group>"; };
 		BEF605181C30FCBB0014D633 /* RepoSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoSummary.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				BEE0C0AA1C33EF1A0014986D /* RepoCell.swift */,
 				BEE0C0AB1C33EF1A0014986D /* RepoCell.xib */,
 				BE18EEE61C3A2BD900B92291 /* RoundButton.swift */,
+				BEF5907F1C3A940600633417 /* RoundButtonBorder.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				BED813351C24EE6D0028F8B0 /* AppDelegate.swift in Sources */,
 				BE9A484D1C36234B00406DA6 /* NewsTableViewController.swift in Sources */,
 				BE39BA221C291BF40000A87F /* TabBarController.swift in Sources */,
+				BEF590801C3A940600633417 /* RoundButtonBorder.swift in Sources */,
 				BEBA2A711C26AACB00F64F05 /* Constants.swift in Sources */,
 				BE3F45441C2A992500DD1863 /* UserSummary.swift in Sources */,
 			);
