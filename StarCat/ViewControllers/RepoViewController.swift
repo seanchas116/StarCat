@@ -25,6 +25,9 @@ class RepoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.name.subscribeNext { [weak self] name in
+            self?.title = name
+        }.addDisposableTo(disposeBag)
         viewModel.name.bindTo(titleLabel.rx_text).addDisposableTo(disposeBag)
         viewModel.description.bindTo(descriptionLabel.rx_text).addDisposableTo(disposeBag)
         viewModel.avatarImage.bindTo(avatarImageView.rx_image).addDisposableTo(disposeBag)
