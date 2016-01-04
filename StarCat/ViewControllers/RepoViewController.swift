@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SwiftDate
 
 class RepoViewController: UIViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -37,6 +38,9 @@ class RepoViewController: UIViewController {
         viewModel.starsCount.subscribeNext { [weak self] count in
             self?.stargazersButton.setTitle(String(count), forState: .Normal)
         }.addDisposableTo(disposeBag)
+        
+        combineLatest(viewModel.language, viewModel.pushedAtText) { "\($0 ?? "")・\($1)" }
+            .bindTo(miscInfoLabel.rx_text).addDisposableTo(disposeBag)
 
         // Do any additional setup after loading the view.
     }

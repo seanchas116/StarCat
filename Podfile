@@ -12,6 +12,7 @@ pod 'PromiseKit'
 pod 'APIKit'
 pod 'Himotoki'
 pod 'HanekeSwift'
+pod 'SwiftDate'
 
 target 'StarCat' do
 end

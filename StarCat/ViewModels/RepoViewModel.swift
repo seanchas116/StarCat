@@ -8,9 +8,8 @@
 
 import Foundation
 import RxSwift
-import APIKit
 import Haneke
-import PromiseKit
+import SwiftDate
 
 class RepoViewModel {
     let event = Variable<Event?>(nil)
@@ -21,6 +20,8 @@ class RepoViewModel {
     let avatarImage = Variable<UIImage?>(nil)
     let ownerName = Variable("")
     let homepage = Variable<NSURL?>(nil)
+    let pushedAt = Variable(NSDate())
+    let pushedAtText: Observable<String>
     let eventActor: Observable<UserSummary?>
     let eventActorName: Observable<String>
     
@@ -35,6 +36,21 @@ class RepoViewModel {
         language.value = repo.language
         ownerName.value = repo.owner.login
         homepage.value = repo.homepage
+        pushedAt.value = repo.pushedAt
+        
+        func formatDate(date: NSDate) -> String {
+            if NSDate() - 1.months < date {
+                return (date.toRelativeString() ?? "") + " ago"
+            } else {
+                let formatter = NSDateFormatter()
+                formatter.dateStyle = .MediumStyle
+                formatter.timeStyle = .NoStyle
+                formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+                return formatter.stringFromDate(date)
+            }
+        }
+        
+        pushedAtText = pushedAt.map(formatDate)
 
         eventActor = event.map { event in
             event.flatMap { e -> UserSummary? in

@@ -8,10 +8,18 @@
 
 import Foundation
 import Himotoki
+import SwiftDate
 
 extension NSURL: Decodable {
     public static func decode(e: Extractor) throws -> NSURL {
         return try NSURL(string: String.decode(e))!
+    }
+}
+
+extension NSDate: Decodable {
+    public static func decode(e: Extractor) throws -> NSDate {
+        let str = try String.decode(e)
+        return str.toDate(DateFormat.ISO8601) ?? NSDate()
     }
 }
 
@@ -35,7 +43,8 @@ extension Repo: Decodable {
             description: e <|? "description",
             starsCount: e <| "stargazers_count",
             language: e <|? "language",
-            homepage: e <|? "homepage"
+            homepage: e <|? "homepage",
+            pushedAt: e <| "pushed_at"
         )
     }
 }
