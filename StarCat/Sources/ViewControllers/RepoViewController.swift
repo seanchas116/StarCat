@@ -43,18 +43,9 @@ class RepoViewController: UIViewController {
         combineLatest(viewModel.language, viewModel.pushedAtText) { "\($0 ?? "")・\($1)" }
             .bindTo(miscInfoLabel.rx_text).addDisposableTo(disposeBag)
         
-        var css = ""
-        if let path = NSBundle.mainBundle().pathForResource("github-markdown", ofType: "css") {
-            css = (try? String(contentsOfFile: path,
-                encoding: NSUTF8StringEncoding)) ?? ""
-        }
-        
         viewModel.readme
             .observeOn(ConcurrentDispatchQueueScheduler(queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)))
-            .map { readme -> NSAttributedString? in
-                let html = "<html><head><style>\(css)</style></head><body>\(readme)</body></html>"
-                return try? NSAttributedString(data: html.dataUsingEncoding(NSUTF8StringEncoding)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: NSNumber(unsignedLong: NSUTF8StringEncoding)], documentAttributes: nil)
-            }
+            .map(renderReadme)
             .observeOn(MainScheduler.sharedInstance)
             .subscribeNext { [weak self] attributedText in
                 self?.readmeView.attributedText = attributedText
@@ -63,8 +54,6 @@ class RepoViewController: UIViewController {
             .addDisposableTo(disposeBag)
         
         viewModel.fetchReadme()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,5 +71,26 @@ class RepoViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+}
 
+private let baseReadmeCSS = getBundleFile("github-markdown", ofType: "css")
+private let customReadmeCSS = getBundleFile("github-markdown-custom", ofType: "css")
+
+private func getBundleFile(fileName: String, ofType: String) -> String {
+    if let path = NSBundle.mainBundle().pathForResource(fileName, ofType: ofType) {
+        return (try? String(contentsOfFile: path, encoding: NSUTF8StringEncoding)) ?? ""
+    }
+    return ""
+}
+
+private func renderReadme(html: String) -> NSAttributedString? {
+    let fullHTML = "<html><head><style>\(baseReadmeCSS)\(customReadmeCSS)</style></head><body>\(html)</body></html>"
+    return try? NSAttributedString(
+        data: fullHTML.dataUsingEncoding(NSUTF8StringEncoding)!,
+        options: [
+            NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+            NSCharacterEncodingDocumentAttribute: NSNumber(unsignedLong: NSUTF8StringEncoding)
+        ],
+        documentAttributes: nil
+    )
 }
