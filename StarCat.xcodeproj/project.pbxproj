@@ -134,20 +134,20 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		BE2CAF191C3C087100B51FBF /* Support Files */ = {
+		BE2CAF191C3C087100B51FBF /* Vendor Files */ = {
 			isa = PBXGroup;
 			children = (
 				BE2CAF1C1C3C0AC800B51FBF /* github-markdown.css */,
 			);
-			name = "Support Files";
+			name = "Vendor Files";
 			sourceTree = "<group>";
 		};
 		BE3F45401C2A98FC00DD1863 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				BE39BA211C291BF40000A87F /* TabBarController.swift */,
 				BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */,
 				BE46B0031C38281400C8242C /* RepoViewController.swift */,
+				BE39BA211C291BF40000A87F /* TabBarController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -196,10 +196,10 @@
 		BED813331C24EE6D0028F8B0 /* StarCat */ = {
 			isa = PBXGroup;
 			children = (
-				BE2CAF191C3C087100B51FBF /* Support Files */,
 				BEE0C0AE1C3408A00014986D /* Extensions */,
 				BE3F45421C2A991B00DD1863 /* Models */,
 				BE3F45411C2A990700DD1863 /* Services */,
+				BE2CAF191C3C087100B51FBF /* Vendor Files */,
 				BE3F45401C2A98FC00DD1863 /* ViewControllers */,
 				BEF605111C30239E0014D633 /* ViewModels */,
 				BEE0C0A41C33E0210014986D /* Views */,
@@ -264,8 +264,8 @@
 			children = (
 				BEF605211C3116950014D633 /* Authentication.swift */,
 				BEF6051B1C3113F30014D633 /* Decodables.swift */,
-				BEF6051D1C3114220014D633 /* Requests.swift */,
 				BE46B0081C38EB3300C8242C /* Models.swift */,
+				BEF6051D1C3114220014D633 /* Requests.swift */,
 			);
 			path = GitHubAPI;
 			sourceTree = "<group>";
