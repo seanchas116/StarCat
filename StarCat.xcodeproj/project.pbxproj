@@ -142,6 +142,23 @@
 			name = "Vendor Files";
 			sourceTree = "<group>";
 		};
+		BE2CAF1E1C3C0C5400B51FBF /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				BEE0C0AE1C3408A00014986D /* Extensions */,
+				BE3F45421C2A991B00DD1863 /* Models */,
+				BE3F45411C2A990700DD1863 /* Services */,
+				BE3F45401C2A98FC00DD1863 /* ViewControllers */,
+				BEF605111C30239E0014D633 /* ViewModels */,
+				BEE0C0A41C33E0210014986D /* Views */,
+				BED813341C24EE6D0028F8B0 /* AppDelegate.swift */,
+				BEBA2A701C26AACB00F64F05 /* Constants.swift */,
+				BED8133F1C24EE6D0028F8B0 /* LaunchScreen.storyboard */,
+				BED8133A1C24EE6D0028F8B0 /* Main.storyboard */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		BE3F45401C2A98FC00DD1863 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,19 +213,10 @@
 		BED813331C24EE6D0028F8B0 /* StarCat */ = {
 			isa = PBXGroup;
 			children = (
-				BEE0C0AE1C3408A00014986D /* Extensions */,
-				BE3F45421C2A991B00DD1863 /* Models */,
-				BE3F45411C2A990700DD1863 /* Services */,
+				BE2CAF1E1C3C0C5400B51FBF /* Sources */,
 				BE2CAF191C3C087100B51FBF /* Vendor Files */,
-				BE3F45401C2A98FC00DD1863 /* ViewControllers */,
-				BEF605111C30239E0014D633 /* ViewModels */,
-				BEE0C0A41C33E0210014986D /* Views */,
-				BED813341C24EE6D0028F8B0 /* AppDelegate.swift */,
 				BED8133D1C24EE6D0028F8B0 /* Assets.xcassets */,
-				BEBA2A701C26AACB00F64F05 /* Constants.swift */,
 				BED813421C24EE6D0028F8B0 /* Info.plist */,
-				BED8133F1C24EE6D0028F8B0 /* LaunchScreen.storyboard */,
-				BED8133A1C24EE6D0028F8B0 /* Main.storyboard */,
 			);
 			path = StarCat;
 			sourceTree = "<group>";
