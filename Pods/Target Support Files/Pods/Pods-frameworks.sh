@@ -85,6 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/APIKit.framework"
+  install_framework "Pods/Alamofire.framework"
   install_framework "Pods/Haneke.framework"
   install_framework "Pods/Himotoki.framework"
   install_framework "Pods/KeychainAccess.framework"
@@ -100,6 +101,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/APIKit.framework"
+  install_framework "Pods/Alamofire.framework"
   install_framework "Pods/Haneke.framework"
   install_framework "Pods/Himotoki.framework"
   install_framework "Pods/KeychainAccess.framework"

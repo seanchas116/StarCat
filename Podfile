@@ -13,6 +13,7 @@ pod 'APIKit'
 pod 'Himotoki'
 pod 'HanekeSwift'
 pod 'SwiftDate'
+pod 'Alamofire'
 
 target 'StarCat' do
 end

@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (3.1.4)
   - APIKit (1.1.2):
     - Result (~> 1.0.1)
   - HanekeSwift (0.10.0)
@@ -35,6 +36,7 @@ PODS:
   - SwiftDate (2.0.2)
 
 DEPENDENCIES:
+  - Alamofire
   - APIKit
   - HanekeSwift
   - Himotoki
@@ -47,6 +49,7 @@ DEPENDENCIES:
   - SwiftDate
 
 SPEC CHECKSUMS:
+  Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
   APIKit: d6e313f1ca3b0cae30a7059f872f7780d8a147ec
   HanekeSwift: d6f5bdf9dbdbbc09d59623b2c1d533e46463dd4d
   Himotoki: e803d71cdf0cf6a1c4f5004d949b659231abcc5b
