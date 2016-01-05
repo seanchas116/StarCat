@@ -51,6 +51,7 @@ class RepoViewController: UIViewController {
             .observeOn(MainScheduler.sharedInstance)
             .subscribeNext { [weak self] attributedText in
                 self?.readmeView.attributedText = attributedText
+                self?.readmeView.layoutIfNeeded()
             }
             .addDisposableTo(disposeBag)
         
