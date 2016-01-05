@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "AvenirNext-Medium", size: 18)!]
         UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UINavigationBar.self])
             .setTitleTextAttributes([NSFontAttributeName: UIFont(name: "AvenirNext-Medium", size: 18)!], forState: .Normal)
-        UINavigationBar.appearance().tintColor = UIColor.lightGrayColor()
+        UINavigationBar.appearance().tintColor = UIColor.darkGrayColor()
         return true
     }
     
