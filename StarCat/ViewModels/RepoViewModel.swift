@@ -10,6 +10,8 @@ import Foundation
 import RxSwift
 import Haneke
 import SwiftDate
+import APIKit
+import Alamofire
 
 class RepoViewModel {
     let event = Variable<Event?>(nil)
@@ -21,6 +23,7 @@ class RepoViewModel {
     let ownerName = Variable("")
     let homepage = Variable<NSURL?>(nil)
     let pushedAt = Variable(NSDate())
+    let readme = Variable("")
     let pushedAtText: Observable<String>
     let eventActor: Observable<UserSummary?>
     let eventActorName: Observable<String>
@@ -67,5 +70,12 @@ class RepoViewModel {
         Shared.imageCache.fetch(URL: repo.owner.avatarURL).promise().then { image -> Void in
             self.avatarImage.value = image
         }
+    }
+    
+    func fetchReadme() {
+        Session.sendRequestPromise(GetReadmeRequest(fullName: "\(ownerName.value)/\(name.value)"))
+            .then { readme in
+                self.readme.value = readme
+            }
     }
 }

@@ -19,6 +19,7 @@ class RepoViewController: UIViewController {
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var homepageLabel: UILabel!
     @IBOutlet weak var stargazersButton: RoundButton!
+    @IBOutlet weak var readmeView: UITextView!
     
     let disposeBag = DisposeBag()
     var viewModel: RepoViewModel!
@@ -41,6 +42,19 @@ class RepoViewController: UIViewController {
         
         combineLatest(viewModel.language, viewModel.pushedAtText) { "\($0 ?? "")・\($1)" }
             .bindTo(miscInfoLabel.rx_text).addDisposableTo(disposeBag)
+        
+        viewModel.readme
+            .observeOn(ConcurrentDispatchQueueScheduler(queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)))
+            .map { html in
+                return try? NSAttributedString(data: html.dataUsingEncoding(NSUTF8StringEncoding)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: NSNumber(unsignedLong: NSUTF8StringEncoding)], documentAttributes: nil)
+            }
+            .observeOn(MainScheduler.sharedInstance)
+            .subscribeNext { [weak self] attributedText in
+                self?.readmeView.attributedText = attributedText
+            }
+            .addDisposableTo(disposeBag)
+        
+        viewModel.fetchReadme()
 
         // Do any additional setup after loading the view.
     }

@@ -64,3 +64,25 @@ struct GetRepoRequest: GitHubRequest {
         }
     }
 }
+
+struct GetReadmeRequest: GitHubRequest {
+    typealias Response = String
+    
+    let fullName: String
+    
+    var path: String {
+        return "/repos/\(fullName)/readme"
+    }
+    
+    var responseBodyParser: ResponseBodyParser {
+        get {
+            return .Custom(acceptHeader: "application/vnd.github.v3.html", parseData: { data in
+                return NSString(data: data, encoding: NSUTF8StringEncoding) ?? ""
+            })
+        }
+    }
+    
+    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
+        return object as? String
+    }
+}
