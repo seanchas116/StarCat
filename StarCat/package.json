@@ -1,0 +1,15 @@
+{
+  "name": "starcat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "github-markdown-css": "^2.1.1"
+  }
+}

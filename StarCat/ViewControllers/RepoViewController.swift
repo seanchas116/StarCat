@@ -43,9 +43,16 @@ class RepoViewController: UIViewController {
         combineLatest(viewModel.language, viewModel.pushedAtText) { "\($0 ?? "")・\($1)" }
             .bindTo(miscInfoLabel.rx_text).addDisposableTo(disposeBag)
         
+        var css = ""
+        if let path = NSBundle.mainBundle().pathForResource("github-markdown", ofType: "css") {
+            css = (try? String(contentsOfFile: path,
+                encoding: NSUTF8StringEncoding)) ?? ""
+        }
+        
         viewModel.readme
             .observeOn(ConcurrentDispatchQueueScheduler(queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)))
-            .map { html in
+            .map { readme -> NSAttributedString? in
+                let html = "<html><head><style>\(css)</style></head><body>\(readme)</body></html>"
                 return try? NSAttributedString(data: html.dataUsingEncoding(NSUTF8StringEncoding)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: NSNumber(unsignedLong: NSUTF8StringEncoding)], documentAttributes: nil)
             }
             .observeOn(MainScheduler.sharedInstance)
