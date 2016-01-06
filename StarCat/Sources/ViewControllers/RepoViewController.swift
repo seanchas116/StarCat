@@ -40,7 +40,7 @@ class RepoViewController: UIViewController {
             self?.stargazersButton.setTitle(String(count), forState: .Normal)
         }.addDisposableTo(disposeBag)
         
-        combineLatest(viewModel.language, viewModel.pushedAtText) { "\($0 ?? "")・\($1)" }
+        combineLatest(viewModel.language, viewModel.pushedAt) { "\($0 ?? "")・\($1.formatForUI(withAgo: true))" }
             .bindTo(miscInfoLabel.rx_text).addDisposableTo(disposeBag)
         
         viewModel.readme

@@ -8,7 +8,12 @@
 
 import Foundation
 
-enum Event {
+struct Event {
+    let content: EventContent
+    let createdAt: NSDate
+}
+
+enum EventContent {
     case Star(UserSummary, RepoSummary)
     case Unknown
 }

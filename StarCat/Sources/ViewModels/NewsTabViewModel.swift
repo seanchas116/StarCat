@@ -54,7 +54,7 @@ class NewsTabViewModel {
     func fetchMoreEvents() -> Promise<Void> {
         return Event.fetchForUser("seanchas116", page: page).then { events -> Promise<[RepoViewModel]> in
             let promises = events.flatMap { e -> Promise<RepoViewModel>? in
-                switch e {
+                switch e.content {
                 case .Star(_, let repoSummary):
                     return RepoCache.instance.fetch(repoSummary.fullName).then { repo -> RepoViewModel in
                         let vm = RepoViewModel(repo: repo)

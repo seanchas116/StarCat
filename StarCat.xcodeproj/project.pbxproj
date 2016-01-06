@@ -15,6 +15,7 @@
 		BE3F45441C2A992500DD1863 /* UserSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F45431C2A992500DD1863 /* UserSummary.swift */; };
 		BE3F45461C2A993400DD1863 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F45451C2A993400DD1863 /* Repo.swift */; };
 		BE3F45491C2A994500DD1863 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F45481C2A994500DD1863 /* Event.swift */; };
+		BE3FCD791C3D74F4008A9B32 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3FCD781C3D74F4008A9B32 /* NSDate.swift */; };
 		BE46B0041C38281400C8242C /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE46B0031C38281400C8242C /* RepoViewController.swift */; };
 		BE46B0091C38EB3300C8242C /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE46B0081C38EB3300C8242C /* Models.swift */; };
 		BE9A484D1C36234B00406DA6 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */; };
@@ -65,6 +66,7 @@
 		BE3F45431C2A992500DD1863 /* UserSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSummary.swift; sourceTree = "<group>"; };
 		BE3F45451C2A993400DD1863 /* Repo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		BE3F45481C2A994500DD1863 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		BE3FCD781C3D74F4008A9B32 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
 		BE46B0031C38281400C8242C /* RepoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
 		BE46B0081C38EB3300C8242C /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				BEE0C0B11C3408F80014986D /* PromiseResults.swift */,
+				BE3FCD781C3D74F4008A9B32 /* NSDate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 			files = (
 				BE18EEE71C3A2BD900B92291 /* RoundButton.swift in Sources */,
 				BEE0C0B21C3408F80014986D /* PromiseResults.swift in Sources */,
+				BE3FCD791C3D74F4008A9B32 /* NSDate.swift in Sources */,
 				BE46B0091C38EB3300C8242C /* Models.swift in Sources */,
 				BEF6051C1C3113F30014D633 /* Decodables.swift in Sources */,
 				BEF605191C30FCBB0014D633 /* RepoSummary.swift in Sources */,

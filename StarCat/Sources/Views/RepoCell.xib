@@ -40,15 +40,25 @@
                                             <constraint firstAttribute="height" constant="14" id="mfU-Aj-b1v"/>
                                         </constraints>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nW-LI-xwc">
+                                        <rect key="frame" x="298.5" y="0.0" width="36.5" height="19.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                        <color key="textColor" red="0.69411764705882351" green="0.69411764705882351" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Tm0-en-yXd" firstAttribute="top" secondItem="dpv-jG-K6e" secondAttribute="top" id="9sD-Vw-6Q2"/>
                                     <constraint firstItem="Tm0-en-yXd" firstAttribute="leading" secondItem="FxG-6g-a2N" secondAttribute="trailing" id="B3J-9h-AdY"/>
+                                    <constraint firstItem="2nW-LI-xwc" firstAttribute="top" secondItem="dpv-jG-K6e" secondAttribute="top" id="BA7-FG-gdo"/>
+                                    <constraint firstAttribute="trailing" secondItem="2nW-LI-xwc" secondAttribute="trailing" constant="16" id="Jwb-YH-BfV"/>
                                     <constraint firstItem="m2T-k2-YA0" firstAttribute="top" secondItem="dpv-jG-K6e" secondAttribute="top" constant="2" id="NbE-Fe-Qf8"/>
                                     <constraint firstItem="FxG-6g-a2N" firstAttribute="leading" secondItem="dpv-jG-K6e" secondAttribute="leading" constant="40" id="YbO-C2-Hrh"/>
                                     <constraint firstItem="m2T-k2-YA0" firstAttribute="leading" secondItem="dpv-jG-K6e" secondAttribute="leading" constant="20" id="cnT-kv-fhH"/>
+                                    <constraint firstItem="2nW-LI-xwc" firstAttribute="leading" secondItem="Tm0-en-yXd" secondAttribute="trailing" constant="4" id="k5m-J8-ZlC"/>
                                     <constraint firstAttribute="bottom" secondItem="FxG-6g-a2N" secondAttribute="bottom" id="lnN-UO-K0v"/>
+                                    <constraint firstItem="FxG-6g-a2N" firstAttribute="leading" secondItem="m2T-k2-YA0" secondAttribute="trailing" constant="6" id="nYM-PK-2Vz"/>
                                     <constraint firstItem="FxG-6g-a2N" firstAttribute="top" secondItem="dpv-jG-K6e" secondAttribute="top" id="sjR-cl-iaS"/>
                                     <constraint firstAttribute="height" constant="16" id="so6-gD-mvl"/>
                                     <constraint firstAttribute="height" constant="20" id="tZs-aD-lNu"/>
@@ -56,7 +66,9 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="so6-gD-mvl"/>
+                                        <exclude reference="YbO-C2-Hrh"/>
                                         <exclude reference="lnN-UO-K0v"/>
+                                        <exclude reference="k5m-J8-ZlC"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -144,6 +156,7 @@
                 <outlet property="descriptionLabel" destination="wlK-ge-05X" id="tXO-tm-ccu"/>
                 <outlet property="eventActorLabel" destination="FxG-6g-a2N" id="rvB-HK-ddM"/>
                 <outlet property="eventInfoView" destination="dpv-jG-K6e" id="bpR-Ni-qPM"/>
+                <outlet property="eventTimeLabel" destination="2nW-LI-xwc" id="3ry-aq-5So"/>
                 <outlet property="eventVerbLabel" destination="Tm0-en-yXd" id="Wvw-P8-Jpf"/>
                 <outlet property="languageLabel" destination="SwN-ve-ADn" id="rlZ-rt-K13"/>
                 <outlet property="ownerNameLabel" destination="9J1-pH-mXk" id="45d-gI-0xb"/>

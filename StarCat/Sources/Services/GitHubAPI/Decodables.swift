@@ -61,13 +61,14 @@ extension RepoSummary: Decodable {
 extension Event: Decodable {
     static func decode(e: Extractor) throws -> Event {
         let type: String = try e <| "type"
+        let createdAt: NSDate = try e <| "created_at"
         switch type {
         case "WatchEvent":
             let actor: UserSummary = try e <| "actor"
             let repo: RepoSummary = try e <| "repo"
-            return .Star(actor, repo)
+            return Event(content: .Star(actor, repo), createdAt: createdAt)
         default:
-            return .Unknown
+            return Event(content: .Unknown, createdAt: createdAt)
         }
     }
 }

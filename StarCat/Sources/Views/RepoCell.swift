@@ -19,6 +19,7 @@ class RepoCell: UITableViewCell {
     @IBOutlet weak var eventActorLabel: UILabel!
     @IBOutlet weak var eventVerbLabel: UILabel!
     @IBOutlet weak var languageLabel: UILabel!
+    @IBOutlet weak var eventTimeLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,6 +42,7 @@ class RepoCell: UITableViewCell {
             viewModel.avatarImage.bindTo(avatarImage.rx_image).addDisposableTo(disposeBag)
             viewModel.ownerName.bindTo(ownerNameLabel.rx_text).addDisposableTo(disposeBag)
             viewModel.eventActorName.bindTo(eventActorLabel.rx_text).addDisposableTo(disposeBag)
+            viewModel.eventTime.map { $0?.formatForUI(withAgo: false) ?? "" }.bindTo(eventTimeLabel.rx_text).addDisposableTo(disposeBag)
             viewModel.language.map { l in l ?? "" }.shareReplay(1)
                 .bindTo(languageLabel.rx_text).addDisposableTo(disposeBag)
             viewModel.language.map { l in l == nil }.shareReplay(1)
