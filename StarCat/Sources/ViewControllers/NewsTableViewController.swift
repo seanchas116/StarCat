@@ -21,7 +21,6 @@ class NewsTableViewController: UITableViewController {
         
         setupRefreshControl()
         setupTableView()
-        refresh()
         
         NSNotificationCenter.defaultCenter().rx_notification(UIApplicationDidBecomeActiveNotification)
             .subscribeNext { [weak self] _ in
@@ -38,6 +37,7 @@ class NewsTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         refresh()
     }
 
