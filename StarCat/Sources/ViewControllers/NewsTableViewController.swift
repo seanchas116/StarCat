@@ -104,6 +104,10 @@ class NewsTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         if loading.value || loadingMore.value {
             return
