@@ -38,6 +38,7 @@ private class RepoCache {
                 return Promise(entry.repo)
             }
         }
+        print("fetching repo")
         return Repo.fetch(fullName).then { repo -> Repo in
             self.add(repo)
             return repo
@@ -49,9 +50,9 @@ private class RepoCache {
 
 class NewsTabViewModel {
     let repos = Variable<[RepoViewModel]>([])
-    var count = 0
+    var lastFetched: NSDate?
     
-    func loadEvents() -> Promise<Void> {
+    func fetchEvents() -> Promise<Void> {
         return Event.fetchForUser("seanchas116").then { events -> Promise<[RepoViewModel]> in
             let promises = events.flatMap { e -> Promise<RepoViewModel>? in
                 switch e {
@@ -68,6 +69,16 @@ class NewsTabViewModel {
             return when(promises)
         }.then { events -> Void in
             self.repos.value = events
+            self.lastFetched = NSDate()
         }
+    }
+    
+    func refreshEvents() -> Promise<Void> {
+        if let last = lastFetched {
+            if NSDate() - 10.minutes < last {
+                return Promise()
+            }
+        }
+        return fetchEvents()
     }
 }

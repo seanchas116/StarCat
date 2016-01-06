@@ -23,11 +23,22 @@ class NewsTableViewController: UITableViewController {
         setupTableView()
         refresh()
         
+        NSNotificationCenter.defaultCenter().rx_notification(UIApplicationDidBecomeActiveNotification)
+            .subscribeNext { [weak self] _ in
+                print("activated")
+                self?.refresh()
+            }
+            .addDisposableTo(disposeBag)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        refresh()
     }
 
     override func didReceiveMemoryWarning() {
@@ -105,7 +116,7 @@ class NewsTableViewController: UITableViewController {
     private func setupRefreshControl() {
         refreshControl = UIRefreshControl()
         refreshControl?.rx_controlEvents(UIControlEvents.ValueChanged).subscribeNext { _ in
-            self.refresh()
+            self.fetch()
         }.addDisposableTo(disposeBag)
     }
     
@@ -126,9 +137,18 @@ class NewsTableViewController: UITableViewController {
     }
     
     func refresh() {
-        viewModel.loadEvents().then { [weak self] in
+        refreshControl?.beginRefreshing()
+        viewModel.refreshEvents().then { [weak self] in
             self?.refreshControl?.endRefreshing()
         }
+    }
+    
+    func fetch() {
+        refreshControl?.beginRefreshing()
+        viewModel.fetchEvents().then { [weak self] in
+            self?.refreshControl?.endRefreshing()
+        }
+        
     }
     
     private func tableSelected(path: NSIndexPath) {
