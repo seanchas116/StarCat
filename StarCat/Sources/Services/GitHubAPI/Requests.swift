@@ -31,9 +31,13 @@ extension GitHubRequest {
 struct GetUserEventsRequest: GitHubRequest {
     typealias Response = [Event]
     let userName: String
+    let page: Int
     
     var path: String {
         return "/users/\(userName)/received_events"
+    }
+    var parameters: [String: AnyObject] {
+        return ["page": page]
     }
     
     func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {

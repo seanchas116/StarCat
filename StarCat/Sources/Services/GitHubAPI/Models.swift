@@ -17,8 +17,8 @@ extension Repo {
 }
 
 extension Event {
-    static func fetchForUser(nae: String) -> Promise<[Event]> {
-        let request = GetUserEventsRequest(userName: "seanchas116")
+    static func fetchForUser(nae: String, page: Int) -> Promise<[Event]> {
+        let request = GetUserEventsRequest(userName: "seanchas116", page: page)
         return Session.sendRequestPromise(request)
     }
 }

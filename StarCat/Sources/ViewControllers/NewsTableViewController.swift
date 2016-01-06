@@ -15,6 +15,8 @@ class NewsTableViewController: UITableViewController {
     let disposeBag = DisposeBag()
     let viewModel = NewsTabViewModel()
     var selectedRepoViewModel: RepoViewModel?
+    let loading = Variable(false)
+    let loadingMore = Variable(false)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,10 +120,16 @@ class NewsTableViewController: UITableViewController {
         refreshControl?.rx_controlEvents(UIControlEvents.ValueChanged).subscribeNext { _ in
             self.fetch()
         }.addDisposableTo(disposeBag)
+        loading.subscribeNext { [weak self] loading in
+            if loading {
+                self?.refreshControl?.beginRefreshing()
+            } else {
+                self?.refreshControl?.endRefreshing()
+            }
+        }.addDisposableTo(disposeBag)
     }
     
     private func setupTableView() {
-        tableView.delegate = nil
         tableView.dataSource = nil
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -137,16 +145,16 @@ class NewsTableViewController: UITableViewController {
     }
     
     func refresh() {
-        refreshControl?.beginRefreshing()
-        viewModel.refreshEvents().then { [weak self] in
-            self?.refreshControl?.endRefreshing()
+        loading.value = true
+        viewModel.refreshEvents().always { [weak self] in
+            self?.loading.value = false
         }
     }
     
     func fetch() {
-        refreshControl?.beginRefreshing()
-        viewModel.fetchEvents().then { [weak self] in
-            self?.refreshControl?.endRefreshing()
+        loading.value = true
+        viewModel.fetchEvents().always { [weak self] in
+            self?.loading.value = false
         }
         
     }
@@ -160,6 +168,21 @@ class NewsTableViewController: UITableViewController {
         if (segue.identifier == "showRepo" && selectedRepoViewModel != nil) {
             let subVC = (segue.destinationViewController as! RepoViewController)
             subVC.viewModel = selectedRepoViewModel
+        }
+    }
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        if loading.value || loadingMore.value {
+            return
+        }
+        let offset = scrollView.contentOffset.y
+        let height = scrollView.frame.size.height
+        let distanceFromBottom = scrollView.contentSize.height - offset
+        if distanceFromBottom < height {
+            loadingMore.value = true
+            viewModel.fetchMoreEvents().always {
+                self.loadingMore.value = false
+            }
         }
     }
 }
