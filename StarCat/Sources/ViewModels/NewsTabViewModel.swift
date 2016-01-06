@@ -34,11 +34,9 @@ private class RepoCache {
     func fetch(fullName: String) -> Promise<Repo> {
         if let entry = cache.objectForKey(fullName) as? RepoCacheEntry {
             if NSDate() - 1.hours < entry.addedAt {
-                print("caching repo")
                 return Promise(entry.repo)
             }
         }
-        print("fetching repo")
         return Repo.fetch(fullName).then { repo -> Repo in
             self.add(repo)
             return repo
