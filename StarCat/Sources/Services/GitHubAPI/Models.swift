@@ -15,3 +15,10 @@ extension Repo {
         return Session.sendRequestPromise(GetRepoRequest(fullName: fullName))
     }
 }
+
+extension Event {
+    static func fetchForUser(nae: String) -> Promise<[Event]> {
+        let request = GetUserEventsRequest(userName: "seanchas116")
+        return Session.sendRequestPromise(request)
+    }
+}

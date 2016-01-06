@@ -10,18 +10,53 @@ import Foundation
 import RxSwift
 import APIKit
 import PromiseKit
+import SwiftDate
+
+private class RepoCacheEntry {
+    let repo: Repo
+    let addedAt: NSDate
+    init(repo: Repo) {
+        self.repo = repo
+        self.addedAt = NSDate()
+    }
+}
+
+private class RepoCache {
+    private let cache = NSCache()
+    
+    init() {
+        cache.countLimit = 100
+    }
+    
+    func add(repo: Repo) {
+        cache.setObject(RepoCacheEntry(repo: repo), forKey: repo.fullName)
+    }
+    func fetch(fullName: String) -> Promise<Repo> {
+        if let entry = cache.objectForKey(fullName) as? RepoCacheEntry {
+            if NSDate() - 1.hours < entry.addedAt {
+                print("caching repo")
+                return Promise(entry.repo)
+            }
+        }
+        return Repo.fetch(fullName).then { repo -> Repo in
+            self.add(repo)
+            return repo
+        }
+    }
+    
+    static let instance = RepoCache()
+}
 
 class NewsTabViewModel {
     let repos = Variable<[RepoViewModel]>([])
     var count = 0
     
     func loadEvents() -> Promise<Void> {
-        let request = GetUserEventsRequest(userName: "seanchas116")
-        return Session.sendRequestPromise(request).then { events -> Promise<[RepoViewModel]> in
+        return Event.fetchForUser("seanchas116").then { events -> Promise<[RepoViewModel]> in
             let promises = events.flatMap { e -> Promise<RepoViewModel>? in
                 switch e {
                 case .Star(_, let repoSummary):
-                    return Repo.fetch(repoSummary.fullName).then { repo -> RepoViewModel in
+                    return RepoCache.instance.fetch(repoSummary.fullName).then { repo -> RepoViewModel in
                         let vm = RepoViewModel(repo: repo)
                         vm.event.value = e
                         return vm
