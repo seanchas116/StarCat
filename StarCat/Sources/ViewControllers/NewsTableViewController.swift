@@ -17,6 +17,7 @@ class NewsTableViewController: UITableViewController {
     var selectedRepoViewModel: RepoViewModel?
     let loading = Variable(false)
     let loadingMore = Variable(false)
+    let appeared = Variable(false)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,14 @@ class NewsTableViewController: UITableViewController {
             }
             .addDisposableTo(disposeBag)
         
+        AppViewModel.instance.tabViewModel.selectedIndex.subscribeNext { index in
+            print(index)
+            if index == 0 && self.appeared.value {
+                print("scrolling")
+                self.scrollToTop()
+            }
+        }.addDisposableTo(disposeBag)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -41,6 +50,16 @@ class NewsTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         refresh()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        appeared.value = true
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        appeared.value = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -120,6 +139,13 @@ class NewsTableViewController: UITableViewController {
             viewModel.fetchMoreEvents().always {
                 self.loadingMore.value = false
             }
+        }
+    }
+    
+    private func scrollToTop() {
+        if numberOfSectionsInTableView(tableView) > 0 {
+            let top = NSIndexPath(forRow: NSNotFound, inSection: 0)
+            tableView.scrollToRowAtIndexPath(top, atScrollPosition: .Top, animated: true)
         }
     }
 }
