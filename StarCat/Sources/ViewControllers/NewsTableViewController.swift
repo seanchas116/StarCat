@@ -40,11 +40,7 @@ class NewsTableViewController: UITableViewController {
             }
         }.addDisposableTo(disposeBag)
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        refresh()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -108,7 +104,6 @@ class NewsTableViewController: UITableViewController {
         viewModel.fetchEvents().always { [weak self] in
             self?.loading.value = false
         }
-        
     }
     
     private func tableSelected(path: NSIndexPath) {
