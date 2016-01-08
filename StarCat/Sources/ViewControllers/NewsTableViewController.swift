@@ -128,12 +128,19 @@ class NewsTableViewController: UITableViewController {
         }
         let offset = scrollView.contentOffset.y
         let height = scrollView.frame.size.height
-        let distanceFromBottom = scrollView.contentSize.height - offset
-        if distanceFromBottom < height {
-            loadingMore.value = true
-            viewModel.fetchMoreEvents().always {
-                self.loadingMore.value = false
+        if let indexBottom = tableView.indexPathForRowAtPoint(CGPointMake(0, offset + height)) {
+            if viewModel.repos.value.count - indexBottom.row > 8 {
+                return
             }
+        }
+        fetchMore()
+    }
+    
+    private func fetchMore() {
+        print("fetch more")
+        loadingMore.value = true
+        viewModel.fetchMoreEvents().always {
+            self.loadingMore.value = false
         }
     }
     
