@@ -19,7 +19,8 @@ class RepoViewController: UIViewController {
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var homepageLabel: UILabel!
     @IBOutlet weak var stargazersButton: RoundButton!
-    @IBOutlet weak var readmeView: UITextView!
+    @IBOutlet weak var readmeView: ReadmeTextView!
+    @IBOutlet weak var readmeLoadingIndicator: UIActivityIndicatorView!
     
     let disposeBag = DisposeBag()
     var viewModel: RepoViewModel!
@@ -48,7 +49,9 @@ class RepoViewController: UIViewController {
             .map(renderReadme)
             .observeOn(MainScheduler.sharedInstance)
             .subscribeNext { [weak self] attributedText in
-                self?.readmeView.attributedText = attributedText
+                self?.readmeView.loadContent(attributedText).then { () -> Void in
+                    self?.readmeLoadingIndicator.stopAnimating()
+                }
                 self?.readmeView.layoutIfNeeded()
             }
             .addDisposableTo(disposeBag)

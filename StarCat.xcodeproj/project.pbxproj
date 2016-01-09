@@ -19,6 +19,7 @@
 		BE46B0041C38281400C8242C /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE46B0031C38281400C8242C /* RepoViewController.swift */; };
 		BE46B0091C38EB3300C8242C /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE46B0081C38EB3300C8242C /* Models.swift */; };
 		BE9A484D1C36234B00406DA6 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */; };
+		BEB680791C3F9BD6007B2E08 /* ReadmeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB680781C3F9BD6007B2E08 /* ReadmeTextView.swift */; };
 		BEBA2A711C26AACB00F64F05 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA2A701C26AACB00F64F05 /* Constants.swift */; };
 		BED172F91C3E23E000C5A247 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED172F81C3E23E000C5A247 /* AppViewModel.swift */; };
 		BED172FB1C3E249300C5A247 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED172FA1C3E249300C5A247 /* TabViewModel.swift */; };
@@ -72,6 +73,7 @@
 		BE46B0031C38281400C8242C /* RepoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
 		BE46B0081C38EB3300C8242C /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		BEB680781C3F9BD6007B2E08 /* ReadmeTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadmeTextView.swift; sourceTree = "<group>"; };
 		BEBA2A701C26AACB00F64F05 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BED172F81C3E23E000C5A247 /* AppViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		BED172FA1C3E249300C5A247 /* TabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				BEE0C0AB1C33EF1A0014986D /* RepoCell.xib */,
 				BE18EEE61C3A2BD900B92291 /* RoundButton.swift */,
 				BEF5907F1C3A940600633417 /* RoundButtonBorder.swift */,
+				BEB680781C3F9BD6007B2E08 /* ReadmeTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				BE39BA221C291BF40000A87F /* TabBarController.swift in Sources */,
 				BED172FB1C3E249300C5A247 /* TabViewModel.swift in Sources */,
 				BEF590801C3A940600633417 /* RoundButtonBorder.swift in Sources */,
+				BEB680791C3F9BD6007B2E08 /* ReadmeTextView.swift in Sources */,
 				BEBA2A711C26AACB00F64F05 /* Constants.swift in Sources */,
 				BE3F45441C2A992500DD1863 /* UserSummary.swift in Sources */,
 			);

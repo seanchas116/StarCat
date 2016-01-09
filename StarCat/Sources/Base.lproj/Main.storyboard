@@ -300,12 +300,15 @@
                                                     </mask>
                                                 </variation>
                                             </view>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="100" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eJO-jd-Ezw">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="100" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eJO-jd-Ezw" customClass="ReadmeTextView" customModule="StarCat" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="226" width="568" height="100"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="w1q-yx-xiy">
+                                                <rect key="frame" x="290" y="242" width="20" height="20"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -316,6 +319,8 @@
                                             <constraint firstItem="AYC-hG-NAW" firstAttribute="leading" secondItem="eC4-u2-DcJ" secondAttribute="leading" id="N0j-iL-dVI"/>
                                             <constraint firstAttribute="trailing" secondItem="eJO-jd-Ezw" secondAttribute="trailing" constant="16" id="TYn-rM-3U4"/>
                                             <constraint firstAttribute="bottom" secondItem="eJO-jd-Ezw" secondAttribute="bottom" constant="16" id="exV-Pp-yoA"/>
+                                            <constraint firstItem="w1q-yx-xiy" firstAttribute="centerX" secondItem="eC4-u2-DcJ" secondAttribute="centerX" id="jU3-0B-ei5"/>
+                                            <constraint firstItem="w1q-yx-xiy" firstAttribute="top" secondItem="AYC-hG-NAW" secondAttribute="bottom" constant="32" id="xX0-gK-JFG"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -342,6 +347,7 @@
                         <outlet property="homepageLabel" destination="sdp-78-SQq" id="n91-g1-rGt"/>
                         <outlet property="miscInfoLabel" destination="BXw-at-CKI" id="02c-tX-IWh"/>
                         <outlet property="ownerLabel" destination="atr-Ha-UFo" id="UWh-3e-aVz"/>
+                        <outlet property="readmeLoadingIndicator" destination="w1q-yx-xiy" id="5P6-Io-D8t"/>
                         <outlet property="readmeView" destination="eJO-jd-Ezw" id="2L3-XB-kod"/>
                         <outlet property="stargazersButton" destination="YSR-f1-FfU" id="M8h-dH-cdg"/>
                         <outlet property="titleLabel" destination="LEs-T3-Gea" id="0P7-Qe-om9"/>
