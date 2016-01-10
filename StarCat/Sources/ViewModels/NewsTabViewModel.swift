@@ -51,7 +51,7 @@ class NewsTabViewModel {
     var lastFetched: NSDate?
     var page = 1
     
-    func fetchMoreEvents() -> Promise<Void> {
+    private func fetch(page: Int) -> Promise<[RepoViewModel]> {
         return Event.fetchForUser("seanchas116", page: page).then { events -> Promise<[RepoViewModel]> in
             let promises = events.flatMap { e -> Promise<RepoViewModel>? in
                 switch e.content {
@@ -66,17 +66,22 @@ class NewsTabViewModel {
                 }
             }
             return when(promises)
-        }.then { events -> Void in
+        }
+    }
+    
+    func fetchMoreEvents() -> Promise<Void> {
+        return fetch(self.page).then { events -> Void in
             self.repos.value += events
-            self.lastFetched = NSDate()
             self.page += 1
         }
     }
     
     func fetchEvents() -> Promise<Void> {
-        page = 1
-        repos.value = []
-        return fetchMoreEvents()
+        return fetch(1).then { events -> Void in
+            self.page = 1
+            self.repos.value = []
+            self.lastFetched = NSDate()
+        }
     }
     
     func refreshEvents() -> Promise<Void> {
