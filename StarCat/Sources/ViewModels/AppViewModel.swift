@@ -13,4 +13,5 @@ class AppViewModel {
     static let instance = AppViewModel()
     
     let tabViewModel = TabViewModel()
+    let currentUser = Variable<UserSummary?>(nil)
 }

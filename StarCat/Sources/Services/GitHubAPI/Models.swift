@@ -22,3 +22,9 @@ extension Event {
         return Session.sendRequestPromise(request)
     }
 }
+
+extension User {
+    static func fetch(login: String) -> Promise<User> {
+        return Session.sendRequestPromise(GetUserRequest(login: login))
+    }
+}

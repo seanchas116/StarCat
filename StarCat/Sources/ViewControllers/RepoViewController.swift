@@ -56,6 +56,10 @@ class RepoViewController: UIViewController {
             }
             .addDisposableTo(disposeBag)
         
+        ownerLabel.makeTappable().subscribeNext { [weak self] _ in
+            self?.performSegueWithIdentifier("showOwner", sender: self)
+        }.addDisposableTo(disposeBag)
+        
         viewModel.fetchReadme()
     }
 
@@ -63,17 +67,13 @@ class RepoViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "showOwner") {
+            let next = (segue.destinationViewController as! UserViewController)
+            next.userSummary = viewModel.repo.owner
+        }
     }
-    */
 }
 
 private let baseReadmeCSS = getBundleFile("github-markdown", ofType: "css")

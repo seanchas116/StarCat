@@ -23,6 +23,23 @@ extension NSDate: Decodable {
     }
 }
 
+extension User: Decodable {
+    static func decode(e: Extractor) throws -> User {
+        return try User(
+            id: e <| "id",
+            login: e <| "login",
+            name: e <|? "name",
+            avatarURL: e <| "avatar_url",
+            company: e <|? "company",
+            location: e <|? "location",
+            blog: e <|? "blog",
+            email: e <|? "email",
+            followers: e <| "followers",
+            following: e <| "following"
+        )
+    }
+}
+
 extension UserSummary: Decodable {
     static func decode(e: Extractor) throws -> UserSummary {
         return try UserSummary(
