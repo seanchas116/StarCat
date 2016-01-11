@@ -24,9 +24,10 @@ class RepoViewModel {
     let homepage = Variable<NSURL?>(nil)
     let pushedAt = Variable(NSDate())
     let readme = Variable("")
-    let eventActor: Observable<UserSummary?>
-    let eventActorName: Observable<String>
-    let eventTime: Observable<NSDate?>
+    let eventActor = Variable<UserSummary?>(nil)
+    let eventActorName = Variable<String>("")
+    let eventTime = Variable<NSDate?>(nil)
+    let disposeBag = DisposeBag()
     
     let repo: Repo
     
@@ -41,7 +42,7 @@ class RepoViewModel {
         homepage.value = repo.homepage
         pushedAt.value = repo.pushedAt
         
-        eventActor = event.map { event in
+        event.map { event in
             event.flatMap { e -> UserSummary? in
                 switch e.content {
                 case .Star(let user, _):
@@ -50,9 +51,10 @@ class RepoViewModel {
                     return nil
                 }
             }
-        }
-        eventActorName = eventActor.map { $0?.login ?? "" }
-        eventTime = event.map { $0?.createdAt }
+        }.bindTo(eventActor).addDisposableTo(disposeBag)
+        
+        eventActor.map { $0?.login ?? "" }.bindTo(eventActorName).addDisposableTo(disposeBag)
+        event.map { $0?.createdAt }.bindTo(eventTime).addDisposableTo(disposeBag)
         
         Shared.imageCache.fetch(URL: repo.owner.avatarURL).promise().then { image -> Void in
             self.avatarImage.value = image
