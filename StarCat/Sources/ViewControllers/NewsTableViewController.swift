@@ -15,6 +15,7 @@ class NewsTableViewController: UITableViewController {
     let disposeBag = DisposeBag()
     let viewModel = NewsTabViewModel()
     var selectedRepoViewModel: RepoViewModel?
+    var showingActor: UserSummary?
     let loading = Variable(false)
     let loadingMore = Variable(false)
     let appeared = Variable(false)
@@ -83,8 +84,13 @@ class NewsTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.registerNib(UINib(nibName: "RepoCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
         
-        viewModel.repos.bindTo(tableView.rx_itemsWithCellIdentifier("RepoCell")) { row, elem, cell in
-            (cell as RepoCell).viewModel = elem
+        viewModel.repos.bindTo(tableView.rx_itemsWithCellIdentifier("RepoCell")) { [unowned self] row, elem, cell in
+            let repoCell = cell as! RepoCell
+            repoCell.viewModel = elem
+            repoCell.onActorTapped = { [unowned self] actor in
+                self.showingActor = actor
+                self.performSegueWithIdentifier("showActor", sender: self)
+            }
         }.addDisposableTo(disposeBag)
         
         tableView.rx_itemSelected.subscribeNext { [weak self] path in
@@ -112,9 +118,21 @@ class NewsTableViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "showRepo" && selectedRepoViewModel != nil) {
-            let subVC = (segue.destinationViewController as! RepoViewController)
-            subVC.viewModel = selectedRepoViewModel
+        if let id = segue.identifier {
+            switch id {
+            case "showRepo":
+                if selectedRepoViewModel != nil {
+                    let subVC = (segue.destinationViewController as! RepoViewController)
+                    subVC.viewModel = selectedRepoViewModel
+                }
+            case "showActor":
+                if showingActor != nil {
+                    let subVC = (segue.destinationViewController as! UserViewController)
+                    subVC.userSummary = showingActor
+                }
+            default:
+                break
+            }
         }
     }
     

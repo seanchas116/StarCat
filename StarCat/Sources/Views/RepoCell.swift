@@ -20,6 +20,8 @@ class RepoCell: UITableViewCell {
     @IBOutlet weak var eventVerbLabel: UILabel!
     @IBOutlet weak var languageLabel: UILabel!
     @IBOutlet weak var eventTimeLabel: UILabel!
+    
+    var onActorTapped: ((UserSummary) -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,6 +49,11 @@ class RepoCell: UITableViewCell {
                 .bindTo(languageLabel.rx_text).addDisposableTo(disposeBag)
             viewModel.language.map { l in l == nil }.shareReplay(1)
                 .bindTo(languageLabel.rx_hidden).addDisposableTo(disposeBag)
+            eventActorLabel.makeTappable().subscribeNext { [unowned self] _ in
+                if let actor = self.viewModel.eventActor.value {
+                    self.onActorTapped?(actor)
+                }
+            }.addDisposableTo(disposeBag)
         }
     }
     
