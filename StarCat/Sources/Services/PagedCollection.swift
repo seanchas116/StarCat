@@ -11,7 +11,7 @@ import RxSwift
 import PromiseKit
 import SwiftDate
 
-class Paginator<T> {
+class PagedCollection<T> {
     typealias Item = T
     let items = Variable<[Item]>([])
     var lastFetched: NSDate?

@@ -84,7 +84,7 @@ class NewsTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.registerNib(UINib(nibName: "RepoCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
         
-        viewModel.repoPaginator.items.bindTo(tableView.rx_itemsWithCellIdentifier("RepoCell")) { [unowned self] row, elem, cell in
+        viewModel.newsCollection.items.bindTo(tableView.rx_itemsWithCellIdentifier("RepoCell")) { [unowned self] row, elem, cell in
             let repoCell = cell as! RepoCell
             repoCell.viewModel = elem
             repoCell.onActorTapped = { [unowned self] actor in
@@ -100,20 +100,20 @@ class NewsTableViewController: UITableViewController {
     
     func refresh() {
         loading.value = true
-        viewModel.repoPaginator.refresh().always { [weak self] in
+        viewModel.newsCollection.refresh().always { [weak self] in
             self?.loading.value = false
         }
     }
     
     func fetch() {
         loading.value = true
-        viewModel.repoPaginator.fetchAndReset().always { [weak self] in
+        viewModel.newsCollection.fetchAndReset().always { [weak self] in
             self?.loading.value = false
         }
     }
     
     private func tableSelected(path: NSIndexPath) {
-        selectedRepoViewModel = viewModel.repoPaginator.items.value[path.row]
+        selectedRepoViewModel = viewModel.newsCollection.items.value[path.row]
         performSegueWithIdentifier("showRepo", sender: self)
     }
     
@@ -147,7 +147,7 @@ class NewsTableViewController: UITableViewController {
         let offset = scrollView.contentOffset.y
         let height = scrollView.frame.size.height
         if let indexBottom = tableView.indexPathForRowAtPoint(CGPointMake(0, offset + height)) {
-            if viewModel.repoPaginator.items.value.count - indexBottom.row > 8 {
+            if viewModel.newsCollection.items.value.count - indexBottom.row > 8 {
                 return
             }
         }
@@ -157,7 +157,7 @@ class NewsTableViewController: UITableViewController {
     private func fetchMore() {
         print("fetch more")
         loadingMore.value = true
-        viewModel.repoPaginator.fetchMore().always {
+        viewModel.newsCollection.fetchMore().always {
             self.loadingMore.value = false
         }
     }
