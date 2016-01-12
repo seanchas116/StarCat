@@ -11,32 +11,26 @@ import RxSwift
 import PromiseKit
 import SwiftDate
 
-protocol PaginatorSource {
-    typealias Item
-    var perPage: Int { get }
-    func fetch(page: Int) -> Promise<[Item]>
-}
-
-class Paginator<T: PaginatorSource> {
-    let fetcher: T
-    let items = Variable<[T.Item]>([])
+class Paginator<T> {
+    typealias Item = T
+    let items = Variable<[Item]>([])
     var lastFetched: NSDate?
     var page = 1
     var refreshInterval = 10.minutes
     
-    init(fetcher: T) {
-        self.fetcher = fetcher
+    func fetch(page: Int) -> Promise<[T]> {
+        return Promise([])
     }
     
     func fetchMore() -> Promise<Void> {
-        return self.fetcher.fetch(self.page).then { events -> Void in
+        return self.fetch(self.page).then { events -> Void in
             self.items.value += events
             self.page += 1
         }
     }
     
     func fetchAndReset() -> Promise<Void> {
-        return self.fetcher.fetch(1).then { events -> Void in
+        return self.fetch(1).then { events -> Void in
             self.page = 1
             self.items.value = []
             self.lastFetched = NSDate()
