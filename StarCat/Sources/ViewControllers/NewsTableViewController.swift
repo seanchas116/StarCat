@@ -161,11 +161,4 @@ class NewsTableViewController: UITableViewController {
             self.loadingMore.value = false
         }
     }
-    
-    private func scrollToTop() {
-        if numberOfSectionsInTableView(tableView) > 0 {
-            let top = NSIndexPath(forRow: NSNotFound, inSection: 0)
-            tableView.scrollToRowAtIndexPath(top, atScrollPosition: .Top, animated: true)
-        }
-    }
 }
