@@ -22,6 +22,7 @@
 		BE3FCD791C3D74F4008A9B32 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3FCD781C3D74F4008A9B32 /* NSDate.swift */; };
 		BE46B0041C38281400C8242C /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE46B0031C38281400C8242C /* RepoViewController.swift */; };
 		BE46B0091C38EB3300C8242C /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE46B0081C38EB3300C8242C /* Models.swift */; };
+		BE4C42B91C43F909004EE1E8 /* Paginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4C42B81C43F909004EE1E8 /* Paginator.swift */; };
 		BE9A484D1C36234B00406DA6 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */; };
 		BEB1B9AB1C414B4400A730A0 /* Repo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */; };
 		BEB680791C3F9BD6007B2E08 /* ReadmeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB680781C3F9BD6007B2E08 /* ReadmeTextView.swift */; };
@@ -82,6 +83,7 @@
 		BE3FCD781C3D74F4008A9B32 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
 		BE46B0031C38281400C8242C /* RepoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
 		BE46B0081C38EB3300C8242C /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		BE4C42B81C43F909004EE1E8 /* Paginator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paginator.swift; sourceTree = "<group>"; };
 		BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Repo.storyboard; sourceTree = "<group>"; };
 		BEB680781C3F9BD6007B2E08 /* ReadmeTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadmeTextView.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				BEF6051A1C3113DF0014D633 /* GitHubAPI */,
+				BE4C42B81C43F909004EE1E8 /* Paginator.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				BE176E681C4201B400E29E4F /* User.swift in Sources */,
 				BE18EEE71C3A2BD900B92291 /* RoundButton.swift in Sources */,
 				BE176E641C41F10200E29E4F /* UserViewController.swift in Sources */,
+				BE4C42B91C43F909004EE1E8 /* Paginator.swift in Sources */,
 				BEE0C0B21C3408F80014986D /* PromiseResults.swift in Sources */,
 				BED172F91C3E23E000C5A247 /* AppViewModel.swift in Sources */,
 				BE3FCD791C3D74F4008A9B32 /* NSDate.swift in Sources */,

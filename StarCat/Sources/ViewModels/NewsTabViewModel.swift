@@ -46,12 +46,12 @@ private class RepoCache {
     static let instance = RepoCache()
 }
 
-class NewsTabViewModel {
-    let repos = Variable<[RepoViewModel]>([])
-    var lastFetched: NSDate?
-    var page = 1
-    
-    private func fetch(page: Int) -> Promise<[RepoViewModel]> {
+struct NewsPaginatorSource: PaginatorSource {
+    typealias Item = RepoViewModel
+    var perPage: Int {
+        get { return 30 }
+    }
+    func fetch(page: Int) -> Promise<[Item]> {
         return Event.fetchForUser("seanchas116", page: page).then { events -> Promise<[RepoViewModel]> in
             let promises = events.flatMap { e -> Promise<RepoViewModel>? in
                 switch e.content {
@@ -68,28 +68,8 @@ class NewsTabViewModel {
             return when(promises)
         }
     }
-    
-    func fetchMoreEvents() -> Promise<Void> {
-        return fetch(self.page).then { events -> Void in
-            self.repos.value += events
-            self.page += 1
-        }
-    }
-    
-    func fetchEvents() -> Promise<Void> {
-        return fetch(1).then { events -> Void in
-            self.page = 1
-            self.repos.value = []
-            self.lastFetched = NSDate()
-        }
-    }
-    
-    func refreshEvents() -> Promise<Void> {
-        if let last = lastFetched {
-            if NSDate() - 10.minutes < last {
-                return Promise()
-            }
-        }
-        return fetchEvents()
-    }
+}
+
+class NewsTabViewModel {
+    let repoPaginator = Paginator(fetcher: NewsPaginatorSource())
 }
