@@ -32,7 +32,7 @@ class PagedCollection<T> {
     func fetchAndReset() -> Promise<Void> {
         return self.fetch(1).then { events -> Void in
             self.page = 1
-            self.items.value = []
+            self.items.value = events
             self.lastFetched = NSDate()
         }
     }

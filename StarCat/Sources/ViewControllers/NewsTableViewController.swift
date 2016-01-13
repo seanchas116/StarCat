@@ -16,20 +16,18 @@ class NewsTableViewController: UITableViewController {
     let viewModel = NewsTabViewModel()
     var selectedRepoViewModel: RepoViewModel?
     var showingActor: UserSummary?
-    let loading = Variable(false)
-    let loadingMore = Variable(false)
     let appeared = Variable(false)
+    var paginator: TableViewPaginator<RepoViewModel>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupRefreshControl()
         setupTableView()
         
         NSNotificationCenter.defaultCenter().rx_notification(UIApplicationDidBecomeActiveNotification)
             .subscribeNext { [weak self] _ in
                 print("activated")
-                self?.refresh()
+                self?.paginator.refresh()
             }
             .addDisposableTo(disposeBag)
         
@@ -41,12 +39,12 @@ class NewsTableViewController: UITableViewController {
             }
         }.addDisposableTo(disposeBag)
         
-        refresh()
+        paginator.refresh()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        refresh()
+        paginator.refresh()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -64,52 +62,29 @@ class NewsTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    private func setupRefreshControl() {
-        refreshControl = UIRefreshControl()
-        refreshControl?.rx_controlEvents(UIControlEvents.ValueChanged).subscribeNext { _ in
-            self.fetch()
-        }.addDisposableTo(disposeBag)
-        loading.subscribeNext { [weak self] loading in
-            if loading {
-                self?.refreshControl?.beginRefreshing()
-            } else {
-                self?.refreshControl?.endRefreshing()
-            }
-        }.addDisposableTo(disposeBag)
-    }
-    
     private func setupTableView() {
-        tableView.dataSource = nil
+        refreshControl = UIRefreshControl()
+        
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.registerNib(UINib(nibName: "RepoCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
         
-        viewModel.newsCollection.items.bindTo(tableView.rx_itemsWithCellIdentifier("RepoCell")) { [unowned self] row, elem, cell in
-            let repoCell = cell as! RepoCell
-            repoCell.viewModel = elem
-            repoCell.onActorTapped = { [unowned self] actor in
-                self.showingActor = actor
-                self.performSegueWithIdentifier("showActor", sender: self)
+        self.paginator = TableViewPaginator(
+            tableView: tableView, refreshControl: refreshControl!,
+            collection: viewModel.newsCollection) { items in
+            items.bindTo(self.tableView.rx_itemsWithCellIdentifier("RepoCell")) { [unowned self] row, elem, cell in
+                let repoCell = cell as! RepoCell
+                repoCell.viewModel = elem
+                repoCell.onActorTapped = { [unowned self] actor in
+                    self.showingActor = actor
+                    self.performSegueWithIdentifier("showActor", sender: self)
+                }
             }
-        }.addDisposableTo(disposeBag)
+        }
         
         tableView.rx_itemSelected.subscribeNext { [weak self] path in
             self?.tableSelected(path)
         }.addDisposableTo(disposeBag)
-    }
-    
-    func refresh() {
-        loading.value = true
-        viewModel.newsCollection.refresh().always { [weak self] in
-            self?.loading.value = false
-        }
-    }
-    
-    func fetch() {
-        loading.value = true
-        viewModel.newsCollection.fetchAndReset().always { [weak self] in
-            self?.loading.value = false
-        }
     }
     
     private func tableSelected(path: NSIndexPath) {
@@ -138,27 +113,5 @@ class NewsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
-    }
-    
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
-        if loading.value || loadingMore.value {
-            return
-        }
-        let offset = scrollView.contentOffset.y
-        let height = scrollView.frame.size.height
-        if let indexBottom = tableView.indexPathForRowAtPoint(CGPointMake(0, offset + height)) {
-            if viewModel.newsCollection.items.value.count - indexBottom.row > 8 {
-                return
-            }
-        }
-        fetchMore()
-    }
-    
-    private func fetchMore() {
-        print("fetch more")
-        loadingMore.value = true
-        viewModel.newsCollection.fetchMore().always {
-            self.loadingMore.value = false
-        }
     }
 }
