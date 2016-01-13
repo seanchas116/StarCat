@@ -19,6 +19,7 @@ class TableViewPaginator<T> {
     let loading = Variable(false)
     let loadingMore = Variable(false)
     let disposeBag = DisposeBag()
+    var whenSelected: Observable<T?>!
     
     init(tableView: UITableView, refreshControl: UIRefreshControl, collection: PaginatedCollection<T>, bind: (Variable<[T]>) -> Disposable) {
         self.tableView = tableView
@@ -26,6 +27,14 @@ class TableViewPaginator<T> {
         self.collection = collection
         
         tableView.dataSource = nil
+        
+        whenSelected = tableView.rx_itemSelected.map { [weak self] index -> T? in
+            if let this = self {
+                return this.collection.items.value[index.row]
+            }
+            return nil
+        }
+        
         bind(collection.items).addDisposableTo(disposeBag)
         
         refreshControl.rx_controlEvents(UIControlEvents.ValueChanged).subscribeNext { _ in

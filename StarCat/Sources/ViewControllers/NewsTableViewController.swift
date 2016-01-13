@@ -69,7 +69,7 @@ class NewsTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.registerNib(UINib(nibName: "RepoCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
         
-        self.paginator = TableViewPaginator(
+        paginator = TableViewPaginator(
             tableView: tableView, refreshControl: refreshControl!,
             collection: viewModel.newsCollection) { items in
             items.bindTo(self.tableView.rx_itemsWithCellIdentifier("RepoCell")) { [unowned self] row, elem, cell in
@@ -81,15 +81,10 @@ class NewsTableViewController: UITableViewController {
                 }
             }
         }
-        
-        tableView.rx_itemSelected.subscribeNext { [weak self] path in
-            self?.tableSelected(path)
+        paginator.whenSelected.subscribeNext { [weak self] repoVM in
+            self?.selectedRepoViewModel = repoVM
+            self?.performSegueWithIdentifier("showRepo", sender: self)
         }.addDisposableTo(disposeBag)
-    }
-    
-    private func tableSelected(path: NSIndexPath) {
-        selectedRepoViewModel = viewModel.newsCollection.items.value[path.row]
-        performSegueWithIdentifier("showRepo", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
