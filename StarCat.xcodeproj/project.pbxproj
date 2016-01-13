@@ -177,10 +177,10 @@
 		BE2CAF1E1C3C0C5400B51FBF /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				BE4E4EDF1C46A2C3009FCBE8 /* Collections */,
 				BEE0C0AE1C3408A00014986D /* Extensions */,
 				BE3F45421C2A991B00DD1863 /* Models */,
 				BE3F45411C2A990700DD1863 /* Services */,
-				BE4E4EDF1C46A2C3009FCBE8 /* Collections */,
 				BE3F45401C2A98FC00DD1863 /* ViewControllers */,
 				BEF605111C30239E0014D633 /* ViewModels */,
 				BE8C23171C452D4500691005 /* ViewUtilities */,
@@ -241,7 +241,7 @@
 				BE4E4EE01C46A2D7009FCBE8 /* Collection.swift */,
 				BE4E4EE31C46A319009FCBE8 /* UserEventCollection.swift */,
 			);
-			name = Collections;
+			path = Collections;
 			sourceTree = "<group>";
 		};
 		BE8C23171C452D4500691005 /* ViewUtilities */ = {
