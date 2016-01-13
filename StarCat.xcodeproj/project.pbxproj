@@ -233,9 +233,9 @@
 		BE8C23171C452D4500691005 /* ViewUtilities */ = {
 			isa = PBXGroup;
 			children = (
+				BE8C231A1C45E15E00691005 /* TableViewPaginator.swift */,
 				BEF289541C429D9000F50A2A /* UILabel+Tap.swift */,
 				BE8C23181C452D8E00691005 /* UITableViewController+scrollToTop.swift */,
-				BE8C231A1C45E15E00691005 /* TableViewPaginator.swift */,
 			);
 			path = ViewUtilities;
 			sourceTree = "<group>";
