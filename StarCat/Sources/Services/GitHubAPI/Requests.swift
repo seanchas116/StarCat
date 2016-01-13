@@ -109,3 +109,28 @@ struct GetReadmeRequest: GitHubRequest {
         return object as? String
     }
 }
+
+struct SearchRepoRequest: GitHubRequest {
+    typealias Response = [Repo]
+    
+    let query: String
+    let sort: String
+    let perPage: Int
+    
+    var path: String {
+        return "/search/repositories"
+    }
+    
+    var parameters: [String: AnyObject] {
+        return ["q": query, "sort": sort, "per_page": perPage]
+    }
+    
+    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
+        do {
+            return try decodeArray(object)
+        } catch {
+            print("Error parsing response: \(error)")
+            return nil
+        }
+    }
+}
