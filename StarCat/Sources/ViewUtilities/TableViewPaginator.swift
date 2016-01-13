@@ -14,14 +14,14 @@ import RxCocoa
 class TableViewPaginator<T> {
     let tableView: UITableView
     let refreshControl: UIRefreshControl
-    let collection: PaginatedCollection<T>
+    let collection: Collection<T>
     var initialized = false
     let loading = Variable(false)
     let loadingMore = Variable(false)
     let disposeBag = DisposeBag()
     var whenSelected: Observable<T?>!
     
-    init(tableView: UITableView, refreshControl: UIRefreshControl, collection: PaginatedCollection<T>, bind: (Variable<[T]>) -> Disposable) {
+    init(tableView: UITableView, refreshControl: UIRefreshControl, collection: Collection<T>, bind: (Variable<[T]>) -> Disposable) {
         self.tableView = tableView
         self.refreshControl = refreshControl
         self.collection = collection
