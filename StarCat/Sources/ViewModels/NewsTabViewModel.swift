@@ -46,7 +46,7 @@ private class RepoCache {
     static let instance = RepoCache()
 }
 
-class NewsCollection: PagedCollection<RepoViewModel> {
+class NewsCollection: PaginatedCollection<RepoViewModel> {
     override func fetch(page: Int) -> Promise<[Item]> {
         return Event.fetchForUser("seanchas116", page: page).then { events -> Promise<[RepoViewModel]> in
             let promises = events.flatMap { e -> Promise<RepoViewModel>? in

@@ -22,7 +22,7 @@
 		BE3FCD791C3D74F4008A9B32 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3FCD781C3D74F4008A9B32 /* NSDate.swift */; };
 		BE46B0041C38281400C8242C /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE46B0031C38281400C8242C /* RepoViewController.swift */; };
 		BE46B0091C38EB3300C8242C /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE46B0081C38EB3300C8242C /* Models.swift */; };
-		BE4C42B91C43F909004EE1E8 /* PagedCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4C42B81C43F909004EE1E8 /* PagedCollection.swift */; };
+		BE4C42B91C43F909004EE1E8 /* PaginatedCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4C42B81C43F909004EE1E8 /* PaginatedCollection.swift */; };
 		BE8C23191C452D8E00691005 /* UITableViewController+scrollToTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8C23181C452D8E00691005 /* UITableViewController+scrollToTop.swift */; };
 		BE8C231B1C45E15E00691005 /* TableViewPaginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8C231A1C45E15E00691005 /* TableViewPaginator.swift */; };
 		BE9A484D1C36234B00406DA6 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */; };
@@ -85,7 +85,7 @@
 		BE3FCD781C3D74F4008A9B32 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
 		BE46B0031C38281400C8242C /* RepoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
 		BE46B0081C38EB3300C8242C /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		BE4C42B81C43F909004EE1E8 /* PagedCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagedCollection.swift; sourceTree = "<group>"; };
+		BE4C42B81C43F909004EE1E8 /* PaginatedCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginatedCollection.swift; sourceTree = "<group>"; };
 		BE8C23181C452D8E00691005 /* UITableViewController+scrollToTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewController+scrollToTop.swift"; sourceTree = "<group>"; };
 		BE8C231A1C45E15E00691005 /* TableViewPaginator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewPaginator.swift; sourceTree = "<group>"; };
 		BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
@@ -213,7 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				BEF6051A1C3113DF0014D633 /* GitHubAPI */,
-				BE4C42B81C43F909004EE1E8 /* PagedCollection.swift */,
+				BE4C42B81C43F909004EE1E8 /* PaginatedCollection.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -527,7 +527,7 @@
 				BE176E681C4201B400E29E4F /* User.swift in Sources */,
 				BE18EEE71C3A2BD900B92291 /* RoundButton.swift in Sources */,
 				BE176E641C41F10200E29E4F /* UserViewController.swift in Sources */,
-				BE4C42B91C43F909004EE1E8 /* PagedCollection.swift in Sources */,
+				BE4C42B91C43F909004EE1E8 /* PaginatedCollection.swift in Sources */,
 				BEE0C0B21C3408F80014986D /* PromiseResults.swift in Sources */,
 				BED172F91C3E23E000C5A247 /* AppViewModel.swift in Sources */,
 				BE3FCD791C3D74F4008A9B32 /* NSDate.swift in Sources */,
