@@ -43,6 +43,6 @@ class Pagination<T> {
                 return Promise()
             }
         }
-        return fetchMore()
+        return fetchAndReset()
     }
 }
