@@ -14,28 +14,28 @@ import RxCocoa
 class TableViewPaginator<T> {
     let tableView: UITableView
     let refreshControl: UIRefreshControl
-    let collection: Collection<T>
+    let pagination: Pagination<T>
     var initialized = false
     let loading = Variable(false)
     let loadingMore = Variable(false)
     let disposeBag = DisposeBag()
     var whenSelected: Observable<T?>!
     
-    init(tableView: UITableView, refreshControl: UIRefreshControl, collection: Collection<T>, bind: (Variable<[T]>) -> Disposable) {
+    init(tableView: UITableView, refreshControl: UIRefreshControl, pagination: Pagination<T>, bind: (Variable<[T]>) -> Disposable) {
         self.tableView = tableView
         self.refreshControl = refreshControl
-        self.collection = collection
+        self.pagination = pagination
         
         tableView.dataSource = nil
         
         whenSelected = tableView.rx_itemSelected.map { [weak self] index -> T? in
             if let this = self {
-                return this.collection.items.value[index.row]
+                return this.pagination.items.value[index.row]
             }
             return nil
         }
         
-        bind(collection.items).addDisposableTo(disposeBag)
+        bind(pagination.items).addDisposableTo(disposeBag)
         
         refreshControl.rx_controlEvents(UIControlEvents.ValueChanged).subscribeNext { _ in
             self.fetch()
@@ -63,7 +63,7 @@ class TableViewPaginator<T> {
         let offset = tableView.contentOffset.y
         let height = tableView.frame.size.height
         if let indexBottom = tableView.indexPathForRowAtPoint(CGPointMake(0, offset + height)) {
-            let itemCount = collection.items.value.count
+            let itemCount = pagination.items.value.count
             if itemCount - indexBottom.row > 8 {
                 return
             }
@@ -73,21 +73,21 @@ class TableViewPaginator<T> {
     
     func refresh() {
         loading.value = true
-        collection.refresh().always {
+        pagination.refresh().always {
             self.loading.value = false
         }
     }
     
     func fetch() {
         loading.value = true
-        collection.fetchAndReset().always {
+        pagination.fetchAndReset().always {
             self.loading.value = false
         }
     }
     
     func fetchMore() {
         loadingMore.value = true
-        collection.fetchMore().always {
+        pagination.fetchMore().always {
             self.loadingMore.value = false
         }
     }

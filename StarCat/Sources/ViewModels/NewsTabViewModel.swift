@@ -12,6 +12,32 @@ import APIKit
 import PromiseKit
 import SwiftDate
 
+class NewsPagination: Pagination<RepoViewModel> {
+    let userName: String
+    
+    init(userName: String) {
+        self.userName = userName
+    }
+    
+    override func fetch(page: Int) -> Promise<[Item]> {
+        return Event.fetchForUser(userName, page: page).then { events -> Promise<[RepoViewModel]> in
+            let promises = events.flatMap { e -> Promise<RepoViewModel>? in
+                switch e.content {
+                case .Star(_, let repoSummary):
+                    return SharedModelCache.repoCache.fetch(repoSummary.fullName).then { repo -> RepoViewModel in
+                        let vm = RepoViewModel(repo: repo)
+                        vm.event.value = e
+                        return vm
+                    }
+                default:
+                    return nil
+                }
+            }
+            return when(promises)
+        }
+    }
+}
+
 class NewsTabViewModel {
-    let newsCollection = UserEventCollection(userName: "seanchas116")
+    let newsPagination = NewsPagination(userName: "seanchas116")
 }

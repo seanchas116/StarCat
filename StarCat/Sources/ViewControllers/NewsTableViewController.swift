@@ -71,7 +71,7 @@ class NewsTableViewController: UITableViewController {
         
         paginator = TableViewPaginator(
             tableView: tableView, refreshControl: refreshControl!,
-            collection: viewModel.newsCollection) { items in
+            pagination: viewModel.newsPagination) { items in
             items.bindTo(self.tableView.rx_itemsWithCellIdentifier("RepoCell")) { [unowned self] row, elem, cell in
                 let repoCell = cell as! RepoCell
                 repoCell.viewModel = elem
