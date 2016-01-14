@@ -11,6 +11,19 @@ import RxSwift
 import Haneke
 import PromiseKit
 
+class UserRepoPagination: Pagination<RepoViewModel> {
+    let userName: String
+    
+    init(userName: String) {
+        self.userName = userName
+    }
+    
+    override func fetch(page: Int) -> Promise<[RepoViewModel]> {
+        return Repo.search("user:\(userName)", sort: "stars", perPage: 30, page: page)
+            .then { repos in repos.map { repo in RepoViewModel(repo: repo) } }
+    }
+}
+
 class UserViewModel {
     let user = Variable<User?>(nil)
     let summary = Variable<UserSummary?>(nil)

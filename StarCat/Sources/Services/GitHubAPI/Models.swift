@@ -14,6 +14,9 @@ extension Repo {
     static func fetch(fullName: String) -> Promise<Repo> {
         return Session.sendRequestPromise(GetRepoRequest(fullName: fullName))
     }
+    static func search(query: String, sort: String, perPage: Int, page: Int) -> Promise<[Repo]> {
+        return Session.sendRequestPromise(SearchRepoRequest(query: query, sort: sort, perPage: perPage, page: page))
+    }
 }
 
 extension Event {

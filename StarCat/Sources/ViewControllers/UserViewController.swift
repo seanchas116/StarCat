@@ -23,9 +23,12 @@ class UserViewController: UITableViewController {
     var userSummary: UserSummary?
     let viewModel = UserViewModel()
     private let disposeBag = DisposeBag()
+    var paginator: TableViewPaginator<RepoViewModel>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refreshControl = UIRefreshControl()
         
         viewModel.avatarImage.bindTo(avatarImageView.rx_image).addDisposableTo(disposeBag)
         viewModel.name.bindTo(nameLabel.rx_text).addDisposableTo(disposeBag)
@@ -40,10 +43,24 @@ class UserViewController: UITableViewController {
         viewModel.followingCount.map { String($0) }.bindTo(followingLabel.rx_text).addDisposableTo(disposeBag)
         viewModel.starsCount.map { String($0) }.bindTo(starsLabel.rx_text).addDisposableTo(disposeBag)
         
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.registerNib(UINib(nibName: "RepoCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
+        
         if let summary = userSummary {
             viewModel.setSummary(summary)
             viewModel.load().then {
                 self.tableView.layoutIfNeeded()
+            }
+            let pagination = UserRepoPagination(userName: summary.login)
+            paginator = TableViewPaginator(
+                tableView: tableView, refreshControl: refreshControl!,
+                pagination: pagination
+            ) { items in
+                items.bindTo(self.tableView.rx_itemsWithCellIdentifier("RepoCell")) { row, elem, cell in
+                    let repoCell = cell as! RepoCell
+                    repoCell.viewModel = elem
+                }
             }
         }
     }

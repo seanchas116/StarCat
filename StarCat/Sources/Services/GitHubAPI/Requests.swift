@@ -110,24 +110,42 @@ struct GetReadmeRequest: GitHubRequest {
     }
 }
 
+struct SearchRepoResponse {
+    let totalCount: Int
+    let hasIncompleteResults: Bool
+    let items: [Repo]
+}
+
+extension SearchRepoResponse: Decodable {
+    static func decode(e: Extractor) throws -> SearchRepoResponse {
+        return try SearchRepoResponse(
+            totalCount: e <| "total_count",
+            hasIncompleteResults: e <| "incomplete_results",
+            items: e <|| "items"
+        )
+    }
+}
+
 struct SearchRepoRequest: GitHubRequest {
     typealias Response = [Repo]
     
     let query: String
     let sort: String
     let perPage: Int
+    let page: Int
     
     var path: String {
         return "/search/repositories"
     }
     
     var parameters: [String: AnyObject] {
-        return ["q": query, "sort": sort, "per_page": perPage]
+        return ["q": query, "sort": sort, "per_page": perPage, "page": page]
     }
     
     func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
         do {
-            return try decodeArray(object)
+            let response: SearchRepoResponse = try decode(object)
+            return response.items
         } catch {
             print("Error parsing response: \(error)")
             return nil
