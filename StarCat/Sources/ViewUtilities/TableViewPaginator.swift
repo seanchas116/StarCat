@@ -64,7 +64,7 @@ class TableViewPaginator<T> {
         let height = tableView.frame.size.height
         if let indexBottom = tableView.indexPathForRowAtPoint(CGPointMake(0, offset + height)) {
             let itemCount = pagination.items.value.count
-            if itemCount - indexBottom.row > 8 {
+            if itemCount > 0 && itemCount - indexBottom.row > 8 {
                 return
             }
         }
