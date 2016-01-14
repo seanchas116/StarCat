@@ -43,6 +43,7 @@ class RepoCell: UITableViewCell {
             viewModel.description.bindTo(descriptionLabel.rx_text).addDisposableTo(disposeBag)
             viewModel.avatarImage.bindTo(avatarImage.rx_image).addDisposableTo(disposeBag)
             viewModel.ownerName.bindTo(ownerNameLabel.rx_text).addDisposableTo(disposeBag)
+            viewModel.event.map { $0 == nil }.bindTo(eventInfoView.rx_hidden).addDisposableTo(disposeBag)
             viewModel.eventActorName.bindTo(eventActorLabel.rx_text).addDisposableTo(disposeBag)
             viewModel.eventTime.map { $0?.formatForUI(withAgo: false) ?? "" }.bindTo(eventTimeLabel.rx_text).addDisposableTo(disposeBag)
             viewModel.language.map { l in l ?? "" }.shareReplay(1)
