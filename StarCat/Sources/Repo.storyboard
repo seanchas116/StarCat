@@ -34,13 +34,13 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="seanchas116" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atr-Ha-UFo">
-                                                        <rect key="frame" x="80" y="18" width="89" height="20.5"/>
+                                                        <rect key="frame" x="80" y="16" width="89" height="20.5"/>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                                         <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StarCat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEs-T3-Gea">
-                                                        <rect key="frame" x="80" y="34" width="66.5" height="27.5"/>
+                                                        <rect key="frame" x="80" y="36.5" width="66.5" height="27.5"/>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -151,14 +151,17 @@
                                                     <constraint firstAttribute="bottom" secondItem="YSR-f1-FfU" secondAttribute="bottom" constant="16" id="5tO-Ym-c5T"/>
                                                     <constraint firstItem="K1Y-ZJ-0by" firstAttribute="height" secondItem="YSR-f1-FfU" secondAttribute="height" id="7OH-em-y5A"/>
                                                     <constraint firstItem="LEs-T3-Gea" firstAttribute="leading" secondItem="7Hk-0u-rKr" secondAttribute="trailing" constant="16" id="8QR-5k-1xl"/>
+                                                    <constraint firstItem="LEs-T3-Gea" firstAttribute="bottom" secondItem="7Hk-0u-rKr" secondAttribute="bottom" id="8cb-f3-fad"/>
                                                     <constraint firstItem="K1Y-ZJ-0by" firstAttribute="leading" secondItem="kQ3-MR-RIS" secondAttribute="trailing" id="B6Q-zg-Ntz"/>
                                                     <constraint firstItem="atr-Ha-UFo" firstAttribute="top" secondItem="AYC-hG-NAW" secondAttribute="top" constant="18" id="BqF-Ha-aie"/>
                                                     <constraint firstItem="7Hk-0u-rKr" firstAttribute="leading" secondItem="AYC-hG-NAW" secondAttribute="leading" constant="16" id="Civ-gq-0hj"/>
                                                     <constraint firstItem="BXw-at-CKI" firstAttribute="leading" secondItem="AYC-hG-NAW" secondAttribute="leading" constant="16" id="DuC-CZ-uMS"/>
                                                     <constraint firstItem="atr-Ha-UFo" firstAttribute="leading" secondItem="7Hk-0u-rKr" secondAttribute="trailing" constant="16" id="FNQ-go-7Le"/>
                                                     <constraint firstItem="7Hk-0u-rKr" firstAttribute="top" secondItem="AYC-hG-NAW" secondAttribute="top" constant="16" id="LNQ-bP-MuL"/>
+                                                    <constraint firstItem="LEs-T3-Gea" firstAttribute="baseline" secondItem="7Hk-0u-rKr" secondAttribute="baseline" id="MGP-Fm-4Xm"/>
                                                     <constraint firstItem="QjR-tp-96X" firstAttribute="top" secondItem="LEs-T3-Gea" secondAttribute="bottom" constant="18" id="O5A-WJ-Ee3"/>
                                                     <constraint firstAttribute="bottom" secondItem="93n-7n-E5W" secondAttribute="bottom" constant="16" id="Qtd-2h-Mt3"/>
+                                                    <constraint firstItem="atr-Ha-UFo" firstAttribute="top" secondItem="7Hk-0u-rKr" secondAttribute="top" id="RiV-EV-KhR"/>
                                                     <constraint firstItem="93n-7n-E5W" firstAttribute="top" secondItem="BXw-at-CKI" secondAttribute="bottom" constant="12" id="SNa-IW-zIb"/>
                                                     <constraint firstAttribute="trailing" secondItem="YSR-f1-FfU" secondAttribute="trailing" constant="16" id="WwJ-ZT-wKB"/>
                                                     <constraint firstItem="atr-Ha-UFo" firstAttribute="leading" secondItem="7Hk-0u-rKr" secondAttribute="leading" id="X3c-NT-l7m"/>
@@ -175,8 +178,11 @@
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="constraints">
+                                                        <exclude reference="O5A-WJ-Ee3"/>
                                                         <exclude reference="BqF-Ha-aie"/>
                                                         <exclude reference="X3c-NT-l7m"/>
+                                                        <exclude reference="eRf-VR-Rci"/>
+                                                        <exclude reference="MGP-Fm-4Xm"/>
                                                         <exclude reference="pgh-dJ-eXm"/>
                                                     </mask>
                                                 </variation>
