@@ -44,6 +44,10 @@ class UserViewController: UITableViewController {
         viewModel.followingCount.map { String($0) }.bindTo(followingLabel.rx_text).addDisposableTo(disposeBag)
         viewModel.starsCount.map { String($0) }.bindTo(starsLabel.rx_text).addDisposableTo(disposeBag)
         
+        viewModel.login.subscribeNext { [weak self] name in
+            self?.title = name
+        }.addDisposableTo(disposeBag)
+        
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.registerNib(UINib(nibName: "RepoCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
