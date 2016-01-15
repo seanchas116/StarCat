@@ -13,7 +13,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="SgW-Ea-XcH">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="SgW-Ea-XcH" userLabel="User Header">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="210"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -184,6 +184,11 @@
                                     <exclude reference="QNk-Wx-rCe"/>
                                 </mask>
                             </variation>
+                        </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="xQ3-91-5wC" userLabel="Padding Footer">
+                            <rect key="frame" x="0.0" y="282" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="7cE-bt-YFo">
