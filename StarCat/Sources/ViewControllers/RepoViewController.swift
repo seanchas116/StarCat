@@ -62,6 +62,10 @@ class RepoViewController: UIViewController, UITextViewDelegate {
             self?.performSegueWithIdentifier("showOwner", sender: self)
         }.addDisposableTo(disposeBag)
         
+        homepageLabel.makeTappable().subscribeNext { [unowned self] _ in
+            WebViewPopup.open(self.viewModel.homepage.value!, root: self)
+        }.addDisposableTo(disposeBag)
+        
         viewModel.fetchReadme()
     }
 
