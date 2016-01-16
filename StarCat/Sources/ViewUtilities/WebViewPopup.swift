@@ -8,6 +8,7 @@
 
 import Foundation
 import SafariServices
+import Regex
 
 class WebViewPopup: NSObject, SFSafariViewControllerDelegate {
     let root: UIViewController
@@ -28,7 +29,15 @@ class WebViewPopup: NSObject, SFSafariViewControllerDelegate {
         root.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    static func open(url: NSURL, root: UIViewController) {
-        WebViewPopup(url: url, root: root).show()
+    static func open(origURL: NSURL, root: UIViewController) {
+        var newURL: NSURL?
+        if !origURL.absoluteString.grep("^https?") {
+            newURL = NSURL(string: "http://" + origURL.absoluteString)
+        } else {
+            newURL = origURL
+        }
+        if let url = newURL {
+            WebViewPopup(url: url, root: root).show()
+        }
     }
 }
