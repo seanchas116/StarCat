@@ -78,17 +78,15 @@ class RepoViewController: UIViewController, UITextViewDelegate {
         let owner = viewModel.repo.owner
         if let type = owner.type {
             if type == .Organization {
-                let storyboard = UIStoryboard(name: "Organization", bundle: nil)
-                let next = storyboard.instantiateInitialViewController() as! OrganizationViewController
-                next.userSummary = viewModel.repo.owner
-                self.navigationController?.pushViewController(next, animated: true)
+                self.navigationController?.pushStoryboard("Organization", animated: true) { next in
+                    (next as! OrganizationViewController).userSummary = owner
+                }
                 return
             }
         }
-        let storyboard = UIStoryboard(name: "User", bundle: nil)
-        let next = storyboard.instantiateInitialViewController() as! UserViewController
-        next.userSummary = viewModel.repo.owner
-        self.navigationController?.pushViewController(next, animated: true)
+        self.navigationController?.pushStoryboard("User", animated: true) { next in
+            (next as! UserViewController).userSummary = owner
+        }
     }
 
     func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {

@@ -25,6 +25,7 @@
 		BE47078B1C49EAA00069DA6F /* WebViewPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE47078A1C49EAA00069DA6F /* WebViewPopup.swift */; };
 		BE47078F1C4A152D0069DA6F /* Organization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE47078E1C4A152D0069DA6F /* Organization.storyboard */; };
 		BE4707911C4A198F0069DA6F /* OrganizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4707901C4A198F0069DA6F /* OrganizationViewController.swift */; };
+		BE4707931C4A2F640069DA6F /* UINavigationController+storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4707921C4A2F640069DA6F /* UINavigationController+storyboard.swift */; };
 		BE4E4EE61C46A39C009FCBE8 /* ModelCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E4EE51C46A39C009FCBE8 /* ModelCache.swift */; };
 		BE8C23191C452D8E00691005 /* UITableViewController+scrollToTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8C23181C452D8E00691005 /* UITableViewController+scrollToTop.swift */; };
 		BE8C231B1C45E15E00691005 /* TableViewPaginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8C231A1C45E15E00691005 /* TableViewPaginator.swift */; };
@@ -92,6 +93,7 @@
 		BE47078A1C49EAA00069DA6F /* WebViewPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewPopup.swift; sourceTree = "<group>"; };
 		BE47078E1C4A152D0069DA6F /* Organization.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Organization.storyboard; sourceTree = "<group>"; };
 		BE4707901C4A198F0069DA6F /* OrganizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizationViewController.swift; sourceTree = "<group>"; };
+		BE4707921C4A2F640069DA6F /* UINavigationController+storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+storyboard.swift"; sourceTree = "<group>"; };
 		BE4E4EE51C46A39C009FCBE8 /* ModelCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelCache.swift; sourceTree = "<group>"; };
 		BE8C23181C452D8E00691005 /* UITableViewController+scrollToTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewController+scrollToTop.swift"; sourceTree = "<group>"; };
 		BE8C231A1C45E15E00691005 /* TableViewPaginator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewPaginator.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				BEF289541C429D9000F50A2A /* UILabel+Tap.swift */,
 				BE8C23181C452D8E00691005 /* UITableViewController+scrollToTop.swift */,
 				BE47078A1C49EAA00069DA6F /* WebViewPopup.swift */,
+				BE4707921C4A2F640069DA6F /* UINavigationController+storyboard.swift */,
 			);
 			path = ViewUtilities;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				BEF605131C3023F70014D633 /* NewsTabViewModel.swift in Sources */,
 				BE4E4EE61C46A39C009FCBE8 /* ModelCache.swift in Sources */,
 				BE46B0041C38281400C8242C /* RepoViewController.swift in Sources */,
+				BE4707931C4A2F640069DA6F /* UINavigationController+storyboard.swift in Sources */,
 				BEB7705C1C476FC40000E9A8 /* Pagination.swift in Sources */,
 				BEF605221C3116950014D633 /* Authentication.swift in Sources */,
 				BE3F45461C2A993400DD1863 /* Repo.swift in Sources */,
