@@ -240,29 +240,11 @@
                         <outlet property="readmeView" destination="eJO-jd-Ezw" id="2L3-XB-kod"/>
                         <outlet property="stargazersButton" destination="YSR-f1-FfU" id="M8h-dH-cdg"/>
                         <outlet property="titleLabel" destination="LEs-T3-Gea" id="0P7-Qe-om9"/>
-                        <segue destination="r5y-OU-8uM" kind="show" identifier="showOwner" id="S2O-3K-fGw"/>
-                        <segue destination="PGw-84-I4K" kind="show" identifier="showOrganization" id="rGz-mW-LKY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9yL-aF-xLW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1775" y="-1213"/>
-        </scene>
-        <!--User-->
-        <scene sceneID="eDn-Fl-o5m">
-            <objects>
-                <viewControllerPlaceholder storyboardName="User" id="r5y-OU-8uM" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="93z-3r-qTy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2313.5" y="-1276"/>
-        </scene>
-        <!--Organization-->
-        <scene sceneID="nbc-vf-nMv">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Organization" id="PGw-84-I4K" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r3t-qr-mo5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2338" y="-1151"/>
         </scene>
     </scenes>
 </document>
