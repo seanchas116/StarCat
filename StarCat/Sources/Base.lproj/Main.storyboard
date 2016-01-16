@@ -32,7 +32,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="VuT-K2-JCA" kind="relationship" relationship="rootViewController" id="le5-0B-BpX"/>
+                        <segue destination="60H-KZ-cDf" kind="relationship" relationship="rootViewController" id="mF7-oj-7V4"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XKl-JZ-e1T" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -127,23 +127,33 @@
             <point key="canvasLocation" x="952" y="-1213"/>
         </scene>
         <!--Search View Controller-->
-        <scene sceneID="VC6-VM-HDx">
+        <scene sceneID="V59-uy-hNL">
             <objects>
-                <viewController id="VuT-K2-JCA" userLabel="Search View Controller" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bGq-xh-S4i"/>
-                        <viewControllerLayoutGuide type="bottom" id="tWs-0l-yJA"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="6YZ-JQ-y1E">
+                <tableViewController id="60H-KZ-cDf" customClass="SearchViewController" customModule="StarCat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Hhf-bj-zgN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Search" id="gft-UF-Sfo"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9mh-92-EZp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1v8-6E-nPf">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1v8-6E-nPf" id="vfI-hd-XOo">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="60H-KZ-cDf" id="tFQ-f9-xbN"/>
+                            <outlet property="delegate" destination="60H-KZ-cDf" id="7eN-TX-yf7"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="wRK-KU-OWJ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vmg-Md-588" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="980" y="-261"/>
+            <point key="canvasLocation" x="952" y="-261"/>
         </scene>
         <!--Me View Controller-->
         <scene sceneID="KdC-7F-xk3">
