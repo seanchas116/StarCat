@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import SwiftDate
 
-class RepoViewController: UIViewController {
+class RepoViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -56,6 +56,8 @@ class RepoViewController: UIViewController {
             }
             .addDisposableTo(disposeBag)
         
+        readmeView.delegate = self
+        
         ownerLabel.makeTappable().subscribeNext { [weak self] _ in
             self?.performSegueWithIdentifier("showOwner", sender: self)
         }.addDisposableTo(disposeBag)
@@ -73,6 +75,11 @@ class RepoViewController: UIViewController {
             let next = (segue.destinationViewController as! UserViewController)
             next.userSummary = viewModel.repo.owner
         }
+    }
+
+    func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
+        WebViewPopup.open(URL, root: self)
+        return false
     }
 }
 

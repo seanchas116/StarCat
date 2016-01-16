@@ -22,6 +22,7 @@
 		BE3FCD791C3D74F4008A9B32 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3FCD781C3D74F4008A9B32 /* NSDate.swift */; };
 		BE46B0041C38281400C8242C /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE46B0031C38281400C8242C /* RepoViewController.swift */; };
 		BE46B0091C38EB3300C8242C /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE46B0081C38EB3300C8242C /* Models.swift */; };
+		BE47078B1C49EAA00069DA6F /* WebViewPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE47078A1C49EAA00069DA6F /* WebViewPopup.swift */; };
 		BE4E4EE61C46A39C009FCBE8 /* ModelCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E4EE51C46A39C009FCBE8 /* ModelCache.swift */; };
 		BE8C23191C452D8E00691005 /* UITableViewController+scrollToTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8C23181C452D8E00691005 /* UITableViewController+scrollToTop.swift */; };
 		BE8C231B1C45E15E00691005 /* TableViewPaginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8C231A1C45E15E00691005 /* TableViewPaginator.swift */; };
@@ -86,6 +87,7 @@
 		BE3FCD781C3D74F4008A9B32 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
 		BE46B0031C38281400C8242C /* RepoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
 		BE46B0081C38EB3300C8242C /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		BE47078A1C49EAA00069DA6F /* WebViewPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewPopup.swift; sourceTree = "<group>"; };
 		BE4E4EE51C46A39C009FCBE8 /* ModelCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelCache.swift; sourceTree = "<group>"; };
 		BE8C23181C452D8E00691005 /* UITableViewController+scrollToTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewController+scrollToTop.swift"; sourceTree = "<group>"; };
 		BE8C231A1C45E15E00691005 /* TableViewPaginator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewPaginator.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				BE8C231A1C45E15E00691005 /* TableViewPaginator.swift */,
 				BEF289541C429D9000F50A2A /* UILabel+Tap.swift */,
 				BE8C23181C452D8E00691005 /* UITableViewController+scrollToTop.swift */,
+				BE47078A1C49EAA00069DA6F /* WebViewPopup.swift */,
 			);
 			path = ViewUtilities;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				BED172FB1C3E249300C5A247 /* TabViewModel.swift in Sources */,
 				BE8C23191C452D8E00691005 /* UITableViewController+scrollToTop.swift in Sources */,
 				BEF590801C3A940600633417 /* RoundButtonBorder.swift in Sources */,
+				BE47078B1C49EAA00069DA6F /* WebViewPopup.swift in Sources */,
 				BEB680791C3F9BD6007B2E08 /* ReadmeTextView.swift in Sources */,
 				BEBA2A711C26AACB00F64F05 /* Constants.swift in Sources */,
 				BE8C231B1C45E15E00691005 /* TableViewPaginator.swift in Sources */,
