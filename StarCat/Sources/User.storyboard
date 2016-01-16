@@ -198,9 +198,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="Pwg-81-1K0" kind="show" identifier="showRepo" id="EzJ-LR-ufo"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -223,14 +220,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IPO-lC-iAg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="569" y="417"/>
-        </scene>
-        <!--Repo-->
-        <scene sceneID="TOk-VD-vaX">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Repo" id="Pwg-81-1K0" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pbk-W4-e7H" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1056.5" y="417"/>
         </scene>
     </scenes>
 </document>

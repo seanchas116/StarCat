@@ -128,20 +128,11 @@
                         <outlet property="loginLabel" destination="g8v-nP-bPl" id="xMA-4J-Mpt"/>
                         <outlet property="membersLabel" destination="PJY-CS-3pn" id="vBa-pP-jc0"/>
                         <outlet property="nameLabel" destination="63F-q9-Fri" id="etB-hx-tpQ"/>
-                        <segue destination="TSJ-GR-kY4" kind="show" identifier="showRepo" id="nzE-x8-uRF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Edq-ld-ACk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="245" y="212"/>
-        </scene>
-        <!--Repo-->
-        <scene sceneID="eOZ-nx-bZb">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Repo" id="TSJ-GR-kY4" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iRw-6G-ccd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="813.5" y="212"/>
         </scene>
     </scenes>
 </document>

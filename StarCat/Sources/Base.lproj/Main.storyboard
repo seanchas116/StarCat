@@ -121,10 +121,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="News" id="VA3-pi-LJ6"/>
-                    <connections>
-                        <segue destination="BIz-B4-jhD" kind="show" identifier="showRepo" id="58K-vD-CmX"/>
-                        <segue destination="3Dm-5r-4er" kind="show" identifier="showActor" id="I7Y-T9-PTN"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZPr-ne-DGz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -188,22 +184,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-950" y="-1213"/>
-        </scene>
-        <!--Repo-->
-        <scene sceneID="pN5-rI-FS7">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Repo" id="BIz-B4-jhD" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dhb-mt-1xU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1785" y="-1213"/>
-        </scene>
-        <!--User-->
-        <scene sceneID="h0G-fB-x3c">
-            <objects>
-                <viewControllerPlaceholder storyboardName="User" id="3Dm-5r-4er" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sje-EC-VBf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1785.5" y="-1085"/>
         </scene>
     </scenes>
     <resources>

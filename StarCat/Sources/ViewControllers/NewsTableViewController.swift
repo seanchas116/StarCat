@@ -14,8 +14,6 @@ class NewsTableViewController: UITableViewController {
     
     let disposeBag = DisposeBag()
     let viewModel = NewsTabViewModel()
-    var selectedRepoViewModel: RepoViewModel?
-    var showingActor: UserSummary?
     let appeared = Variable(false)
     var paginator: TableViewPaginator<RepoViewModel>!
 
@@ -76,33 +74,16 @@ class NewsTableViewController: UITableViewController {
                 let repoCell = cell as! RepoCell
                 repoCell.viewModel = elem
                 repoCell.onActorTapped = { [unowned self] actor in
-                    self.showingActor = actor
-                    self.performSegueWithIdentifier("showActor", sender: self)
+                    self.navigationController?.pushStoryboard("User", animated: true) { next in
+                        (next as! UserViewController).userSummary = actor
+                    }
                 }
             }
         }
-        paginator.whenSelected.subscribeNext { [weak self] repoVM in
-            self?.selectedRepoViewModel = repoVM
-            self?.performSegueWithIdentifier("showRepo", sender: self)
+        paginator.whenSelected.subscribeNext { [unowned self] repoVM in
+            self.navigationController?.pushStoryboard("Repo", animated: true) { next in
+                (next as! RepoViewController).viewModel = repoVM
+            }
         }.addDisposableTo(disposeBag)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let id = segue.identifier {
-            switch id {
-            case "showRepo":
-                if selectedRepoViewModel != nil {
-                    let subVC = (segue.destinationViewController as! RepoViewController)
-                    subVC.viewModel = selectedRepoViewModel
-                }
-            case "showActor":
-                if showingActor != nil {
-                    let subVC = (segue.destinationViewController as! UserViewController)
-                    subVC.userSummary = showingActor
-                }
-            default:
-                break
-            }
-        }
     }
 }

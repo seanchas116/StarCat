@@ -23,7 +23,6 @@ class OrganizationViewController: UITableViewController {
     let viewModel = UserViewModel()
     let disposeBag = DisposeBag()
     var paginator: TableViewPaginator<RepoViewModel>!
-    var selectedRepoVM: RepoViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,27 +62,14 @@ class OrganizationViewController: UITableViewController {
         }
         
         paginator.whenSelected.subscribeNext { [unowned self] repoVM in
-            self.selectedRepoVM = repoVM
-            self.performSegueWithIdentifier("showRepo", sender: self)
+            self.navigationController?.pushStoryboard("Repo", animated: true) { next in
+                (next as! RepoViewController).viewModel = repoVM
+            }
         }.addDisposableTo(disposeBag)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let id = segue.identifier {
-            switch id {
-            case "showRepo":
-                if selectedRepoVM != nil {
-                    let subVC = (segue.destinationViewController as! RepoViewController)
-                    subVC.viewModel = selectedRepoVM
-                }
-            default:
-                break
-            }
-        }
     }
 }
