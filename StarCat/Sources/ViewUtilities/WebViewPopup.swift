@@ -29,7 +29,7 @@ class WebViewPopup: NSObject, SFSafariViewControllerDelegate {
         root.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    static func open(origURL: NSURL, root: UIViewController) {
+    static func open(origURL: NSURL, onViewController vc: UIViewController) {
         var newURL: NSURL?
         if !origURL.absoluteString.grep("^https?") {
             newURL = NSURL(string: "http://" + origURL.absoluteString)
@@ -37,7 +37,7 @@ class WebViewPopup: NSObject, SFSafariViewControllerDelegate {
             newURL = origURL
         }
         if let url = newURL {
-            WebViewPopup(url: url, root: root).show()
+            WebViewPopup(url: url, root: vc).show()
         }
     }
 }

@@ -59,11 +59,11 @@ class RepoViewController: UIViewController, UITextViewDelegate {
         readmeView.delegate = self
         
         ownerLabel.makeTappable().subscribeNext { [weak self] _ in
-            self?.performSegueWithIdentifier("showOwner", sender: self)
+            self?.showOwner()
         }.addDisposableTo(disposeBag)
         
         homepageLabel.makeTappable().subscribeNext { [unowned self] _ in
-            WebViewPopup.open(self.viewModel.homepage.value!, root: self)
+            WebViewPopup.open(self.viewModel.homepage.value!, onViewController: self)
         }.addDisposableTo(disposeBag)
         
         viewModel.fetchReadme()
@@ -73,16 +73,24 @@ class RepoViewController: UIViewController, UITextViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "showOwner") {
-            let next = (segue.destinationViewController as! UserViewController)
+    
+    private func showOwner() {
+        let owner = viewModel.repo.owner
+        if owner.type == "Organization" {
+            let storyboard = UIStoryboard(name: "Organization", bundle: nil)
+            let next = storyboard.instantiateInitialViewController() as! OrganizationViewController
             next.userSummary = viewModel.repo.owner
+            self.navigationController?.pushViewController(next, animated: true)
+        } else {
+            let storyboard = UIStoryboard(name: "User", bundle: nil)
+            let next = storyboard.instantiateInitialViewController() as! UserViewController
+            next.userSummary = viewModel.repo.owner
+            self.navigationController?.pushViewController(next, animated: true)
         }
     }
 
     func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
-        WebViewPopup.open(URL, root: self)
+        WebViewPopup.open(URL, onViewController: self)
         return false
     }
 }

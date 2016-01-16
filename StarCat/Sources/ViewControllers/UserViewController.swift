@@ -39,6 +39,9 @@ class UserViewController: UITableViewController {
         viewModel.location.map { $0 == nil }.bindTo(locationLabel.rx_hidden).addDisposableTo(disposeBag)
         viewModel.homepage.map { $0?.URLString ?? "" }.bindTo(homepageLabel.rx_text).addDisposableTo(disposeBag)
         viewModel.homepage.map { $0 == nil }.bindTo(locationLabel.rx_hidden).addDisposableTo(disposeBag)
+        homepageLabel.makeTappable().subscribeNext { [unowned self] _ in
+            WebViewPopup.open(self.viewModel.homepage.value!, onViewController: self)
+        }.addDisposableTo(disposeBag)
         
         viewModel.followersCount.map { String($0) }.bindTo(followersLabel.rx_text).addDisposableTo(disposeBag)
         viewModel.followingCount.map { String($0) }.bindTo(followingLabel.rx_text).addDisposableTo(disposeBag)
@@ -71,10 +74,6 @@ class UserViewController: UITableViewController {
         paginator.whenSelected.subscribeNext { [weak self] repoVM in
             self?.selectedRepoVM = repoVM
             self?.performSegueWithIdentifier("showRepo", sender: self)
-        }.addDisposableTo(disposeBag)
-        
-        homepageLabel.makeTappable().subscribeNext { [unowned self] _ in
-            WebViewPopup.open(self.viewModel.homepage.value!, root: self)
         }.addDisposableTo(disposeBag)
     }
     

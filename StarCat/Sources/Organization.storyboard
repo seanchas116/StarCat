@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="N7x-GR-9QJ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -121,10 +121,27 @@
                             <outlet property="delegate" destination="N7x-GR-9QJ" id="EEM-WK-qIJ"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="avatarImageView" destination="0hq-V6-rsl" id="d9S-Pb-tvS"/>
+                        <outlet property="homepageLabel" destination="6lE-89-odq" id="SW0-PM-Um3"/>
+                        <outlet property="locationLabel" destination="rgi-EQ-gsX" id="dIV-ou-SJ2"/>
+                        <outlet property="loginLabel" destination="g8v-nP-bPl" id="xMA-4J-Mpt"/>
+                        <outlet property="membersLabel" destination="PJY-CS-3pn" id="vBa-pP-jc0"/>
+                        <outlet property="nameLabel" destination="63F-q9-Fri" id="etB-hx-tpQ"/>
+                        <segue destination="TSJ-GR-kY4" kind="show" identifier="showRepo" id="nzE-x8-uRF"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Edq-ld-ACk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="245" y="212"/>
+        </scene>
+        <!--Repo-->
+        <scene sceneID="eOZ-nx-bZb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Repo" id="TSJ-GR-kY4" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iRw-6G-ccd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="813.5" y="212"/>
         </scene>
     </scenes>
 </document>

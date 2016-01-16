@@ -26,6 +26,7 @@ extension NSDate: Decodable {
 extension User: Decodable {
     static func decode(e: Extractor) throws -> User {
         return try User(
+            type: e <| "type",
             id: e <| "id",
             login: e <| "login",
             name: e <|? "name",
@@ -45,7 +46,8 @@ extension UserSummary: Decodable {
         return try UserSummary(
             id: e <| "id",
             login: e <| "login",
-            avatarURL: e <| "avatar_url"
+            avatarURL: e <| "avatar_url",
+            type: e <|? "type"
         )
     }
 }

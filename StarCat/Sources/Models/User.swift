@@ -9,6 +9,7 @@
 import Foundation
 
 struct User {
+    let type: String
     let id: Int
     let login: String
     let name: String?

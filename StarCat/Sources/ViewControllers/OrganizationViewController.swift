@@ -7,89 +7,83 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class OrganizationViewController: UITableViewController {
-
+    
+    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var loginLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var homepageLabel: UILabel!
+    @IBOutlet weak var membersLabel: UILabel!
+    
+    var userSummary: UserSummary?
+    let viewModel = UserViewModel()
+    let disposeBag = DisposeBag()
+    var paginator: TableViewPaginator<RepoViewModel>!
+    var selectedRepoVM: RepoViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        refreshControl = UIRefreshControl()
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.registerNib(UINib(nibName: "RepoCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
+        
+        viewModel.avatarImage.bindTo(avatarImageView.rx_image).addDisposableTo(disposeBag)
+        viewModel.name.bindTo(nameLabel.rx_text).addDisposableTo(disposeBag)
+        viewModel.login.bindTo(loginLabel.rx_text).addDisposableTo(disposeBag)
+        
+        viewModel.location.map { $0 ?? "" }.bindTo(locationLabel.rx_text).addDisposableTo(disposeBag)
+        viewModel.location.map { $0 == nil }.bindTo(locationLabel.rx_hidden).addDisposableTo(disposeBag)
+        viewModel.homepage.map { $0?.URLString ?? "" }.bindTo(homepageLabel.rx_text).addDisposableTo(disposeBag)
+        viewModel.homepage.map { $0 == nil }.bindTo(locationLabel.rx_hidden).addDisposableTo(disposeBag)
+        homepageLabel.makeTappable().subscribeNext { [unowned self] _ in
+            WebViewPopup.open(self.viewModel.homepage.value!, onViewController: self)
+        }.addDisposableTo(disposeBag)
+        
+        if let summary = userSummary {
+            viewModel.setSummary(summary)
+            viewModel.load().then {
+                self.tableView.layoutIfNeeded()
+            }
+            let pagination = UserRepoPagination(userName: summary.login)
+            paginator = TableViewPaginator(
+                tableView: tableView, refreshControl: refreshControl!,
+                pagination: pagination
+                ) { items in
+                    items.bindTo(self.tableView.rx_itemsWithCellIdentifier("RepoCell")) { row, elem, cell in
+                        let repoCell = cell as! RepoCell
+                        repoCell.viewModel = elem
+                    }
+            }
+        }
+        
+        paginator.whenSelected.subscribeNext { [unowned self] repoVM in
+            self.selectedRepoVM = repoVM
+            self.performSegueWithIdentifier("showRepo", sender: self)
+        }.addDisposableTo(disposeBag)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let id = segue.identifier {
+            switch id {
+            case "showRepo":
+                if selectedRepoVM != nil {
+                    let subVC = (segue.destinationViewController as! RepoViewController)
+                    subVC.viewModel = selectedRepoVM
+                }
+            default:
+                break
+            }
+        }
     }
-    */
-
 }
