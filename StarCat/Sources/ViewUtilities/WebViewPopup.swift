@@ -21,7 +21,6 @@ class WebViewPopup: NSObject, SFSafariViewControllerDelegate {
     func show() {
         let safari = SFSafariViewController(URL: url)
         safari.delegate = self
-        safari.modalPresentationStyle = .Popover
         root.presentViewController(safari, animated: true, completion: nil)
     }
     
