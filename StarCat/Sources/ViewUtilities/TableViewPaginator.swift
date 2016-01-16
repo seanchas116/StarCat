@@ -26,6 +26,7 @@ class TableViewPaginator<T> {
         self.refreshControl = refreshControl
         self.pagination = pagination
         
+        tableView.delegate = nil
         tableView.dataSource = nil
         
         whenSelected = tableView.rx_itemSelected.map { [weak self] index -> T? in
