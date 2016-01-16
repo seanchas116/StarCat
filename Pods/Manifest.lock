@@ -27,6 +27,7 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (3.0.0):
     - PromiseKit/CorePromise
+  - Regex (0.3.0)
   - Result (1.0.1)
   - RxBlocking (2.0.0-beta.4):
     - RxSwift (~> 2.0.0-beta)
@@ -43,6 +44,7 @@ DEPENDENCIES:
   - KeychainAccess
   - OctoKit.swift
   - PromiseKit
+  - Regex
   - RxBlocking (~> 2.0.0-beta)
   - RxCocoa (~> 2.0.0-beta)
   - RxSwift (~> 2.0.0-beta)
@@ -58,6 +60,7 @@ SPEC CHECKSUMS:
   OctoKit.swift: 8a53a0d6bd8ba5254c9c6abbf7ff4a256324a247
   OMGHTTPURLRQ: 8376dc887d76a5a7e2a67881dc788f917a2f437c
   PromiseKit: 665540a1eb43156446872dcf49ed7dee6ebbe13b
+  Regex: 6bfb554ad7d5b1be9cfc57ab1fe2fb6cee45a344
   Result: caef80340451e1f07492fa1e89117f83613bce24
   RxBlocking: 234b0c161315ff3ade25c11e48d74e9ca83158b5
   RxCocoa: 4a3e433e6dfe116362ff54423c841cc0f209e009

@@ -14,6 +14,7 @@ pod 'Himotoki'
 pod 'HanekeSwift'
 pod 'SwiftDate'
 pod 'Alamofire'
+pod 'Regex'
 
 target 'StarCat' do
 end
