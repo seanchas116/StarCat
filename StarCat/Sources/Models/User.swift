@@ -8,8 +8,13 @@
 
 import Foundation
 
+enum UserType {
+    case User
+    case Organization
+}
+
 struct User {
-    let type: String
+    let type: UserType
     let id: Int
     let login: String
     let name: String?

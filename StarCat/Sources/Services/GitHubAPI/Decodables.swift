@@ -10,6 +10,10 @@ import Foundation
 import Himotoki
 import SwiftDate
 
+enum DecodeError: ErrorType {
+    case WrongUserType(String)
+}
+
 extension NSURL: Decodable {
     public static func decode(e: Extractor) throws -> NSURL {
         return try NSURL(string: String.decode(e))!
@@ -20,6 +24,20 @@ extension NSDate: Decodable {
     public static func decode(e: Extractor) throws -> NSDate {
         let str = try String.decode(e)
         return str.toDate(DateFormat.ISO8601) ?? NSDate()
+    }
+}
+
+extension UserType: Decodable {
+    static func decode(e: Extractor) throws -> UserType {
+        let str = try String.decode(e)
+        switch str {
+        case "User":
+            return .User
+        case "Organization":
+            return .Organization
+        default:
+            throw DecodeError.WrongUserType(str)
+        }
     }
 }
 
