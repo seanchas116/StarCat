@@ -72,6 +72,10 @@ class UserViewController: UITableViewController {
             self?.selectedRepoVM = repoVM
             self?.performSegueWithIdentifier("showRepo", sender: self)
         }.addDisposableTo(disposeBag)
+        
+        homepageLabel.makeTappable().subscribeNext { [unowned self] _ in
+            WebViewPopup.open(self.viewModel.homepage.value!, root: self)
+        }.addDisposableTo(disposeBag)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
