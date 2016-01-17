@@ -35,12 +35,17 @@ class NewsTableViewController: RepoTableViewController {
             }
         }.addDisposableTo(disposeBag)
     }
-
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         appeared.value = true
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        paginator.refresh()
+    }
+
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         appeared.value = false
