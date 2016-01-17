@@ -25,13 +25,13 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hoge company" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63F-q9-Fri">
-                                    <rect key="frame" x="80" y="16" width="141" height="27.5"/>
+                                    <rect key="frame" x="80" y="16" width="504" height="27.5"/>
                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hogehoge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8v-nP-bPl">
-                                    <rect key="frame" x="80" y="43" width="72" height="20.5"/>
+                                    <rect key="frame" x="80" y="43" width="504" height="20.5"/>
                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                     <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -83,9 +83,11 @@
                             <color key="backgroundColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.11372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstItem="0hq-V6-rsl" firstAttribute="leading" secondItem="BBw-HX-iwm" secondAttribute="leading" constant="16" id="FfO-KI-IQa"/>
+                                <constraint firstAttribute="trailing" secondItem="63F-q9-Fri" secondAttribute="trailing" constant="16" id="LIV-JJ-vwf"/>
                                 <constraint firstItem="fFL-qh-s25" firstAttribute="top" secondItem="g8v-nP-bPl" secondAttribute="bottom" constant="16" id="Mhv-6X-pL0"/>
                                 <constraint firstAttribute="bottom" secondItem="QKw-Va-0ls" secondAttribute="bottom" constant="16" id="NK6-K8-BdG"/>
                                 <constraint firstItem="g8v-nP-bPl" firstAttribute="bottom" secondItem="0hq-V6-rsl" secondAttribute="bottom" id="Ov8-YM-OOT"/>
+                                <constraint firstAttribute="trailing" secondItem="g8v-nP-bPl" secondAttribute="trailing" constant="16" id="TTW-pI-cYg"/>
                                 <constraint firstItem="fFL-qh-s25" firstAttribute="top" secondItem="0hq-V6-rsl" secondAttribute="bottom" constant="16" id="TdK-f8-0ri"/>
                                 <constraint firstItem="g8v-nP-bPl" firstAttribute="leading" secondItem="0hq-V6-rsl" secondAttribute="trailing" constant="16" id="bBE-o4-Hcj"/>
                                 <constraint firstItem="0hq-V6-rsl" firstAttribute="top" secondItem="BBw-HX-iwm" secondAttribute="top" constant="16" id="e4X-vO-iBf"/>
