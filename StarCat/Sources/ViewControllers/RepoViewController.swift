@@ -74,6 +74,8 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
         combineLatest(viewModel.language, viewModel.pushedAt) { "\($0 ?? "")・\($1.formatForUI(withAgo: true))" }
             .bindTo(miscInfoLabel.rx_text).addDisposableTo(disposeBag)
         
+        readmeHeightConstraint.constant = 0
+        
         viewModel.readme
             .map(wrapReadme)
             .subscribeNext { [unowned self] html in
@@ -135,8 +137,6 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
         webView.evaluateJavaScript("document.height") { (result, error) in
             if error == nil {
                 if let height = result! as? Double {
-                    print(height)
-                    
                     self.readmeHeightConstraint.constant = CGFloat(height)
                 }
             }
