@@ -126,7 +126,7 @@
             </objects>
             <point key="canvasLocation" x="952" y="-1213"/>
         </scene>
-        <!--Search View Controller-->
+        <!--Search-->
         <scene sceneID="V59-uy-hNL">
             <objects>
                 <tableViewController id="60H-KZ-cDf" customClass="SearchViewController" customModule="StarCat" customModuleProvider="target" sceneMemberID="viewController">
@@ -149,7 +149,7 @@
                             <outlet property="delegate" destination="60H-KZ-cDf" id="7eN-TX-yf7"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="wRK-KU-OWJ"/>
+                    <navigationItem key="navigationItem" title="Search" id="wRK-KU-OWJ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vmg-Md-588" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
