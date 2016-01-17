@@ -8,11 +8,13 @@
 
 import UIKit
 
-class SearchViewController: UITableViewController, UISearchResultsUpdating {
+class SearchViewController: RepoTableViewController, UISearchResultsUpdating {
     
     var searchController: UISearchController!
+    let viewModel = SearchViewModel()
 
     override func viewDidLoad() {
+        pagination = viewModel.pagination
         super.viewDidLoad()
         
         searchController = UISearchController(searchResultsController: nil)
