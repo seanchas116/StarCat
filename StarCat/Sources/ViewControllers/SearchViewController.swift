@@ -17,14 +17,16 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
         
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
-        searchController.searchBar.sizeToFit()
-        tableView.tableHeaderView = searchController.searchBar
-        
+        searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
+        
+        searchController.searchBar.sizeToFit()
+        searchController.searchBar.searchBarStyle = UISearchBarStyle.Minimal
+        navigationItem.titleView = searchController.searchBar
         
         definesPresentationContext = true
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
