@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import SwiftDate
 
 class SearchViewController: RepoTableViewController, UISearchResultsUpdating {
     
@@ -25,6 +27,12 @@ class SearchViewController: RepoTableViewController, UISearchResultsUpdating {
         searchController.searchBar.sizeToFit()
         searchController.searchBar.searchBarStyle = UISearchBarStyle.Minimal
         navigationItem.titleView = searchController.searchBar
+        searchController.searchBar.rx_text
+            .debounce(1, MainScheduler.sharedInstance)
+            .subscribeNext { [unowned self] query in
+                self.viewModel.pagination.query.value = query
+            }
+            .addDisposableTo(disposeBag)
         
         definesPresentationContext = true
     }

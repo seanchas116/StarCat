@@ -12,6 +12,14 @@ import PromiseKit
 
 class SearchPagination: Pagination<RepoViewModel> {
     let query = Variable<String?>(nil)
+    let disposeBag = DisposeBag()
+    
+    override init() {
+        super.init()
+        query.subscribeNext { _ in
+            self.fetchAndReset()
+        }.addDisposableTo(disposeBag)
+    }
     
     override func fetch(page: Int) -> Promise<[RepoViewModel]> {
         if let query = query.value {
