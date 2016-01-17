@@ -22,7 +22,6 @@ extension UINavigationController {
 class TabBarController: UITabBarController {
     
     var lastSelectedIndex: Int?
-    var viewModel = AppViewModel.instance.tabViewModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
