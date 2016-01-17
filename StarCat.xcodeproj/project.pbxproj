@@ -30,7 +30,7 @@
 		BE4707971C4B47370069DA6F /* RepoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4707961C4B47370069DA6F /* RepoTableViewController.swift */; };
 		BE4707991C4B64B10069DA6F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4707981C4B64B10069DA6F /* SearchViewModel.swift */; };
 		BE4E4EE61C46A39C009FCBE8 /* ModelCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E4EE51C46A39C009FCBE8 /* ModelCache.swift */; };
-		BE8C23191C452D8E00691005 /* UITableViewController+scrollToTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8C23181C452D8E00691005 /* UITableViewController+scrollToTop.swift */; };
+		BE8C23191C452D8E00691005 /* UITableView+scrollToTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8C23181C452D8E00691005 /* UITableView+scrollToTop.swift */; };
 		BE8C231B1C45E15E00691005 /* TableViewPaginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8C231A1C45E15E00691005 /* TableViewPaginator.swift */; };
 		BE9A484D1C36234B00406DA6 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */; };
 		BEB1B9AB1C414B4400A730A0 /* Repo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */; };
@@ -101,7 +101,7 @@
 		BE4707961C4B47370069DA6F /* RepoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoTableViewController.swift; sourceTree = "<group>"; };
 		BE4707981C4B64B10069DA6F /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		BE4E4EE51C46A39C009FCBE8 /* ModelCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelCache.swift; sourceTree = "<group>"; };
-		BE8C23181C452D8E00691005 /* UITableViewController+scrollToTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewController+scrollToTop.swift"; sourceTree = "<group>"; };
+		BE8C23181C452D8E00691005 /* UITableView+scrollToTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+scrollToTop.swift"; sourceTree = "<group>"; };
 		BE8C231A1C45E15E00691005 /* TableViewPaginator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewPaginator.swift; sourceTree = "<group>"; };
 		BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Repo.storyboard; sourceTree = "<group>"; };
@@ -256,7 +256,7 @@
 			children = (
 				BE8C231A1C45E15E00691005 /* TableViewPaginator.swift */,
 				BEF289541C429D9000F50A2A /* UILabel+Tap.swift */,
-				BE8C23181C452D8E00691005 /* UITableViewController+scrollToTop.swift */,
+				BE8C23181C452D8E00691005 /* UITableView+scrollToTop.swift */,
 				BE47078A1C49EAA00069DA6F /* WebViewPopup.swift */,
 				BE4707921C4A2F640069DA6F /* UINavigationController+storyboard.swift */,
 			);
@@ -578,7 +578,7 @@
 				BE4707971C4B47370069DA6F /* RepoTableViewController.swift in Sources */,
 				BEF289551C429D9000F50A2A /* UILabel+Tap.swift in Sources */,
 				BED172FB1C3E249300C5A247 /* TabViewModel.swift in Sources */,
-				BE8C23191C452D8E00691005 /* UITableViewController+scrollToTop.swift in Sources */,
+				BE8C23191C452D8E00691005 /* UITableView+scrollToTop.swift in Sources */,
 				BEF590801C3A940600633417 /* RoundButtonBorder.swift in Sources */,
 				BE47078B1C49EAA00069DA6F /* WebViewPopup.swift in Sources */,
 				BEB680791C3F9BD6007B2E08 /* ReadmeTextView.swift in Sources */,

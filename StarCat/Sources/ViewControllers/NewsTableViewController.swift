@@ -26,14 +26,6 @@ class NewsTableViewController: RepoTableViewController {
                 self?.paginator.refresh()
             }
             .addDisposableTo(disposeBag)
-        
-        AppViewModel.instance.tabViewModel.selectedIndex.subscribeNext { index in
-            print(index)
-            if index == 0 && self.appeared.value {
-                print("scrolling")
-                self.scrollToTop()
-            }
-        }.addDisposableTo(disposeBag)
     }
     
     override func viewDidAppear(animated: Bool) {

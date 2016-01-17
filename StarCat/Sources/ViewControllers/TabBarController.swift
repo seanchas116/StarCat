@@ -8,6 +8,17 @@
 
 import UIKit
 
+extension UINavigationController {
+    func scrollRootToTop() {
+        if viewControllers.count == 1 {
+            let root = viewControllers[0].view
+            if let table = root as? UITableView {
+                table.scrollToTop()
+            }
+        }
+    }
+}
+
 class TabBarController: UITabBarController {
     
     var lastSelectedIndex: Int?
@@ -26,8 +37,17 @@ class TabBarController: UITabBarController {
     }
     
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
-        if let selected = tabBar.items?.indexOf(item) {
-            viewModel.selectedIndex.value = selected
+        if let index = tabBar.items!.indexOf(item) {
+            if lastSelectedIndex == index {
+                tabBarDoubleTapped(index)
+            }
+            lastSelectedIndex = index
+        }
+    }
+    
+    private func tabBarDoubleTapped(index: Int) {
+        if let nav = selectedViewController as? UINavigationController {
+            nav.scrollRootToTop()
         }
     }
 }
