@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class UserViewController: UITableViewController {
+class UserViewController: RepoTableViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var loginLabel: UILabel!
@@ -20,15 +20,19 @@ class UserViewController: UITableViewController {
     @IBOutlet weak var starsLabel: UILabel!
     @IBOutlet weak var followingLabel: UILabel!
     
-    var userSummary: UserSummary?
+    var userSummary: UserSummary! {
+        didSet {
+            pagination = UserRepoPagination(userName: userSummary.login)
+            viewModel.setSummary(userSummary)
+            viewModel.load().then {
+                self.tableView.layoutIfNeeded()
+            }
+        }
+    }
     let viewModel = UserViewModel()
-    private let disposeBag = DisposeBag()
-    var paginator: TableViewPaginator<RepoViewModel>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        refreshControl = UIRefreshControl()
         
         viewModel.avatarImage.bindTo(avatarImageView.rx_image).addDisposableTo(disposeBag)
         viewModel.name.bindTo(nameLabel.rx_text).addDisposableTo(disposeBag)
@@ -48,32 +52,6 @@ class UserViewController: UITableViewController {
         
         viewModel.login.subscribeNext { [weak self] name in
             self?.title = name
-        }.addDisposableTo(disposeBag)
-        
-        tableView.estimatedRowHeight = 100
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.registerNib(UINib(nibName: "RepoCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
-        
-        if let summary = userSummary {
-            viewModel.setSummary(summary)
-            viewModel.load().then {
-                self.tableView.layoutIfNeeded()
-            }
-            let pagination = UserRepoPagination(userName: summary.login)
-            paginator = TableViewPaginator(
-                tableView: tableView, refreshControl: refreshControl!,
-                pagination: pagination
-            ) { items in
-                items.bindTo(self.tableView.rx_itemsWithCellIdentifier("RepoCell")) { row, elem, cell in
-                    let repoCell = cell as! RepoCell
-                    repoCell.viewModel = elem
-                }
-            }
-        }
-        paginator.whenSelected.subscribeNext { [unowned self] repoVM in
-            self.navigationController?.pushStoryboard("Repo", animated: true) { next in
-                (next as! RepoViewController).viewModel = repoVM
-            }
         }.addDisposableTo(disposeBag)
     }
     
