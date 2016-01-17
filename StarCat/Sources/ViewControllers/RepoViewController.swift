@@ -83,20 +83,6 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
             }.addDisposableTo(disposeBag)
         readmeView.webView.navigationDelegate = self
         
-//        viewModel.readme
-//            .observeOn(ConcurrentDispatchQueueScheduler(queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)))
-//            .map(renderReadme)
-//            .observeOn(MainScheduler.sharedInstance)
-//            .subscribeNext { [weak self] attributedText in
-//                self?.readmeView.loadContent(attributedText).then { () -> Void in
-//                    self?.readmeLoadingIndicator.stopAnimating()
-//                }
-//                self?.readmeView.layoutIfNeeded()
-//            }
-//            .addDisposableTo(disposeBag)
-//        
-//        readmeView.delegate = self
-        
         ownerLabel.makeTappable().subscribeNext { [weak self] _ in
             self?.showOwner()
         }.addDisposableTo(disposeBag)
@@ -127,11 +113,6 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
             (next as! UserViewController).userSummary = owner
         }
     }
-
-//    func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
-//        WebViewPopup.open(URL, onViewController: self)
-//        return false
-//    }
     
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
         webView.evaluateJavaScript("document.height") { (result, error) in
