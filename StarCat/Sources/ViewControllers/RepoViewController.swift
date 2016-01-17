@@ -7,11 +7,38 @@
 //
 
 import UIKit
+import WebKit
 import RxSwift
 import RxCocoa
 import SwiftDate
 
-class RepoViewController: UIViewController, UIWebViewDelegate {
+class ReadmeView: UIView {
+    var webView: WKWebView!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    override var bounds: CGRect {
+        didSet {
+            webView.frame = bounds
+        }
+    }
+    
+    private func setup() {
+        let config = WKWebViewConfiguration()
+        webView = WKWebView(frame: bounds, configuration: config)
+        addSubview(webView)
+    }
+}
+
+class RepoViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -19,8 +46,8 @@ class RepoViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var homepageLabel: UILabel!
     @IBOutlet weak var stargazersButton: RoundButton!
-    @IBOutlet weak var readmeWebView: UIWebView!
     @IBOutlet weak var readmeLoadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var readmeView: ReadmeView!
     @IBOutlet weak var readmeHeightConstraint: NSLayoutConstraint!
     
     let disposeBag = DisposeBag()
@@ -50,11 +77,9 @@ class RepoViewController: UIViewController, UIWebViewDelegate {
         viewModel.readme
             .map(wrapReadme)
             .subscribeNext { [unowned self] html in
-                self.readmeWebView.loadHTMLString(html, baseURL: nil)
-                self.readmeWebView.layoutIfNeeded()
+                self.readmeView.webView.loadHTMLString(html, baseURL: nil)
             }.addDisposableTo(disposeBag)
-        readmeWebView.delegate = self
-        readmeWebView.scrollView.scrollEnabled = false
+        readmeView.webView.navigationDelegate = self
         
 //        viewModel.readme
 //            .observeOn(ConcurrentDispatchQueueScheduler(queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)))
@@ -106,12 +131,14 @@ class RepoViewController: UIViewController, UIWebViewDelegate {
 //        return false
 //    }
     
-    func webViewDidFinishLoad(webView: UIWebView) {
-        if let heightStr = webView.stringByEvaluatingJavaScriptFromString("document.height") {
-            if let height = Double(heightStr) {
-                print(height)
-                readmeHeightConstraint.constant = CGFloat(height)
-                view.layoutIfNeeded()
+    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+        webView.evaluateJavaScript("document.height") { (result, error) in
+            if error == nil {
+                if let height = result! as? Double {
+                    print(height)
+                    
+                    self.readmeHeightConstraint.constant = CGFloat(height)
+                }
             }
         }
     }
@@ -128,7 +155,7 @@ private func getBundleFile(fileName: String, ofType: String) -> String {
 }
 
 private func wrapReadme(htmlBody: String) -> String {
-    return "<html><head><style>\(baseReadmeCSS)\(customReadmeCSS)</style></head><body>\(htmlBody)</body></html>"
+    return "<html><head><meta name='viewport' content='initial-scale=1, maximum-scale=1'><style>\(baseReadmeCSS)\(customReadmeCSS)</style></head><body>\(htmlBody)</body></html>"
 }
 
 private func renderReadme(html: String) -> NSAttributedString? {
