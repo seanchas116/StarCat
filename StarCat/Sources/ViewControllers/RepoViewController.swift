@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import SwiftDate
 
-class RepoViewController: UIViewController, UITextViewDelegate {
+class RepoViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -19,14 +19,17 @@ class RepoViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var homepageLabel: UILabel!
     @IBOutlet weak var stargazersButton: RoundButton!
-    @IBOutlet weak var readmeView: ReadmeTextView!
+    @IBOutlet weak var readmeWebView: UIWebView!
     @IBOutlet weak var readmeLoadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var readmeHeightConstraint: NSLayoutConstraint!
     
     let disposeBag = DisposeBag()
     var viewModel: RepoViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(viewModel)
         
         viewModel.name.subscribeNext { [weak self] name in
             self?.title = name
@@ -45,18 +48,27 @@ class RepoViewController: UIViewController, UITextViewDelegate {
             .bindTo(miscInfoLabel.rx_text).addDisposableTo(disposeBag)
         
         viewModel.readme
-            .observeOn(ConcurrentDispatchQueueScheduler(queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)))
-            .map(renderReadme)
-            .observeOn(MainScheduler.sharedInstance)
-            .subscribeNext { [weak self] attributedText in
-                self?.readmeView.loadContent(attributedText).then { () -> Void in
-                    self?.readmeLoadingIndicator.stopAnimating()
-                }
-                self?.readmeView.layoutIfNeeded()
-            }
-            .addDisposableTo(disposeBag)
+            .map(wrapReadme)
+            .subscribeNext { [unowned self] html in
+                self.readmeWebView.loadHTMLString(html, baseURL: nil)
+                self.readmeWebView.layoutIfNeeded()
+            }.addDisposableTo(disposeBag)
+        readmeWebView.delegate = self
+        readmeWebView.scrollView.scrollEnabled = false
         
-        readmeView.delegate = self
+//        viewModel.readme
+//            .observeOn(ConcurrentDispatchQueueScheduler(queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)))
+//            .map(renderReadme)
+//            .observeOn(MainScheduler.sharedInstance)
+//            .subscribeNext { [weak self] attributedText in
+//                self?.readmeView.loadContent(attributedText).then { () -> Void in
+//                    self?.readmeLoadingIndicator.stopAnimating()
+//                }
+//                self?.readmeView.layoutIfNeeded()
+//            }
+//            .addDisposableTo(disposeBag)
+//        
+//        readmeView.delegate = self
         
         ownerLabel.makeTappable().subscribeNext { [weak self] _ in
             self?.showOwner()
@@ -89,9 +101,19 @@ class RepoViewController: UIViewController, UITextViewDelegate {
         }
     }
 
-    func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
-        WebViewPopup.open(URL, onViewController: self)
-        return false
+//    func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
+//        WebViewPopup.open(URL, onViewController: self)
+//        return false
+//    }
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        if let heightStr = webView.stringByEvaluatingJavaScriptFromString("document.height") {
+            if let height = Double(heightStr) {
+                print(height)
+                readmeHeightConstraint.constant = CGFloat(height)
+                view.layoutIfNeeded()
+            }
+        }
     }
 }
 
@@ -103,6 +125,10 @@ private func getBundleFile(fileName: String, ofType: String) -> String {
         return (try? String(contentsOfFile: path, encoding: NSUTF8StringEncoding)) ?? ""
     }
     return ""
+}
+
+private func wrapReadme(htmlBody: String) -> String {
+    return "<html><head><style>\(baseReadmeCSS)\(customReadmeCSS)</style></head><body>\(htmlBody)</body></html>"
 }
 
 private func renderReadme(html: String) -> NSAttributedString? {
