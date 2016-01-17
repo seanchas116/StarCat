@@ -142,6 +142,17 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
             }
         }
     }
+    
+    func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
+        if let URL = navigationAction.request.URL {
+            if URL.absoluteString != "about:blank" {
+                WebViewPopup.open(URL, onViewController: self)
+                decisionHandler(.Cancel)
+                return
+            }
+        }
+        decisionHandler(.Allow)
+    }
 }
 
 private let baseReadmeCSS = getBundleFile("github-markdown", ofType: "css")
