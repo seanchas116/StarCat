@@ -29,15 +29,23 @@ class WebViewPopup: NSObject, SFSafariViewControllerDelegate {
         root.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    static func open(origURL: NSURL, onViewController vc: UIViewController) {
-        var newURL: NSURL?
-        if !origURL.absoluteString.grep("^https?") {
-            newURL = NSURL(string: "http://" + origURL.absoluteString)
-        } else {
-            newURL = origURL
-        }
-        if let url = newURL {
-            WebViewPopup(url: url, root: vc).show()
-        }
+    static func open(url: NSURL, onViewController vc: UIViewController) {
+        WebViewPopup(url: fixURL(url), root: vc).show()
     }
+    
+    static func openActivity(url: NSURL, on vc: UIViewController) {
+        let activity = UIActivityViewController(activityItems: [url], applicationActivities: activities)
+        vc.presentViewController(activity, animated: true, completion: nil)
+    }
+    
+    static var activities: [UIActivity] {
+        return []
+    }
+}
+
+func fixURL(url: NSURL) -> NSURL {
+    if !url.absoluteString.grep("^https?") {
+        return NSURL(string: "http://" + url.absoluteString)!
+    }
+    return url
 }

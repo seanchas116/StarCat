@@ -139,8 +139,7 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
     
     func showActivity() {
         if let url = viewModel.githubURL.value {
-            let activity = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-            presentViewController(activity, animated: true, completion: nil)
+            WebViewPopup.openActivity(url, on: self)
         }
     }
 }
