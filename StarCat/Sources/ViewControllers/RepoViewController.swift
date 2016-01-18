@@ -56,6 +56,8 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: Selector("showActivity"))
+        
         print(viewModel)
         
         viewModel.name.subscribeNext { [weak self] name in
@@ -133,6 +135,13 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
             }
         }
         decisionHandler(.Allow)
+    }
+    
+    func showActivity() {
+        if let url = viewModel.githubURL.value {
+            let activity = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            presentViewController(activity, animated: true, completion: nil)
+        }
     }
 }
 

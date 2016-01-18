@@ -16,6 +16,7 @@ import Alamofire
 class RepoViewModel {
     let event = Variable<Event?>(nil)
     let name = Variable("")
+    let fullName = Variable("")
     let starsCount = Variable(0)
     let description = Variable("")
     let language = Variable<String?>(nil)
@@ -24,6 +25,7 @@ class RepoViewModel {
     let homepage = Variable<NSURL?>(nil)
     let pushedAt = Variable(NSDate())
     let readme = Variable("")
+    let githubURL = Variable<NSURL?>(nil)
     let eventActor = Variable<UserSummary?>(nil)
     let eventActorName = Variable<String>("")
     let eventTime = Variable<NSDate?>(nil)
@@ -35,12 +37,15 @@ class RepoViewModel {
         self.repo = repo
         
         name.value = repo.name
+        fullName.value = repo.fullName
         starsCount.value = repo.starsCount
         description.value = repo.description ?? ""
         language.value = repo.language
         ownerName.value = repo.owner.login
         homepage.value = repo.homepage
         pushedAt.value = repo.pushedAt
+        
+        fullName.map { NSURL(string: "https://github.com/\($0)") }.bindTo(githubURL).addDisposableTo(disposeBag)
         
         event.map { event in
             event.flatMap { e -> UserSummary? in
