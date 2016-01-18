@@ -68,10 +68,10 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
         viewModel.homepage.map { $0?.absoluteString ?? ""}.bindTo(homepageLabel.rx_text).addDisposableTo(disposeBag)
         viewModel.homepage.map { $0 == nil }.bindTo(homepageLabel.rx_hidden).addDisposableTo(disposeBag)
         viewModel.starsCount.subscribeNext { [weak self] count in
-            self?.stargazersButton.setTitle("★  \(count)", forState: .Normal)
+            self?.stargazersButton.setTitle(String(count), forState: .Normal)
         }.addDisposableTo(disposeBag)
         
-        combineLatest(viewModel.language, viewModel.pushedAt) { ["\($0 ?? "")", "\($1.formatForUI(withAgo: true))"].joinWithSeparator("・") }
+        combineLatest(viewModel.language, viewModel.pushedAt) { "\($0 ?? "")・\($1.formatForUI(withAgo: true))" }
             .bindTo(miscInfoLabel.rx_text).addDisposableTo(disposeBag)
         
         readmeHeightConstraint.constant = 0
