@@ -29,7 +29,7 @@ class WebViewPopup: NSObject, SFSafariViewControllerDelegate {
         root.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    static func open(url: NSURL, onViewController vc: UIViewController) {
+    static func open(url: NSURL, on vc: UIViewController) {
         WebViewPopup(url: fixURL(url), root: vc).show()
     }
     

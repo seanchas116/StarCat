@@ -90,7 +90,7 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
         }.addDisposableTo(disposeBag)
         
         homepageLabel.makeTappable().subscribeNext { [unowned self] _ in
-            WebViewPopup.open(self.viewModel.homepage.value!, onViewController: self)
+            WebViewPopup.open(self.viewModel.homepage.value!, on: self)
         }.addDisposableTo(disposeBag)
         
         viewModel.fetchReadme()
@@ -129,7 +129,7 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
     func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
         if let URL = navigationAction.request.URL {
             if URL.absoluteString != "about:blank" {
-                WebViewPopup.open(URL, onViewController: self)
+                WebViewPopup.open(URL, on: self)
                 decisionHandler(.Cancel)
                 return
             }
