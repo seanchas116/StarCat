@@ -15,15 +15,15 @@ private var popups = Set<WebViewPopup>()
 
 class WebViewPopup: NSObject, SFSafariViewControllerDelegate {
     let root: UIViewController
-    let url: NSURL
+    let URL: NSURL
     
-    init(url: NSURL, root: UIViewController) {
+    init(URL: NSURL, root: UIViewController) {
         self.root = root
-        self.url = url
+        self.URL = URL
     }
     
     func show() {
-        let safari = SFSafariViewController(URL: url)
+        let safari = SFSafariViewController(URL: URL)
         safari.delegate = self
         popups.insert(self)
         root.presentViewController(safari, animated: true, completion: nil)
@@ -41,12 +41,12 @@ class WebViewPopup: NSObject, SFSafariViewControllerDelegate {
         return activities
     }
     
-    static func open(url: NSURL, on vc: UIViewController) {
-        WebViewPopup(url: fixURL(url), root: vc).show()
+    static func open(URL: NSURL, on vc: UIViewController) {
+        WebViewPopup(URL: fixURL(URL), root: vc).show()
     }
     
-    static func openActivity(url: NSURL, on vc: UIViewController) {
-        let activity = UIActivityViewController(activityItems: [url], applicationActivities: activities)
+    static func openActivity(URL: NSURL, on vc: UIViewController) {
+        let activity = UIActivityViewController(activityItems: [URL], applicationActivities: activities)
         vc.presentViewController(activity, animated: true, completion: nil)
     }
     
@@ -55,9 +55,9 @@ class WebViewPopup: NSObject, SFSafariViewControllerDelegate {
     }
 }
 
-func fixURL(url: NSURL) -> NSURL {
-    if !url.absoluteString.grep("^https?") {
-        return NSURL(string: "http://" + url.absoluteString)!
+func fixURL(URL: NSURL) -> NSURL {
+    if !URL.absoluteString.grep("^https?") {
+        return NSURL(string: "http://" + URL.absoluteString)!
     }
-    return url
+    return URL
 }
