@@ -27,11 +27,11 @@ class RepoTableViewController: UITableViewController {
         paginator = TableViewPaginator(
             tableView: tableView, refreshControl: refreshControl!,
             pagination: pagination) { items in
-                items.bindTo(self.tableView.rx_itemsWithCellIdentifier("RepoCell")) { [unowned self] row, elem, cell in
+                items.bindTo(self.tableView.rx_itemsWithCellIdentifier("RepoCell")) { [weak self] row, elem, cell in
                     let repoCell = cell as! RepoCell
                     repoCell.viewModel = elem
-                    repoCell.onActorTapped = { [unowned self] actor in
-                        self.navigationController?.pushStoryboard("User", animated: true) { next in
+                    repoCell.onActorTapped = { actor in
+                        self?.navigationController?.pushStoryboard("User", animated: true) { next in
                             (next as! UserViewController).userSummary = actor
                         }
                     }
