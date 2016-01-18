@@ -15,6 +15,7 @@ pod 'HanekeSwift'
 pod 'SwiftDate'
 pod 'Alamofire'
 pod 'Regex'
+pod 'SVWebViewController', :head
 
 target 'StarCat' do
 end

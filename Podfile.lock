@@ -34,6 +34,7 @@ PODS:
   - RxCocoa (2.0.0-beta.4):
     - RxSwift (~> 2.0.0-beta)
   - RxSwift (2.0.0-beta.4)
+  - SVWebViewController (HEAD based on 1.0)
   - SwiftDate (2.0.2)
 
 DEPENDENCIES:
@@ -48,6 +49,7 @@ DEPENDENCIES:
   - RxBlocking (~> 2.0.0-beta)
   - RxCocoa (~> 2.0.0-beta)
   - RxSwift (~> 2.0.0-beta)
+  - SVWebViewController (HEAD)
   - SwiftDate
 
 SPEC CHECKSUMS:
@@ -65,6 +67,7 @@ SPEC CHECKSUMS:
   RxBlocking: 234b0c161315ff3ade25c11e48d74e9ca83158b5
   RxCocoa: 4a3e433e6dfe116362ff54423c841cc0f209e009
   RxSwift: 191c6b06da783a8671433cf35a54d2ad2fd2d9de
+  SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
   SwiftDate: b4f4d0962afe48365ad2800c9850a6626deb9359
 
 COCOAPODS: 0.39.0

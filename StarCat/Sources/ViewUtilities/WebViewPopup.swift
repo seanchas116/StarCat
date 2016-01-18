@@ -9,6 +9,9 @@
 import Foundation
 import SafariServices
 import Regex
+import SVWebViewController
+
+private var popups = Set<WebViewPopup>()
 
 class WebViewPopup: NSObject, SFSafariViewControllerDelegate {
     let root: UIViewController
@@ -22,11 +25,20 @@ class WebViewPopup: NSObject, SFSafariViewControllerDelegate {
     func show() {
         let safari = SFSafariViewController(URL: url)
         safari.delegate = self
+        popups.insert(self)
         root.presentViewController(safari, animated: true, completion: nil)
     }
     
     func safariViewControllerDidFinish(controller: SFSafariViewController) {
-        root.dismissViewControllerAnimated(true, completion: nil)
+        popups.remove(self)
+    }
+    
+    func safariViewController(controller: SFSafariViewController, activityItemsForURL URL: NSURL, title: String?) -> [UIActivity] {
+        let activities = WebViewPopup.activities
+        for activity in activities {
+            activity.prepareWithActivityItems([URL])
+        }
+        return activities
     }
     
     static func open(url: NSURL, on vc: UIViewController) {
@@ -39,7 +51,7 @@ class WebViewPopup: NSObject, SFSafariViewControllerDelegate {
     }
     
     static var activities: [UIActivity] {
-        return []
+        return [SVWebViewControllerActivitySafari(), SVWebViewControllerActivityChrome()]
     }
 }
 

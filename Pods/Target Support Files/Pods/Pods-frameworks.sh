@@ -98,6 +98,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/RxBlocking.framework"
   install_framework "Pods/RxCocoa.framework"
   install_framework "Pods/RxSwift.framework"
+  install_framework "Pods/SVWebViewController.framework"
   install_framework "Pods/SwiftDate.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -115,5 +116,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/RxBlocking.framework"
   install_framework "Pods/RxCocoa.framework"
   install_framework "Pods/RxSwift.framework"
+  install_framework "Pods/SVWebViewController.framework"
   install_framework "Pods/SwiftDate.framework"
 fi
