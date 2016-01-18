@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="219.5"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="JPg-8b-stZ">
-                                <rect key="frame" x="12" y="12" width="351" height="195.5"/>
+                                <rect key="frame" x="12" y="8" width="351" height="203.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpv-jG-K6e">
                                         <rect key="frame" x="0.0" y="0.0" width="351" height="16"/>
@@ -126,16 +126,16 @@
                                         </variation>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ZmM-Ec-b0F">
-                                        <rect key="frame" x="0.0" y="88" width="351" height="107.5"/>
+                                        <rect key="frame" x="0.0" y="88" width="351" height="115.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browse GitHub repos" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlK-ge-05X">
-                                                <rect key="frame" x="0.0" y="0.0" width="136.5" height="84"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="136.5" height="92"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Swift" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SwN-ve-ADn">
-                                                <rect key="frame" x="0.0" y="88" width="31.5" height="19.5"/>
+                                                <rect key="frame" x="0.0" y="96" width="31.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                 <color key="textColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -161,8 +161,8 @@
                         <constraints>
                             <constraint firstItem="JPg-8b-stZ" firstAttribute="leading" secondItem="kQN-kd-rxM" secondAttribute="leading" constant="12" id="6px-Ud-kZY"/>
                             <constraint firstAttribute="trailing" secondItem="JPg-8b-stZ" secondAttribute="trailing" constant="12" id="HBv-qL-29l"/>
-                            <constraint firstAttribute="bottom" secondItem="JPg-8b-stZ" secondAttribute="bottom" constant="12" id="MSR-Xq-BnB"/>
-                            <constraint firstItem="JPg-8b-stZ" firstAttribute="top" secondItem="kQN-kd-rxM" secondAttribute="top" constant="12" id="YiP-CV-ijX"/>
+                            <constraint firstAttribute="bottom" secondItem="JPg-8b-stZ" secondAttribute="bottom" constant="8" id="MSR-Xq-BnB"/>
+                            <constraint firstItem="JPg-8b-stZ" firstAttribute="top" secondItem="kQN-kd-rxM" secondAttribute="top" constant="8" id="YiP-CV-ijX"/>
                         </constraints>
                     </view>
                 </subviews>

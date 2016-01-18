@@ -21,10 +21,10 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eC4-u2-DcJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="310"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="298"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AYC-hG-NAW" userLabel="Header">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="210"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="198"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Hk-0u-rKr">
                                                         <rect key="frame" x="16" y="16" width="48" height="48"/>
@@ -34,8 +34,8 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="seanchas116" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atr-Ha-UFo">
-                                                        <rect key="frame" x="80" y="16" width="504" height="20.5"/>
-                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                                        <rect key="frame" x="80" y="16" width="504" height="19.5"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                         <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -46,31 +46,31 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QjR-tp-96X" userLabel="Descriptions">
-                                                        <rect key="frame" x="16" y="80" width="568" height="41"/>
+                                                        <rect key="frame" x="16" y="76" width="568" height="39"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browse GitHub repos in iOS" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSi-IR-CRP">
-                                                                <rect key="frame" x="0.0" y="0.0" width="568" height="20.5"/>
-                                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="568" height="19.5"/>
+                                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                                                 <color key="textColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https://seanchas116.github.io" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdp-78-SQq">
-                                                                <rect key="frame" x="0.0" y="20" width="568" height="20.5"/>
-                                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                                                <rect key="frame" x="0.0" y="19.5" width="568" height="19.5"/>
+                                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift・30 minutes ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXw-at-CKI">
-                                                        <rect key="frame" x="16" y="129" width="155.5" height="20.5"/>
-                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                                        <rect key="frame" x="16" y="119" width="145" height="19.5"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                         <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93n-7n-E5W" customClass="RoundButton" customModule="StarCat" customModuleProvider="target">
-                                                        <rect key="frame" x="16" y="161" width="95" height="33"/>
-                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                                        <rect key="frame" x="16" y="150" width="90" height="32"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                         <inset key="contentEdgeInsets" minX="10" minY="6" maxX="10" maxY="6"/>
                                                         <state key="normal" title="View Code">
                                                             <color key="titleColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -88,8 +88,8 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kQ3-MR-RIS" customClass="RoundButton" customModule="StarCat" customModuleProvider="target">
-                                                        <rect key="frame" x="501" y="161" width="35" height="33"/>
-                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                                        <rect key="frame" x="504" y="150" width="34" height="32"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                         <inset key="contentEdgeInsets" minX="10" minY="6" maxX="10" maxY="6"/>
                                                         <state key="normal" title="★">
                                                             <color key="titleColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -108,7 +108,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K1Y-ZJ-0by" customClass="RoundButtonBorder" customModule="StarCat" customModuleProvider="target">
-                                                        <rect key="frame" x="536" y="161" width="1" height="33"/>
+                                                        <rect key="frame" x="538" y="150" width="1" height="32"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="1" id="SGm-LU-6Gx"/>
@@ -126,8 +126,8 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSR-f1-FfU" customClass="RoundButton" customModule="StarCat" customModuleProvider="target">
-                                                        <rect key="frame" x="537" y="161" width="47" height="33"/>
-                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                                        <rect key="frame" x="539" y="150" width="45" height="32"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                         <inset key="contentEdgeInsets" minX="10" minY="6" maxX="10" maxY="6"/>
                                                         <state key="normal" title="123">
                                                             <color key="titleColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -168,9 +168,9 @@
                                                     <constraint firstItem="atr-Ha-UFo" firstAttribute="leading" secondItem="7Hk-0u-rKr" secondAttribute="leading" id="X3c-NT-l7m"/>
                                                     <constraint firstAttribute="bottom" secondItem="kQ3-MR-RIS" secondAttribute="bottom" constant="16" id="YzI-us-u3d"/>
                                                     <constraint firstAttribute="bottom" secondItem="K1Y-ZJ-0by" secondAttribute="bottom" constant="16" id="c5h-MR-bUQ"/>
-                                                    <constraint firstItem="QjR-tp-96X" firstAttribute="top" secondItem="7Hk-0u-rKr" secondAttribute="bottom" constant="16" id="dvY-lV-x7Z"/>
+                                                    <constraint firstItem="QjR-tp-96X" firstAttribute="top" secondItem="7Hk-0u-rKr" secondAttribute="bottom" constant="12" id="dvY-lV-x7Z"/>
                                                     <constraint firstItem="atr-Ha-UFo" firstAttribute="top" secondItem="AYC-hG-NAW" secondAttribute="top" constant="18" id="eRf-VR-Rci"/>
-                                                    <constraint firstItem="BXw-at-CKI" firstAttribute="top" secondItem="QjR-tp-96X" secondAttribute="bottom" constant="8" id="gDE-bj-RfN"/>
+                                                    <constraint firstItem="BXw-at-CKI" firstAttribute="top" secondItem="QjR-tp-96X" secondAttribute="bottom" constant="4" id="gDE-bj-RfN"/>
                                                     <constraint firstAttribute="trailing" secondItem="QjR-tp-96X" secondAttribute="trailing" constant="16" id="izh-Fw-b0d"/>
                                                     <constraint firstAttribute="bottom" secondItem="K1Y-ZJ-0by" secondAttribute="bottom" constant="12" id="pgh-dJ-eXm"/>
                                                     <constraint firstItem="YSR-f1-FfU" firstAttribute="leading" secondItem="K1Y-ZJ-0by" secondAttribute="trailing" id="roX-qT-uqg"/>
@@ -190,10 +190,10 @@
                                                 </variation>
                                             </view>
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="w1q-yx-xiy">
-                                                <rect key="frame" x="290" y="242" width="20" height="20"/>
+                                                <rect key="frame" x="290" y="230" width="20" height="20"/>
                                             </activityIndicatorView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8qO-jh-i7T" customClass="ReadmeView" customModule="StarCat" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="210" width="600" height="100"/>
+                                                <rect key="frame" x="0.0" y="198" width="600" height="100"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="iew-bb-mqd"/>
