@@ -19,7 +19,7 @@ class UserRepoPagination: Pagination<RepoViewModel> {
     }
     
     override func fetch(page: Int) -> Promise<[RepoViewModel]> {
-        return Repo.search("user:\(userName)", sort: "stars", perPage: 30, page: page)
+        return Repo.search("user:\(userName)", sort: .Stars, perPage: 30, page: page)
             .then { repos in repos.map { repo in RepoViewModel(repo: repo) } }
     }
 }

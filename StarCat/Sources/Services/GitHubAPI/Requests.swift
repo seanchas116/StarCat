@@ -126,11 +126,31 @@ extension SearchRepoResponse: Decodable {
     }
 }
 
+enum SearchRepoSortType {
+    case BestMatch
+    case Stars
+    case Forks
+    case Updated
+    
+    var string: String {
+        switch self {
+        case .BestMatch:
+            return ""
+        case .Stars:
+            return "stars"
+        case .Forks:
+            return "forks"
+        case .Updated:
+            return "updated"
+        }
+    }
+}
+
 struct SearchRepoRequest: GitHubRequest {
     typealias Response = [Repo]
     
     let query: String
-    let sort: String
+    let sort: SearchRepoSortType
     let perPage: Int
     let page: Int
     
@@ -139,7 +159,7 @@ struct SearchRepoRequest: GitHubRequest {
     }
     
     var parameters: [String: AnyObject] {
-        return ["q": query, "sort": sort, "per_page": perPage, "page": page]
+        return ["q": query, "sort": sort.string, "per_page": perPage, "page": page]
     }
     
     func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {

@@ -10,29 +10,26 @@ import UIKit
 import RxSwift
 import SwiftDate
 
-class SearchViewController: RepoTableViewController, UISearchResultsUpdating {
+class SearchViewController: RepoTableViewController, UISearchBarDelegate {
     
     var searchController: UISearchController!
     let viewModel = SearchViewModel()
+    let query = Variable("")
 
     override func viewDidLoad() {
         pagination = viewModel.pagination
         super.viewDidLoad()
         
         searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
         
-        searchController.searchBar.sizeToFit()
-        searchController.searchBar.searchBarStyle = UISearchBarStyle.Minimal
-        navigationItem.titleView = searchController.searchBar
-        searchController.searchBar.rx_text
-            .debounce(1, MainScheduler.sharedInstance)
-            .subscribeNext { [unowned self] query in
-                self.viewModel.pagination.query.value = query
-            }
-            .addDisposableTo(disposeBag)
+        let searchBar = searchController.searchBar
+        searchBar.delegate = self
+        searchBar.sizeToFit()
+        searchBar.searchBarStyle = UISearchBarStyle.Minimal
+        navigationItem.titleView = searchBar
+        searchBar.rx_text.bindTo(query).addDisposableTo(disposeBag)
         
         definesPresentationContext = true
     }
@@ -42,7 +39,7 @@ class SearchViewController: RepoTableViewController, UISearchResultsUpdating {
         // Dispose of any resources that can be recreated.
     }
     
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        // TODO
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        viewModel.pagination.query.value = query.value
     }
 }
