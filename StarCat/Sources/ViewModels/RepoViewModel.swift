@@ -22,10 +22,10 @@ class RepoViewModel {
     let language = Variable<String?>(nil)
     let avatarImage = Variable<UIImage?>(nil)
     let ownerName = Variable("")
-    let homepage = Variable<NSURL?>(nil)
+    let homepage = Variable<Link?>(nil)
     let pushedAt = Variable(NSDate())
     let readme = Variable("")
-    let githubURL = Variable<NSURL?>(nil)
+    let githubURL = Variable<Link?>(nil)
     let eventActor = Variable<UserSummary?>(nil)
     let eventActorName = Variable<String>("")
     let eventTime = Variable<NSDate?>(nil)
@@ -45,7 +45,7 @@ class RepoViewModel {
         homepage.value = repo.homepage
         pushedAt.value = repo.pushedAt
         
-        fullName.map { NSURL(string: "https://github.com/\($0)") }.bindTo(githubURL).addDisposableTo(disposeBag)
+        fullName.map { Link(string: "https://github.com/\($0)") }.bindTo(githubURL).addDisposableTo(disposeBag)
         
         event.map { event in
             event.flatMap { e -> UserSummary? in
@@ -61,7 +61,7 @@ class RepoViewModel {
         eventActor.map { $0?.login ?? "" }.bindTo(eventActorName).addDisposableTo(disposeBag)
         event.map { $0?.createdAt }.bindTo(eventTime).addDisposableTo(disposeBag)
         
-        Shared.imageCache.fetch(URL: repo.owner.avatarURL).promise().then { image -> Void in
+        Shared.imageCache.fetch(URL: repo.owner.avatarURL.URL).promise().then { image -> Void in
             self.avatarImage.value = image
         }
     }

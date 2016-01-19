@@ -31,7 +31,7 @@ class UserViewModel {
     let avatarImage = Variable<UIImage?>(nil)
     let login = Variable("")
     let location = Variable<String?>(nil)
-    let homepage = Variable<NSURL?>(nil)
+    let homepage = Variable<Link?>(nil)
     let followersCount = Variable(0)
     let followingCount = Variable(0)
     let starsCount = Variable(0)
@@ -43,7 +43,7 @@ class UserViewModel {
     func setSummary(summary: UserSummary) {
         self.login.value = summary.login
         self.summary.value = summary
-        Shared.imageCache.fetch(URL: summary.avatarURL).promise().then { image -> Void in
+        Shared.imageCache.fetch(URL: summary.avatarURL.URL).promise().then { image -> Void in
             self.avatarImage.value = image
         }
     }
@@ -55,7 +55,7 @@ class UserViewModel {
         homepage.value = user.blog
         followersCount.value = user.followers
         followingCount.value = user.following
-        Shared.imageCache.fetch(URL: user.avatarURL).promise().then { image -> Void in
+        Shared.imageCache.fetch(URL: user.avatarURL.URL).promise().then { image -> Void in
             self.avatarImage.value = image
         }
 

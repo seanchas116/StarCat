@@ -11,12 +11,18 @@ import Himotoki
 import SwiftDate
 
 enum DecodeError: ErrorType {
+    case WrongURL(String)
     case WrongUserType(String)
 }
 
-extension NSURL: Decodable {
-    public static func decode(e: Extractor) throws -> NSURL {
-        return try NSURL(string: String.decode(e))!
+extension Link: Decodable {
+    static func decode(e: Extractor) throws -> Link {
+        let str = try String.decode(e)
+        if let link = Link(string: str) {
+            return link
+        } else {
+            throw Himotoki.DecodeError.MissingKeyPath(KeyPath())
+        }
     }
 }
 

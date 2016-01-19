@@ -67,7 +67,7 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
         viewModel.description.bindTo(descriptionLabel.rx_text).addDisposableTo(disposeBag)
         viewModel.avatarImage.bindTo(avatarImageView.rx_image).addDisposableTo(disposeBag)
         viewModel.ownerName.bindTo(ownerLabel.rx_text).addDisposableTo(disposeBag)
-        viewModel.homepage.map { $0?.absoluteString ?? ""}.bindTo(homepageLabel.rx_text).addDisposableTo(disposeBag)
+        viewModel.homepage.map { $0?.string ?? ""}.bindTo(homepageLabel.rx_text).addDisposableTo(disposeBag)
         viewModel.homepage.map { $0 == nil }.bindTo(homepageLabel.rx_hidden).addDisposableTo(disposeBag)
         viewModel.starsCount.subscribeNext { [weak self] count in
             self?.stargazersButton.setTitle(String(count), forState: .Normal)
@@ -129,8 +129,10 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
     func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
         if let URL = navigationAction.request.URL {
             if URL.absoluteString != "about:blank" {
-                WebViewPopup.open(URL, on: self)
-                decisionHandler(.Cancel)
+                if let link = Link(URL: URL) {
+                    WebViewPopup.open(link, on: self)
+                    decisionHandler(.Cancel)
+                }
                 return
             }
         }

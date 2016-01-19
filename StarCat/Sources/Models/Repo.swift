@@ -16,6 +16,6 @@ struct Repo {
     let description: String?
     let starsCount: Int
     let language: String?
-    let homepage: NSURL?
+    let homepage: Link?
     let pushedAt: NSDate
 }
