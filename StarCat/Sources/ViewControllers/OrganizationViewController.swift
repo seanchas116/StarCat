@@ -33,6 +33,8 @@ class OrganizationViewController: RepoTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: Selector("showActivity"))
+        
         viewModel.avatarImage.bindTo(avatarImageView.rx_image).addDisposableTo(disposeBag)
         viewModel.name.bindTo(nameLabel.rx_text).addDisposableTo(disposeBag)
         viewModel.login.bindTo(loginLabel.rx_text).addDisposableTo(disposeBag)
@@ -51,5 +53,11 @@ class OrganizationViewController: RepoTableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func showActivity() {
+        if let url = viewModel.githubURL.value {
+            WebViewPopup.openActivity(url, on: self)
+        }
     }
 }

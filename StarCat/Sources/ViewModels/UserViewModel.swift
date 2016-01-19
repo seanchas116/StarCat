@@ -35,6 +35,16 @@ class UserViewModel {
     let followersCount = Variable(0)
     let followingCount = Variable(0)
     let starsCount = Variable(0)
+    let githubURL = Variable<Link?>(nil)
+    
+    let disposeBag = DisposeBag()
+    
+    init() {
+        login
+            .map { Link(string: "https://github.com/\($0)") }
+            .bindTo(githubURL)
+            .addDisposableTo(disposeBag)
+    }
     
     func load() -> Promise<Void> {
         return User.fetch(login.value).then { self.setUser($0) }
