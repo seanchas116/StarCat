@@ -9,16 +9,17 @@
 import Foundation
 import Regex
 
+let schemePattern = "^https?://"
+
 struct Link {
     let URL: NSURL
-    var string: String { return URL.absoluteString }
     
     init?(string: String) {
         let trimmed = string.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         if trimmed == "" {
             return nil
         }
-        let withHTTP = trimmed.grep("^https?://") ? trimmed : "http://\(trimmed)"
+        let withHTTP = trimmed.grep(schemePattern) ? trimmed : "http://\(trimmed)"
         if let URL = NSURL(string: withHTTP) {
             self.URL = URL
         } else {
@@ -28,5 +29,14 @@ struct Link {
     
     init?(URL: NSURL) {
         self.init(string: URL.absoluteString)
+    }
+}
+
+extension Link {
+    var string: String {
+        return URL.absoluteString
+    }
+    var stringWithoutScheme: String {
+        return URL.absoluteString.replaceRegex(schemePattern, with: "")
     }
 }

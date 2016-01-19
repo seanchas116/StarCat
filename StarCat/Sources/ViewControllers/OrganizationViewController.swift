@@ -39,7 +39,7 @@ class OrganizationViewController: RepoTableViewController {
         
         viewModel.location.map { $0 ?? "" }.bindTo(locationLabel.rx_text).addDisposableTo(disposeBag)
         viewModel.location.map { $0 == nil }.bindTo(locationLabel.rx_hidden).addDisposableTo(disposeBag)
-        viewModel.homepage.map { $0?.string ?? "" }.bindTo(homepageLabel.rx_text).addDisposableTo(disposeBag)
+        viewModel.homepage.map { $0?.stringWithoutScheme ?? "" }.bindTo(homepageLabel.rx_text).addDisposableTo(disposeBag)
         viewModel.homepage.map { $0 == nil }.bindTo(locationLabel.rx_hidden).addDisposableTo(disposeBag)
         homepageLabel.makeTappable().subscribeNext { [unowned self] _ in
             if let url = self.viewModel.homepage.value {
