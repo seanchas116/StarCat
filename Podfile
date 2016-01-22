@@ -21,7 +21,8 @@ target 'StarCat' do
 end
 
 target 'StarCatTests' do
-
+  pod 'Quick'
+  pod 'Nimble'
 end
 
 target 'StarCatUITests' do
