@@ -206,15 +206,15 @@
 				BEE0C0AE1C3408A00014986D /* Utilities */,
 				BE3F45401C2A98FC00DD1863 /* ViewControllers */,
 				BEF605111C30239E0014D633 /* ViewModels */,
-				BE8C23171C452D4500691005 /* ViewUtilities */,
+				BE8C23171C452D4500691005 /* ViewUtils */,
 				BEE0C0A41C33E0210014986D /* Views */,
 				BED813341C24EE6D0028F8B0 /* AppDelegate.swift */,
 				BEBA2A701C26AACB00F64F05 /* Constants.swift */,
 				BED8133F1C24EE6D0028F8B0 /* LaunchScreen.storyboard */,
 				BED8133A1C24EE6D0028F8B0 /* Main.storyboard */,
+				BE47078E1C4A152D0069DA6F /* Organization.storyboard */,
 				BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */,
 				BE176E611C41EFF700E29E4F /* User.storyboard */,
-				BE47078E1C4A152D0069DA6F /* Organization.storyboard */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -231,12 +231,12 @@
 			isa = PBXGroup;
 			children = (
 				BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */,
+				BE4707901C4A198F0069DA6F /* OrganizationViewController.swift */,
+				BE4707961C4B47370069DA6F /* RepoTableViewController.swift */,
 				BE46B0031C38281400C8242C /* RepoViewController.swift */,
+				BE4707941C4A45680069DA6F /* SearchViewController.swift */,
 				BE39BA211C291BF40000A87F /* TabBarController.swift */,
 				BE176E631C41F10200E29E4F /* UserViewController.swift */,
-				BE4707901C4A198F0069DA6F /* OrganizationViewController.swift */,
-				BE4707941C4A45680069DA6F /* SearchViewController.swift */,
-				BE4707961C4B47370069DA6F /* RepoTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -255,25 +255,25 @@
 			isa = PBXGroup;
 			children = (
 				BE3F45481C2A994500DD1863 /* Event.swift */,
+				BE546A641C4E30B500C71C0A /* Link.swift */,
 				BE3F45451C2A993400DD1863 /* Repo.swift */,
 				BEF605181C30FCBB0014D633 /* RepoSummary.swift */,
 				BE176E671C4201B400E29E4F /* User.swift */,
 				BE3F45431C2A992500DD1863 /* UserSummary.swift */,
-				BE546A641C4E30B500C71C0A /* Link.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		BE8C23171C452D4500691005 /* ViewUtilities */ = {
+		BE8C23171C452D4500691005 /* ViewUtils */ = {
 			isa = PBXGroup;
 			children = (
 				BE8C231A1C45E15E00691005 /* TableViewPaginator.swift */,
 				BEF289541C429D9000F50A2A /* UILabel+Tap.swift */,
+				BE4707921C4A2F640069DA6F /* UINavigationController+storyboard.swift */,
 				BE8C23181C452D8E00691005 /* UITableView+scrollToTop.swift */,
 				BE47078A1C49EAA00069DA6F /* WebViewPopup.swift */,
-				BE4707921C4A2F640069DA6F /* UINavigationController+storyboard.swift */,
 			);
-			path = ViewUtilities;
+			path = ViewUtils;
 			sourceTree = "<group>";
 		};
 		BEC803CE1C51F7E200594AA4 /* Models */ = {
@@ -281,7 +281,7 @@
 			children = (
 				BEC803CF1C51F80C00594AA4 /* LinkSpec.swift */,
 			);
-			name = Models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		BED813281C24EE6D0028F8B0 = {
@@ -340,12 +340,12 @@
 		BEE0C0A41C33E0210014986D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BE598C241C4C8CC300E1A884 /* ColorizedImageView.swift */,
 				BEB680781C3F9BD6007B2E08 /* ReadmeTextView.swift */,
 				BEE0C0AA1C33EF1A0014986D /* RepoCell.swift */,
 				BEE0C0AB1C33EF1A0014986D /* RepoCell.xib */,
 				BE18EEE61C3A2BD900B92291 /* RoundButton.swift */,
 				BEF5907F1C3A940600633417 /* RoundButtonBorder.swift */,
-				BE598C241C4C8CC300E1A884 /* ColorizedImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -365,8 +365,8 @@
 				BED172F81C3E23E000C5A247 /* AppViewModel.swift */,
 				BEF605121C3023F70014D633 /* NewsTabViewModel.swift */,
 				BEF605161C3034820014D633 /* RepoViewModel.swift */,
-				BE176E651C42010C00E29E4F /* UserViewModel.swift */,
 				BE4707981C4B64B10069DA6F /* SearchViewModel.swift */,
+				BE176E651C42010C00E29E4F /* UserViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
