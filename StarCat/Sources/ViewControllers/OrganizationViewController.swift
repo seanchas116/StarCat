@@ -48,6 +48,10 @@ class OrganizationViewController: RepoTableViewController {
                 WebViewPopup.open(url, on: self)
             }
         }.addDisposableTo(disposeBag)
+        
+        viewModel.login.subscribeNext { [weak self] name in
+            self?.title = name
+        }.addDisposableTo(disposeBag)
     }
 
     override func didReceiveMemoryWarning() {
