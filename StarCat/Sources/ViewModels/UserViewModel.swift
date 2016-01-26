@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import Haneke
 import PromiseKit
+import APIKit
 
 class UserRepoPagination: Pagination<RepoViewModel> {
     let userName: String
@@ -67,6 +68,9 @@ class UserViewModel {
         followingCount.value = user.following
         Shared.imageCache.fetch(URL: user.avatarURL.URL).promise().then { image -> Void in
             self.avatarImage.value = image
+        }
+        Session.sendRequestPromise(GetUserStarsCountRequest(userName: user.login)).then { starsCount in
+            self.starsCount.value = starsCount
         }
 
         self.user.value = user

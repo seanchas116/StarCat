@@ -11,6 +11,7 @@ import Quick
 import Nimble
 @testable import StarCat
 
+/*
 class UtilSpec: QuickSpec {
     override func spec() {
         
@@ -39,3 +40,4 @@ class UtilSpec: QuickSpec {
         }
     }
 }
+*/

@@ -50,6 +50,29 @@ struct GetUserEventsRequest: GitHubRequest {
     }
 }
 
+struct GetUserStarsCountRequest: GitHubRequest {
+    typealias Response = Int
+    let userName: String
+    
+    var path: String {
+        return "/users/\(userName)/starred"
+    }
+    var parameters: [String: AnyObject] {
+        return ["per_page": 1]
+    }
+    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Int? {
+        if let link = URLResponse.allHeaderFields["Link"] as? String {
+            let match = link.grep("<([^>]*)>;\\srel=\"last\"")
+            if match {
+                if let lastLink = NSURL(string: match.captures[1]) {
+                    return lastLink.queries["page"].flatMap { Int($0) }
+                }
+            }
+        }
+        return nil
+    }
+}
+
 struct GetRepoRequest: GitHubRequest {
     typealias Response = Repo
     let fullName: String
