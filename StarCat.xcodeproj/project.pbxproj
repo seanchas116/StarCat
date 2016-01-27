@@ -34,6 +34,7 @@
 		BE4E4EE61C46A39C009FCBE8 /* ModelCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E4EE51C46A39C009FCBE8 /* ModelCache.swift */; };
 		BE546A651C4E30B500C71C0A /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE546A641C4E30B500C71C0A /* Link.swift */; };
 		BE561EF61C5926AE0097D58E /* LoginButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE561EF51C5926AE0097D58E /* LoginButtonViewController.swift */; };
+		BE561EF91C5929E50097D58E /* LoginButton.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE561EF71C5929E50097D58E /* LoginButton.storyboard */; };
 		BE57ACC31C53D03700305A54 /* utilSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE57ACC21C53D03700305A54 /* utilSpec.swift */; };
 		BE57ACC51C53D6E600305A54 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE57ACC41C53D6E600305A54 /* StringUtils.swift */; };
 		BE598C251C4C8CC300E1A884 /* ColorizedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE598C241C4C8CC300E1A884 /* ColorizedImageView.swift */; };
@@ -114,6 +115,7 @@
 		BE4E4EE51C46A39C009FCBE8 /* ModelCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelCache.swift; sourceTree = "<group>"; };
 		BE546A641C4E30B500C71C0A /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		BE561EF51C5926AE0097D58E /* LoginButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButtonViewController.swift; sourceTree = "<group>"; };
+		BE561EF81C5929E50097D58E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LoginButton.storyboard; sourceTree = "<group>"; };
 		BE57ACC21C53D03700305A54 /* utilSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = utilSpec.swift; sourceTree = "<group>"; };
 		BE57ACC41C53D6E600305A54 /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		BE598C241C4C8CC300E1A884 /* ColorizedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorizedImageView.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				BEBA2A701C26AACB00F64F05 /* Constants.swift */,
 				BED8133F1C24EE6D0028F8B0 /* LaunchScreen.storyboard */,
 				BED8133A1C24EE6D0028F8B0 /* Main.storyboard */,
+				BE561EF71C5929E50097D58E /* LoginButton.storyboard */,
 				BE47078E1C4A152D0069DA6F /* Organization.storyboard */,
 				BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */,
 				BE176E611C41EFF700E29E4F /* User.storyboard */,
@@ -521,6 +524,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE561EF91C5929E50097D58E /* LoginButton.storyboard in Resources */,
 				BE2CAF1D1C3C0AC800B51FBF /* github-markdown.css in Resources */,
 				BED813411C24EE6D0028F8B0 /* LaunchScreen.storyboard in Resources */,
 				BED8133E1C24EE6D0028F8B0 /* Assets.xcassets in Resources */,
@@ -725,6 +729,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		BE561EF71C5929E50097D58E /* LoginButton.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE561EF81C5929E50097D58E /* Base */,
+			);
+			name = LoginButton.storyboard;
+			sourceTree = "<group>";
+		};
 		BED8133A1C24EE6D0028F8B0 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
