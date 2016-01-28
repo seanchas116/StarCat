@@ -31,7 +31,9 @@ class NewsTableViewController: RepoTableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         appeared.value = true
-        LoginButtonViewController.showOn(self)
+        if !Authentication.isLoggedIn {
+            LoginButtonViewController.showOn(self)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {

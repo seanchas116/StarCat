@@ -115,3 +115,12 @@ extension Event: Decodable {
         }
     }
 }
+
+extension AccessToken: Decodable {
+    static func decode(e: Extractor) throws -> AccessToken {
+        return try AccessToken(
+            token: e <| "access_token",
+            scope: e <| "scope"
+        )
+    }
+}

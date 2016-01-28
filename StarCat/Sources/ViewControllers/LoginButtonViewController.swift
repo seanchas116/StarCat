@@ -14,13 +14,13 @@ class LoginButtonViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     let disposeBag = DisposeBag()
-    var onFinish: (() -> Void)?
+    private var onLoggedIn: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loginButton.rx_tap.subscribeNext { [weak self] _ in
-            self?.onFinish?()
+        loginButton.rx_tap.subscribeNext { _ in
+            UIApplication.sharedApplication().openURL(Authentication.authURL)
         }.addDisposableTo(disposeBag)
 
         // Do any additional setup after loading the view.
@@ -31,6 +31,8 @@ class LoginButtonViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    static var all = Set<LoginButtonViewController>()
+    
     static func instantiate() -> LoginButtonViewController? {
         return UIStoryboard(name: "LoginButton", bundle: nil).instantiateInitialViewController() as? LoginButtonViewController
     }
@@ -38,12 +40,21 @@ class LoginButtonViewController: UIViewController {
     static func showOn(viewController: UIViewController) {
         if let navVC = viewController.navigationController {
             if let loginButtonVC = instantiate() {
+                all.insert(loginButtonVC)
                 navVC.viewControllers = [loginButtonVC]
-                loginButtonVC.onFinish = {
+                loginButtonVC.onLoggedIn = {
                     navVC.viewControllers = [viewController]
+                    all.remove(loginButtonVC)
                 }
             }
         }
+    }
+    
+    static func hideAll() {
+        for vc in all {
+            vc.onLoggedIn?()
+        }
+        all.removeAll()
     }
 
     /*

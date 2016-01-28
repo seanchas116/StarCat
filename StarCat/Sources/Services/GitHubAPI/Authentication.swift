@@ -7,7 +7,37 @@
 //
 
 import Foundation
+import PromiseKit
+import APIKit
+
+private let redirectURL = "\(Constants.appURLScheme):///auth"
 
 struct Authentication {
-    static var accessToken: String?
+    static var accessToken: AccessToken?
+    
+    static var isLoggedIn: Bool {
+        return accessToken != nil
+    }
+    
+    static var authURL: NSURL {
+        let options = [
+            "client_id": Constants.githubClientID,
+            "redirect_uri": redirectURL,
+            "scope": "user:follow,public_repo"
+        ]
+        return NSURL(string: "https://github.com/login/oauth/authorize?", queries: options)!
+    }
+    
+    static func handleCallbackURL(url: NSURL) -> Promise<Void>? {
+        print("handling \(url)")
+        if url.scheme == Constants.appURLScheme && url.path == "/auth" {
+            if let code = url.queries["code"] {
+                print("code: \(code)")
+                return Session.sendRequestPromise(GetAccessTokenRequest(code: code)).then { accessToken in
+                    self.accessToken = accessToken
+                }
+            }
+        }
+        return nil
+    }
 }

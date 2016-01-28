@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        Authentication.accessToken = Constants.githubAccessToken
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "AvenirNext-Medium", size: 18)!]
         UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UINavigationBar.self])
             .setTitleTextAttributes([NSFontAttributeName: UIFont(name: "AvenirNext-Medium", size: 18)!], forState: .Normal)
@@ -26,6 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        if let tokenFetched = Authentication.handleCallbackURL(url) {
+            tokenFetched.then {
+                LoginButtonViewController.hideAll()
+            }
+            return true
+        }
         return false
     }
     

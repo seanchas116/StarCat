@@ -23,11 +23,18 @@ func parseQueryString(string: String) -> [String: String] {
     return results
 }
 
+func stringifyQueryString(params: [String: AnyObject]) -> String {
+    return params.map { "\($0)=\($1)" }.joinWithSeparator("&")
+}
+
 extension NSURL {
     var queries: [String: String] {
         return parseQueryString(query ?? "")
     }
     var fragments: [String: String] {
         return parseQueryString(fragment ?? "")
+    }
+    convenience init?(string: String, queries: [String: AnyObject]) {
+        self.init(string: "\(string)?\(stringifyQueryString(queries))")
     }
 }

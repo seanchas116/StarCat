@@ -13,6 +13,37 @@ import Himotoki
 protocol GitHubRequest: RequestType {
 }
 
+struct GetAccessTokenRequest: RequestType {
+    let code: String
+    
+    typealias Response = AccessToken
+    var baseURL: NSURL {
+        return NSURL(string: "https://github.com")!
+    }
+    var path: String {
+        return "/login/oauth/access_token"
+    }
+    var method: HTTPMethod {
+        return .POST
+    }
+    var parameters: [String: AnyObject] {
+        return [
+            "client_id": Constants.githubClientID,
+            "client_secret": Constants.githubClientSecret,
+            "code": code
+        ]
+    }
+    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> AccessToken? {
+        do {
+            let token: AccessToken = try decode(object)
+            return token
+        } catch {
+            print("Error parsing response: \(error)")
+            return nil
+        }
+    }
+}
+
 extension GitHubRequest {
     var baseURL: NSURL {
         return NSURL(string: "https://api.github.com")!
