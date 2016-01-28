@@ -28,13 +28,14 @@ struct Authentication {
         return NSURL(string: "https://github.com/login/oauth/authorize?", queries: options)!
     }
     
-    static func handleCallbackURL(url: NSURL) -> Promise<Void>? {
+    static func handleCallbackURL(url: NSURL) -> Promise<AccessToken>? {
         print("handling \(url)")
         if url.scheme == Constants.appURLScheme && url.path == "/auth" {
             if let code = url.queries["code"] {
                 print("code: \(code)")
-                return Session.sendRequestPromise(GetAccessTokenRequest(code: code)).then { accessToken in
+                return Session.sendRequestPromise(GetAccessTokenRequest(code: code)).then { accessToken -> AccessToken in
                     self.accessToken = accessToken
+                    return accessToken
                 }
             }
         }

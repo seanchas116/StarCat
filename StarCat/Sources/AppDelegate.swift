@@ -16,6 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let keychain = Keychain(service: "com.seanchas116.starcat")
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        if let token = try? keychain.get("githubAccessToken"), scope = try? keychain.get("githubAccessScope") {
+            if let token = token, scope = scope {
+                Authentication.accessToken = AccessToken(token: token, scope: scope)
+            }
+        }
+        
         // Override point for customization after application launch.
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "AvenirNext-Medium", size: 18)!]
         UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UINavigationBar.self])
@@ -26,7 +32,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
         if let tokenFetched = Authentication.handleCallbackURL(url) {
-            tokenFetched.then {
+            tokenFetched.then { token -> Void in
+                do {
+                    try self.keychain.set(token.token, key: "githubAccessToken")
+                    try self.keychain.set(token.scope, key: "githubAccessScope")
+                } catch _ {
+                    print("failed to set access token to keychain")
+                }
                 LoginButtonViewController.hideAll()
             }
             return true
