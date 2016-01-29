@@ -17,8 +17,8 @@ class NewsTableViewController: RepoTableViewController {
     
     override func viewDidLoad() {
         pagination = viewModel.newsPagination
-        
         super.viewDidLoad()
+        paginator.loading.value = true
         
         NSNotificationCenter.defaultCenter().rx_notification(UIApplicationDidBecomeActiveNotification)
             .subscribeNext { [weak self] _ in
