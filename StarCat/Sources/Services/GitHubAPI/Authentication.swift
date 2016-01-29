@@ -8,7 +8,6 @@
 
 import Foundation
 import PromiseKit
-import APIKit
 
 private let redirectURL = "\(Constants.appURLScheme):///auth"
 
@@ -33,7 +32,7 @@ struct Authentication {
         if url.scheme == Constants.appURLScheme && url.path == "/auth" {
             if let code = url.queries["code"] {
                 print("code: \(code)")
-                return Session.sendRequestPromise(GetAccessTokenRequest(code: code)).then { accessToken -> AccessToken in
+                return GetAccessTokenRequest(code: code).send().then { accessToken -> AccessToken in
                     self.accessToken = accessToken
                     return accessToken
                 }

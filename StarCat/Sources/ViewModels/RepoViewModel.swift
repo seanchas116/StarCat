@@ -10,7 +10,6 @@ import Foundation
 import RxSwift
 import Haneke
 import SwiftDate
-import APIKit
 import Alamofire
 
 class RepoViewModel {
@@ -67,7 +66,7 @@ class RepoViewModel {
     }
     
     func fetchReadme() {
-        Session.sendRequestPromise(GetReadmeRequest(fullName: "\(ownerName.value)/\(name.value)"))
+        GetReadmeRequest(fullName: "\(ownerName.value)/\(name.value)").send()
             .then { readme in
                 self.readme.value = readme
             }

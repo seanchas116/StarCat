@@ -57,5 +57,5 @@ class ModelCache<T> {
 }
 
 struct SharedModelCache {
-    static let repoCache = ModelCache<Repo>() { fullName in Repo.fetch(fullName) }
+    static let repoCache = ModelCache<Repo>() { fullName in GetRepoRequest(fullName: fullName).send() }
 }

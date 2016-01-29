@@ -10,7 +10,6 @@ import Foundation
 import RxSwift
 import Haneke
 import PromiseKit
-import APIKit
 
 class UserRepoPagination: Pagination<RepoViewModel> {
     let userName: String
@@ -20,7 +19,7 @@ class UserRepoPagination: Pagination<RepoViewModel> {
     }
     
     override func fetch(page: Int) -> Promise<[RepoViewModel]> {
-        return Repo.search("user:\(userName)", sort: .Stars, perPage: 30, page: page)
+        return SearchRepoRequest(query: "user:\(userName)", sort: .Stars, perPage: 30, page: page).send()
             .then { repos in repos.map { repo in RepoViewModel(repo: repo) } }
     }
 }
@@ -48,7 +47,7 @@ class UserViewModel {
     }
     
     func load() -> Promise<Void> {
-        return User.fetch(login.value).then { self.setUser($0) }
+        return GetUserRequest(login: login.value).send().then { self.setUser($0) }
     }
     
     func setSummary(summary: UserSummary) {
@@ -69,7 +68,7 @@ class UserViewModel {
         Shared.imageCache.fetch(URL: user.avatarURL.URL).promise().then { image -> Void in
             self.avatarImage.value = image
         }
-        Session.sendRequestPromise(GetUserStarsCountRequest(userName: user.login)).then { starsCount in
+        GetUserStarsCountRequest(userName: user.login).send().then { starsCount in
             self.starsCount.value = starsCount
         }
 

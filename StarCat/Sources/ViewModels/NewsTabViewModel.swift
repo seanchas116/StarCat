@@ -8,7 +8,6 @@
 
 import Foundation
 import RxSwift
-import APIKit
 import PromiseKit
 import SwiftDate
 
@@ -20,7 +19,7 @@ class NewsPagination: Pagination<RepoViewModel> {
     }
     
     override func fetch(page: Int) -> Promise<[Item]> {
-        return Event.fetchForUser(userName, page: page).then { events -> Promise<[RepoViewModel]> in
+        return GetUserEventsRequest(userName: "seanchas116", page: page).send().then { events -> Promise<[RepoViewModel]> in
             let promises = events.flatMap { e -> Promise<RepoViewModel>? in
                 switch e.content {
                 case .Star(_, let repoSummary):

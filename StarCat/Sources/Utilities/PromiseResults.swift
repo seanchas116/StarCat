@@ -27,6 +27,12 @@ extension Session {
     }
 }
 
+extension RequestType {
+    func send() -> Promise<Response> {
+        return Session.sendRequestPromise(self)
+    }
+}
+
 extension Fetch {
     func promise() -> Promise<T> {
         return Promise { fulfill, reject in
