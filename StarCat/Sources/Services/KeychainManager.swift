@@ -27,7 +27,7 @@ class KeychainManager {
     
     func saveAccessToken(token: AccessToken) {
         self.keychain[githubTokenKey] = token.token
-        self.keychain[githubScopeKey] = token.token
+        self.keychain[githubScopeKey] = token.scope
     }
     
     func clearAccessToken() throws {
