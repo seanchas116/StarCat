@@ -48,6 +48,7 @@
 		BEB7705C1C476FC40000E9A8 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7705B1C476FC40000E9A8 /* Pagination.swift */; };
 		BEBA2A711C26AACB00F64F05 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA2A701C26AACB00F64F05 /* Constants.swift */; };
 		BEC803D01C51F80C00594AA4 /* LinkSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC803CF1C51F80C00594AA4 /* LinkSpec.swift */; };
+		BECB108C1C5CE09F00B0CB16 /* UIViewController+storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB108B1C5CE09F00B0CB16 /* UIViewController+storyboard.swift */; };
 		BED172F91C3E23E000C5A247 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED172F81C3E23E000C5A247 /* AppViewModel.swift */; };
 		BED813351C24EE6D0028F8B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED813341C24EE6D0028F8B0 /* AppDelegate.swift */; };
 		BED8133C1C24EE6D0028F8B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BED8133A1C24EE6D0028F8B0 /* Main.storyboard */; };
@@ -131,6 +132,7 @@
 		BEB7705B1C476FC40000E9A8 /* Pagination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		BEBA2A701C26AACB00F64F05 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BEC803CF1C51F80C00594AA4 /* LinkSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkSpec.swift; sourceTree = "<group>"; };
+		BECB108B1C5CE09F00B0CB16 /* UIViewController+storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+storyboard.swift"; sourceTree = "<group>"; };
 		BED172F81C3E23E000C5A247 /* AppViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		BED813311C24EE6D0028F8B0 /* StarCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BED813341C24EE6D0028F8B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -215,10 +217,10 @@
 		BE2CAF1E1C3C0C5400B51FBF /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				BE57ACBE1C53CE5600305A54 /* Utils */,
 				BE3F45421C2A991B00DD1863 /* Models */,
 				BE3F45411C2A990700DD1863 /* Services */,
 				BEE0C0AE1C3408A00014986D /* Utilities */,
+				BE57ACBE1C53CE5600305A54 /* Utils */,
 				BE3F45401C2A98FC00DD1863 /* ViewControllers */,
 				BEF605111C30239E0014D633 /* ViewModels */,
 				BE8C23171C452D4500691005 /* ViewUtils */,
@@ -226,12 +228,12 @@
 				BED813341C24EE6D0028F8B0 /* AppDelegate.swift */,
 				BEBA2A701C26AACB00F64F05 /* Constants.swift */,
 				BED8133F1C24EE6D0028F8B0 /* LaunchScreen.storyboard */,
-				BED8133A1C24EE6D0028F8B0 /* Main.storyboard */,
 				BE561EF71C5929E50097D58E /* LoginButton.storyboard */,
+				BED8133A1C24EE6D0028F8B0 /* Main.storyboard */,
 				BE47078E1C4A152D0069DA6F /* Organization.storyboard */,
 				BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */,
-				BE176E611C41EFF700E29E4F /* User.storyboard */,
 				BE20D28C1C5CBA8B003C4926 /* Settings.storyboard */,
+				BE176E611C41EFF700E29E4F /* User.storyboard */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -247,15 +249,15 @@
 		BE3F45401C2A98FC00DD1863 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BE561EF51C5926AE0097D58E /* LoginButtonViewController.swift */,
 				BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */,
 				BE4707901C4A198F0069DA6F /* OrganizationViewController.swift */,
 				BE4707961C4B47370069DA6F /* RepoTableViewController.swift */,
 				BE46B0031C38281400C8242C /* RepoViewController.swift */,
 				BE4707941C4A45680069DA6F /* SearchViewController.swift */,
+				BE20D28E1C5CC9E6003C4926 /* SettingsViewController.swift */,
 				BE39BA211C291BF40000A87F /* TabBarController.swift */,
 				BE176E631C41F10200E29E4F /* UserViewController.swift */,
-				BE561EF51C5926AE0097D58E /* LoginButtonViewController.swift */,
-				BE20D28E1C5CC9E6003C4926 /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -273,13 +275,13 @@
 		BE3F45421C2A991B00DD1863 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BE699B931C59C34A004A9E7D /* AccessToken.swift */,
 				BE3F45481C2A994500DD1863 /* Event.swift */,
 				BE546A641C4E30B500C71C0A /* Link.swift */,
 				BE3F45451C2A993400DD1863 /* Repo.swift */,
 				BEF605181C30FCBB0014D633 /* RepoSummary.swift */,
 				BE176E671C4201B400E29E4F /* User.swift */,
 				BE3F45431C2A992500DD1863 /* UserSummary.swift */,
-				BE699B931C59C34A004A9E7D /* AccessToken.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -287,10 +289,10 @@
 		BE57ACBE1C53CE5600305A54 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				BE57ACC41C53D6E600305A54 /* StringUtils.swift */,
 				BE32404B1C57C8A200A9A87A /* QueryString.swift */,
+				BE57ACC41C53D6E600305A54 /* StringUtils.swift */,
 			);
-			name = Utils;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		BE57ACC11C53D02B00305A54 /* Utils */ = {
@@ -298,7 +300,7 @@
 			children = (
 				BE57ACC21C53D03700305A54 /* utilSpec.swift */,
 			);
-			name = Utils;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		BE8C23171C452D4500691005 /* ViewUtils */ = {
@@ -308,6 +310,7 @@
 				BEF289541C429D9000F50A2A /* UILabel+Tap.swift */,
 				BE4707921C4A2F640069DA6F /* UINavigationController+storyboard.swift */,
 				BE8C23181C452D8E00691005 /* UITableView+scrollToTop.swift */,
+				BECB108B1C5CE09F00B0CB16 /* UIViewController+storyboard.swift */,
 				BE47078A1C49EAA00069DA6F /* WebViewPopup.swift */,
 			);
 			path = ViewUtils;
@@ -358,8 +361,8 @@
 		BED8134A1C24EE6D0028F8B0 /* StarCatTests */ = {
 			isa = PBXGroup;
 			children = (
-				BE57ACC11C53D02B00305A54 /* Utils */,
 				BEC803CE1C51F7E200594AA4 /* Models */,
+				BE57ACC11C53D02B00305A54 /* Utils */,
 				BED8134D1C24EE6D0028F8B0 /* Info.plist */,
 				BED8134B1C24EE6D0028F8B0 /* StarCatSpec.swift */,
 			);
@@ -672,6 +675,7 @@
 				BE57ACC51C53D6E600305A54 /* StringUtils.swift in Sources */,
 				BE3F45491C2A994500DD1863 /* Event.swift in Sources */,
 				BEF6051E1C3114220014D633 /* Requests.swift in Sources */,
+				BECB108C1C5CE09F00B0CB16 /* UIViewController+storyboard.swift in Sources */,
 				BEE0C0AC1C33EF1A0014986D /* RepoCell.swift in Sources */,
 				BEF605171C3034820014D633 /* RepoViewModel.swift in Sources */,
 				BE546A651C4E30B500C71C0A /* Link.swift in Sources */,
@@ -743,6 +747,7 @@
 				BE561EF81C5929E50097D58E /* Base */,
 			);
 			name = LoginButton.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		BED8133A1C24EE6D0028F8B0 /* Main.storyboard */ = {

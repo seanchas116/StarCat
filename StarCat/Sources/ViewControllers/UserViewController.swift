@@ -85,6 +85,6 @@ class UserViewController: RepoTableViewController {
     }
     
     func showProfileMenu() {
-        navigationController?.pushStoryboard("Settings", animated: true) { _ in }
+        presentStoryboard("Settings", animated: true)
     }
 }
