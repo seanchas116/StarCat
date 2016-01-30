@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -66,12 +66,22 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="aoa-gb-Eik" kind="relationship" relationship="rootViewController" id="PWg-zf-DeM"/>
+                        <segue destination="NYT-l6-wad" kind="relationship" relationship="rootViewController" id="lOu-7K-T9P"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lc1-Uw-qfV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-8" y="1574"/>
+        </scene>
+        <!--User-->
+        <scene sceneID="29O-dr-U4I">
+            <objects>
+                <viewControllerPlaceholder storyboardName="User" id="NYT-l6-wad" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Gqx-ge-cJp"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vz5-02-1dB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="585.5" y="1574"/>
         </scene>
         <!--Stars View Controller-->
         <scene sceneID="KxZ-SO-9dM">
@@ -149,25 +159,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vmg-Md-588" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="952" y="-261"/>
-        </scene>
-        <!--Me View Controller-->
-        <scene sceneID="KdC-7F-xk3">
-            <objects>
-                <viewController id="aoa-gb-Eik" userLabel="Me View Controller" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="URp-k3-2Ih"/>
-                        <viewControllerLayoutGuide type="bottom" id="6nO-Qb-Aax"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="3XD-mW-2DG">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Profile" id="phM-5z-nVE"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eiv-O5-yop" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="972" y="1574"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

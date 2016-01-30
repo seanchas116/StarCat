@@ -21,7 +21,9 @@ class OrganizationViewController: RepoTableViewController {
     
     var userSummary: UserSummary! {
         didSet {
-            pagination = UserRepoPagination(userName: userSummary.login)
+            let pagination = UserRepoPagination()
+            pagination.userName = userSummary.login
+            self.pagination = pagination
             viewModel.setSummary(userSummary)
             viewModel.load().then {
                 self.tableView.layoutIfNeeded()

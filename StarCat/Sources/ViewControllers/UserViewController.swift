@@ -20,18 +20,30 @@ class UserViewController: RepoTableViewController {
     @IBOutlet weak var starsLabel: UILabel!
     @IBOutlet weak var followingLabel: UILabel!
     
-    var userSummary: UserSummary! {
+    var userSummary: UserSummary? {
         didSet {
-            pagination = UserRepoPagination(userName: userSummary.login)
-            viewModel.setSummary(userSummary)
+            let pagination = UserRepoPagination()
+            pagination.userName = userSummary!.login
+            self.pagination = pagination
+            viewModel.setSummary(userSummary!)
             viewModel.load().then {
                 self.tableView.layoutIfNeeded()
             }
         }
     }
     let viewModel = UserViewModel()
-
+    
     override func viewDidLoad() {
+        if userSummary == nil {
+            let pagination = UserRepoPagination()
+            self.pagination = pagination
+            viewModel.loadCurrentUser().then { () -> Void in
+                pagination.userName = self.viewModel.login.value
+                self.paginator.refresh()
+                self.tableView.layoutIfNeeded()
+            }
+        }
+        
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: Selector("showActivity"))

@@ -142,6 +142,23 @@ struct GetUserRequest: GitHubRequest {
     }
 }
 
+struct GetCurrentUserRequest: GitHubRequest {
+    typealias Response = User
+    var path: String {
+        return "/user"
+    }
+    
+    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
+        do {
+            let user: User = try decode(object)
+            return user
+        } catch {
+            print("Error parsing response: \(error)")
+            return nil
+        }
+    }
+}
+
 struct GetReadmeRequest: GitHubRequest {
     typealias Response = String
     

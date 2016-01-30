@@ -12,15 +12,15 @@ import Haneke
 import PromiseKit
 
 class UserRepoPagination: Pagination<RepoViewModel> {
-    let userName: String
-    
-    init(userName: String) {
-        self.userName = userName
-    }
+    var userName: String?
     
     override func fetch(page: Int) -> Promise<[RepoViewModel]> {
-        return SearchRepoRequest(query: "user:\(userName)", sort: .Stars, perPage: 30, page: page).send()
-            .then { repos in repos.map { repo in RepoViewModel(repo: repo) } }
+        if let userName = userName {
+            return SearchRepoRequest(query: "user:\(userName)", sort: .Stars, perPage: 30, page: page).send()
+                .then { repos in repos.map { repo in RepoViewModel(repo: repo) } }
+        } else {
+            return Promise([])
+        }
     }
 }
 
@@ -48,6 +48,10 @@ class UserViewModel {
     
     func load() -> Promise<Void> {
         return GetUserRequest(login: login.value).send().then { self.setUser($0) }
+    }
+    
+    func loadCurrentUser() -> Promise<Void> {
+        return GetCurrentUserRequest().send().then { self.setUser($0) }
     }
     
     func setSummary(summary: UserSummary) {
