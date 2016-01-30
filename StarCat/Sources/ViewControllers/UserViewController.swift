@@ -46,13 +46,13 @@ class UserViewController: RepoTableViewController {
                 UIBarButtonItem(image: UIImage(named: "navigation-config"), style: .Plain, target: self, action: Selector("showProfileMenu")),
                 UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: Selector("showActivity"))
             ]
+            navigationItem.title = "Profile"
         } else {
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: Selector("showActivity"))
-
+            navigationItem.title = userSummary?.login
         }
         
         super.viewDidLoad()
-        
         
         viewModel.avatarImage.bindTo(avatarImageView.rx_image).addDisposableTo(disposeBag)
         viewModel.name.bindTo(nameLabel.rx_text).addDisposableTo(disposeBag)
@@ -71,10 +71,6 @@ class UserViewController: RepoTableViewController {
         viewModel.followersCount.map { String($0) }.bindTo(followersLabel.rx_text).addDisposableTo(disposeBag)
         viewModel.followingCount.map { String($0) }.bindTo(followingLabel.rx_text).addDisposableTo(disposeBag)
         viewModel.starsCount.map { String($0) }.bindTo(starsLabel.rx_text).addDisposableTo(disposeBag)
-        
-        viewModel.login.subscribeNext { [weak self] name in
-            self?.title = name
-        }.addDisposableTo(disposeBag)
     }
     
     override func didReceiveMemoryWarning() {
