@@ -30,7 +30,7 @@ class KeychainManager {
         self.keychain[githubScopeKey] = token.scope
     }
     
-    func clearAccessToken() throws {
+    func clearAccessToken() {
         self.keychain[githubTokenKey] = nil
         self.keychain[githubScopeKey] = nil
     }

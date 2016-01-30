@@ -30,7 +30,8 @@ class SettingsViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         if cell == logoutCell {
-            print("logout")
+            AppViewModel.instance.logout()
+            dismissViewControllerAnimated(true, completion: nil)
         }
     }
 }

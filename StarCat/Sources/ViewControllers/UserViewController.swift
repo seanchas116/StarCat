@@ -10,6 +10,11 @@ import UIKit
 import RxSwift
 
 class UserViewController: RepoTableViewController {
+    enum Mode {
+        case User
+        case Profile
+    }
+    
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var loginLabel: UILabel!
@@ -20,8 +25,11 @@ class UserViewController: RepoTableViewController {
     @IBOutlet weak var starsLabel: UILabel!
     @IBOutlet weak var followingLabel: UILabel!
     
+    var mode = Mode.Profile
+    
     var userSummary: UserSummary? {
         didSet {
+            mode = .User
             let pagination = UserRepoPagination()
             pagination.userName = userSummary!.login
             self.pagination = pagination
@@ -34,7 +42,7 @@ class UserViewController: RepoTableViewController {
     let viewModel = UserViewModel()
     
     override func viewDidLoad() {
-        if userSummary == nil {
+        if mode == .Profile {
             let pagination = UserRepoPagination()
             self.pagination = pagination
             viewModel.loadCurrentUser().then { () -> Void in
@@ -71,6 +79,13 @@ class UserViewController: RepoTableViewController {
         viewModel.followersCount.map { String($0) }.bindTo(followersLabel.rx_text).addDisposableTo(disposeBag)
         viewModel.followingCount.map { String($0) }.bindTo(followingLabel.rx_text).addDisposableTo(disposeBag)
         viewModel.starsCount.map { String($0) }.bindTo(starsLabel.rx_text).addDisposableTo(disposeBag)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if mode == .Profile && !Authentication.isLoggedIn {
+            LoginButtonViewController.showOn(self)
+        }
     }
     
     override func didReceiveMemoryWarning() {

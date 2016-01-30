@@ -27,7 +27,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
-        return viewModel.loginWithCallbackURL(url) != nil
+        if let login = viewModel.loginWithCallbackURL(url) {
+            login.then {
+                LoginButtonViewController.hideAll()
+            }
+            return true
+        }
+        return false
     }
     
     func applicationWillResignActive(application: UIApplication) {

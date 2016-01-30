@@ -34,6 +34,12 @@ class AppViewModel {
         return nil
     }
     
+    func logout() {
+        Authentication.accessToken = nil
+        keychainManager.clearAccessToken()
+        currentUser.value = nil
+    }
+    
     private func loadCurrentUser() -> Promise<Void> {
         return GetCurrentUserRequest().send().then { user in
             self.currentUser.value = user
