@@ -42,11 +42,17 @@ class UserViewController: RepoTableViewController {
                 self.paginator.refresh()
                 self.tableView.layoutIfNeeded()
             }
+            navigationItem.rightBarButtonItems = [
+                UIBarButtonItem(image: UIImage(named: "navigation-config"), style: .Plain, target: self, action: Selector("showProfileMenu")),
+                UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: Selector("showActivity"))
+            ]
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: Selector("showActivity"))
+
         }
         
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: Selector("showActivity"))
         
         viewModel.avatarImage.bindTo(avatarImageView.rx_image).addDisposableTo(disposeBag)
         viewModel.name.bindTo(nameLabel.rx_text).addDisposableTo(disposeBag)
@@ -80,5 +86,9 @@ class UserViewController: RepoTableViewController {
         if let url = viewModel.githubURL.value {
             WebViewPopup.openActivity(url, on: self)
         }
+    }
+    
+    func showProfileMenu() {
+        navigationController?.pushStoryboard("Settings", animated: true) { _ in }
     }
 }

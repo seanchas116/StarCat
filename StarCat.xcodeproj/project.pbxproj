@@ -14,6 +14,8 @@
 		BE176E661C42010C00E29E4F /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE176E651C42010C00E29E4F /* UserViewModel.swift */; };
 		BE176E681C4201B400E29E4F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE176E671C4201B400E29E4F /* User.swift */; };
 		BE18EEE71C3A2BD900B92291 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE18EEE61C3A2BD900B92291 /* RoundButton.swift */; };
+		BE20D28D1C5CBA8B003C4926 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE20D28C1C5CBA8B003C4926 /* Settings.storyboard */; };
+		BE20D28F1C5CC9E6003C4926 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE20D28E1C5CC9E6003C4926 /* SettingsViewController.swift */; };
 		BE2CAF1D1C3C0AC800B51FBF /* github-markdown.css in Resources */ = {isa = PBXBuildFile; fileRef = BE2CAF1C1C3C0AC800B51FBF /* github-markdown.css */; };
 		BE2CAF211C3C0CFE00B51FBF /* github-markdown-custom.css in Resources */ = {isa = PBXBuildFile; fileRef = BE2CAF201C3C0CFE00B51FBF /* github-markdown-custom.css */; };
 		BE32404C1C57C8A200A9A87A /* QueryString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE32404B1C57C8A200A9A87A /* QueryString.swift */; };
@@ -95,6 +97,8 @@
 		BE176E651C42010C00E29E4F /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		BE176E671C4201B400E29E4F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BE18EEE61C3A2BD900B92291 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		BE20D28C1C5CBA8B003C4926 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		BE20D28E1C5CC9E6003C4926 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BE2CAF1C1C3C0AC800B51FBF /* github-markdown.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = "github-markdown.css"; path = "node_modules/github-markdown-css/github-markdown.css"; sourceTree = SOURCE_ROOT; };
 		BE2CAF201C3C0CFE00B51FBF /* github-markdown-custom.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "github-markdown-custom.css"; sourceTree = "<group>"; };
 		BE32404B1C57C8A200A9A87A /* QueryString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryString.swift; sourceTree = "<group>"; };
@@ -227,6 +231,7 @@
 				BE47078E1C4A152D0069DA6F /* Organization.storyboard */,
 				BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */,
 				BE176E611C41EFF700E29E4F /* User.storyboard */,
+				BE20D28C1C5CBA8B003C4926 /* Settings.storyboard */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 				BE39BA211C291BF40000A87F /* TabBarController.swift */,
 				BE176E631C41F10200E29E4F /* UserViewController.swift */,
 				BE561EF51C5926AE0097D58E /* LoginButtonViewController.swift */,
+				BE20D28E1C5CC9E6003C4926 /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -530,6 +536,7 @@
 				BED8133E1C24EE6D0028F8B0 /* Assets.xcassets in Resources */,
 				BED8133C1C24EE6D0028F8B0 /* Main.storyboard in Resources */,
 				BE2CAF211C3C0CFE00B51FBF /* github-markdown-custom.css in Resources */,
+				BE20D28D1C5CBA8B003C4926 /* Settings.storyboard in Resources */,
 				BE176E621C41EFF700E29E4F /* User.storyboard in Resources */,
 				BE47078F1C4A152D0069DA6F /* Organization.storyboard in Resources */,
 				BEB1B9AB1C414B4400A730A0 /* Repo.storyboard in Resources */,
@@ -690,6 +697,7 @@
 				BEB680791C3F9BD6007B2E08 /* ReadmeTextView.swift in Sources */,
 				BEBA2A711C26AACB00F64F05 /* Constants.swift in Sources */,
 				BE8C231B1C45E15E00691005 /* TableViewPaginator.swift in Sources */,
+				BE20D28F1C5CC9E6003C4926 /* SettingsViewController.swift in Sources */,
 				BE176E661C42010C00E29E4F /* UserViewModel.swift in Sources */,
 				BE3F45441C2A992500DD1863 /* UserSummary.swift in Sources */,
 			);
