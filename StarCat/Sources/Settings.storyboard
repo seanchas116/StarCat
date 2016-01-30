@@ -96,6 +96,9 @@
                             <outlet property="delegate" destination="Nsg-1F-vGV" id="l76-7q-ymk"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="logoutCell" destination="zHj-QK-gQ5" id="8g2-5x-Keh"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWN-fR-jvt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

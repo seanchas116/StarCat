@@ -9,6 +9,7 @@
 import UIKit
 
 class SettingsViewController: UITableViewController {
+    @IBOutlet weak var logoutCell: UITableViewCell!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,5 +24,12 @@ class SettingsViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        if cell == logoutCell {
+            print("logout")
+        }
     }
 }
