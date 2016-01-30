@@ -13,28 +13,10 @@ import KeychainAccess
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let keychain = Keychain(service: "com.seanchas116.starcat")
-    
-    private func loadAccessToken() -> AccessToken? {
-        if let token = try? keychain.get("githubAccessToken"), scope = try? keychain.get("githubAccessScope") {
-            if let token = token, scope = scope {
-                return AccessToken(token: token, scope: scope)
-            }
-        }
-        return nil
-    }
-    
-    private func saveAccessToken(token: AccessToken) {
-        do {
-            try self.keychain.set(token.token, key: "githubAccessToken")
-            try self.keychain.set(token.scope, key: "githubAccessScope")
-        } catch _ {
-            print("failed to set access token to keychain")
-        }
-    }
+    var viewModel = AppViewModel.instance
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        Authentication.accessToken = loadAccessToken()
+        viewModel.tryLoginWithKeychain()
         
         // Override point for customization after application launch.
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "AvenirNext-Medium", size: 18)!]
@@ -45,14 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
-        if let tokenFetched = Authentication.handleCallbackURL(url) {
-            tokenFetched.then { token -> Void in
-                self.saveAccessToken(token)
-                LoginButtonViewController.hideAll()
-            }
-            return true
-        }
-        return false
+        return viewModel.loginWithCallbackURL(url) != nil
     }
     
     func applicationWillResignActive(application: UIApplication) {

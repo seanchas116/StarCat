@@ -49,6 +49,7 @@
 		BEBA2A711C26AACB00F64F05 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA2A701C26AACB00F64F05 /* Constants.swift */; };
 		BEC803D01C51F80C00594AA4 /* LinkSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC803CF1C51F80C00594AA4 /* LinkSpec.swift */; };
 		BECB108C1C5CE09F00B0CB16 /* UIViewController+storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB108B1C5CE09F00B0CB16 /* UIViewController+storyboard.swift */; };
+		BECB108E1C5CEE8100B0CB16 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB108D1C5CEE8100B0CB16 /* KeychainManager.swift */; };
 		BED172F91C3E23E000C5A247 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED172F81C3E23E000C5A247 /* AppViewModel.swift */; };
 		BED813351C24EE6D0028F8B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED813341C24EE6D0028F8B0 /* AppDelegate.swift */; };
 		BED8133C1C24EE6D0028F8B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BED8133A1C24EE6D0028F8B0 /* Main.storyboard */; };
@@ -133,6 +134,7 @@
 		BEBA2A701C26AACB00F64F05 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BEC803CF1C51F80C00594AA4 /* LinkSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkSpec.swift; sourceTree = "<group>"; };
 		BECB108B1C5CE09F00B0CB16 /* UIViewController+storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+storyboard.swift"; sourceTree = "<group>"; };
+		BECB108D1C5CEE8100B0CB16 /* KeychainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		BED172F81C3E23E000C5A247 /* AppViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		BED813311C24EE6D0028F8B0 /* StarCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BED813341C24EE6D0028F8B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				BEF6051A1C3113DF0014D633 /* GitHubAPI */,
+				BECB108D1C5CEE8100B0CB16 /* KeychainManager.swift */,
 				BE4E4EE51C46A39C009FCBE8 /* ModelCache.swift */,
 				BEB7705B1C476FC40000E9A8 /* Pagination.swift */,
 			);
@@ -700,6 +703,7 @@
 				BE47078B1C49EAA00069DA6F /* WebViewPopup.swift in Sources */,
 				BEB680791C3F9BD6007B2E08 /* ReadmeTextView.swift in Sources */,
 				BEBA2A711C26AACB00F64F05 /* Constants.swift in Sources */,
+				BECB108E1C5CEE8100B0CB16 /* KeychainManager.swift in Sources */,
 				BE8C231B1C45E15E00691005 /* TableViewPaginator.swift in Sources */,
 				BE20D28F1C5CC9E6003C4926 /* SettingsViewController.swift in Sources */,
 				BE176E661C42010C00E29E4F /* UserViewModel.swift in Sources */,
