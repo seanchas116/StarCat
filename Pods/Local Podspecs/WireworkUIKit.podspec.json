@@ -8,9 +8,20 @@
   "authors": {
     "Ryohei Ikegami": "iofg2100@gmail.com"
   },
+  "platforms": {
+    "ios": "8.0"
+  },
   "source": {
     "git": "http://EXAMPLE/WireworkUIKit.git",
     "tag": "0.0.1"
   },
-  "source_files": "WireworkUIKit"
+  "source_files": "WireworkUIKit",
+  "dependencies": {
+    "Wirework": [
+
+    ],
+    "WireworkFoundation": [
+
+    ]
+  }
 }

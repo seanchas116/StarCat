@@ -8,9 +8,18 @@
   "authors": {
     "Ryohei Ikegami": "iofg2100@gmail.com"
   },
+  "platforms": {
+    "ios": "8.0",
+    "osx": "10.9"
+  },
   "source": {
     "git": "http://EXAMPLE/WireworkFoundation.git",
     "tag": "0.0.1"
   },
-  "source_files": "WireworkFoundation"
+  "source_files": "WireworkFoundation",
+  "dependencies": {
+    "Wirework": [
+
+    ]
+  }
 }

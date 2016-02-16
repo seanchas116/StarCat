@@ -39,8 +39,11 @@ PODS:
   - SVWebViewController (HEAD based on 1.0)
   - SwiftDate (2.0.2)
   - Wirework (0.0.1)
-  - WireworkFoundation (0.0.1)
-  - WireworkUIKit (0.0.1)
+  - WireworkFoundation (0.0.1):
+    - Wirework
+  - WireworkUIKit (0.0.1):
+    - Wirework
+    - WireworkFoundation
 
 DEPENDENCIES:
   - Alamofire
@@ -89,8 +92,8 @@ SPEC CHECKSUMS:
   RxSwift: 191c6b06da783a8671433cf35a54d2ad2fd2d9de
   SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
   SwiftDate: b4f4d0962afe48365ad2800c9850a6626deb9359
-  Wirework: 9d40968833fee083d50bc2bf30e528d12d87a44b
-  WireworkFoundation: be08865259ba6c617ca54cf8ce7dab39e031708e
-  WireworkUIKit: 4608f2bd4bdd6f4bcc800cf9673a05214912250d
+  Wirework: ae7632345dc533a1657da66950de174407bfd336
+  WireworkFoundation: 8588264f748c4b957f8c353ca0407d3d35ac2a0f
+  WireworkUIKit: efc4b5991bd331f78e95940033aef7cb0863f039
 
 COCOAPODS: 0.39.0
