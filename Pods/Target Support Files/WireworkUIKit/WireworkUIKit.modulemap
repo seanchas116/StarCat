@@ -1,0 +1,6 @@
+framework module WireworkUIKit {
+  umbrella header "WireworkUIKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

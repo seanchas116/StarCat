@@ -100,6 +100,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-StarCatUITests/RxSwift.framework"
   install_framework "Pods-StarCatUITests/SVWebViewController.framework"
   install_framework "Pods-StarCatUITests/SwiftDate.framework"
+  install_framework "Pods-StarCatUITests/Wirework.framework"
+  install_framework "Pods-StarCatUITests/WireworkFoundation.framework"
+  install_framework "Pods-StarCatUITests/WireworkUIKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-StarCatUITests/APIKit.framework"
@@ -118,4 +121,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-StarCatUITests/RxSwift.framework"
   install_framework "Pods-StarCatUITests/SVWebViewController.framework"
   install_framework "Pods-StarCatUITests/SwiftDate.framework"
+  install_framework "Pods-StarCatUITests/Wirework.framework"
+  install_framework "Pods-StarCatUITests/WireworkFoundation.framework"
+  install_framework "Pods-StarCatUITests/WireworkUIKit.framework"
 fi

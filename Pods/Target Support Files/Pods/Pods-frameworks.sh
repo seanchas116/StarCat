@@ -100,6 +100,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/RxSwift.framework"
   install_framework "Pods/SVWebViewController.framework"
   install_framework "Pods/SwiftDate.framework"
+  install_framework "Pods/Wirework.framework"
+  install_framework "Pods/WireworkFoundation.framework"
+  install_framework "Pods/WireworkUIKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/APIKit.framework"
@@ -118,4 +121,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/RxSwift.framework"
   install_framework "Pods/SVWebViewController.framework"
   install_framework "Pods/SwiftDate.framework"
+  install_framework "Pods/Wirework.framework"
+  install_framework "Pods/WireworkFoundation.framework"
+  install_framework "Pods/WireworkUIKit.framework"
 fi

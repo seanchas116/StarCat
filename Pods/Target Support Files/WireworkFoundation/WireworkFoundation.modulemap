@@ -1,0 +1,6 @@
+framework module WireworkFoundation {
+  umbrella header "WireworkFoundation-umbrella.h"
+
+  export *
+  module * { export * }
+}

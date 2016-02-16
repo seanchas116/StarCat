@@ -16,6 +16,9 @@ pod 'SwiftDate'
 pod 'Alamofire'
 pod 'Regex'
 pod 'SVWebViewController', :head
+pod 'Wirework', path: '../Wirework'
+pod 'WireworkFoundation', path: '../Wirework'
+pod 'WireworkUIKit', path: '../Wirework'
 
 target 'StarCat' do
 end
