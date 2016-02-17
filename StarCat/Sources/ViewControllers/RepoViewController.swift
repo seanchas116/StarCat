@@ -8,8 +8,7 @@
 
 import UIKit
 import WebKit
-import RxSwift
-import RxCocoa
+import Wirework
 import SwiftDate
 
 class ReadmeView: UIView {
@@ -50,7 +49,7 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var readmeView: ReadmeView!
     @IBOutlet weak var readmeHeightConstraint: NSLayoutConstraint!
     
-    let disposeBag = DisposeBag()
+    let bag = SubscriptionBag()
     var viewModel: RepoViewModel!
     
     override func viewDidLoad() {
@@ -60,38 +59,36 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
         
         print(viewModel)
         
-        viewModel.name.subscribeNext { [weak self] name in
+        viewModel.name.bindTo { [weak self] name in
             self?.title = name
-        }.addDisposableTo(disposeBag)
-        viewModel.name.bindTo(titleLabel.rx_text).addDisposableTo(disposeBag)
-        viewModel.description.bindTo(descriptionLabel.rx_text).addDisposableTo(disposeBag)
-        viewModel.avatarImage.bindTo(avatarImageView.rx_image).addDisposableTo(disposeBag)
-        viewModel.ownerName.bindTo(ownerLabel.rx_text).addDisposableTo(disposeBag)
-        viewModel.homepage.map { $0?.stringWithoutScheme ?? ""}.bindTo(homepageLabel.rx_text).addDisposableTo(disposeBag)
-        viewModel.homepage.map { $0 == nil }.bindTo(homepageLabel.rx_hidden).addDisposableTo(disposeBag)
-        viewModel.starsCount.subscribeNext { [weak self] count in
-            self?.stargazersButton.setTitle(String(count), forState: .Normal)
-        }.addDisposableTo(disposeBag)
+        }.addTo(bag)
+        viewModel.name.bindTo(titleLabel.wwText).addTo(bag)
+        viewModel.description.bindTo(descriptionLabel.wwText).addTo(bag)
+        viewModel.avatarImage.bindTo(avatarImageView.wwImage).addTo(bag)
+        viewModel.ownerName.bindTo(ownerLabel.wwText).addTo(bag)
+        viewModel.homepage.map { $0?.stringWithoutScheme ?? ""}.bindTo(homepageLabel.wwText).addTo(bag)
+        viewModel.homepage.map { $0 == nil }.bindTo(homepageLabel.wwHidden).addTo(bag)
+        viewModel.starsCount.map { String($0) }.bindTo(stargazersButton.wwState(.Normal).title).addTo(bag)
         
-        combineLatest(viewModel.language, viewModel.pushedAt) { "\($0 ?? "")・\($1.formatForUI(withAgo: true))" }
-            .bindTo(miscInfoLabel.rx_text).addDisposableTo(disposeBag)
+        combine(viewModel.language, viewModel.pushedAt) { "\($0 ?? "")・\($1.formatForUI(withAgo: true))" }
+            .bindTo(miscInfoLabel.wwText).addTo(bag)
         
         readmeHeightConstraint.constant = 0
         
         viewModel.readme
             .map(wrapReadme)
-            .subscribeNext { [unowned self] html in
+            .bindTo { [unowned self] html in
                 self.readmeView.webView.loadHTMLString(html, baseURL: nil)
-            }.addDisposableTo(disposeBag)
+            }.addTo(bag)
         readmeView.webView.navigationDelegate = self
         
-        ownerLabel.makeTappable().subscribeNext { [weak self] _ in
+        ownerLabel.makeTappable().subscribe { [weak self] _ in
             self?.showOwner()
-        }.addDisposableTo(disposeBag)
+        }.addTo(bag)
         
-        homepageLabel.makeTappable().subscribeNext { [unowned self] _ in
+        homepageLabel.makeTappable().subscribe { [unowned self] _ in
             WebViewPopup.open(self.viewModel.homepage.value!, on: self)
-        }.addDisposableTo(disposeBag)
+        }.addTo(bag)
         
         viewModel.fetchReadme()
     }

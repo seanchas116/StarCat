@@ -7,13 +7,13 @@
 //
 
 import UIKit
-import RxSwift
+import Wirework
 
 class RepoTableViewController: UITableViewController {
     
     var pagination: Pagination<RepoViewModel>!
     var paginator: TableViewPaginator<RepoViewModel>!
-    let disposeBag = DisposeBag()
+    let bag = SubscriptionBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,24 +24,26 @@ class RepoTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.registerNib(UINib(nibName: "RepoCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
         
-        paginator = TableViewPaginator(
-            tableView: tableView, refreshControl: refreshControl!,
-            pagination: pagination) { items in
-                items.bindTo(self.tableView.rx_itemsWithCellIdentifier("RepoCell")) { [weak self] row, elem, cell in
-                    let repoCell = cell as! RepoCell
-                    repoCell.viewModel = elem
-                    repoCell.onActorTapped = { actor in
-                        self?.navigationController?.pushStoryboard("User", animated: true) { next in
-                            (next as! UserViewController).userSummary = actor
-                        }
+        let bind = { (items: Property<[RepoViewModel]>) -> Subscription in
+            return items.bindTo(self.tableView.wwRows("RepoCell") { [weak self] row, elem, cell in
+                let repoCell = cell as! RepoCell
+                repoCell.viewModel = elem
+                repoCell.onActorTapped = { actor in
+                    self?.navigationController?.pushStoryboard("User", animated: true) { next in
+                        (next as! UserViewController).userSummary = actor
                     }
                 }
+            })
         }
-        paginator.whenSelected.subscribeNext { [unowned self] repoVM in
+        
+        paginator = TableViewPaginator<RepoViewModel>(
+            tableView: tableView, refreshControl: refreshControl!,
+            pagination: pagination, bind: bind)
+        paginator.whenSelected.subscribe { [unowned self] repoVM in
             self.navigationController?.pushStoryboard("Repo", animated: true) { next in
                 (next as! RepoViewController).viewModel = repoVM
             }
-        }.addDisposableTo(disposeBag)
+        }.addTo(bag)
     }
 
     override func didReceiveMemoryWarning() {

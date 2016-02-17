@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import RxSwift
+import Wirework
 import PromiseKit
 
 class AppViewModel {

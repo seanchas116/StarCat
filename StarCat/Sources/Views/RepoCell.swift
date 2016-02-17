@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
+import Wirework
 
 class RepoCell: UITableViewCell {
     @IBOutlet weak var avatarImage: UIImageView!
@@ -34,32 +33,30 @@ class RepoCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    var disposeBag: DisposeBag!
+    var bag: SubscriptionBag!
     
     var viewModel: RepoViewModel! {
         didSet {
-            disposeBag = DisposeBag()
-            viewModel.name.bindTo(titleLabel.rx_text).addDisposableTo(disposeBag)
-            viewModel.description.bindTo(descriptionLabel.rx_text).addDisposableTo(disposeBag)
-            viewModel.avatarImage.bindTo(avatarImage.rx_image).addDisposableTo(disposeBag)
-            viewModel.ownerName.bindTo(ownerNameLabel.rx_text).addDisposableTo(disposeBag)
-            viewModel.event.map { $0 == nil }.bindTo(eventInfoView.rx_hidden).addDisposableTo(disposeBag)
-            viewModel.eventActorName.bindTo(eventActorLabel.rx_text).addDisposableTo(disposeBag)
-            viewModel.eventTime.map { $0?.formatForUI(withAgo: false) ?? "" }.bindTo(eventTimeLabel.rx_text).addDisposableTo(disposeBag)
-            viewModel.language.map { l in l ?? "" }.shareReplay(1)
-                .bindTo(languageLabel.rx_text).addDisposableTo(disposeBag)
-            viewModel.language.map { l in l == nil }.shareReplay(1)
-                .bindTo(languageLabel.rx_hidden).addDisposableTo(disposeBag)
-            eventActorLabel.makeTappable().subscribeNext { [unowned self] _ in
+            bag = SubscriptionBag()
+            viewModel.name.bindTo(titleLabel.wwText).addTo(bag)
+            viewModel.description.bindTo(descriptionLabel.wwText).addTo(bag)
+            viewModel.avatarImage.bindTo(avatarImage.wwImage).addTo(bag)
+            viewModel.ownerName.bindTo(ownerNameLabel.wwText).addTo(bag)
+            viewModel.event.map { $0 == nil }.bindTo(eventInfoView.wwHidden).addTo(bag)
+            viewModel.eventActorName.bindTo(eventActorLabel.wwText).addTo(bag)
+            viewModel.eventTime.map { $0?.formatForUI(withAgo: false) ?? "" }.bindTo(eventTimeLabel.wwText).addTo(bag)
+            viewModel.language.map { l in l ?? "" }.bindTo(languageLabel.wwText).addTo(bag)
+            viewModel.language.map { l in l == nil }.bindTo(languageLabel.wwHidden).addTo(bag)
+            eventActorLabel.makeTappable().subscribe { [unowned self] _ in
                 if let actor = self.viewModel.eventActor.value {
                     self.onActorTapped?(actor)
                 }
-            }.addDisposableTo(disposeBag)
+            }.addTo(bag)
         }
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.disposeBag = nil
+        self.bag = nil
     }
 }

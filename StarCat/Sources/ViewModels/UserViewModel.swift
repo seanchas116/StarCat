@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import RxSwift
+import Wirework
 import Haneke
 import PromiseKit
 
@@ -35,15 +35,12 @@ class UserViewModel {
     let followersCount = Variable(0)
     let followingCount = Variable(0)
     let starsCount = Variable(0)
-    let githubURL = Variable<Link?>(nil)
+    let githubURL: Property<Link?>
     
-    let disposeBag = DisposeBag()
+    let bag = SubscriptionBag()
     
     init() {
-        login
-            .map { Link(string: "https://github.com/\($0)") }
-            .bindTo(githubURL)
-            .addDisposableTo(disposeBag)
+        githubURL = login.map { Link(string: "https://github.com/\($0)") }
     }
     
     func load() -> Promise<Void> {

@@ -62,23 +62,23 @@ class UserViewController: RepoTableViewController {
         
         super.viewDidLoad()
         
-        viewModel.avatarImage.bindTo(avatarImageView.rx_image).addDisposableTo(disposeBag)
-        viewModel.name.bindTo(nameLabel.rx_text).addDisposableTo(disposeBag)
-        viewModel.login.bindTo(loginLabel.rx_text).addDisposableTo(disposeBag)
+        viewModel.avatarImage.bindTo(avatarImageView.wwImage).addTo(bag)
+        viewModel.name.bindTo(nameLabel.wwText).addTo(bag)
+        viewModel.login.bindTo(loginLabel.wwText).addTo(bag)
         
-        viewModel.location.map { $0 ?? "" }.bindTo(locationLabel.rx_text).addDisposableTo(disposeBag)
-        viewModel.location.map { $0 == nil }.bindTo(locationLabel.rx_hidden).addDisposableTo(disposeBag)
-        viewModel.homepage.map { $0?.stringWithoutScheme ?? "" }.bindTo(homepageLabel.rx_text).addDisposableTo(disposeBag)
-        viewModel.homepage.map { $0 == nil }.bindTo(locationLabel.rx_hidden).addDisposableTo(disposeBag)
-        homepageLabel.makeTappable().subscribeNext { [unowned self] _ in
+        viewModel.location.map { $0 ?? "" }.bindTo(locationLabel.wwText).addTo(bag)
+        viewModel.location.map { $0 == nil }.bindTo(locationLabel.wwHidden).addTo(bag)
+        viewModel.homepage.map { $0?.stringWithoutScheme ?? "" }.bindTo(homepageLabel.wwText).addTo(bag)
+        viewModel.homepage.map { $0 == nil }.bindTo(locationLabel.wwHidden).addTo(bag)
+        homepageLabel.makeTappable().subscribe { [unowned self] _ in
             if let link = self.viewModel.homepage.value {
                 WebViewPopup.open(link, on: self)
             }
-        }.addDisposableTo(disposeBag)
+        }.addTo(bag)
         
-        viewModel.followersCount.map { String($0) }.bindTo(followersLabel.rx_text).addDisposableTo(disposeBag)
-        viewModel.followingCount.map { String($0) }.bindTo(followingLabel.rx_text).addDisposableTo(disposeBag)
-        viewModel.starsCount.map { String($0) }.bindTo(starsLabel.rx_text).addDisposableTo(disposeBag)
+        viewModel.followersCount.map { String($0) }.bindTo(followersLabel.wwText).addTo(bag)
+        viewModel.followingCount.map { String($0) }.bindTo(followingLabel.wwText).addTo(bag)
+        viewModel.starsCount.map { String($0) }.bindTo(starsLabel.wwText).addTo(bag)
     }
     
     override func viewDidAppear(animated: Bool) {

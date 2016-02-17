@@ -7,18 +7,18 @@
 //
 
 import Foundation
-import RxSwift
+import Wirework
 import PromiseKit
 
 class SearchPagination: Pagination<RepoViewModel> {
     let query = Variable<String?>(nil)
-    let disposeBag = DisposeBag()
+    let bag = SubscriptionBag()
     
     override init() {
         super.init()
-        query.subscribeNext { _ in
+        query.bindTo { _ in
             self.fetchAndReset()
-        }.addDisposableTo(disposeBag)
+        }.addTo(bag)
     }
     
     override func fetch(page: Int) -> Promise<[RepoViewModel]> {

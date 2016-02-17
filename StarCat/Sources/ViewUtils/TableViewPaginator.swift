@@ -8,8 +8,8 @@
 
 import Foundation
 import UIKit
-import RxSwift
-import RxCocoa
+import Wirework
+import WireworkUIKit
 
 class TableViewPaginator<T> {
     let tableView: UITableView
@@ -18,10 +18,10 @@ class TableViewPaginator<T> {
     var initialized = false
     let loading = Variable(false)
     let loadingMore = Variable(false)
-    let disposeBag = DisposeBag()
-    var whenSelected: Observable<T?>!
+    let bag = SubscriptionBag()
+    var whenSelected: Signal<T?>!
     
-    init(tableView: UITableView, refreshControl: UIRefreshControl, pagination: Pagination<T>, bind: (Variable<[T]>) -> Disposable) {
+    init(tableView: UITableView, refreshControl: UIRefreshControl, pagination: Pagination<T>, bind: (Variable<[T]>) -> Subscription) {
         self.tableView = tableView
         self.refreshControl = refreshControl
         self.pagination = pagination
@@ -29,30 +29,24 @@ class TableViewPaginator<T> {
         tableView.delegate = nil
         tableView.dataSource = nil
         
-        whenSelected = tableView.rx_itemSelected.map { [weak self] index -> T? in
+        whenSelected = tableView.wwItemSelected.map { [weak self] index -> T? in
             if let this = self {
                 return this.pagination.items.value[index.row]
             }
             return nil
         }
         
-        bind(pagination.items).addDisposableTo(disposeBag)
+        bind(pagination.items).addTo(bag)
         
-        refreshControl.rx_controlEvents(UIControlEvents.ValueChanged).subscribeNext { _ in
+        refreshControl.wwControlEvent(UIControlEvents.ValueChanged).subscribe { _ in
             self.fetch()
-        }.addDisposableTo(disposeBag)
+        }.addTo(bag)
         
-        loading.subscribeNext { [weak self] loading in
-            if loading {
-                self?.refreshControl.beginRefreshing()
-            } else {
-                self?.refreshControl.endRefreshing()
-            }
-        }.addDisposableTo(disposeBag)
+        loading.bindTo(refreshControl.wwRefreshing).addTo(bag)
         
-        tableView.rx_contentOffset.subscribeNext { [weak self] _ in
+        tableView.wwDidScroll.subscribe { [weak self] _ in
             self?.didScroll()
-        }.addDisposableTo(disposeBag)
+        }.addTo(bag)
         
         initialized = true
     }

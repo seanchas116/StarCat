@@ -7,21 +7,21 @@
 //
 
 import UIKit
-import RxSwift
+import Wirework
 
 class LoginButtonViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
     
-    let disposeBag = DisposeBag()
+    let bag = SubscriptionBag()
     private var onLoggedIn: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loginButton.rx_tap.subscribeNext { _ in
+        loginButton.wwTapped.subscribe { _ in
             UIApplication.sharedApplication().openURL(Authentication.authURL)
-        }.addDisposableTo(disposeBag)
+        }.addTo(bag)
 
         // Do any additional setup after loading the view.
     }

@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
+import Wirework
 
 class NewsTableViewController: RepoTableViewController {
     
@@ -20,12 +19,12 @@ class NewsTableViewController: RepoTableViewController {
         super.viewDidLoad()
         paginator.loading.value = true
         
-        NSNotificationCenter.defaultCenter().rx_notification(UIApplicationDidBecomeActiveNotification)
-            .subscribeNext { [weak self] _ in
+        NSNotificationCenter.defaultCenter().wwNotification(UIApplicationDidBecomeActiveNotification, object: nil)
+            .subscribe { [weak self] _ in
                 print("activated")
                 self?.paginator.refresh()
             }
-            .addDisposableTo(disposeBag)
+            .addTo(bag)
     }
     
     override func viewDidAppear(animated: Bool) {

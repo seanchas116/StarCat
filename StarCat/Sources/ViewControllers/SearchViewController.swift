@@ -7,14 +7,13 @@
 //
 
 import UIKit
-import RxSwift
 import SwiftDate
+import Wirework
 
 class SearchViewController: RepoTableViewController, UISearchBarDelegate {
     
     var searchController: UISearchController!
     let viewModel = SearchViewModel()
-    let query = Variable("")
 
     override func viewDidLoad() {
         pagination = viewModel.pagination
@@ -29,7 +28,6 @@ class SearchViewController: RepoTableViewController, UISearchBarDelegate {
         searchBar.sizeToFit()
         searchBar.searchBarStyle = UISearchBarStyle.Minimal
         navigationItem.titleView = searchBar
-        searchBar.rx_text.bindTo(query).addDisposableTo(disposeBag)
         
         definesPresentationContext = true
     }
@@ -40,6 +38,6 @@ class SearchViewController: RepoTableViewController, UISearchBarDelegate {
     }
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        viewModel.pagination.query.value = query.value
+        viewModel.pagination.query.value = searchBar.text
     }
 }

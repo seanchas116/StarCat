@@ -7,10 +7,9 @@
 //
 
 import Foundation
-import RxSwift
+import Wirework
 import Haneke
 import SwiftDate
-import Alamofire
 
 class RepoViewModel {
     let event = Variable<Event?>(nil)
@@ -24,11 +23,10 @@ class RepoViewModel {
     let homepage = Variable<Link?>(nil)
     let pushedAt = Variable(NSDate())
     let readme = Variable("")
-    let githubURL = Variable<Link?>(nil)
-    let eventActor = Variable<UserSummary?>(nil)
-    let eventActorName = Variable<String>("")
-    let eventTime = Variable<NSDate?>(nil)
-    let disposeBag = DisposeBag()
+    let githubURL: Property<Link?>
+    let eventActor: Property<UserSummary?>
+    let eventActorName: Property<String>
+    let eventTime: Property<NSDate?>
     
     let repo: Repo
     
@@ -44,9 +42,8 @@ class RepoViewModel {
         homepage.value = repo.homepage
         pushedAt.value = repo.pushedAt
         
-        fullName.map { Link(string: "https://github.com/\($0)") }.bindTo(githubURL).addDisposableTo(disposeBag)
-        
-        event.map { event in
+        githubURL = fullName.map { Link(string: "https://github.com/\($0)") }
+        eventActor = event.map { event in
             event.flatMap { e -> UserSummary? in
                 switch e.content {
                 case .Star(let user, _):
@@ -55,10 +52,9 @@ class RepoViewModel {
                     return nil
                 }
             }
-        }.bindTo(eventActor).addDisposableTo(disposeBag)
-        
-        eventActor.map { $0?.login ?? "" }.bindTo(eventActorName).addDisposableTo(disposeBag)
-        event.map { $0?.createdAt }.bindTo(eventTime).addDisposableTo(disposeBag)
+        }
+        eventActorName = eventActor.map { $0?.login ?? "" }
+        eventTime = event.map { $0?.createdAt }
         
         Shared.imageCache.fetch(URL: repo.owner.avatarURL.URL).promise().then { image -> Void in
             self.avatarImage.value = image

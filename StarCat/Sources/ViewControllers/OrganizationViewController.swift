@@ -37,23 +37,23 @@ class OrganizationViewController: RepoTableViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: Selector("showActivity"))
         
-        viewModel.avatarImage.bindTo(avatarImageView.rx_image).addDisposableTo(disposeBag)
-        viewModel.name.bindTo(nameLabel.rx_text).addDisposableTo(disposeBag)
-        viewModel.login.bindTo(loginLabel.rx_text).addDisposableTo(disposeBag)
+        viewModel.avatarImage.bindTo(avatarImageView.wwImage).addTo(bag)
+        viewModel.name.bindTo(nameLabel.wwText).addTo(bag)
+        viewModel.login.bindTo(loginLabel.wwText).addTo(bag)
         
-        viewModel.location.map { $0 ?? "" }.bindTo(locationLabel.rx_text).addDisposableTo(disposeBag)
-        viewModel.location.map { $0 == nil }.bindTo(locationLabel.rx_hidden).addDisposableTo(disposeBag)
-        viewModel.homepage.map { $0?.stringWithoutScheme ?? "" }.bindTo(homepageLabel.rx_text).addDisposableTo(disposeBag)
-        viewModel.homepage.map { $0 == nil }.bindTo(locationLabel.rx_hidden).addDisposableTo(disposeBag)
-        homepageLabel.makeTappable().subscribeNext { [unowned self] _ in
+        viewModel.location.map { $0 ?? "" }.bindTo(locationLabel.wwText).addTo(bag)
+        viewModel.location.map { $0 == nil }.bindTo(locationLabel.wwHidden).addTo(bag)
+        viewModel.homepage.map { $0?.stringWithoutScheme ?? "" }.bindTo(homepageLabel.wwText).addTo(bag)
+        viewModel.homepage.map { $0 == nil }.bindTo(locationLabel.wwHidden).addTo(bag)
+        homepageLabel.makeTappable().subscribe { [unowned self] _ in
             if let url = self.viewModel.homepage.value {
                 WebViewPopup.open(url, on: self)
             }
-        }.addDisposableTo(disposeBag)
+        }.addTo(bag)
         
-        viewModel.login.subscribeNext { [weak self] name in
+        viewModel.login.bindTo { [weak self] name in
             self?.title = name
-        }.addDisposableTo(disposeBag)
+        }.addTo(bag)
     }
 
     override func didReceiveMemoryWarning() {

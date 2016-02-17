@@ -8,14 +8,13 @@
 
 import Foundation
 import UIKit
-import RxSwift
-import RxCocoa
+import Wirework
 
 extension UILabel {
-    func makeTappable() -> ControlEvent<UIGestureRecognizer> {
+    func makeTappable() -> Signal<Void> {
         self.userInteractionEnabled = true
         let recognizer = UITapGestureRecognizer()
         self.addGestureRecognizer(recognizer)
-        return recognizer.rx_event
+        return recognizer.wwEvent
     }
 }
