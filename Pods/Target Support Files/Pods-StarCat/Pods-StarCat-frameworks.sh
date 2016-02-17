@@ -85,7 +85,6 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-StarCat/APIKit.framework"
-  install_framework "Pods-StarCat/Alamofire.framework"
   install_framework "Pods-StarCat/Haneke.framework"
   install_framework "Pods-StarCat/Himotoki.framework"
   install_framework "Pods-StarCat/KeychainAccess.framework"
@@ -95,9 +94,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-StarCat/PromiseKit.framework"
   install_framework "Pods-StarCat/Regex.framework"
   install_framework "Pods-StarCat/Result.framework"
-  install_framework "Pods-StarCat/RxBlocking.framework"
-  install_framework "Pods-StarCat/RxCocoa.framework"
-  install_framework "Pods-StarCat/RxSwift.framework"
   install_framework "Pods-StarCat/SVWebViewController.framework"
   install_framework "Pods-StarCat/SwiftDate.framework"
   install_framework "Pods-StarCat/Wirework.framework"
@@ -106,7 +102,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-StarCat/APIKit.framework"
-  install_framework "Pods-StarCat/Alamofire.framework"
   install_framework "Pods-StarCat/Haneke.framework"
   install_framework "Pods-StarCat/Himotoki.framework"
   install_framework "Pods-StarCat/KeychainAccess.framework"
@@ -116,9 +111,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-StarCat/PromiseKit.framework"
   install_framework "Pods-StarCat/Regex.framework"
   install_framework "Pods-StarCat/Result.framework"
-  install_framework "Pods-StarCat/RxBlocking.framework"
-  install_framework "Pods-StarCat/RxCocoa.framework"
-  install_framework "Pods-StarCat/RxSwift.framework"
   install_framework "Pods-StarCat/SVWebViewController.framework"
   install_framework "Pods-StarCat/SwiftDate.framework"
   install_framework "Pods-StarCat/Wirework.framework"

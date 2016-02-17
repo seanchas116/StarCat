@@ -85,7 +85,6 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-StarCatUITests/APIKit.framework"
-  install_framework "Pods-StarCatUITests/Alamofire.framework"
   install_framework "Pods-StarCatUITests/Haneke.framework"
   install_framework "Pods-StarCatUITests/Himotoki.framework"
   install_framework "Pods-StarCatUITests/KeychainAccess.framework"
@@ -95,9 +94,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-StarCatUITests/PromiseKit.framework"
   install_framework "Pods-StarCatUITests/Regex.framework"
   install_framework "Pods-StarCatUITests/Result.framework"
-  install_framework "Pods-StarCatUITests/RxBlocking.framework"
-  install_framework "Pods-StarCatUITests/RxCocoa.framework"
-  install_framework "Pods-StarCatUITests/RxSwift.framework"
   install_framework "Pods-StarCatUITests/SVWebViewController.framework"
   install_framework "Pods-StarCatUITests/SwiftDate.framework"
   install_framework "Pods-StarCatUITests/Wirework.framework"
@@ -106,7 +102,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-StarCatUITests/APIKit.framework"
-  install_framework "Pods-StarCatUITests/Alamofire.framework"
   install_framework "Pods-StarCatUITests/Haneke.framework"
   install_framework "Pods-StarCatUITests/Himotoki.framework"
   install_framework "Pods-StarCatUITests/KeychainAccess.framework"
@@ -116,9 +111,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-StarCatUITests/PromiseKit.framework"
   install_framework "Pods-StarCatUITests/Regex.framework"
   install_framework "Pods-StarCatUITests/Result.framework"
-  install_framework "Pods-StarCatUITests/RxBlocking.framework"
-  install_framework "Pods-StarCatUITests/RxCocoa.framework"
-  install_framework "Pods-StarCatUITests/RxSwift.framework"
   install_framework "Pods-StarCatUITests/SVWebViewController.framework"
   install_framework "Pods-StarCatUITests/SwiftDate.framework"
   install_framework "Pods-StarCatUITests/Wirework.framework"

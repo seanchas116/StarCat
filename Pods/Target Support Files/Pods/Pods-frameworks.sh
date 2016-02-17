@@ -85,7 +85,6 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/APIKit.framework"
-  install_framework "Pods/Alamofire.framework"
   install_framework "Pods/Haneke.framework"
   install_framework "Pods/Himotoki.framework"
   install_framework "Pods/KeychainAccess.framework"
@@ -95,9 +94,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/PromiseKit.framework"
   install_framework "Pods/Regex.framework"
   install_framework "Pods/Result.framework"
-  install_framework "Pods/RxBlocking.framework"
-  install_framework "Pods/RxCocoa.framework"
-  install_framework "Pods/RxSwift.framework"
   install_framework "Pods/SVWebViewController.framework"
   install_framework "Pods/SwiftDate.framework"
   install_framework "Pods/Wirework.framework"
@@ -106,7 +102,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/APIKit.framework"
-  install_framework "Pods/Alamofire.framework"
   install_framework "Pods/Haneke.framework"
   install_framework "Pods/Himotoki.framework"
   install_framework "Pods/KeychainAccess.framework"
@@ -116,9 +111,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/PromiseKit.framework"
   install_framework "Pods/Regex.framework"
   install_framework "Pods/Result.framework"
-  install_framework "Pods/RxBlocking.framework"
-  install_framework "Pods/RxCocoa.framework"
-  install_framework "Pods/RxSwift.framework"
   install_framework "Pods/SVWebViewController.framework"
   install_framework "Pods/SwiftDate.framework"
   install_framework "Pods/Wirework.framework"
