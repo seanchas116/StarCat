@@ -1,3 +1,7 @@
 .markdown-body {
     font-family: "Avenir Next";
+    font-size: 14px;
+}
+body {
+    margin: 16px;
 }
