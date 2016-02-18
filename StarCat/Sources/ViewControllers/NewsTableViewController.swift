@@ -19,7 +19,8 @@ class NewsTableViewController: RepoTableViewController {
         super.viewDidLoad()
         paginator.loading.value = true
         
-        NSNotificationCenter.defaultCenter().wwNotification(UIApplicationDidBecomeActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter()
+            .wwNotification(UIApplicationDidBecomeActiveNotification)
             .subscribe { [weak self] _ in
                 print("activated")
                 self?.paginator.refresh()
