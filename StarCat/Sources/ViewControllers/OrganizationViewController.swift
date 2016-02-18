@@ -50,10 +50,7 @@ class OrganizationViewController: RepoTableViewController {
                 WebViewPopup.open(url, on: self)
             }
         }.addTo(bag)
-        
-        viewModel.login.bindTo { [weak self] name in
-            self?.title = name
-        }.addTo(bag)
+        viewModel.login.bindTo(wwTitle).addTo(bag)
     }
 
     override func didReceiveMemoryWarning() {

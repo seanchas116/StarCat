@@ -59,9 +59,7 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
         
         print(viewModel)
         
-        viewModel.name.bindTo { [weak self] name in
-            self?.title = name
-        }.addTo(bag)
+        viewModel.name.bindTo(wwTitle).addTo(bag)
         viewModel.name.bindTo(titleLabel.wwText).addTo(bag)
         viewModel.description.bindTo(descriptionLabel.wwText).addTo(bag)
         viewModel.avatarImage.bindTo(avatarImageView.wwImage).addTo(bag)
