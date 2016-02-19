@@ -28,8 +28,8 @@ struct GetAccessTokenRequest: RequestType {
     }
     var parameters: [String: AnyObject] {
         return [
-            "client_id": Constants.githubClientID,
-            "client_secret": Constants.githubClientSecret,
+            "client_id": Secrets.githubClientID,
+            "client_secret": Secrets.githubClientSecret,
             "code": code
         ]
     }

@@ -20,7 +20,7 @@ struct Authentication {
     
     static var authURL: NSURL {
         let options = [
-            "client_id": Constants.githubClientID,
+            "client_id": Secrets.githubClientID,
             "redirect_uri": redirectURL,
             "scope": "user:follow,public_repo"
         ]

@@ -97,3 +97,7 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
+
+# Custom private files
+
+StarCat/Sources/Secrets.swift
