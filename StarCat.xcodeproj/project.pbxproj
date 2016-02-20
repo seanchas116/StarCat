@@ -16,6 +16,8 @@
 		BE18EEE71C3A2BD900B92291 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE18EEE61C3A2BD900B92291 /* RoundButton.swift */; };
 		BE20D28D1C5CBA8B003C4926 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE20D28C1C5CBA8B003C4926 /* Settings.storyboard */; };
 		BE20D28F1C5CC9E6003C4926 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE20D28E1C5CC9E6003C4926 /* SettingsViewController.swift */; };
+		BE29556F1C782A7000B10B1F /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29556D1C782A7000B10B1F /* UserCell.swift */; };
+		BE2955701C782A7000B10B1F /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE29556E1C782A7000B10B1F /* UserCell.xib */; };
 		BE2CAF1D1C3C0AC800B51FBF /* github-markdown.css in Resources */ = {isa = PBXBuildFile; fileRef = BE2CAF1C1C3C0AC800B51FBF /* github-markdown.css */; };
 		BE2CAF211C3C0CFE00B51FBF /* github-markdown-custom.css in Resources */ = {isa = PBXBuildFile; fileRef = BE2CAF201C3C0CFE00B51FBF /* github-markdown-custom.css */; };
 		BE32404C1C57C8A200A9A87A /* QueryString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE32404B1C57C8A200A9A87A /* QueryString.swift */; };
@@ -102,6 +104,8 @@
 		BE18EEE61C3A2BD900B92291 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		BE20D28C1C5CBA8B003C4926 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		BE20D28E1C5CC9E6003C4926 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		BE29556D1C782A7000B10B1F /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		BE29556E1C782A7000B10B1F /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		BE2CAF1C1C3C0AC800B51FBF /* github-markdown.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = "github-markdown.css"; path = "node_modules/github-markdown-css/github-markdown.css"; sourceTree = SOURCE_ROOT; };
 		BE2CAF201C3C0CFE00B51FBF /* github-markdown-custom.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "github-markdown-custom.css"; sourceTree = "<group>"; };
 		BE32404B1C57C8A200A9A87A /* QueryString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryString.swift; sourceTree = "<group>"; };
@@ -393,6 +397,8 @@
 				BEE0C0AB1C33EF1A0014986D /* RepoCell.xib */,
 				BE18EEE61C3A2BD900B92291 /* RoundButton.swift */,
 				BEF5907F1C3A940600633417 /* RoundButtonBorder.swift */,
+				BE29556D1C782A7000B10B1F /* UserCell.swift */,
+				BE29556E1C782A7000B10B1F /* UserCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -547,6 +553,7 @@
 				BE2CAF211C3C0CFE00B51FBF /* github-markdown-custom.css in Resources */,
 				BE20D28D1C5CBA8B003C4926 /* Settings.storyboard in Resources */,
 				BE176E621C41EFF700E29E4F /* User.storyboard in Resources */,
+				BE2955701C782A7000B10B1F /* UserCell.xib in Resources */,
 				BE47078F1C4A152D0069DA6F /* Organization.storyboard in Resources */,
 				BEB1B9AB1C414B4400A730A0 /* Repo.storyboard in Resources */,
 				BEE0C0AD1C33EF1A0014986D /* RepoCell.xib in Resources */,
@@ -701,6 +708,7 @@
 				BE39BA221C291BF40000A87F /* TabBarController.swift in Sources */,
 				BE4707971C4B47370069DA6F /* RepoTableViewController.swift in Sources */,
 				BEF289551C429D9000F50A2A /* UILabel+Tap.swift in Sources */,
+				BE29556F1C782A7000B10B1F /* UserCell.swift in Sources */,
 				BE8C23191C452D8E00691005 /* UITableView+scrollToTop.swift in Sources */,
 				BEF590801C3A940600633417 /* RoundButtonBorder.swift in Sources */,
 				BE699B941C59C34A004A9E7D /* AccessToken.swift in Sources */,
