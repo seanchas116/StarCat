@@ -19,6 +19,7 @@ class RepoCell: UITableViewCell {
     @IBOutlet weak var eventVerbLabel: UILabel!
     @IBOutlet weak var languageLabel: UILabel!
     @IBOutlet weak var eventTimeLabel: UILabel!
+    @IBOutlet weak var starsLabel: UILabel!
     
     var onActorTapped: ((UserSummary) -> Void)?
 
@@ -47,6 +48,7 @@ class RepoCell: UITableViewCell {
             viewModel.eventTime.map { $0?.formatForUI(withAgo: false) ?? "" }.bindTo(eventTimeLabel.wwText).addTo(bag)
             viewModel.language.map { l in l ?? "" }.bindTo(languageLabel.wwText).addTo(bag)
             viewModel.language.map { l in l == nil }.bindTo(languageLabel.wwHidden).addTo(bag)
+            viewModel.starsCount.map { "\($0) ★" }.bindTo(starsLabel.wwText).addTo(bag)
             eventActorLabel.makeTappable().subscribe { [unowned self] _ in
                 if let actor = self.viewModel.eventActor.value {
                     self.onActorTapped?(actor)
