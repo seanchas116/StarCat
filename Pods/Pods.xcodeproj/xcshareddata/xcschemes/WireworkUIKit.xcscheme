@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '4FE8589BB06DF2AD852F4946'
+               BlueprintIdentifier = '3B9BD714E2E83D0EE17B8250'
                BlueprintName = 'WireworkUIKit'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'WireworkUIKit.framework'>
