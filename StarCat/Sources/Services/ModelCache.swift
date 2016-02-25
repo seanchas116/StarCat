@@ -58,4 +58,5 @@ class ModelCache<T> {
 
 struct SharedModelCache {
     static let repoCache = ModelCache<Repo>() { fullName in GetRepoRequest(fullName: fullName).send() }
+    static let userCache = ModelCache<User>() { login in GetUserRequest(login: login).send() }
 }
