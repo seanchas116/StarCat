@@ -10,9 +10,10 @@ import Foundation
 import Wirework
 import Haneke
 import SwiftDate
+import PromiseKit
 
 class RepoViewModel {
-    let repo: Variable<Repo>
+    let repo = Variable<Repo?>(nil)
     let name: Property<String>
     let fullName: Property<String>
     let starsCount: Property<Int>
@@ -30,17 +31,15 @@ class RepoViewModel {
     let eventTime: Property<NSDate?>
     let readme = Variable<String>("")
     
-    init(repo repoValue: Repo) {
-        repo = Variable(repoValue)
-        
-        name = repo.map { $0.name }
-        fullName = repo.map { $0.fullName }
-        starsCount = repo.map { $0.starsCount }
-        description = repo.map { $0.description ?? "" }
-        language = repo.map { $0.language }
-        ownerName = repo.map { $0.owner.login }
-        homepage = repo.map { $0.homepage }
-        pushedAt = repo.map { $0.pushedAt }
+    init() {
+        name = repo.map { $0?.name ?? "" }
+        fullName = repo.map { $0?.fullName ?? "" }
+        starsCount = repo.map { $0?.starsCount ?? 0 }
+        description = repo.map { $0?.description ?? "" }
+        language = repo.map { $0?.language }
+        ownerName = repo.map { $0?.owner.login ?? "" }
+        homepage = repo.map { $0?.homepage }
+        pushedAt = repo.map { $0?.pushedAt ?? NSDate() }
         githubURL = fullName.map { Link(string: "https://github.com/\($0)") }
         eventActor = event.map { event in
             event.flatMap { e -> UserSummary? in
@@ -55,9 +54,18 @@ class RepoViewModel {
         eventActorName = eventActor.map { $0?.login ?? "" }
         eventTime = event.map { $0?.createdAt }
         
-        avatarImage = repo.mapAsync(nil) {
-            Shared.imageCache.fetch(URL: $0.owner.avatarURL.URL).promise().then { $0 }
+        avatarImage = repo.mapAsync(nil) { (repo: Repo?) in
+            if let repo = repo {
+                return Shared.imageCache.fetch(URL: repo.owner.avatarURL.URL).promise().then { $0 }
+            } else {
+                return Promise(nil)
+            }
         }
+    }
+    
+    convenience init(repo: Repo) {
+        self.init()
+        self.repo.value = repo
     }
     
     func fetchReadme() {

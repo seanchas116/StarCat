@@ -21,11 +21,28 @@ class RepoCell: UITableViewCell {
     @IBOutlet weak var eventTimeLabel: UILabel!
     @IBOutlet weak var starsLabel: UILabel!
     
+    let bag = SubscriptionBag()
+    let viewModel = RepoViewModel()
+    
     var onActorTapped: ((UserSummary) -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        viewModel.name.bindTo(titleLabel.wwText).addTo(bag)
+        viewModel.description.bindTo(descriptionLabel.wwText).addTo(bag)
+        viewModel.avatarImage.bindTo(avatarImage.wwImage).addTo(bag)
+        viewModel.ownerName.bindTo(ownerNameLabel.wwText).addTo(bag)
+        viewModel.event.map { $0 == nil }.bindTo(eventInfoView.wwHidden).addTo(bag)
+        viewModel.eventActorName.bindTo(eventActorLabel.wwText).addTo(bag)
+        viewModel.eventTime.map { $0?.formatForUI(withAgo: false) ?? "" }.bindTo(eventTimeLabel.wwText).addTo(bag)
+        viewModel.language.map { l in l ?? "" }.bindTo(languageLabel.wwText).addTo(bag)
+        viewModel.language.map { l in l == nil }.bindTo(languageLabel.wwHidden).addTo(bag)
+        viewModel.starsCount.map { "\($0) ★" }.bindTo(starsLabel.wwText).addTo(bag)
+        eventActorLabel.makeTappable().subscribe { [unowned self] _ in
+            if let actor = self.viewModel.eventActor.value {
+                self.onActorTapped?(actor)
+            }
+            }.addTo(bag)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -33,32 +50,8 @@ class RepoCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    var bag: SubscriptionBag!
-    
-    var viewModel: RepoViewModel! {
-        didSet {
-            bag = SubscriptionBag()
-            viewModel.name.bindTo(titleLabel.wwText).addTo(bag)
-            viewModel.description.bindTo(descriptionLabel.wwText).addTo(bag)
-            viewModel.avatarImage.bindTo(avatarImage.wwImage).addTo(bag)
-            viewModel.ownerName.bindTo(ownerNameLabel.wwText).addTo(bag)
-            viewModel.event.map { $0 == nil }.bindTo(eventInfoView.wwHidden).addTo(bag)
-            viewModel.eventActorName.bindTo(eventActorLabel.wwText).addTo(bag)
-            viewModel.eventTime.map { $0?.formatForUI(withAgo: false) ?? "" }.bindTo(eventTimeLabel.wwText).addTo(bag)
-            viewModel.language.map { l in l ?? "" }.bindTo(languageLabel.wwText).addTo(bag)
-            viewModel.language.map { l in l == nil }.bindTo(languageLabel.wwHidden).addTo(bag)
-            viewModel.starsCount.map { "\($0) ★" }.bindTo(starsLabel.wwText).addTo(bag)
-            eventActorLabel.makeTappable().subscribe { [unowned self] _ in
-                if let actor = self.viewModel.eventActor.value {
-                    self.onActorTapped?(actor)
-                }
-            }.addTo(bag)
-        }
-    }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.bag = nil
     }
 }

@@ -27,7 +27,7 @@ class RepoTableViewController: UITableViewController {
         let bind = { (items: Property<[RepoViewModel]>) -> Subscription in
             return items.bindTo(self.tableView.wwRows("RepoCell") { [weak self] row, elem, cell in
                 let repoCell = cell as! RepoCell
-                repoCell.viewModel = elem
+                repoCell.viewModel.repo.value = elem.repo.value
                 repoCell.onActorTapped = { actor in
                     self?.navigationController?.pushStoryboard("User", animated: true) { next in
                         (next as! UserViewController).userSummary = actor
