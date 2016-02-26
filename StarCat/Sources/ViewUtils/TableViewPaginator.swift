@@ -21,9 +21,9 @@ class TableViewPaginator<T> {
     let bag = SubscriptionBag()
     var whenSelected: Signal<T?>!
     
-    init(tableView: UITableView, refreshControl: UIRefreshControl, pagination: Pagination<T>, bind: (Variable<[T]>) -> Subscription) {
-        self.tableView = tableView
-        self.refreshControl = refreshControl
+    init(tableViewController: UITableViewController, pagination: Pagination<T>, cellIdentifier: String, bind: (Int, T, UITableViewCell) -> Void) {
+        tableView = tableViewController.tableView!
+        refreshControl = tableViewController.refreshControl!
         self.pagination = pagination
         
         tableView.delegate = nil
@@ -36,7 +36,7 @@ class TableViewPaginator<T> {
             return nil
         }
         
-        bind(pagination.items).addTo(bag)
+        pagination.items.bindTo(tableView.wwRows(cellIdentifier, bind: bind)).addTo(bag)
         
         refreshControl.wwControlEvent(UIControlEvents.ValueChanged).subscribe { _ in
             self.fetch()

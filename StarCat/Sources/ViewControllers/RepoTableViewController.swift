@@ -24,21 +24,19 @@ class RepoTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.registerNib(UINib(nibName: "RepoCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
         
-        let bind = { (items: Property<[RepoViewModel]>) -> Subscription in
-            return items.bindTo(self.tableView.wwRows("RepoCell") { [weak self] row, elem, cell in
-                let repoCell = cell as! RepoCell
-                repoCell.viewModel.repo.value = elem.repo.value
-                repoCell.onActorTapped = { actor in
-                    self?.navigationController?.pushStoryboard("User", animated: true) { next in
-                        (next as! UserViewController).userSummary = actor
-                    }
-                }
-            })
-        }
-        
         paginator = TableViewPaginator<RepoViewModel>(
-            tableView: tableView, refreshControl: refreshControl!,
-            pagination: pagination, bind: bind)
+            tableViewController: self,
+            pagination: pagination,
+            cellIdentifier: "RepoCell"
+        ) { [weak self] row, elem, cell in
+            let repoCell = cell as! RepoCell
+            repoCell.viewModel.repo.value = elem.repo.value
+            repoCell.onActorTapped = { actor in
+                self?.navigationController?.pushStoryboard("User", animated: true) { next in
+                    (next as! UserViewController).userSummary = actor
+                }
+            }
+        }
         paginator.whenSelected.subscribe { [unowned self] repoVM in
             self.navigationController?.pushStoryboard("Repo", animated: true) { next in
                 (next as! RepoViewController).viewModel = repoVM
