@@ -27,52 +27,49 @@ class UserRepoPagination: Pagination<RepoViewModel> {
 class UserViewModel {
     let user = Variable<User?>(nil)
     let summary = Variable<UserSummary?>(nil)
-    let name = Variable("")
-    let avatarImage = Variable<UIImage?>(nil)
-    let login = Variable("")
-    let location = Variable<String?>(nil)
-    let homepage = Variable<Link?>(nil)
-    let followersCount = Variable(0)
-    let followingCount = Variable(0)
-    let starsCount = Variable(0)
+    let name: Property<String>
+    let avatarImage: Property<UIImage?>
+    let login: Property<String>
+    let location: Property<String?>
+    let homepage: Property<Link?>
+    let followersCount: Property<Int>
+    let followingCount: Property<Int>
+    let starsCount: Property<Int>
     let githubURL: Property<Link?>
     
     let bag = SubscriptionBag()
     
     init() {
+        let summary = combine(user, self.summary) { $0?.summary ?? $1 }
+        login = summary.map { $0?.login ?? "" }
+        name = user.map { $0?.name ?? "" }
+        avatarImage = summary.mapAsync(nil) { summary -> Promise<UIImage?> in
+            if let summary = summary {
+                return Shared.imageCache.fetch(URL: summary.avatarURL.URL).promise().then { $0 }
+            } else {
+                return Promise(nil)
+            }
+        }
+        location = user.map { $0?.location }
+        homepage = user.map { $0?.blog }
+        followersCount = user.map { $0?.followers ?? 0 }
+        followingCount = user.map { $0?.following ?? 0 }
+        starsCount = summary.mapAsync(0) { summary -> Promise<Int> in
+            if let summary = summary {
+                return GetUserStarsCountRequest(userName: summary.login).send()
+            } else {
+                return Promise(0)
+            }
+        }
+        
         githubURL = login.map { Link(string: "https://github.com/\($0)") }
     }
     
     func load() -> Promise<Void> {
-        return GetUserRequest(login: login.value).send().then { self.setUser($0) }
+        return GetUserRequest(login: login.value).send().then { self.user.value = $0 }
     }
     
     func loadCurrentUser() -> Promise<Void> {
-        return GetCurrentUserRequest().send().then { self.setUser($0) }
-    }
-    
-    func setSummary(summary: UserSummary) {
-        self.login.value = summary.login
-        self.summary.value = summary
-        Shared.imageCache.fetch(URL: summary.avatarURL.URL).promise().then { image -> Void in
-            self.avatarImage.value = image
-        }
-    }
-    
-    func setUser(user: User) {
-        name.value = user.name ?? user.login
-        login.value = user.login
-        location.value = user.location
-        homepage.value = user.blog
-        followersCount.value = user.followers
-        followingCount.value = user.following
-        Shared.imageCache.fetch(URL: user.avatarURL.URL).promise().then { image -> Void in
-            self.avatarImage.value = image
-        }
-        GetUserStarsCountRequest(userName: user.login).send().then { starsCount in
-            self.starsCount.value = starsCount
-        }
-
-        self.user.value = user
+        return GetCurrentUserRequest().send().then { self.user.value = $0 }
     }
 }

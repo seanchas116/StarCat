@@ -33,7 +33,7 @@ class UserViewController: RepoTableViewController {
             let pagination = UserRepoPagination()
             pagination.userName = userSummary!.login
             self.pagination = pagination
-            viewModel.setSummary(userSummary!)
+            viewModel.summary.value = userSummary
             viewModel.load().then {
                 self.tableView.layoutIfNeeded()
             }

@@ -25,4 +25,8 @@ struct User {
     let email: String?
     let followers: Int
     let following: Int
+    
+    var summary: UserSummary {
+        return UserSummary(id: id, login: login, avatarURL: avatarURL, type: type)
+    }
 }

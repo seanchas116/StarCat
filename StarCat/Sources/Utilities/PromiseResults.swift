@@ -10,6 +10,7 @@ import Foundation
 import PromiseKit
 import APIKit
 import Haneke
+import Wirework
 
 extension Session {
     static func sendRequestPromise<T: RequestType>(request: T) -> Promise<T.Response> {
@@ -41,5 +42,11 @@ extension Fetch {
                 reject(failure!)
             }
         }
+    }
+}
+
+extension PropertyType {
+    func mapAsync<T>(initValue: T, transform: (Value) -> Promise<T>) -> Property<T> {
+        return mapAsync(initValue) { value, callback in transform(value).then(callback) }
     }
 }
