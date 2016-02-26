@@ -12,36 +12,35 @@ import Haneke
 import SwiftDate
 
 class RepoViewModel {
-    let event = Variable<Event?>(nil)
-    let name = Variable("")
-    let fullName = Variable("")
-    let starsCount = Variable(0)
-    let description = Variable("")
-    let language = Variable<String?>(nil)
-    let avatarImage = Variable<UIImage?>(nil)
-    let ownerName = Variable("")
-    let homepage = Variable<Link?>(nil)
-    let pushedAt = Variable(NSDate())
-    let readme = Variable("")
+    let repo: Variable<Repo>
+    let name: Property<String>
+    let fullName: Property<String>
+    let starsCount: Property<Int>
+    let description: Property<String>
+    let language: Property<String?>
+    let avatarImage: Property<UIImage?>
+    let ownerName: Property<String>
+    let homepage: Property<Link?>
+    let pushedAt: Property<NSDate>
     let githubURL: Property<Link?>
+    
+    let event = Variable<Event?>(nil)
     let eventActor: Property<UserSummary?>
     let eventActorName: Property<String>
     let eventTime: Property<NSDate?>
+    let readme = Variable<String>("")
     
-    let repo: Repo
-    
-    init(repo: Repo) {
-        self.repo = repo
+    init(repo repoValue: Repo) {
+        repo = Variable(repoValue)
         
-        name.value = repo.name
-        fullName.value = repo.fullName
-        starsCount.value = repo.starsCount
-        description.value = repo.description ?? ""
-        language.value = repo.language
-        ownerName.value = repo.owner.login
-        homepage.value = repo.homepage
-        pushedAt.value = repo.pushedAt
-        
+        name = repo.map { $0.name }
+        fullName = repo.map { $0.fullName }
+        starsCount = repo.map { $0.starsCount }
+        description = repo.map { $0.description ?? "" }
+        language = repo.map { $0.language }
+        ownerName = repo.map { $0.owner.login }
+        homepage = repo.map { $0.homepage }
+        pushedAt = repo.map { $0.pushedAt }
         githubURL = fullName.map { Link(string: "https://github.com/\($0)") }
         eventActor = event.map { event in
             event.flatMap { e -> UserSummary? in
@@ -56,8 +55,8 @@ class RepoViewModel {
         eventActorName = eventActor.map { $0?.login ?? "" }
         eventTime = event.map { $0?.createdAt }
         
-        Shared.imageCache.fetch(URL: repo.owner.avatarURL.URL).promise().then { image -> Void in
-            self.avatarImage.value = image
+        avatarImage = repo.mapAsync(nil) {
+            Shared.imageCache.fetch(URL: $0.owner.avatarURL.URL).promise().then { $0 }
         }
     }
     

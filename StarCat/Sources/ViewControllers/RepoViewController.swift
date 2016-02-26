@@ -97,7 +97,7 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
     }
     
     private func showOwner() {
-        let owner = viewModel.repo.owner
+        let owner = viewModel.repo.value.owner
         if let type = owner.type {
             if type == .Organization {
                 self.navigationController?.pushStoryboard("Organization", animated: true) { next in
