@@ -50,14 +50,12 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var readmeHeightConstraint: NSLayoutConstraint!
     
     let bag = SubscriptionBag()
-    var viewModel: RepoViewModel!
+    let viewModel = RepoViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: Selector("showActivity"))
-        
-        print(viewModel)
         
         viewModel.name.bindTo(wwTitle).addTo(bag)
         viewModel.name.bindTo(titleLabel.wwText).addTo(bag)

@@ -38,8 +38,8 @@ class RepoTableViewController: UITableViewController {
             }
         }
         paginator.whenSelected.subscribe { [unowned self] repoVM in
-            self.navigationController?.pushStoryboard("Repo", animated: true) { next in
-                (next as! RepoViewController).viewModel = repoVM
+            if let repo = repoVM?.repo.value {
+                self.navigationController?.pushRepo(repo)
             }
         }.addTo(bag)
     }

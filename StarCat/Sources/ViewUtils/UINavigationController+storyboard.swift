@@ -17,4 +17,9 @@ extension UINavigationController {
             pushViewController(next, animated: animated)
         }
     }
+    func pushRepo(repo: Repo) {
+        pushStoryboard("Repo", animated: true) { next in
+            (next as! RepoViewController).viewModel.repo.value = repo
+        }
+    }
 }
