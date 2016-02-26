@@ -11,7 +11,7 @@ import Wirework
 import PromiseKit
 import SwiftDate
 
-class NewsPagination: Pagination<RepoViewModel> {
+class NewsPagination: Pagination<News> {
     let userName: String
     
     init(userName: String) {
@@ -19,15 +19,12 @@ class NewsPagination: Pagination<RepoViewModel> {
     }
     
     override func fetch(page: Int) -> Promise<[Item]> {
-        return GetUserEventsRequest(userName: "seanchas116", page: page).send().then { events -> Promise<[RepoViewModel]> in
-            let promises = events.flatMap { e -> Promise<RepoViewModel>? in
-                switch e.content {
+        return GetUserEventsRequest(userName: "seanchas116", page: page).send().then { events -> Promise<[News]> in
+            let promises = events.flatMap { event -> Promise<News>? in
+                switch event.content {
                 case .Star(_, let repoSummary):
-                    return SharedModelCache.repoCache.fetch(repoSummary.fullName).then { repo -> RepoViewModel in
-                        let vm = RepoViewModel(repo: repo)
-                        vm.event.value = e
-                        return vm
-                    }
+                    return SharedModelCache.repoCache.fetch(repoSummary.fullName)
+                        .then { repo in News(repo: repo, event: event) }
                 default:
                     return nil
                 }

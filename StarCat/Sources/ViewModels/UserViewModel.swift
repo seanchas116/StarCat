@@ -11,13 +11,12 @@ import Wirework
 import Haneke
 import PromiseKit
 
-class UserRepoPagination: Pagination<RepoViewModel> {
+class UserRepoPagination: Pagination<Repo> {
     var userName: String?
     
-    override func fetch(page: Int) -> Promise<[RepoViewModel]> {
+    override func fetch(page: Int) -> Promise<[Repo]> {
         if let userName = userName {
             return SearchRepoRequest(query: "user:\(userName)", sort: .Stars, perPage: 30, page: page).send()
-                .then { repos in repos.map { repo in RepoViewModel(repo: repo) } }
         } else {
             return Promise([])
         }

@@ -71,6 +71,7 @@
 		BEF6051C1C3113F30014D633 /* Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF6051B1C3113F30014D633 /* Decoding.swift */; };
 		BEF6051E1C3114220014D633 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF6051D1C3114220014D633 /* Requests.swift */; };
 		BEF605221C3116950014D633 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF605211C3116950014D633 /* Authentication.swift */; };
+		BEF8C9591C8043A3007C1107 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8C9581C8043A3007C1107 /* News.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +166,7 @@
 		BEF6051B1C3113F30014D633 /* Decoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoding.swift; sourceTree = "<group>"; };
 		BEF6051D1C3114220014D633 /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		BEF605211C3116950014D633 /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		BEF8C9581C8043A3007C1107 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +294,7 @@
 				BEF605181C30FCBB0014D633 /* RepoSummary.swift */,
 				BE176E671C4201B400E29E4F /* User.swift */,
 				BE3F45431C2A992500DD1863 /* UserSummary.swift */,
+				BEF8C9581C8043A3007C1107 /* News.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -680,6 +683,7 @@
 				BE18EEE71C3A2BD900B92291 /* RoundButton.swift in Sources */,
 				BE176E641C41F10200E29E4F /* UserViewController.swift in Sources */,
 				BEE0C0B21C3408F80014986D /* PromiseResults.swift in Sources */,
+				BEF8C9591C8043A3007C1107 /* News.swift in Sources */,
 				BE4707991C4B64B10069DA6F /* SearchViewModel.swift in Sources */,
 				BED172F91C3E23E000C5A247 /* AppViewModel.swift in Sources */,
 				BE3FCD791C3D74F4008A9B32 /* NSDate.swift in Sources */,

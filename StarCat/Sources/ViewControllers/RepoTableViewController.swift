@@ -11,8 +11,8 @@ import Wirework
 
 class RepoTableViewController: UITableViewController {
     
-    var pagination: Pagination<RepoViewModel>!
-    var paginator: TableViewPaginator<RepoViewModel>!
+    var pagination: Pagination<Repo>!
+    var paginator: TableViewPaginator<Repo>!
     let bag = SubscriptionBag()
 
     override func viewDidLoad() {
@@ -24,21 +24,22 @@ class RepoTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.registerNib(UINib(nibName: "RepoCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
         
-        paginator = TableViewPaginator<RepoViewModel>(
+        paginator = TableViewPaginator<Repo>(
             tableViewController: self,
             pagination: pagination,
             cellIdentifier: "RepoCell"
-        ) { [weak self] row, elem, cell in
+        ) { [weak self] row, repo, cell in
             let repoCell = cell as! RepoCell
-            repoCell.viewModel.repo.value = elem.repo.value
+            repoCell.viewModel.repo.value = repo
             repoCell.onActorTapped = { actor in
                 self?.navigationController?.pushStoryboard("User", animated: true) { next in
                     (next as! UserViewController).userSummary = actor
                 }
             }
         }
-        paginator.whenSelected.subscribe { [unowned self] repoVM in
-            if let repo = repoVM?.repo.value {
+        
+        paginator.whenSelected.subscribe { [unowned self] repo in
+            if let repo = repo {
                 self.navigationController?.pushRepo(repo)
             }
         }.addTo(bag)

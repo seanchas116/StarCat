@@ -10,7 +10,7 @@ import Foundation
 import Wirework
 import PromiseKit
 
-class SearchPagination: Pagination<RepoViewModel> {
+class SearchPagination: Pagination<Repo> {
     let query = Variable<String?>(nil)
     let bag = SubscriptionBag()
     
@@ -21,10 +21,9 @@ class SearchPagination: Pagination<RepoViewModel> {
         }.addTo(bag)
     }
     
-    override func fetch(page: Int) -> Promise<[RepoViewModel]> {
+    override func fetch(page: Int) -> Promise<[Repo]> {
         if let query = query.value {
             return SearchRepoRequest(query: query, sort: .BestMatch, perPage: 30, page: page).send()
-                .then { repos in repos.map { repo in RepoViewModel(repo: repo) } }
         } else {
             return Promise([])
         }
