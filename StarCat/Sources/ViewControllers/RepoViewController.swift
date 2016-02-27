@@ -96,19 +96,8 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
     
     private func showOwner() {
         if let owner = viewModel.repo.value?.owner {
-            if let type = owner.type {
-                if type == .Organization {
-                    self.navigationController?.pushStoryboard("Organization", animated: true) { next in
-                        (next as! OrganizationViewController).userSummary = owner
-                    }
-                    return
-                }
-            }
-            self.navigationController?.pushStoryboard("User", animated: true) { next in
-                (next as! UserViewController).userSummary = owner
-            }
+            navigationController?.pushUser(owner)
         }
-        
     }
     
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {

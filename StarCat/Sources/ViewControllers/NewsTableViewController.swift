@@ -34,9 +34,7 @@ class NewsTableViewController: UITableViewController {
                 repoCell.viewModel.repo.value = news.repo
                 repoCell.viewModel.event.value = news.event
                 repoCell.onActorTapped = { actor in
-                    self?.navigationController?.pushStoryboard("User", animated: true) { next in
-                        (next as! UserViewController).userSummary = actor
-                    }
+                    self?.navigationController?.pushUser(actor)
                 }
         }
         

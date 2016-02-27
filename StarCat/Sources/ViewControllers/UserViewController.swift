@@ -27,29 +27,27 @@ class UserViewController: RepoTableViewController {
     
     var mode = Mode.Profile
     
-    var userSummary: UserSummary? {
-        didSet {
-            mode = .User
-            let pagination = UserRepoPagination()
-            pagination.userName = userSummary!.login
-            self.pagination = pagination
-            viewModel.summary.value = userSummary
-            viewModel.load().then {
-                self.tableView.layoutIfNeeded()
-            }
-        }
-    }
     let viewModel = UserViewModel()
     
     override func viewDidLoad() {
-        if mode == .Profile {
-            let pagination = UserRepoPagination()
-            self.pagination = pagination
-            viewModel.loadCurrentUser().then { () -> Void in
-                pagination.userName = self.viewModel.login.value
-                self.paginator.refresh()
-                self.tableView.layoutIfNeeded()
+        let pagination = UserRepoPagination()
+        self.pagination = pagination
+        super.viewDidLoad()
+        
+        viewModel.login.bindTo { login in
+            if login != "" {
+                pagination.userName = login
+                pagination.fetchAndReset()
             }
+        }.addTo(bag)
+        
+        viewModel.user.bindTo { [weak self] _ in
+            self?.tableView.layoutIfNeeded()
+        }.addTo(bag)
+        
+        if mode == .Profile {
+            viewModel.loadCurrentUser()
+            
             navigationItem.rightBarButtonItems = [
                 UIBarButtonItem(image: UIImage(named: "navigation-config"), style: .Plain, target: self, action: Selector("showProfileMenu")),
                 UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: Selector("showActivity"))
@@ -57,10 +55,9 @@ class UserViewController: RepoTableViewController {
             navigationItem.title = "Profile"
         } else {
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: Selector("showActivity"))
-            navigationItem.title = userSummary?.login
+            viewModel.login.bindTo(navigationItem.wwTitle).addTo(bag)
         }
         
-        super.viewDidLoad()
         
         viewModel.avatarImage.bindTo(avatarImageView.wwImage).addTo(bag)
         viewModel.name.bindTo(nameLabel.wwText).addTo(bag)

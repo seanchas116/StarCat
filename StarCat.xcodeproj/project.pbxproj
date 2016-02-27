@@ -72,6 +72,7 @@
 		BEF6051E1C3114220014D633 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF6051D1C3114220014D633 /* Requests.swift */; };
 		BEF605221C3116950014D633 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF605211C3116950014D633 /* Authentication.swift */; };
 		BEF8C9591C8043A3007C1107 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8C9581C8043A3007C1107 /* News.swift */; };
+		BEF8C95B1C8045A2007C1107 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8C95A1C8045A2007C1107 /* UserTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +168,7 @@
 		BEF6051D1C3114220014D633 /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		BEF605211C3116950014D633 /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		BEF8C9581C8043A3007C1107 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		BEF8C95A1C8045A2007C1107 /* UserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +271,7 @@
 				BE20D28E1C5CC9E6003C4926 /* SettingsViewController.swift */,
 				BE39BA211C291BF40000A87F /* TabBarController.swift */,
 				BE176E631C41F10200E29E4F /* UserViewController.swift */,
+				BEF8C95A1C8045A2007C1107 /* UserTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -723,6 +726,7 @@
 				BE8C231B1C45E15E00691005 /* TableViewPaginator.swift in Sources */,
 				BE20D28F1C5CC9E6003C4926 /* SettingsViewController.swift in Sources */,
 				BE176E661C42010C00E29E4F /* UserViewModel.swift in Sources */,
+				BEF8C95B1C8045A2007C1107 /* UserTableViewController.swift in Sources */,
 				BE3F45441C2A992500DD1863 /* UserSummary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

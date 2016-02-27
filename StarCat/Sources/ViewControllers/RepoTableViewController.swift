@@ -32,9 +32,7 @@ class RepoTableViewController: UITableViewController {
             let repoCell = cell as! RepoCell
             repoCell.viewModel.repo.value = repo
             repoCell.onActorTapped = { actor in
-                self?.navigationController?.pushStoryboard("User", animated: true) { next in
-                    (next as! UserViewController).userSummary = actor
-                }
+                self?.navigationController?.pushUser(actor)
             }
         }
         

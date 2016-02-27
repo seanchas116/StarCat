@@ -19,21 +19,24 @@ class OrganizationViewController: RepoTableViewController {
     @IBOutlet weak var homepageLabel: UILabel!
     @IBOutlet weak var membersLabel: UILabel!
     
-    var userSummary: UserSummary! {
-        didSet {
-            let pagination = UserRepoPagination()
-            pagination.userName = userSummary.login
-            self.pagination = pagination
-            viewModel.summary.value = userSummary
-            viewModel.load().then {
-                self.tableView.layoutIfNeeded()
-            }
-        }
-    }
     let viewModel = UserViewModel()
     
     override func viewDidLoad() {
+        let pagination = UserRepoPagination()
+        self.pagination = pagination
+        
         super.viewDidLoad()
+        
+        viewModel.login.bindTo { login in
+            if login != "" {
+                pagination.userName = login
+                pagination.fetchAndReset()
+            }
+        }.addTo(bag)
+        
+        viewModel.user.bindTo { [weak self] _ in
+            self?.tableView.layoutIfNeeded()
+        }.addTo(bag)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: Selector("showActivity"))
         
