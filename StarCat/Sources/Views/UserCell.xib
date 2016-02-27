@@ -57,6 +57,11 @@
                     <constraint firstItem="Ck7-7M-Zzt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="pfs-ET-hHv"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="avatarImage" destination="z9s-gA-3qv" id="dkG-Uq-kUe"/>
+                <outlet property="fullNameLabel" destination="gYL-66-HEy" id="rSw-g8-ItP"/>
+                <outlet property="loginLabel" destination="faK-ge-Anm" id="H8W-VF-XrW"/>
+            </connections>
             <point key="canvasLocation" x="251.5" y="297"/>
         </tableViewCell>
     </objects>
