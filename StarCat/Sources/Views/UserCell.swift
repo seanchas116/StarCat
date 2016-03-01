@@ -13,6 +13,7 @@ class UserCell: UITableViewCell {
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var loginLabel: UILabel!
+    @IBOutlet weak var detailLabel: UILabel!
     
     let viewModel = UserViewModel()
     let bag = SubscriptionBag()
@@ -23,6 +24,8 @@ class UserCell: UITableViewCell {
         viewModel.avatarImage.bindTo(avatarImage.wwImage).addTo(bag)
         viewModel.name.bindTo(fullNameLabel.wwText).addTo(bag)
         viewModel.login.bindTo(loginLabel.wwText).addTo(bag)
+        let detail = viewModel.location
+        detail.bindTo(detailLabel.wwText).addTo(bag)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="351" height="118.5"/>
                         <subviews>
                             <stackView contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="36w-dz-UMn">
-                                <rect key="frame" x="12" y="12" width="327" height="94.5"/>
+                                <rect key="frame" x="12" y="12" width="327" height="95"/>
                                 <subviews>
                                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ck7-7M-Zzt">
                                         <rect key="frame" x="0.0" y="0.0" width="327" height="48"/>
@@ -53,8 +53,8 @@
                                             <constraint firstAttribute="bottom" secondItem="faK-ge-Anm" secondAttribute="bottom" id="lmo-GJ-L6r"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yokohama, Japan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhp-uu-das">
-                                        <rect key="frame" x="0.0" y="60" width="327" height="34.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yokohama, Japan" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhp-uu-das">
+                                        <rect key="frame" x="0.0" y="60" width="327" height="35"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                         <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -82,6 +82,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="avatarImage" destination="z9s-gA-3qv" id="dkG-Uq-kUe"/>
+                <outlet property="detailLabel" destination="fhp-uu-das" id="nLb-Ky-Usc"/>
                 <outlet property="fullNameLabel" destination="gYL-66-HEy" id="rSw-g8-ItP"/>
                 <outlet property="loginLabel" destination="faK-ge-Anm" id="H8W-VF-XrW"/>
             </connections>
