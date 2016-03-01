@@ -182,12 +182,15 @@
                     <connections>
                         <outlet property="avatarImageView" destination="HQZ-E7-Ah0" id="olt-WO-7uC"/>
                         <outlet property="followButton" destination="g4N-wE-AYH" id="o9f-aD-dLn"/>
+                        <outlet property="followersArea" destination="x6t-MB-HYp" id="YiD-3o-sdp"/>
                         <outlet property="followersLabel" destination="Ijv-HQ-0nh" id="jXJ-yB-AWD"/>
+                        <outlet property="followingArea" destination="ItH-iu-2Rr" id="xtx-K3-8xE"/>
                         <outlet property="followingLabel" destination="Rdc-8a-Dmq" id="Gj9-qS-MbB"/>
                         <outlet property="homepageLabel" destination="8L7-e2-83j" id="gGM-OD-11d"/>
                         <outlet property="locationLabel" destination="GgK-IV-tpH" id="dXF-6o-YhL"/>
                         <outlet property="loginLabel" destination="bTu-4e-npE" id="0V6-hb-ris"/>
                         <outlet property="nameLabel" destination="m0D-Dr-FlV" id="tTJ-Ap-2KZ"/>
+                        <outlet property="starsArea" destination="cyM-76-ZWI" id="Vhq-SI-mh4"/>
                         <outlet property="starsLabel" destination="OV6-FB-nQr" id="HNg-aW-bi2"/>
                     </connections>
                 </tableViewController>

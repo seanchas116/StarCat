@@ -23,6 +23,21 @@ class UserRepoPagination: Pagination<Repo> {
     }
 }
 
+class FollowersPagination: Pagination<User> {
+    var userName: String?
+    
+    override func fetch(page: Int) -> Promise<[User]> {
+        if let userName = userName {
+            return GetFollowersRequest(userName: userName).send().then { summaries in
+                let promises = summaries.map { s in SharedModelCache.userCache.fetch(s.login) }
+                return when(promises)
+            }
+        } else {
+            return Promise([])
+        }
+    }
+}
+
 class UserViewModel {
     let user = Variable<User?>(nil)
     let summary = Variable<UserSummary?>(nil)
@@ -41,7 +56,7 @@ class UserViewModel {
     init() {
         let summary = combine(user, self.summary) { $0?.summary ?? $1 }
         login = summary.map { $0?.login ?? "" }
-        name = user.map { $0?.name ?? "" }
+        name = user.map { $0?.name ?? $0?.login ?? "" }
         avatarImage = summary.mapAsync(nil) { summary -> Promise<UIImage?> in
             if let summary = summary {
                 return Shared.imageCache.fetch(URL: summary.avatarURL.URL).promise().then { $0 }

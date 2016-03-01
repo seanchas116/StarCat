@@ -63,7 +63,7 @@
 		BEE0C0AC1C33EF1A0014986D /* RepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE0C0AA1C33EF1A0014986D /* RepoCell.swift */; };
 		BEE0C0AD1C33EF1A0014986D /* RepoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEE0C0AB1C33EF1A0014986D /* RepoCell.xib */; };
 		BEE0C0B21C3408F80014986D /* PromiseResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE0C0B11C3408F80014986D /* PromiseResults.swift */; };
-		BEF289551C429D9000F50A2A /* UILabel+Tap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF289541C429D9000F50A2A /* UILabel+Tap.swift */; };
+		BEF289551C429D9000F50A2A /* UIView+Tap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF289541C429D9000F50A2A /* UIView+Tap.swift */; };
 		BEF590801C3A940600633417 /* RoundButtonBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5907F1C3A940600633417 /* RoundButtonBorder.swift */; };
 		BEF605131C3023F70014D633 /* NewsTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF605121C3023F70014D633 /* NewsTabViewModel.swift */; };
 		BEF605171C3034820014D633 /* RepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF605161C3034820014D633 /* RepoViewModel.swift */; };
@@ -73,6 +73,7 @@
 		BEF605221C3116950014D633 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF605211C3116950014D633 /* Authentication.swift */; };
 		BEF8C9591C8043A3007C1107 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8C9581C8043A3007C1107 /* News.swift */; };
 		BEF8C95B1C8045A2007C1107 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8C95A1C8045A2007C1107 /* UserTableViewController.swift */; };
+		BEF8C95D1C81C393007C1107 /* UserTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEF8C95C1C81C393007C1107 /* UserTable.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,7 +160,7 @@
 		BEE0C0AA1C33EF1A0014986D /* RepoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoCell.swift; sourceTree = "<group>"; };
 		BEE0C0AB1C33EF1A0014986D /* RepoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoCell.xib; sourceTree = "<group>"; };
 		BEE0C0B11C3408F80014986D /* PromiseResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromiseResults.swift; sourceTree = "<group>"; };
-		BEF289541C429D9000F50A2A /* UILabel+Tap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Tap.swift"; sourceTree = "<group>"; };
+		BEF289541C429D9000F50A2A /* UIView+Tap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Tap.swift"; sourceTree = "<group>"; };
 		BEF5907F1C3A940600633417 /* RoundButtonBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButtonBorder.swift; sourceTree = "<group>"; };
 		BEF605121C3023F70014D633 /* NewsTabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTabViewModel.swift; sourceTree = "<group>"; };
 		BEF605161C3034820014D633 /* RepoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoViewModel.swift; sourceTree = "<group>"; };
@@ -169,6 +170,7 @@
 		BEF605211C3116950014D633 /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		BEF8C9581C8043A3007C1107 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		BEF8C95A1C8045A2007C1107 /* UserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
+		BEF8C95C1C81C393007C1107 /* UserTable.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserTable.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +249,7 @@
 				BE20D28C1C5CBA8B003C4926 /* Settings.storyboard */,
 				BE176E611C41EFF700E29E4F /* User.storyboard */,
 				BEBE3A6E1C76ADFD00E7FF0D /* Secrets.swift */,
+				BEF8C95C1C81C393007C1107 /* UserTable.storyboard */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -323,7 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				BE8C231A1C45E15E00691005 /* TableViewPaginator.swift */,
-				BEF289541C429D9000F50A2A /* UILabel+Tap.swift */,
+				BEF289541C429D9000F50A2A /* UIView+Tap.swift */,
 				BE4707921C4A2F640069DA6F /* UINavigationController+storyboard.swift */,
 				BE8C23181C452D8E00691005 /* UITableView+scrollToTop.swift */,
 				BECB108B1C5CE09F00B0CB16 /* UIViewController+storyboard.swift */,
@@ -552,6 +555,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE561EF91C5929E50097D58E /* LoginButton.storyboard in Resources */,
+				BEF8C95D1C81C393007C1107 /* UserTable.storyboard in Resources */,
 				BE2CAF1D1C3C0AC800B51FBF /* github-markdown.css in Resources */,
 				BED813411C24EE6D0028F8B0 /* LaunchScreen.storyboard in Resources */,
 				BED8133E1C24EE6D0028F8B0 /* Assets.xcassets in Resources */,
@@ -714,7 +718,7 @@
 				BE9A484D1C36234B00406DA6 /* NewsTableViewController.swift in Sources */,
 				BE39BA221C291BF40000A87F /* TabBarController.swift in Sources */,
 				BE4707971C4B47370069DA6F /* RepoTableViewController.swift in Sources */,
-				BEF289551C429D9000F50A2A /* UILabel+Tap.swift in Sources */,
+				BEF289551C429D9000F50A2A /* UIView+Tap.swift in Sources */,
 				BE29556F1C782A7000B10B1F /* UserCell.swift in Sources */,
 				BE8C23191C452D8E00691005 /* UITableView+scrollToTop.swift in Sources */,
 				BEF590801C3A940600633417 /* RoundButtonBorder.swift in Sources */,

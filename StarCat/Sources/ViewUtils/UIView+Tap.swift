@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Wirework
 
-extension UILabel {
+extension UIView {
     func makeTappable() -> Signal<Void> {
         self.userInteractionEnabled = true
         let recognizer = UITapGestureRecognizer()

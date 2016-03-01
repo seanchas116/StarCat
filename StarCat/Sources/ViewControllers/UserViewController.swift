@@ -24,6 +24,9 @@ class UserViewController: RepoTableViewController {
     @IBOutlet weak var followersLabel: UILabel!
     @IBOutlet weak var starsLabel: UILabel!
     @IBOutlet weak var followingLabel: UILabel!
+    @IBOutlet weak var followersArea: UIView!
+    @IBOutlet weak var starsArea: UIView!
+    @IBOutlet weak var followingArea: UIView!
     
     var mode = Mode.Profile
     
@@ -67,6 +70,7 @@ class UserViewController: RepoTableViewController {
         viewModel.location.map { $0 == nil }.bindTo(locationLabel.wwHidden).addTo(bag)
         viewModel.homepage.map { $0?.stringWithoutScheme ?? "" }.bindTo(homepageLabel.wwText).addTo(bag)
         viewModel.homepage.map { $0 == nil }.bindTo(locationLabel.wwHidden).addTo(bag)
+        
         homepageLabel.makeTappable().subscribe { [unowned self] _ in
             if let link = self.viewModel.homepage.value {
                 WebViewPopup.open(link, on: self)
@@ -76,6 +80,10 @@ class UserViewController: RepoTableViewController {
         viewModel.followersCount.map { String($0) }.bindTo(followersLabel.wwText).addTo(bag)
         viewModel.followingCount.map { String($0) }.bindTo(followingLabel.wwText).addTo(bag)
         viewModel.starsCount.map { String($0) }.bindTo(starsLabel.wwText).addTo(bag)
+        
+        followersArea.makeTappable().subscribe { [weak self] _ in
+            self?.showFollowers()
+        }.addTo(bag)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -98,5 +106,15 @@ class UserViewController: RepoTableViewController {
     
     func showProfileMenu() {
         presentStoryboard("Settings", animated: true)
+    }
+    
+    func showFollowers() {
+        navigationController?.pushStoryboard("UserTable", animated: true) { next in
+            let userTableVC = next as! UserTableViewController
+            let pagination = FollowersPagination()
+            pagination.userName = self.viewModel.login.value
+            userTableVC.pagination = pagination
+            userTableVC.title = "Followers"
+        }
     }
 }

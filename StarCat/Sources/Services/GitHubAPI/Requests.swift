@@ -160,14 +160,14 @@ struct GetCurrentUserRequest: GitHubRequest {
 }
 
 struct GetFollowersRequest: GitHubRequest {
-    typealias Response = [User]
+    typealias Response = [UserSummary]
     let userName: String
     var path: String {
-        return "/user/\(userName)/followers"
+        return "/users/\(userName)/followers"
     }
     func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> GetFollowersRequest.Response? {
         do {
-            let followers: [User] = try decodeArray(object)
+            let followers: [UserSummary] = try decodeArray(object)
             return followers
         } catch {
             print("Error parsing response: \(error)")
