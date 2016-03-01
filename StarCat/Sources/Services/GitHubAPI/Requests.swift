@@ -162,6 +162,13 @@ struct GetCurrentUserRequest: GitHubRequest {
 struct GetFollowersRequest: GitHubRequest {
     typealias Response = [UserSummary]
     let userName: String
+    let perPage: Int
+    let page: Int
+    
+    var parameters: [String: AnyObject] {
+        return ["per_page": perPage, "page": page]
+    }
+    
     var path: String {
         return "/users/\(userName)/followers"
     }

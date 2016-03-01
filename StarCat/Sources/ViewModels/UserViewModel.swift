@@ -28,7 +28,7 @@ class FollowersPagination: Pagination<User> {
     
     override func fetch(page: Int) -> Promise<[User]> {
         if let userName = userName {
-            return GetFollowersRequest(userName: userName).send().then { summaries in
+            return GetFollowersRequest(userName: userName, perPage: 30, page: page).send().then { summaries in
                 let promises = summaries.map { s in SharedModelCache.userCache.fetch(s.login) }
                 return when(promises)
             }
