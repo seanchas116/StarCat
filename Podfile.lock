@@ -1,37 +1,37 @@
 PODS:
   - APIKit (1.1.2):
     - Result (~> 1.0.1)
-  - HanekeSwift (0.10.0)
-  - Himotoki (1.3.2)
+  - HanekeSwift (0.10.1)
+  - Himotoki (1.5.0)
   - KeychainAccess (2.3.3)
-  - NBNRequestKit (0.1.1)
+  - NBNRequestKit (0.2.2)
   - Nimble (3.1.0)
-  - OctoKit.swift (0.5.0):
-    - NBNRequestKit (~> 0.1.0)
-  - OMGHTTPURLRQ (3.0.2):
-    - OMGHTTPURLRQ/RQ (= 3.0.2)
-  - OMGHTTPURLRQ/FormURLEncode (3.0.2)
-  - OMGHTTPURLRQ/RQ (3.0.2):
+  - OctoKit.swift (0.5.2):
+    - NBNRequestKit (~> 0.2.2)
+  - OMGHTTPURLRQ (3.1.1):
+    - OMGHTTPURLRQ/RQ (= 3.1.1)
+  - OMGHTTPURLRQ/FormURLEncode (3.1.1)
+  - OMGHTTPURLRQ/RQ (3.1.1):
     - OMGHTTPURLRQ/FormURLEncode
     - OMGHTTPURLRQ/UserAgent
-  - OMGHTTPURLRQ/UserAgent (3.0.2)
-  - PromiseKit (3.0.0):
-    - PromiseKit/Foundation (= 3.0.0)
-    - PromiseKit/QuartzCore (= 3.0.0)
-    - PromiseKit/UIKit (= 3.0.0)
-  - PromiseKit/CorePromise (3.0.0)
-  - PromiseKit/Foundation (3.0.0):
-    - OMGHTTPURLRQ (~> 3.0.0)
+  - OMGHTTPURLRQ/UserAgent (3.1.1)
+  - PromiseKit (3.0.3):
+    - PromiseKit/Foundation (= 3.0.3)
+    - PromiseKit/QuartzCore (= 3.0.3)
+    - PromiseKit/UIKit (= 3.0.3)
+  - PromiseKit/CorePromise (3.0.3)
+  - PromiseKit/Foundation (3.0.3):
+    - OMGHTTPURLRQ (~> 3.1.0)
     - PromiseKit/CorePromise
-  - PromiseKit/QuartzCore (3.0.0):
+  - PromiseKit/QuartzCore (3.0.3):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (3.0.0):
+  - PromiseKit/UIKit (3.0.3):
     - PromiseKit/CorePromise
-  - Quick (0.8.0)
+  - Quick (0.9.1)
   - Regex (0.3.0)
-  - Result (1.0.1)
+  - Result (1.0.2)
   - SVWebViewController (HEAD based on 1.0)
-  - SwiftDate (2.0.2)
+  - SwiftDate (3.0.6)
   - Wirework (0.0.1)
   - WireworkFoundation (0.0.1):
     - Wirework
@@ -65,30 +65,30 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Wirework:
-    :commit: 589e695c0dd3db4061ca1ef074effc96c6965ce1
+    :commit: 17f8ee8e30c2f8937574d53d07c15b04afaf48f8
     :git: git@bitbucket.org:seanchas_t/wirework.git
   WireworkFoundation:
-    :commit: 589e695c0dd3db4061ca1ef074effc96c6965ce1
+    :commit: 17f8ee8e30c2f8937574d53d07c15b04afaf48f8
     :git: git@bitbucket.org:seanchas_t/wirework.git
   WireworkUIKit:
-    :commit: 589e695c0dd3db4061ca1ef074effc96c6965ce1
+    :commit: 17f8ee8e30c2f8937574d53d07c15b04afaf48f8
     :git: git@bitbucket.org:seanchas_t/wirework.git
 
 SPEC CHECKSUMS:
   APIKit: d6e313f1ca3b0cae30a7059f872f7780d8a147ec
-  HanekeSwift: d6f5bdf9dbdbbc09d59623b2c1d533e46463dd4d
-  Himotoki: e803d71cdf0cf6a1c4f5004d949b659231abcc5b
+  HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
+  Himotoki: 7506d0a42c59ca4f7e348f22aee89e22c76c5711
   KeychainAccess: 9b7e49e48277e329b1b3195e54697ed313d30acf
-  NBNRequestKit: 1fe77c6569bd11f13604fdabb7cbab5ef719cf47
+  NBNRequestKit: d00bad4cb6ac80daa9479e5f35e98a263bae6166
   Nimble: 79d40f4d69d47314229bbabacaa02b8838c779b9
-  OctoKit.swift: 8a53a0d6bd8ba5254c9c6abbf7ff4a256324a247
-  OMGHTTPURLRQ: 8376dc887d76a5a7e2a67881dc788f917a2f437c
-  PromiseKit: 665540a1eb43156446872dcf49ed7dee6ebbe13b
-  Quick: 563d0f6ec5f72e394645adb377708639b7dd38ab
+  OctoKit.swift: dcd06e18fd5374055cbfb673d2e1a9c1c1505dfc
+  OMGHTTPURLRQ: 633f98ee745aeda02345935a52eec1784cddb589
+  PromiseKit: 00ec2a219bf5ad2833f95977698e921932b8dfd3
+  Quick: a5221fc21788b6aeda934805e68b061839bc3165
   Regex: 6bfb554ad7d5b1be9cfc57ab1fe2fb6cee45a344
-  Result: caef80340451e1f07492fa1e89117f83613bce24
+  Result: dd3dd71af3fa2e262f1a999e14fba2c25ec14f16
   SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
-  SwiftDate: b4f4d0962afe48365ad2800c9850a6626deb9359
+  SwiftDate: 520c0e7de224c881fe4213caeca72d482ed3d45f
   Wirework: ae7632345dc533a1657da66950de174407bfd336
   WireworkFoundation: 8588264f748c4b957f8c353ca0407d3d35ac2a0f
   WireworkUIKit: efc4b5991bd331f78e95940033aef7cb0863f039

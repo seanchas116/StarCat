@@ -7,19 +7,19 @@
 //
 
 import UIKit
-import RxSwift
+import Wirework
 
 class SettingsViewController: UITableViewController {
     @IBOutlet weak var logoutCell: UITableViewCell!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
-    let disposeBag = DisposeBag()
+    let bag = SubscriptionBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        doneButton.rx_tap.subscribeNext { [weak self] in
+        doneButton.wwTapped.subscribe { [weak self] in
             self?.dismissViewControllerAnimated(true, completion: nil)
-        }.addDisposableTo(disposeBag)
+        }.addTo(bag)
     }
 
     override func didReceiveMemoryWarning() {

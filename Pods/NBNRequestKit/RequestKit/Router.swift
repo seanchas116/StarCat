@@ -18,6 +18,13 @@ public enum HTTPEncoding: Int {
 public protocol Configuration {
     var apiEndpoint: String { get }
     var accessToken: String? { get }
+    var accessTokenFieldName: String { get }
+}
+
+public extension Configuration {
+    var accessTokenFieldName: String {
+        return "access_token"
+    }
 }
 
 public protocol Router {
@@ -38,7 +45,7 @@ public extension Router {
         let URLString = configuration.apiEndpoint.stringByAppendingURLPath(path)
         var parameters = encoding == .JSON ? [:] : params
         if let accessToken = configuration.accessToken {
-            parameters["access_token"] = accessToken
+            parameters[configuration.accessTokenFieldName] = accessToken
         }
         return request(URLString, parameters: parameters)
     }
@@ -81,11 +88,11 @@ public extension Router {
         return nil
     }
 
-    func loadJSON<T>(expectedResultType: T.Type, completion: (json: T?, error: ErrorType?) -> Void) {
+    public func loadJSON<T>(expectedResultType: T.Type, completion: (json: T?, error: ErrorType?) -> Void) {
         if let request = request() {
             let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, err in
                 if let response = response as? NSHTTPURLResponse {
-                    if response.statusCode != 200 {
+                    if response.wasSuccessful == false {
                         let error = NSError(domain: errorDomain, code: response.statusCode, userInfo: nil)
                         completion(json: nil, error: error)
                         return
@@ -107,5 +114,12 @@ public extension Router {
             }
             task.resume()
         }
+    }
+}
+
+public extension NSHTTPURLResponse {
+    public var wasSuccessful: Bool {
+        let successRange = 200..<300
+        return successRange.contains(statusCode)
     }
 }
