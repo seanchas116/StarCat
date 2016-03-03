@@ -12,9 +12,9 @@ pod 'HanekeSwift'
 pod 'SwiftDate'
 pod 'Regex'
 pod 'SVWebViewController', :head
-pod 'Wirework', path: '../Wirework'
-pod 'WireworkFoundation', path: '../Wirework'
-pod 'WireworkUIKit', path: '../Wirework'
+pod 'Wirework', git: 'git@bitbucket.org:seanchas_t/wirework.git'
+pod 'WireworkFoundation', git: 'git@bitbucket.org:seanchas_t/wirework.git'
+pod 'WireworkUIKit', git: 'git@bitbucket.org:seanchas_t/wirework.git'
 
 target 'StarCat' do
 end

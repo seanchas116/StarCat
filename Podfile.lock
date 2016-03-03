@@ -51,17 +51,28 @@ DEPENDENCIES:
   - Regex
   - SVWebViewController (HEAD)
   - SwiftDate
-  - Wirework (from `../Wirework`)
-  - WireworkFoundation (from `../Wirework`)
-  - WireworkUIKit (from `../Wirework`)
+  - Wirework (from `git@bitbucket.org:seanchas_t/wirework.git`)
+  - WireworkFoundation (from `git@bitbucket.org:seanchas_t/wirework.git`)
+  - WireworkUIKit (from `git@bitbucket.org:seanchas_t/wirework.git`)
 
 EXTERNAL SOURCES:
   Wirework:
-    :path: "../Wirework"
+    :git: git@bitbucket.org:seanchas_t/wirework.git
   WireworkFoundation:
-    :path: "../Wirework"
+    :git: git@bitbucket.org:seanchas_t/wirework.git
   WireworkUIKit:
-    :path: "../Wirework"
+    :git: git@bitbucket.org:seanchas_t/wirework.git
+
+CHECKOUT OPTIONS:
+  Wirework:
+    :commit: 589e695c0dd3db4061ca1ef074effc96c6965ce1
+    :git: git@bitbucket.org:seanchas_t/wirework.git
+  WireworkFoundation:
+    :commit: 589e695c0dd3db4061ca1ef074effc96c6965ce1
+    :git: git@bitbucket.org:seanchas_t/wirework.git
+  WireworkUIKit:
+    :commit: 589e695c0dd3db4061ca1ef074effc96c6965ce1
+    :git: git@bitbucket.org:seanchas_t/wirework.git
 
 SPEC CHECKSUMS:
   APIKit: d6e313f1ca3b0cae30a7059f872f7780d8a147ec
