@@ -23,7 +23,7 @@ class SearchPagination: Pagination<Repo> {
     
     override func fetch(page: Int) -> Promise<[Repo]> {
         if let query = query.value {
-            return SearchRepoRequest(query: query, sort: .BestMatch, perPage: 30, page: page).send()
+            return SearchRepoRequest(query: query, sort: .Stars, perPage: 30, page: page).send()
         } else {
             return Promise([])
         }
