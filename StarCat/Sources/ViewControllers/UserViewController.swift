@@ -83,6 +83,9 @@ class UserViewController: RepoTableViewController {
         followersArea.makeTappable().subscribe { [weak self] _ in
             self?.showFollowers()
         }.addTo(bag)
+        followingArea.makeTappable().subscribe { [weak self] _ in
+            self?.showFollowing()
+        }.addTo(bag)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -114,6 +117,16 @@ class UserViewController: RepoTableViewController {
             pagination.userName = self.viewModel.login.value
             userTableVC.pagination = pagination
             userTableVC.title = "Followers"
+        }
+    }
+    
+    func showFollowing() {
+        navigationController?.pushStoryboard("UserTable", animated: true) { next in
+            let userTableVC = next as! UserTableViewController
+            let pagination = FollowingPagination()
+            pagination.userName = self.viewModel.login.value
+            userTableVC.pagination = pagination
+            userTableVC.title = "Following"
         }
     }
 }

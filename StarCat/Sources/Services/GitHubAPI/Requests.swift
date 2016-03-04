@@ -172,10 +172,34 @@ struct GetFollowersRequest: GitHubRequest {
     var path: String {
         return "/users/\(userName)/followers"
     }
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> GetFollowersRequest.Response? {
+    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
         do {
-            let followers: [UserSummary] = try decodeArray(object)
-            return followers
+            let users: [UserSummary] = try decodeArray(object)
+            return users
+        } catch {
+            print("Error parsing response: \(error)")
+            return nil
+        }
+    }
+}
+
+struct GetFollowingRequest: GitHubRequest {
+    typealias Response = [UserSummary]
+    let userName: String
+    let perPage: Int
+    let page: Int
+    
+    var parameters: [String: AnyObject] {
+        return ["per_page": perPage, "page": page]
+    }
+    
+    var path: String {
+        return "/users/\(userName)/following"
+    }
+    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
+        do {
+            let users: [UserSummary] = try decodeArray(object)
+            return users
         } catch {
             print("Error parsing response: \(error)")
             return nil

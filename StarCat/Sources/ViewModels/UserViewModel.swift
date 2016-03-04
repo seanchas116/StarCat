@@ -38,6 +38,21 @@ class FollowersPagination: Pagination<User> {
     }
 }
 
+class FollowingPagination: Pagination<User> {
+    var userName: String?
+    
+    override func fetch(page: Int) -> Promise<[User]> {
+        if let userName = userName {
+            return GetFollowingRequest(userName: userName, perPage: 30, page: page).send().then { summaries in
+                let promises = summaries.map { s in SharedModelCache.userCache.fetch(s.login) }
+                return when(promises)
+            }
+        } else {
+            return Promise([])
+        }
+    }
+}
+
 class UserViewModel {
     let user = Variable<User?>(nil)
     let summary = Variable<UserSummary?>(nil)
