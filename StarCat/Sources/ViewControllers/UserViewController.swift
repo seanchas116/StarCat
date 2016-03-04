@@ -14,6 +14,7 @@ class UserViewController: RepoTableViewController {
         case Profile
     }
     
+    @IBOutlet weak var header: UIView!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var loginLabel: UILabel!
@@ -41,10 +42,6 @@ class UserViewController: RepoTableViewController {
                 pagination.userName = login
                 pagination.fetchAndReset()
             }
-        }.addTo(bag)
-        
-        viewModel.user.bindTo { [weak self] _ in
-            self?.tableView.layoutIfNeeded()
         }.addTo(bag)
         
         if mode == .Profile {
@@ -85,6 +82,11 @@ class UserViewController: RepoTableViewController {
         }.addTo(bag)
         followingArea.makeTappable().subscribe { [weak self] _ in
             self?.showFollowing()
+        }.addTo(bag)
+        
+        viewModel.user.bindTo { [weak self] _ in
+            self?.header.resizeHeightToMinimum()
+            self?.tableView.layoutIfNeeded()
         }.addTo(bag)
     }
     
