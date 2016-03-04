@@ -38,6 +38,7 @@ class ReadmeView: UIView {
 }
 
 class RepoViewController: UIViewController, WKNavigationDelegate {
+    @IBOutlet weak var header: UIView!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -87,6 +88,10 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
         }.addTo(bag)
         
         viewModel.fetchReadme()
+        
+        viewModel.repo.bindTo { [weak self] _ in
+            self?.header.resizeHeightToMinimum()
+        }.addTo(bag)
     }
 
     override func didReceiveMemoryWarning() {
