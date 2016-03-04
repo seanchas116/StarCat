@@ -40,14 +40,18 @@ class WWKeyValueObserver: NSObject {
 }
 
 extension NSObject {
-    public var wwBag: SubscriptionBag {
-        if let bag = objc_getAssociatedObject(self, &subscriptionBagKey) {
-            return bag as! SubscriptionBag
+    public func wwAssociatedObject<T: AnyObject>(key: UnsafePointer<Void>, create: () -> T) -> T {
+        if let obj = objc_getAssociatedObject(self, key) {
+            return obj as! T
         } else {
-            let bag = SubscriptionBag()
-            objc_setAssociatedObject(self, &subscriptionBagKey, bag, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            return bag
+            let obj = create()
+            objc_setAssociatedObject(self, key, obj, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            return obj
         }
+    }
+    
+    public var wwBag: SubscriptionBag {
+        return wwAssociatedObject(&subscriptionBagKey) { SubscriptionBag() }
     }
     
     public func wwKeyValue<T>(keyPath: String) -> MutableProperty<T> {

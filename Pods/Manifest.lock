@@ -65,13 +65,13 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Wirework:
-    :commit: 17f8ee8e30c2f8937574d53d07c15b04afaf48f8
+    :commit: f39c50988bf1bb9c2cb6d473f958ecb009b97af4
     :git: git@bitbucket.org:seanchas_t/wirework.git
   WireworkFoundation:
-    :commit: 17f8ee8e30c2f8937574d53d07c15b04afaf48f8
+    :commit: f39c50988bf1bb9c2cb6d473f958ecb009b97af4
     :git: git@bitbucket.org:seanchas_t/wirework.git
   WireworkUIKit:
-    :commit: 17f8ee8e30c2f8937574d53d07c15b04afaf48f8
+    :commit: f39c50988bf1bb9c2cb6d473f958ecb009b97af4
     :git: git@bitbucket.org:seanchas_t/wirework.git
 
 SPEC CHECKSUMS:

@@ -32,18 +32,9 @@ class WWScrollViewDelegate: NSObject, UIScrollViewDelegate {
 private var delegateKey = 0
 
 extension UIScrollView {
-    func createDelegate<T: WWScrollViewDelegate>(create: () -> T) -> T {
-        var delegate = objc_getAssociatedObject(self, &delegateKey) as? T
-        if delegate == nil {
-            delegate = create()
-            objc_setAssociatedObject(self, &delegateKey, delegate, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        }
-        return delegate!
-    }
-    
     func installDelegate<T: WWScrollViewDelegate>(create: () -> T) -> T {
         let old = self.delegate
-        let delegate = createDelegate(create)
+        let delegate = wwAssociatedObject(&delegateKey, create: create)
         self.delegate = delegate.cascaded
         if !(old is WWDelegateCascader) {
             delegate.forwardToDelegate(old)
