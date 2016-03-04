@@ -11,6 +11,6 @@ import UIKit
 extension UIView {
     func resizeHeightToMinimum() {
         let minimum = systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
-        bounds = CGRect(origin: bounds.origin, size: CGSizeMake(bounds.width, minimum.height))
+        frame = CGRect(origin: frame.origin, size: CGSizeMake(frame.width, minimum.height))
     }
 }
