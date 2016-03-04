@@ -92,18 +92,18 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StarCat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VB-So-Ioy">
-                                                <rect key="frame" x="60" y="24" width="291" height="22"/>
+                                                <rect key="frame" x="60" y="24" width="228" height="22"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="seanchas116" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9J1-pH-mXk">
-                                                <rect key="frame" x="60" y="2" width="291" height="19.5"/>
+                                                <rect key="frame" x="60" y="2" width="228" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                 <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123 ★" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQJ-JK-hAX">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="123 ★" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQJ-JK-hAX">
                                                 <rect key="frame" x="300" y="14" width="42.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                 <color key="textColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
@@ -115,10 +115,12 @@
                                             <constraint firstItem="2zt-sZ-hSX" firstAttribute="leading" secondItem="CTf-qU-20Q" secondAttribute="leading" id="5Zc-Qb-WPl"/>
                                             <constraint firstAttribute="trailing" secondItem="vQJ-JK-hAX" secondAttribute="trailing" constant="8" id="CnD-hg-rgH"/>
                                             <constraint firstItem="2zt-sZ-hSX" firstAttribute="top" secondItem="CTf-qU-20Q" secondAttribute="top" id="EMo-0P-ggd"/>
+                                            <constraint firstItem="vQJ-JK-hAX" firstAttribute="leading" secondItem="9J1-pH-mXk" secondAttribute="trailing" constant="12" id="F6f-of-eJD"/>
                                             <constraint firstItem="7VB-So-Ioy" firstAttribute="top" secondItem="CTf-qU-20Q" secondAttribute="top" constant="19" id="IFb-ao-TlL"/>
                                             <constraint firstItem="9J1-pH-mXk" firstAttribute="leading" secondItem="2zt-sZ-hSX" secondAttribute="trailing" constant="12" id="ODg-0P-3Js"/>
                                             <constraint firstAttribute="bottom" secondItem="2zt-sZ-hSX" secondAttribute="bottom" id="PrU-M2-QAI"/>
                                             <constraint firstItem="9J1-pH-mXk" firstAttribute="top" secondItem="CTf-qU-20Q" secondAttribute="top" constant="2" id="Sd7-Qn-NSE"/>
+                                            <constraint firstItem="vQJ-JK-hAX" firstAttribute="leading" secondItem="7VB-So-Ioy" secondAttribute="trailing" constant="12" id="TNg-20-1rv"/>
                                             <constraint firstItem="vQJ-JK-hAX" firstAttribute="centerY" secondItem="CTf-qU-20Q" secondAttribute="centerY" id="W0a-yo-Th7"/>
                                             <constraint firstAttribute="bottom" secondItem="7VB-So-Ioy" secondAttribute="bottom" constant="2" id="ZO9-Qw-Ale"/>
                                             <constraint firstAttribute="bottom" secondItem="7VB-So-Ioy" secondAttribute="bottom" id="cWj-vL-Tw1"/>
@@ -128,8 +130,10 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
+                                                <exclude reference="p9M-t2-aqj"/>
                                                 <exclude reference="IFb-ao-TlL"/>
                                                 <exclude reference="cWj-vL-Tw1"/>
+                                                <exclude reference="hMe-ON-nf2"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -143,7 +147,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Swift" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SwN-ve-ADn">
-                                                <rect key="frame" x="0.0" y="98" width="31.5" height="19.5"/>
+                                                <rect key="frame" x="0.0" y="98.5" width="31.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                 <color key="textColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
