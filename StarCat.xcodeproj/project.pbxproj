@@ -45,6 +45,8 @@
 		BE8C23191C452D8E00691005 /* UITableView+scrollToTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8C23181C452D8E00691005 /* UITableView+scrollToTop.swift */; };
 		BE8C231B1C45E15E00691005 /* TableViewPaginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8C231A1C45E15E00691005 /* TableViewPaginator.swift */; };
 		BE9428A61C894E9800077615 /* UIView+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9428A51C894E9800077615 /* UIView+Resize.swift */; };
+		BE9428A81C8AAE2000077615 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE9428A71C8AAE2000077615 /* Search.storyboard */; };
+		BE9428AA1C8AAE3000077615 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE9428A91C8AAE3000077615 /* News.storyboard */; };
 		BE9A484D1C36234B00406DA6 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */; };
 		BEB1B9AB1C414B4400A730A0 /* Repo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */; };
 		BEB680791C3F9BD6007B2E08 /* ReadmeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB680781C3F9BD6007B2E08 /* ReadmeTextView.swift */; };
@@ -137,6 +139,8 @@
 		BE8C23181C452D8E00691005 /* UITableView+scrollToTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+scrollToTop.swift"; sourceTree = "<group>"; };
 		BE8C231A1C45E15E00691005 /* TableViewPaginator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewPaginator.swift; sourceTree = "<group>"; };
 		BE9428A51C894E9800077615 /* UIView+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Resize.swift"; sourceTree = "<group>"; };
+		BE9428A71C8AAE2000077615 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		BE9428A91C8AAE3000077615 /* News.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
 		BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Repo.storyboard; sourceTree = "<group>"; };
 		BEB680781C3F9BD6007B2E08 /* ReadmeTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadmeTextView.swift; sourceTree = "<group>"; };
@@ -244,14 +248,8 @@
 				BED813341C24EE6D0028F8B0 /* AppDelegate.swift */,
 				BEBA2A701C26AACB00F64F05 /* Constants.swift */,
 				BED8133F1C24EE6D0028F8B0 /* LaunchScreen.storyboard */,
-				BE561EF71C5929E50097D58E /* LoginButton.storyboard */,
 				BED8133A1C24EE6D0028F8B0 /* Main.storyboard */,
-				BE47078E1C4A152D0069DA6F /* Organization.storyboard */,
-				BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */,
-				BE20D28C1C5CBA8B003C4926 /* Settings.storyboard */,
-				BE176E611C41EFF700E29E4F /* User.storyboard */,
 				BEBE3A6E1C76ADFD00E7FF0D /* Secrets.swift */,
-				BEF8C95C1C81C393007C1107 /* UserTable.storyboard */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -267,16 +265,24 @@
 		BE3F45401C2A98FC00DD1863 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BE561EF71C5929E50097D58E /* LoginButton.storyboard */,
 				BE561EF51C5926AE0097D58E /* LoginButtonViewController.swift */,
+				BE9428A91C8AAE3000077615 /* News.storyboard */,
 				BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */,
+				BE47078E1C4A152D0069DA6F /* Organization.storyboard */,
 				BE4707901C4A198F0069DA6F /* OrganizationViewController.swift */,
+				BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */,
 				BE4707961C4B47370069DA6F /* RepoTableViewController.swift */,
 				BE46B0031C38281400C8242C /* RepoViewController.swift */,
+				BE9428A71C8AAE2000077615 /* Search.storyboard */,
 				BE4707941C4A45680069DA6F /* SearchViewController.swift */,
+				BE20D28C1C5CBA8B003C4926 /* Settings.storyboard */,
 				BE20D28E1C5CC9E6003C4926 /* SettingsViewController.swift */,
 				BE39BA211C291BF40000A87F /* TabBarController.swift */,
-				BE176E631C41F10200E29E4F /* UserViewController.swift */,
+				BE176E611C41EFF700E29E4F /* User.storyboard */,
+				BEF8C95C1C81C393007C1107 /* UserTable.storyboard */,
 				BEF8C95A1C8045A2007C1107 /* UserTableViewController.swift */,
+				BE176E631C41F10200E29E4F /* UserViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -298,11 +304,11 @@
 				BE699B931C59C34A004A9E7D /* AccessToken.swift */,
 				BE3F45481C2A994500DD1863 /* Event.swift */,
 				BE546A641C4E30B500C71C0A /* Link.swift */,
+				BEF8C9581C8043A3007C1107 /* News.swift */,
 				BE3F45451C2A993400DD1863 /* Repo.swift */,
 				BEF605181C30FCBB0014D633 /* RepoSummary.swift */,
 				BE176E671C4201B400E29E4F /* User.swift */,
 				BE3F45431C2A992500DD1863 /* UserSummary.swift */,
-				BEF8C9581C8043A3007C1107 /* News.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -328,12 +334,12 @@
 			isa = PBXGroup;
 			children = (
 				BE8C231A1C45E15E00691005 /* TableViewPaginator.swift */,
-				BEF289541C429D9000F50A2A /* UIView+Tap.swift */,
 				BE4707921C4A2F640069DA6F /* UINavigationController+storyboard.swift */,
 				BE8C23181C452D8E00691005 /* UITableView+scrollToTop.swift */,
+				BE9428A51C894E9800077615 /* UIView+Resize.swift */,
+				BEF289541C429D9000F50A2A /* UIView+Tap.swift */,
 				BECB108B1C5CE09F00B0CB16 /* UIViewController+storyboard.swift */,
 				BE47078A1C49EAA00069DA6F /* WebViewPopup.swift */,
-				BE9428A51C894E9800077615 /* UIView+Resize.swift */,
 			);
 			path = ViewUtils;
 			sourceTree = "<group>";
@@ -561,8 +567,10 @@
 				BEF8C95D1C81C393007C1107 /* UserTable.storyboard in Resources */,
 				BE2CAF1D1C3C0AC800B51FBF /* github-markdown.css in Resources */,
 				BED813411C24EE6D0028F8B0 /* LaunchScreen.storyboard in Resources */,
+				BE9428A81C8AAE2000077615 /* Search.storyboard in Resources */,
 				BED8133E1C24EE6D0028F8B0 /* Assets.xcassets in Resources */,
 				BED8133C1C24EE6D0028F8B0 /* Main.storyboard in Resources */,
+				BE9428AA1C8AAE3000077615 /* News.storyboard in Resources */,
 				BE2CAF211C3C0CFE00B51FBF /* github-markdown-custom.css in Resources */,
 				BE20D28D1C5CBA8B003C4926 /* Settings.storyboard in Resources */,
 				BE176E621C41EFF700E29E4F /* User.storyboard in Resources */,
