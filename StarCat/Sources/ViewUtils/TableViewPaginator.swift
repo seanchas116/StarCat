@@ -89,6 +89,9 @@ class TableViewPaginator<T> {
     }
     
     func fetchMore() {
+        if !pagination.canFetchMore {
+            return
+        }
         loadingMore.value = true
         pagination.fetchMore().always {
             self.loadingMore.value = false

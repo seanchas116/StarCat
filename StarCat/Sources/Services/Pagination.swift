@@ -17,6 +17,7 @@ class Pagination<T> {
     var lastFetched: NSDate?
     var page = 1
     var refreshInterval = 10.minutes
+    var canFetchMore = true
     
     func fetch(page: Int) -> Promise<[T]> {
         return Promise([])
@@ -24,8 +25,12 @@ class Pagination<T> {
     
     func fetchMore() -> Promise<Void> {
         return self.fetch(self.page).then { events -> Void in
-            self.items.value += events
-            self.page += 1
+            if events.count > 0 {
+                self.items.value += events
+                self.page += 1
+            } else {
+                self.canFetchMore = false
+            }
         }
     }
     
@@ -34,6 +39,7 @@ class Pagination<T> {
             self.page = 1
             self.items.value = events
             self.lastFetched = NSDate()
+            self.canFetchMore = true
         }
     }
     
