@@ -85,8 +85,8 @@ class UserViewController: RepoTableViewController {
         }.addTo(bag)
         
         viewModel.user.bindTo { [weak self] _ in
-            self?.header.resizeHeightToMinimum()
             self?.tableView.layoutIfNeeded()
+            self?.header.resizeHeightToMinimum()
         }.addTo(bag)
     }
     
