@@ -59,6 +59,7 @@ class UserViewModel {
     let name: Property<String>
     let avatarImage: Property<UIImage?>
     let login: Property<String>
+    let company: Property<String?>
     let location: Property<String?>
     let homepage: Property<Link?>
     let followersCount: Property<Int>
@@ -79,6 +80,7 @@ class UserViewModel {
                 return Promise(nil)
             }
         }
+        company = user.map { $0?.company }
         location = user.map { $0?.location }
         homepage = user.map { $0?.blog }
         followersCount = user.map { $0?.followers ?? 0 }

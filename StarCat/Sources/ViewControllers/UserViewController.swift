@@ -18,6 +18,7 @@ class UserViewController: RepoTableViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var loginLabel: UILabel!
+    @IBOutlet weak var companyLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var homepageLabel: UILabel!
     @IBOutlet weak var followButton: RoundButton!
@@ -62,6 +63,8 @@ class UserViewController: RepoTableViewController {
         viewModel.name.bindTo(nameLabel.wwText).addTo(bag)
         viewModel.login.bindTo(loginLabel.wwText).addTo(bag)
         
+        viewModel.company.map { $0 ?? "" }.bindTo(companyLabel.wwText).addTo(bag)
+        viewModel.company.map { $0 == nil }.bindTo(companyLabel.wwHidden).addTo(bag)
         viewModel.location.map { $0 ?? "" }.bindTo(locationLabel.wwText).addTo(bag)
         viewModel.location.map { $0 == nil }.bindTo(locationLabel.wwHidden).addTo(bag)
         viewModel.homepage.map { $0?.stringWithoutScheme ?? "" }.bindTo(homepageLabel.wwText).addTo(bag)
