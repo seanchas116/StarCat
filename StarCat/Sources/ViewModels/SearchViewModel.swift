@@ -11,18 +11,11 @@ import Wirework
 import PromiseKit
 
 class SearchPagination: Pagination<Repo> {
-    let query = Variable<String?>(nil)
+    var query: String?
     let bag = SubscriptionBag()
     
-    override init() {
-        super.init()
-        query.bindTo { _ in
-            self.fetchAndReset()
-        }.addTo(bag)
-    }
-    
     override func fetch(page: Int) -> Promise<[Repo]> {
-        if let query = query.value {
+        if let query = query {
             return SearchRepoRequest(query: query, sort: .Stars, perPage: 30, page: page).send()
         } else {
             return Promise([])

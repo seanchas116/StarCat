@@ -38,6 +38,7 @@ class SearchViewController: RepoTableViewController, UISearchBarDelegate {
     }
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        viewModel.pagination.query.value = searchBar.text
+        viewModel.pagination.query = searchBar.text
+        paginator.fetch()
     }
 }
