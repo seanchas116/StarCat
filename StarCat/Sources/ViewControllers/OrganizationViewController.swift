@@ -10,6 +10,7 @@ import UIKit
 
 class OrganizationViewController: RepoTableViewController {
     
+    @IBOutlet weak var header: UIView!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var loginLabel: UILabel!
@@ -34,6 +35,7 @@ class OrganizationViewController: RepoTableViewController {
         
         viewModel.user.bindTo { [weak self] _ in
             self?.tableView.layoutIfNeeded()
+            self?.header.resizeHeightToMinimum()
         }.addTo(bag)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: Selector("showActivity"))
