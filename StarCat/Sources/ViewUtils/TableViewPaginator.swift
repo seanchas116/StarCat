@@ -13,7 +13,8 @@ import WireworkUIKit
 
 class TableViewPaginator<T> {
     let tableView: UITableView
-    let refreshControl: UIRefreshControl
+    let refreshControl = UIRefreshControl()
+    let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
     let pagination: Pagination<T>
     var initialized = false
     let loading = Variable(false)
@@ -23,7 +24,13 @@ class TableViewPaginator<T> {
     
     init(tableViewController: UITableViewController, pagination: Pagination<T>, cellIdentifier: String, bind: (Int, T, UITableViewCell) -> Void) {
         tableView = tableViewController.tableView!
-        refreshControl = tableViewController.refreshControl!
+        
+        tableViewController.refreshControl = refreshControl
+        
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.frame = CGRectMake(0, 0, 64, 64)
+        tableView.tableFooterView = loadingIndicator
+        
         self.pagination = pagination
         
         tableView.delegate = nil
@@ -43,6 +50,7 @@ class TableViewPaginator<T> {
         }.addTo(bag)
         
         loading.bindTo(refreshControl.wwRefreshing).addTo(bag)
+        loadingMore.bindTo(loadingIndicator.wwAnimating).addTo(bag)
         
         tableView.wwDidScroll.subscribe { [weak self] _ in
             self?.didScroll()
