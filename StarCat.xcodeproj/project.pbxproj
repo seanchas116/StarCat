@@ -274,6 +274,7 @@
 				BE47078E1C4A152D0069DA6F /* Organization.storyboard */,
 				BE4707901C4A198F0069DA6F /* OrganizationViewController.swift */,
 				BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */,
+				BE9428AB1C8AAED300077615 /* RepoTable.storyboard */,
 				BE4707961C4B47370069DA6F /* RepoTableViewController.swift */,
 				BE46B0031C38281400C8242C /* RepoViewController.swift */,
 				BE9428A71C8AAE2000077615 /* Search.storyboard */,
@@ -285,7 +286,6 @@
 				BEF8C95C1C81C393007C1107 /* UserTable.storyboard */,
 				BEF8C95A1C8045A2007C1107 /* UserTableViewController.swift */,
 				BE176E631C41F10200E29E4F /* UserViewController.swift */,
-				BE9428AB1C8AAED300077615 /* RepoTable.storyboard */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
