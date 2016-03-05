@@ -47,6 +47,7 @@
 		BE9428A61C894E9800077615 /* UIView+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9428A51C894E9800077615 /* UIView+Resize.swift */; };
 		BE9428A81C8AAE2000077615 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE9428A71C8AAE2000077615 /* Search.storyboard */; };
 		BE9428AA1C8AAE3000077615 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE9428A91C8AAE3000077615 /* News.storyboard */; };
+		BE9428AC1C8AAED300077615 /* RepoTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE9428AB1C8AAED300077615 /* RepoTable.storyboard */; };
 		BE9A484D1C36234B00406DA6 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */; };
 		BEB1B9AB1C414B4400A730A0 /* Repo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */; };
 		BEB680791C3F9BD6007B2E08 /* ReadmeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB680781C3F9BD6007B2E08 /* ReadmeTextView.swift */; };
@@ -141,6 +142,7 @@
 		BE9428A51C894E9800077615 /* UIView+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Resize.swift"; sourceTree = "<group>"; };
 		BE9428A71C8AAE2000077615 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		BE9428A91C8AAE3000077615 /* News.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
+		BE9428AB1C8AAED300077615 /* RepoTable.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RepoTable.storyboard; sourceTree = "<group>"; };
 		BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Repo.storyboard; sourceTree = "<group>"; };
 		BEB680781C3F9BD6007B2E08 /* ReadmeTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadmeTextView.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				BEF8C95C1C81C393007C1107 /* UserTable.storyboard */,
 				BEF8C95A1C8045A2007C1107 /* UserTableViewController.swift */,
 				BE176E631C41F10200E29E4F /* UserViewController.swift */,
+				BE9428AB1C8AAED300077615 /* RepoTable.storyboard */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 				BED8133C1C24EE6D0028F8B0 /* Main.storyboard in Resources */,
 				BE9428AA1C8AAE3000077615 /* News.storyboard in Resources */,
 				BE2CAF211C3C0CFE00B51FBF /* github-markdown-custom.css in Resources */,
+				BE9428AC1C8AAED300077615 /* RepoTable.storyboard in Resources */,
 				BE20D28D1C5CBA8B003C4926 /* Settings.storyboard in Resources */,
 				BE176E621C41EFF700E29E4F /* User.storyboard in Resources */,
 				BE2955701C782A7000B10B1F /* UserCell.xib in Resources */,

@@ -104,6 +104,28 @@ struct GetUserStarsCountRequest: GitHubRequest {
     }
 }
 
+struct GetUserStarsRequest: GitHubRequest {
+    typealias Response = [Repo]
+    let userName: String
+    let perPage: Int
+    let page: Int
+    
+    var path: String {
+        return "/users/\(userName)/starred"
+    }
+    var parameters: [String: AnyObject] {
+        return ["page": page, "per_page": perPage]
+    }
+    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
+        do {
+            return try decodeArray(object)
+        } catch {
+            print("Error parsing response: \(error)")
+            return nil
+        }
+    }
+}
+
 struct GetRepoRequest: GitHubRequest {
     typealias Response = Repo
     let fullName: String

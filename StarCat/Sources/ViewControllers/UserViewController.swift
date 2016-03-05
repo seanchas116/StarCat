@@ -86,6 +86,9 @@ class UserViewController: RepoTableViewController {
         followingArea.makeTappable().subscribe { [weak self] _ in
             self?.showFollowing()
         }.addTo(bag)
+        starsArea.makeTappable().subscribe { [weak self] _ in
+            self?.showStars()
+        }.addTo(bag)
         
         viewModel.user.bindTo { [weak self] _ in
             self?.tableView.layoutIfNeeded()
@@ -132,6 +135,16 @@ class UserViewController: RepoTableViewController {
             pagination.userName = self.viewModel.login.value
             userTableVC.pagination = pagination
             userTableVC.title = "Following"
+        }
+    }
+    
+    func showStars() {
+        navigationController?.pushStoryboard("RepoTable", animated: true) { next in
+            let repoTableVC = next as! RepoTableViewController
+            let pagination = StarsPagination()
+            pagination.userName = self.viewModel.login.value
+            repoTableVC.pagination = pagination
+            repoTableVC.title = "Stars"
         }
     }
 }
