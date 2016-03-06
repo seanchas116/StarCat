@@ -42,6 +42,14 @@ class FileTableViewController: UITableViewController {
             let fileCell = cell as! FileCell
             fileCell.viewModel.file.value = file
         }).addTo(bag)
+        tableView.wwItemSelected.subscribe { [weak self] index in
+            guard let this = self else { return }
+            guard let repo = this.viewModel.repoName.value else { return }
+            let file = this.viewModel.files.value[index.row]
+            if file.type == .Dir {
+                this.navigationController?.pushDirectory(file.path, repo: repo)
+            }
+        }.addTo(bag)
     }
 
     override func didReceiveMemoryWarning() {
