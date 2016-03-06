@@ -21,6 +21,13 @@ class FileCell: UITableViewCell {
         let isDir = viewModel.file.map { $0?.type == .Dir }
         isDir.map { $0 ? "folder-24" : "file-24" }.map { UIImage(named: $0) }.bindTo(iconView.wwImage).addTo(bag)
         viewModel.file.map { $0?.name ?? "" }.bindTo(titleLabel.wwText).addTo(bag)
+        isDir.bindTo { [weak self] isDir in
+            if isDir {
+                self?.accessoryType = .DisclosureIndicator
+            } else {
+                self?.accessoryType = .None
+            }
+        }.addTo(bag)
     }
 }
 
