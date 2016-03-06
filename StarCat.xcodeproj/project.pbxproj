@@ -35,6 +35,8 @@
 		BE4707971C4B47370069DA6F /* RepoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4707961C4B47370069DA6F /* RepoTableViewController.swift */; };
 		BE4707991C4B64B10069DA6F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4707981C4B64B10069DA6F /* SearchViewModel.swift */; };
 		BE4E4EE61C46A39C009FCBE8 /* ModelCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E4EE51C46A39C009FCBE8 /* ModelCache.swift */; };
+		BE4ECE2A1C8C74F9003DA31F /* FileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4ECE291C8C74F9003DA31F /* FileViewController.swift */; };
+		BE4ECE2C1C8C7519003DA31F /* File.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE4ECE2B1C8C7519003DA31F /* File.storyboard */; };
 		BE546A651C4E30B500C71C0A /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE546A641C4E30B500C71C0A /* Link.swift */; };
 		BE561EF61C5926AE0097D58E /* LoginButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE561EF51C5926AE0097D58E /* LoginButtonViewController.swift */; };
 		BE561EF91C5929E50097D58E /* LoginButton.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE561EF71C5929E50097D58E /* LoginButton.storyboard */; };
@@ -135,6 +137,8 @@
 		BE4707961C4B47370069DA6F /* RepoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoTableViewController.swift; sourceTree = "<group>"; };
 		BE4707981C4B64B10069DA6F /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		BE4E4EE51C46A39C009FCBE8 /* ModelCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelCache.swift; sourceTree = "<group>"; };
+		BE4ECE291C8C74F9003DA31F /* FileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileViewController.swift; sourceTree = "<group>"; };
+		BE4ECE2B1C8C7519003DA31F /* File.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = File.storyboard; sourceTree = "<group>"; };
 		BE546A641C4E30B500C71C0A /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		BE561EF51C5926AE0097D58E /* LoginButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButtonViewController.swift; sourceTree = "<group>"; };
 		BE561EF81C5929E50097D58E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LoginButton.storyboard; sourceTree = "<group>"; };
@@ -298,6 +302,8 @@
 				BE176E631C41F10200E29E4F /* UserViewController.swift */,
 				BE9428AD1C8B359D00077615 /* FileTableViewController.swift */,
 				BE9428AF1C8B35A800077615 /* FileTable.storyboard */,
+				BE4ECE291C8C74F9003DA31F /* FileViewController.swift */,
+				BE4ECE2B1C8C7519003DA31F /* File.storyboard */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -585,6 +591,7 @@
 				BEF8C95D1C81C393007C1107 /* UserTable.storyboard in Resources */,
 				BE2CAF1D1C3C0AC800B51FBF /* github-markdown.css in Resources */,
 				BED813411C24EE6D0028F8B0 /* LaunchScreen.storyboard in Resources */,
+				BE4ECE2C1C8C7519003DA31F /* File.storyboard in Resources */,
 				BE9428A81C8AAE2000077615 /* Search.storyboard in Resources */,
 				BED8133E1C24EE6D0028F8B0 /* Assets.xcassets in Resources */,
 				BED8133C1C24EE6D0028F8B0 /* Main.storyboard in Resources */,
@@ -733,6 +740,7 @@
 				BEF6051C1C3113F30014D633 /* Decoding.swift in Sources */,
 				BEF605191C30FCBB0014D633 /* RepoSummary.swift in Sources */,
 				BE57ACC51C53D6E600305A54 /* StringUtils.swift in Sources */,
+				BE4ECE2A1C8C74F9003DA31F /* FileViewController.swift in Sources */,
 				BE3F45491C2A994500DD1863 /* Event.swift in Sources */,
 				BEF6051E1C3114220014D633 /* Requests.swift in Sources */,
 				BECB108C1C5CE09F00B0CB16 /* UIViewController+storyboard.swift in Sources */,
