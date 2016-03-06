@@ -112,7 +112,8 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
     
     private func showFiles() {
         if let fullName = viewModel.repo.value?.fullName {
-            navigationController?.pushDirectory("", repo: fullName)
+            let file = File(type: .Dir, name: "Files", path: "")
+            navigationController?.pushDirectory(file, repo: fullName)
         }
     }
     

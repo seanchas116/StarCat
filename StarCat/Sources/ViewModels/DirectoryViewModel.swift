@@ -10,24 +10,24 @@ import Foundation
 import Wirework
 import PromiseKit
 
-class DirectoryViewModel {
+class DirectoryViewModel: FileViewModel {
     let repoName = Variable<String?>(nil)
-    let dirPath = Variable<String?>(nil)
     let files = Variable<[File]>([])
     let isLoading = Variable(false)
     let bag = SubscriptionBag()
     
-    init() {
-        merge(repoName.changed, dirPath.changed).subscribe { [weak self] _ in
+    override init() {
+        super.init()
+        merge(repoName.changed.voidSignal, file.changed.voidSignal).subscribe { [weak self] _ in
             self?.updateFiles()
         }.addTo(bag)
     }
     
     func updateFiles() {
         guard let repoName = repoName.value else { return }
-        guard let dirPath = dirPath.value else { return }
+        guard let path = file.value?.path else { return }
         isLoading.value = true
-        GetDirectoryRequest(repoName: repoName, dirPath: dirPath).send().then { files -> Void in
+        GetDirectoryRequest(repoName: repoName, dirPath: path).send().then { files -> Void in
             self.files.value = files
             self.isLoading.value = false
         }

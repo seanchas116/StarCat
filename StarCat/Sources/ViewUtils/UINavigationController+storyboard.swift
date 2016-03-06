@@ -55,11 +55,11 @@ extension UINavigationController {
         }
     }
     
-    func pushDirectory(path: String, repo: String) {
+    func pushDirectory(file: File, repo: String) {
         pushStoryboard("FileTable", animated: true) { next in
             let fileTableViewController = next as! FileTableViewController
             fileTableViewController.viewModel.repoName.value = repo
-            fileTableViewController.viewModel.dirPath.value = path
+            fileTableViewController.viewModel.file.value = file
         }
     }
 }

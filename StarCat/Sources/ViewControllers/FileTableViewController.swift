@@ -18,10 +18,9 @@ class FileCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        let isDir = viewModel.file.map { $0?.type == .Dir }
-        isDir.map { $0 ? "folder-24" : "file-24" }.map { UIImage(named: $0) }.bindTo(iconView.wwImage).addTo(bag)
-        viewModel.file.map { $0?.name ?? "" }.bindTo(titleLabel.wwText).addTo(bag)
-        isDir.bindTo { [weak self] isDir in
+        viewModel.isDir.map { $0 ? "folder-24" : "file-24" }.map { UIImage(named: $0) }.bindTo(iconView.wwImage).addTo(bag)
+        viewModel.name.bindTo(titleLabel.wwText).addTo(bag)
+        viewModel.isDir.bindTo { [weak self] isDir in
             if isDir {
                 self?.accessoryType = .DisclosureIndicator
             } else {
@@ -47,9 +46,10 @@ class FileTableViewController: UITableViewController {
             guard let repo = this.viewModel.repoName.value else { return }
             let file = this.viewModel.files.value[index.row]
             if file.type == .Dir {
-                this.navigationController?.pushDirectory(file.path, repo: repo)
+                this.navigationController?.pushDirectory(file, repo: repo)
             }
         }.addTo(bag)
+        viewModel.name.bindTo(wwTitle).addTo(bag)
     }
 
     override func didReceiveMemoryWarning() {
