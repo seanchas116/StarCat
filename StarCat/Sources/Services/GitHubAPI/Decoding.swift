@@ -13,6 +13,7 @@ import SwiftDate
 enum DecodeError: ErrorType {
     case WrongURL(String)
     case WrongUserType(String)
+    case WrongFileType(String)
 }
 
 extension Link: Decodable {
@@ -97,6 +98,30 @@ extension RepoSummary: Decodable {
         return try RepoSummary(
             id: e <| "id",
             fullName: e <| "name"
+        )
+    }
+}
+
+extension FileType: Decodable {
+    static func decode(e: Extractor) throws -> FileType {
+        let str = try String.decode(e)
+        switch str {
+        case "file":
+            return .File
+        case "dir":
+            return .Dir
+        default:
+            throw DecodeError.WrongFileType(str)
+        }
+    }
+}
+
+extension File: Decodable {
+    static func decode(e: Extractor) throws -> File {
+        return try File(
+            type: e <| "type",
+            name: e <| "name",
+            path: e <| "path"
         )
     }
 }

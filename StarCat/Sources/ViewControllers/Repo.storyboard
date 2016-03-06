@@ -247,6 +247,7 @@
                         <outlet property="readmeView" destination="8qO-jh-i7T" id="Hnt-eG-Y6R"/>
                         <outlet property="stargazersButton" destination="YSR-f1-FfU" id="M8h-dH-cdg"/>
                         <outlet property="titleLabel" destination="LEs-T3-Gea" id="0P7-Qe-om9"/>
+                        <outlet property="viewCodeButton" destination="93n-7n-E5W" id="a8Y-NC-sfD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9yL-aF-xLW" userLabel="First Responder" sceneMemberID="firstResponder"/>

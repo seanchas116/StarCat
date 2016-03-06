@@ -48,6 +48,11 @@
 		BE9428A81C8AAE2000077615 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE9428A71C8AAE2000077615 /* Search.storyboard */; };
 		BE9428AA1C8AAE3000077615 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE9428A91C8AAE3000077615 /* News.storyboard */; };
 		BE9428AC1C8AAED300077615 /* RepoTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE9428AB1C8AAED300077615 /* RepoTable.storyboard */; };
+		BE9428AE1C8B359D00077615 /* FileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9428AD1C8B359D00077615 /* FileTableViewController.swift */; };
+		BE9428B01C8B35A800077615 /* FileTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE9428AF1C8B35A800077615 /* FileTable.storyboard */; };
+		BE9428B21C8BD0FF00077615 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9428B11C8BD0FF00077615 /* File.swift */; };
+		BE9428B81C8BDE6000077615 /* FileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9428B71C8BDE6000077615 /* FileViewModel.swift */; };
+		BE9428BA1C8BDE9300077615 /* DirectoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9428B91C8BDE9300077615 /* DirectoryViewModel.swift */; };
 		BE9A484D1C36234B00406DA6 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */; };
 		BEB1B9AB1C414B4400A730A0 /* Repo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */; };
 		BEB680791C3F9BD6007B2E08 /* ReadmeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB680781C3F9BD6007B2E08 /* ReadmeTextView.swift */; };
@@ -143,6 +148,11 @@
 		BE9428A71C8AAE2000077615 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		BE9428A91C8AAE3000077615 /* News.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
 		BE9428AB1C8AAED300077615 /* RepoTable.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RepoTable.storyboard; sourceTree = "<group>"; };
+		BE9428AD1C8B359D00077615 /* FileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileTableViewController.swift; sourceTree = "<group>"; };
+		BE9428AF1C8B35A800077615 /* FileTable.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FileTable.storyboard; sourceTree = "<group>"; };
+		BE9428B11C8BD0FF00077615 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		BE9428B71C8BDE6000077615 /* FileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileViewModel.swift; sourceTree = "<group>"; };
+		BE9428B91C8BDE9300077615 /* DirectoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryViewModel.swift; sourceTree = "<group>"; };
 		BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Repo.storyboard; sourceTree = "<group>"; };
 		BEB680781C3F9BD6007B2E08 /* ReadmeTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadmeTextView.swift; sourceTree = "<group>"; };
@@ -286,6 +296,8 @@
 				BEF8C95C1C81C393007C1107 /* UserTable.storyboard */,
 				BEF8C95A1C8045A2007C1107 /* UserTableViewController.swift */,
 				BE176E631C41F10200E29E4F /* UserViewController.swift */,
+				BE9428AD1C8B359D00077615 /* FileTableViewController.swift */,
+				BE9428AF1C8B35A800077615 /* FileTable.storyboard */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -312,6 +324,7 @@
 				BEF605181C30FCBB0014D633 /* RepoSummary.swift */,
 				BE176E671C4201B400E29E4F /* User.swift */,
 				BE3F45431C2A992500DD1863 /* UserSummary.swift */,
+				BE9428B11C8BD0FF00077615 /* File.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -441,6 +454,8 @@
 				BEF605161C3034820014D633 /* RepoViewModel.swift */,
 				BE4707981C4B64B10069DA6F /* SearchViewModel.swift */,
 				BE176E651C42010C00E29E4F /* UserViewModel.swift */,
+				BE9428B71C8BDE6000077615 /* FileViewModel.swift */,
+				BE9428B91C8BDE9300077615 /* DirectoryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -578,6 +593,7 @@
 				BE9428AC1C8AAED300077615 /* RepoTable.storyboard in Resources */,
 				BE20D28D1C5CBA8B003C4926 /* Settings.storyboard in Resources */,
 				BE176E621C41EFF700E29E4F /* User.storyboard in Resources */,
+				BE9428B01C8B35A800077615 /* FileTable.storyboard in Resources */,
 				BE2955701C782A7000B10B1F /* UserCell.xib in Resources */,
 				BE47078F1C4A152D0069DA6F /* Organization.storyboard in Resources */,
 				BEB1B9AB1C414B4400A730A0 /* Repo.storyboard in Resources */,
@@ -701,13 +717,16 @@
 			files = (
 				BE176E681C4201B400E29E4F /* User.swift in Sources */,
 				BEBE3A6F1C76ADFD00E7FF0D /* Secrets.swift in Sources */,
+				BE9428B81C8BDE6000077615 /* FileViewModel.swift in Sources */,
 				BE561EF61C5926AE0097D58E /* LoginButtonViewController.swift in Sources */,
 				BE18EEE71C3A2BD900B92291 /* RoundButton.swift in Sources */,
 				BE176E641C41F10200E29E4F /* UserViewController.swift in Sources */,
 				BEE0C0B21C3408F80014986D /* PromiseResults.swift in Sources */,
 				BEF8C9591C8043A3007C1107 /* News.swift in Sources */,
+				BE9428B21C8BD0FF00077615 /* File.swift in Sources */,
 				BE4707991C4B64B10069DA6F /* SearchViewModel.swift in Sources */,
 				BE9428A61C894E9800077615 /* UIView+Resize.swift in Sources */,
+				BE9428AE1C8B359D00077615 /* FileTableViewController.swift in Sources */,
 				BED172F91C3E23E000C5A247 /* AppViewModel.swift in Sources */,
 				BE3FCD791C3D74F4008A9B32 /* NSDate.swift in Sources */,
 				BE4707911C4A198F0069DA6F /* OrganizationViewController.swift in Sources */,
@@ -734,6 +753,7 @@
 				BE9A484D1C36234B00406DA6 /* NewsTableViewController.swift in Sources */,
 				BE39BA221C291BF40000A87F /* TabBarController.swift in Sources */,
 				BE4707971C4B47370069DA6F /* RepoTableViewController.swift in Sources */,
+				BE9428BA1C8BDE9300077615 /* DirectoryViewModel.swift in Sources */,
 				BEF289551C429D9000F50A2A /* UIView+Tap.swift in Sources */,
 				BE29556F1C782A7000B10B1F /* UserCell.swift in Sources */,
 				BE8C23191C452D8E00691005 /* UITableView+scrollToTop.swift in Sources */,

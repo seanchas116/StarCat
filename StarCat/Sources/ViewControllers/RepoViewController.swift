@@ -49,6 +49,7 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var readmeLoadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var readmeView: ReadmeView!
     @IBOutlet weak var readmeHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var viewCodeButton: RoundButton!
     
     let bag = SubscriptionBag()
     let viewModel = RepoViewModel()
@@ -87,6 +88,10 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
             WebViewPopup.open(self.viewModel.homepage.value!, on: self)
         }.addTo(bag)
         
+        viewCodeButton.wwTapped.subscribe { [weak self] in
+            self?.showFiles()
+        }.addTo(bag)
+        
         viewModel.fetchReadme()
         
         viewModel.repo.bindTo { [weak self] _ in
@@ -102,6 +107,12 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
     private func showOwner() {
         if let owner = viewModel.repo.value?.owner {
             navigationController?.pushUser(owner)
+        }
+    }
+    
+    private func showFiles() {
+        if let fullName = viewModel.repo.value?.fullName {
+            navigationController?.pushDirectory("", repo: fullName)
         }
     }
     

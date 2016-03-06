@@ -53,6 +53,13 @@ extension UINavigationController {
                 userVC.viewModel.user.value = user
             }
         }
-        
+    }
+    
+    func pushDirectory(path: String, repo: String) {
+        pushStoryboard("FileTable", animated: true) { next in
+            let fileTableViewController = next as! FileTableViewController
+            fileTableViewController.viewModel.repoName.value = repo
+            fileTableViewController.viewModel.dirPath.value = path
+        }
     }
 }

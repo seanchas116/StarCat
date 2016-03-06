@@ -251,6 +251,27 @@ struct GetReadmeRequest: GitHubRequest {
     }
 }
 
+struct GetDirectoryRequest: GitHubRequest {
+    typealias Response = [File]
+    
+    let repoName: String
+    let dirPath: String
+    
+    var path: String {
+        return "/repos/\(repoName)/contents/\(dirPath)"
+    }
+    
+    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
+        do {
+            let files: [File] = try decodeArray(object)
+            return files
+        } catch {
+            print("Error parsing response: \(error)")
+            return nil
+        }
+    }
+}
+
 struct SearchRepoResponse {
     let totalCount: Int
     let hasIncompleteResults: Bool
