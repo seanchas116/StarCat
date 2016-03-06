@@ -18,7 +18,10 @@ class FileCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        viewModel.isDir.map { $0 ? "folder-24" : "file-24" }.map { UIImage(named: $0) }.bindTo(iconView.wwImage).addTo(bag)
+        viewModel.isDir
+            .map { $0 ? "folder-24" : "file-24" }
+            .map { UIImage(named: $0)?.imageWithRenderingMode(.AlwaysTemplate) }
+            .bindTo(iconView.wwImage).addTo(bag)
         viewModel.name.bindTo(titleLabel.wwText).addTo(bag)
         viewModel.isDir.bindTo { [weak self] isDir in
             if isDir {
