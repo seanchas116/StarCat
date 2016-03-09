@@ -11,6 +11,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "github-markdown-css": "^2.1.1"
+    "github-markdown-css": "^2.1.1",
+    "highlight.js": "^9.2.0"
   }
 }
