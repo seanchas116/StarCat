@@ -126,6 +126,14 @@ extension File: Decodable {
     }
 }
 
+extension FileContent: Decodable {
+    static func decode(e: Extractor) throws -> FileContent {
+        return try FileContent(
+            content: e <| "content"
+        )
+    }
+}
+
 extension Event: Decodable {
     static func decode(e: Extractor) throws -> Event {
         let type: String = try e <| "type"

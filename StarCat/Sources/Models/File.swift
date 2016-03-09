@@ -18,3 +18,7 @@ struct File {
     let name: String
     let path: String
 }
+
+struct FileContent {
+    let content: String
+}
