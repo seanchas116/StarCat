@@ -11,7 +11,7 @@ import JavaScriptCore
 import PromiseKit
 
 struct Highlighter {
-    private let highlightJS = getBundleFile("highlight.min", ofType: "js")
+    private let highlightJS = getBundleFile("highlight.pack", ofType: "js")
     private let jsContext = JSContext()
     private let highlightAuto: JSValue
     private let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
