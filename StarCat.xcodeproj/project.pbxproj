@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		9F1AA334A1CC62E55B141A9F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D70162D3C8EADEC46ABB2C6 /* Pods.framework */; };
 		B82F92F8310AD982A1D059A3 /* Pods_StarCatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFF0937B4597B61C83C3534 /* Pods_StarCatTests.framework */; };
+		BE1650281C9157D700DAA20A /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1650271C9157D700DAA20A /* AttributedString.swift */; };
+		BE16502A1C91584000DAA20A /* github.css in Resources */ = {isa = PBXBuildFile; fileRef = BE1650291C91584000DAA20A /* github.css */; };
+		BE16502C1C91589A00DAA20A /* Highlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE16502B1C91589A00DAA20A /* Highlighter.swift */; };
+		BE16502E1C91631D00DAA20A /* StringIsErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE16502D1C91631D00DAA20A /* StringIsErrorType.swift */; };
+		BE1650311C91878500DAA20A /* highlight.github.min.css in Resources */ = {isa = PBXBuildFile; fileRef = BE16502F1C91878500DAA20A /* highlight.github.min.css */; };
+		BE1650321C91878500DAA20A /* highlight.min.js in Resources */ = {isa = PBXBuildFile; fileRef = BE1650301C91878500DAA20A /* highlight.min.js */; };
 		BE176E621C41EFF700E29E4F /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE176E611C41EFF700E29E4F /* User.storyboard */; };
 		BE176E641C41F10200E29E4F /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE176E631C41F10200E29E4F /* UserViewController.swift */; };
 		BE176E661C42010C00E29E4F /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE176E651C42010C00E29E4F /* UserViewModel.swift */; };
@@ -113,6 +119,12 @@
 		45D4651B526DB97C5A7B6211 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6AFF0937B4597B61C83C3534 /* Pods_StarCatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarCatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		893BAF14B24F6622A083F21C /* Pods-StarCatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarCatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StarCatTests/Pods-StarCatTests.release.xcconfig"; sourceTree = "<group>"; };
+		BE1650271C9157D700DAA20A /* AttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedString.swift; sourceTree = "<group>"; };
+		BE1650291C91584000DAA20A /* github.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = github.css; path = node_modules/highlight.js/styles/github.css; sourceTree = SOURCE_ROOT; };
+		BE16502B1C91589A00DAA20A /* Highlighter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highlighter.swift; sourceTree = "<group>"; };
+		BE16502D1C91631D00DAA20A /* StringIsErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringIsErrorType.swift; sourceTree = "<group>"; };
+		BE16502F1C91878500DAA20A /* highlight.github.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = highlight.github.min.css; sourceTree = "<group>"; };
+		BE1650301C91878500DAA20A /* highlight.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.min.js; sourceTree = "<group>"; };
 		BE176E611C41EFF700E29E4F /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		BE176E631C41F10200E29E4F /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		BE176E651C42010C00E29E4F /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
@@ -249,6 +261,7 @@
 		BE2CAF191C3C087100B51FBF /* Vendor Files */ = {
 			isa = PBXGroup;
 			children = (
+				BE1650291C91584000DAA20A /* github.css */,
 				BEAC0E791C904DEC0080A0C6 /* highlight.js */,
 				BE2CAF1C1C3C0AC800B51FBF /* github-markdown.css */,
 			);
@@ -278,6 +291,8 @@
 		BE2CAF1F1C3C0CE600B51FBF /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				BE16502F1C91878500DAA20A /* highlight.github.min.css */,
+				BE1650301C91878500DAA20A /* highlight.min.js */,
 				BE2CAF201C3C0CFE00B51FBF /* github-markdown-custom.css */,
 			);
 			path = "Support Files";
@@ -320,6 +335,7 @@
 				BECB108D1C5CEE8100B0CB16 /* KeychainManager.swift */,
 				BE4E4EE51C46A39C009FCBE8 /* ModelCache.swift */,
 				BEB7705B1C476FC40000E9A8 /* Pagination.swift */,
+				BE16502B1C91589A00DAA20A /* Highlighter.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -346,6 +362,8 @@
 				BE32404B1C57C8A200A9A87A /* QueryString.swift */,
 				BE57ACC41C53D6E600305A54 /* StringUtils.swift */,
 				BEAC0E7B1C904E390080A0C6 /* GetBundleFile.swift */,
+				BE1650271C9157D700DAA20A /* AttributedString.swift */,
+				BE16502D1C91631D00DAA20A /* StringIsErrorType.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -609,9 +627,12 @@
 				BE176E621C41EFF700E29E4F /* User.storyboard in Resources */,
 				BE9428B01C8B35A800077615 /* FileTable.storyboard in Resources */,
 				BE2955701C782A7000B10B1F /* UserCell.xib in Resources */,
+				BE16502A1C91584000DAA20A /* github.css in Resources */,
 				BE47078F1C4A152D0069DA6F /* Organization.storyboard in Resources */,
 				BEB1B9AB1C414B4400A730A0 /* Repo.storyboard in Resources */,
+				BE1650321C91878500DAA20A /* highlight.min.js in Resources */,
 				BEE0C0AD1C33EF1A0014986D /* RepoCell.xib in Resources */,
+				BE1650311C91878500DAA20A /* highlight.github.min.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,6 +760,7 @@
 				BEE0C0B21C3408F80014986D /* PromiseResults.swift in Sources */,
 				BEF8C9591C8043A3007C1107 /* News.swift in Sources */,
 				BE9428B21C8BD0FF00077615 /* File.swift in Sources */,
+				BE16502C1C91589A00DAA20A /* Highlighter.swift in Sources */,
 				BE4707991C4B64B10069DA6F /* SearchViewModel.swift in Sources */,
 				BE9428A61C894E9800077615 /* UIView+Resize.swift in Sources */,
 				BE9428AE1C8B359D00077615 /* FileTableViewController.swift in Sources */,
@@ -747,6 +769,7 @@
 				BE4707911C4A198F0069DA6F /* OrganizationViewController.swift in Sources */,
 				BEF6051C1C3113F30014D633 /* Decoding.swift in Sources */,
 				BEF605191C30FCBB0014D633 /* RepoSummary.swift in Sources */,
+				BE16502E1C91631D00DAA20A /* StringIsErrorType.swift in Sources */,
 				BE57ACC51C53D6E600305A54 /* StringUtils.swift in Sources */,
 				BE4ECE2A1C8C74F9003DA31F /* FileViewController.swift in Sources */,
 				BE3F45491C2A994500DD1863 /* Event.swift in Sources */,
@@ -769,6 +792,7 @@
 				BE9A484D1C36234B00406DA6 /* NewsTableViewController.swift in Sources */,
 				BE39BA221C291BF40000A87F /* TabBarController.swift in Sources */,
 				BE4707971C4B47370069DA6F /* RepoTableViewController.swift in Sources */,
+				BE1650281C9157D700DAA20A /* AttributedString.swift in Sources */,
 				BE9428BA1C8BDE9300077615 /* DirectoryViewModel.swift in Sources */,
 				BEF289551C429D9000F50A2A /* UIView+Tap.swift in Sources */,
 				BE29556F1C782A7000B10B1F /* UserCell.swift in Sources */,

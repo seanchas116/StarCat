@@ -7,15 +7,11 @@
 //
 
 import UIKit
-import JavaScriptCore
+import PromiseKit
 import Wirework
 
-private let highlightJS = getBundleFile("highlight", ofType: "js")
 
-func highlight(content: String, name: String) {
-    let context = JSContext()
-    context.evaluateScript(highlightJS)
-}
+private let githubHighlightCSS = getBundleFile("highlight.github.min", ofType: "css")
 
 class FileViewController: UIViewController {
 
@@ -25,14 +21,17 @@ class FileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.loadContent()
-        let text: Property<String?> = viewModel.content.map { content in
-            if let content = content {
-                return String(data: content, encoding: NSUTF8StringEncoding)
-            } else {
-                return nil
+        let name = viewModel.name.value
+        viewModel.loadContent().then { content -> Void in
+            let text = String(data: content, encoding: NSUTF8StringEncoding)
+            if let text = text {
+                Promise(highlight(text, name: name))
+                    .thenInBackground { highlighted in
+                        renderAttributedStringFromHTML("<pre><code>\(highlighted)</code></pre>", css: githubHighlightCSS)
+                    }.then { [weak self] (text: NSAttributedString?) -> Void in
+                        self?.textView.attributedText = text
+                    }
             }
         }
-        text.bindTo(textView.wwText).addTo(bag)
     }
 }

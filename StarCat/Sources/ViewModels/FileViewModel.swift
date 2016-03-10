@@ -8,6 +8,7 @@
 
 import Foundation
 import Wirework
+import PromiseKit
 
 class FileViewModel {
     let repoName = Variable<String?>(nil)
@@ -15,7 +16,6 @@ class FileViewModel {
     let name: Property<String>
     let path: Property<String>
     let isDir: Property<Bool>
-    let content = Variable<NSData?>(nil)
     
     init() {
         name = file.map { $0?.name ?? "" }
@@ -23,11 +23,11 @@ class FileViewModel {
         isDir = file.map { $0?.type == .Dir }
     }
     
-    func loadContent() {
-        guard let repoName = repoName.value else { return }
-        guard let filePath = file.value?.path else { return }
-        GetFileContentRequest(repoName: repoName, filePath: filePath).send().then { content in
-            self.content.value = content.decoded
+    func loadContent() -> Promise<NSData> {
+        guard let repoName = repoName.value else { return Promise(error: "no repoName") }
+        guard let filePath = file.value?.path else { return Promise(error: "no filePath") }
+        return GetFileContentRequest(repoName: repoName, filePath: filePath).send().then { content in
+            content.decoded ?? NSData()
         }
     }
 }
