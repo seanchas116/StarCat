@@ -56,6 +56,8 @@
 		BE9428B81C8BDE6000077615 /* FileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9428B71C8BDE6000077615 /* FileViewModel.swift */; };
 		BE9428BA1C8BDE9300077615 /* DirectoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9428B91C8BDE9300077615 /* DirectoryViewModel.swift */; };
 		BE9A484D1C36234B00406DA6 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */; };
+		BEAC0E7A1C904DEC0080A0C6 /* highlight.js in Resources */ = {isa = PBXBuildFile; fileRef = BEAC0E791C904DEC0080A0C6 /* highlight.js */; };
+		BEAC0E7C1C904E390080A0C6 /* GetBundleFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAC0E7B1C904E390080A0C6 /* GetBundleFile.swift */; };
 		BEB1B9AB1C414B4400A730A0 /* Repo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */; };
 		BEB680791C3F9BD6007B2E08 /* ReadmeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB680781C3F9BD6007B2E08 /* ReadmeTextView.swift */; };
 		BEB7705C1C476FC40000E9A8 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7705B1C476FC40000E9A8 /* Pagination.swift */; };
@@ -158,6 +160,8 @@
 		BE9428B71C8BDE6000077615 /* FileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileViewModel.swift; sourceTree = "<group>"; };
 		BE9428B91C8BDE9300077615 /* DirectoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryViewModel.swift; sourceTree = "<group>"; };
 		BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		BEAC0E791C904DEC0080A0C6 /* highlight.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = highlight.js; path = node_modules/highlight.js/lib/highlight.js; sourceTree = SOURCE_ROOT; };
+		BEAC0E7B1C904E390080A0C6 /* GetBundleFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetBundleFile.swift; sourceTree = "<group>"; };
 		BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Repo.storyboard; sourceTree = "<group>"; };
 		BEB680781C3F9BD6007B2E08 /* ReadmeTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadmeTextView.swift; sourceTree = "<group>"; };
 		BEB7705B1C476FC40000E9A8 /* Pagination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 		BE2CAF191C3C087100B51FBF /* Vendor Files */ = {
 			isa = PBXGroup;
 			children = (
+				BEAC0E791C904DEC0080A0C6 /* highlight.js */,
 				BE2CAF1C1C3C0AC800B51FBF /* github-markdown.css */,
 			);
 			name = "Vendor Files";
@@ -340,6 +345,7 @@
 			children = (
 				BE32404B1C57C8A200A9A87A /* QueryString.swift */,
 				BE57ACC41C53D6E600305A54 /* StringUtils.swift */,
+				BEAC0E7B1C904E390080A0C6 /* GetBundleFile.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -588,6 +594,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE561EF91C5929E50097D58E /* LoginButton.storyboard in Resources */,
+				BEAC0E7A1C904DEC0080A0C6 /* highlight.js in Resources */,
 				BEF8C95D1C81C393007C1107 /* UserTable.storyboard in Resources */,
 				BE2CAF1D1C3C0AC800B51FBF /* github-markdown.css in Resources */,
 				BED813411C24EE6D0028F8B0 /* LaunchScreen.storyboard in Resources */,
@@ -725,6 +732,7 @@
 				BE176E681C4201B400E29E4F /* User.swift in Sources */,
 				BEBE3A6F1C76ADFD00E7FF0D /* Secrets.swift in Sources */,
 				BE9428B81C8BDE6000077615 /* FileViewModel.swift in Sources */,
+				BEAC0E7C1C904E390080A0C6 /* GetBundleFile.swift in Sources */,
 				BE561EF61C5926AE0097D58E /* LoginButtonViewController.swift in Sources */,
 				BE18EEE71C3A2BD900B92291 /* RoundButton.swift in Sources */,
 				BE176E641C41F10200E29E4F /* UserViewController.swift in Sources */,

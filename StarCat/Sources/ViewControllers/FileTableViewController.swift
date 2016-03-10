@@ -48,9 +48,7 @@ class FileTableViewController: UITableViewController {
             guard let this = self else { return }
             guard let repo = this.viewModel.repoName.value else { return }
             let file = this.viewModel.files.value[index.row]
-            if file.type == .Dir {
-                this.navigationController?.pushDirectory(file, repo: repo)
-            }
+            this.navigationController?.pushFile(file, repo: repo)
         }.addTo(bag)
         viewModel.name.bindTo(wwTitle).addTo(bag)
     }

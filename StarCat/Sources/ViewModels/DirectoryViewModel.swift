@@ -11,7 +11,6 @@ import Wirework
 import PromiseKit
 
 class DirectoryViewModel: FileViewModel {
-    let repoName = Variable<String?>(nil)
     let files = Variable<[File]>([])
     let isLoading = Variable(false)
     let bag = SubscriptionBag()

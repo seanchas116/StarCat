@@ -113,7 +113,7 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
     private func showFiles() {
         if let fullName = viewModel.repo.value?.fullName {
             let file = File(type: .Dir, name: "Files", path: "")
-            navigationController?.pushDirectory(file, repo: fullName)
+            navigationController?.pushFile(file, repo: fullName)
         }
     }
     
@@ -149,13 +149,6 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
 
 private let baseReadmeCSS = getBundleFile("github-markdown", ofType: "css")
 private let customReadmeCSS = getBundleFile("github-markdown-custom", ofType: "css")
-
-private func getBundleFile(fileName: String, ofType: String) -> String {
-    if let path = NSBundle.mainBundle().pathForResource(fileName, ofType: ofType) {
-        return (try? String(contentsOfFile: path, encoding: NSUTF8StringEncoding)) ?? ""
-    }
-    return ""
-}
 
 private func wrapReadme(htmlBody: String) -> String {
     return "<html><head><meta name='viewport' content='initial-scale=1, maximum-scale=1'><style>\(baseReadmeCSS)\(customReadmeCSS)</style></head><body>\(htmlBody)</body></html>"

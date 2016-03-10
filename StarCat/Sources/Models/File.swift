@@ -21,4 +21,8 @@ struct File {
 
 struct FileContent {
     let content: String
+    
+    var decoded: NSData? {
+        return NSData(base64EncodedString: content, options: .IgnoreUnknownCharacters)
+    }
 }
