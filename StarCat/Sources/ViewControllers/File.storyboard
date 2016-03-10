@@ -9,23 +9,37 @@
         <scene sceneID="qnr-ga-VZG">
             <objects>
                 <viewController id="PcE-z1-xhQ" customClass="FileViewController" customModule="StarCat" customModuleProvider="target" sceneMemberID="viewController">
-                    <textView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" id="anA-Wq-GqP">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="42r-MO-2e6"/>
+                        <viewControllerLayoutGuide type="bottom" id="utr-1d-VsK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vWh-LJ-1u2">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MvH-yx-OHe">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gTP-X6-AXr">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <attributedString key="attributedText">
-                            <fragment>
-                                <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <attributes>
-                                    <font key="NSFont" size="14" name="Menlo-Regular"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    </textView>
+                        <constraints>
+                            <constraint firstItem="MvH-yx-OHe" firstAttribute="top" secondItem="vWh-LJ-1u2" secondAttribute="top" id="2zZ-2O-rt3"/>
+                            <constraint firstItem="MvH-yx-OHe" firstAttribute="leading" secondItem="vWh-LJ-1u2" secondAttribute="leading" id="aMk-XF-0mm"/>
+                            <constraint firstAttribute="trailing" secondItem="MvH-yx-OHe" secondAttribute="trailing" id="hoc-zU-0QG"/>
+                            <constraint firstItem="gTP-X6-AXr" firstAttribute="centerY" secondItem="vWh-LJ-1u2" secondAttribute="centerY" id="rQB-Cc-gxN"/>
+                            <constraint firstItem="utr-1d-VsK" firstAttribute="top" secondItem="MvH-yx-OHe" secondAttribute="bottom" id="roj-gC-lnn"/>
+                            <constraint firstItem="gTP-X6-AXr" firstAttribute="centerX" secondItem="vWh-LJ-1u2" secondAttribute="centerX" id="z7U-dt-3CW"/>
+                        </constraints>
+                    </view>
                     <connections>
-                        <outlet property="textView" destination="anA-Wq-GqP" id="F7u-e1-6z9"/>
+                        <outlet property="loadingIndicator" destination="gTP-X6-AXr" id="wBc-9e-fTr"/>
+                        <outlet property="textView" destination="MvH-yx-OHe" id="spe-aA-FJZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aLQ-cv-Tuk" userLabel="First Responder" sceneMemberID="firstResponder"/>

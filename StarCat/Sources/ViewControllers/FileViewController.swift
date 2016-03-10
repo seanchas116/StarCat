@@ -18,10 +18,12 @@ class FileViewController: UIViewController {
     let viewModel = FileViewModel()
     let bag = SubscriptionBag()
     @IBOutlet var textView: UITextView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let name = viewModel.name.value
+        loadingIndicator.startAnimating()
         viewModel.loadContent().then { content -> Void in
             let text = String(data: content, encoding: NSUTF8StringEncoding)
             if let text = text {
@@ -30,6 +32,7 @@ class FileViewController: UIViewController {
                         renderAttributedStringFromHTML("<pre><code>\(highlighted)</code></pre>", css: githubHighlightCSS)
                     }.then { [weak self] (text: NSAttributedString?) -> Void in
                         self?.textView.attributedText = text
+                        self?.loadingIndicator.stopAnimating()
                     }
             }
         }
