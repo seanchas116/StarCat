@@ -112,6 +112,7 @@
                         <outlet property="homepageLabel" destination="6lE-89-odq" id="SW0-PM-Um3"/>
                         <outlet property="locationLabel" destination="rgi-EQ-gsX" id="dIV-ou-SJ2"/>
                         <outlet property="loginLabel" destination="g8v-nP-bPl" id="xMA-4J-Mpt"/>
+                        <outlet property="membersArea" destination="QKw-Va-0ls" id="Kvi-g4-SvT"/>
                         <outlet property="membersLabel" destination="PJY-CS-3pn" id="vBa-pP-jc0"/>
                         <outlet property="nameLabel" destination="63F-q9-Fri" id="etB-hx-tpQ"/>
                     </connections>

@@ -23,15 +23,18 @@ class UserRepoPagination: Pagination<Repo> {
     }
 }
 
+func fetchUsersDetail(summaries: [UserSummary]) -> Promise<[User]> {
+    let promises = summaries.map { s in SharedModelCache.userCache.fetch(s.login) }
+    return when(promises)
+}
+
 class FollowersPagination: Pagination<User> {
     var userName: String?
     
     override func fetch(page: Int) -> Promise<[User]> {
         if let userName = userName {
-            return GetFollowersRequest(userName: userName, perPage: 30, page: page).send().then { summaries in
-                let promises = summaries.map { s in SharedModelCache.userCache.fetch(s.login) }
-                return when(promises)
-            }
+            return GetFollowersRequest(userName: userName, perPage: 30, page: page).send()
+                .then(fetchUsersDetail)
         } else {
             return Promise([])
         }
@@ -43,10 +46,21 @@ class FollowingPagination: Pagination<User> {
     
     override func fetch(page: Int) -> Promise<[User]> {
         if let userName = userName {
-            return GetFollowingRequest(userName: userName, perPage: 30, page: page).send().then { summaries in
-                let promises = summaries.map { s in SharedModelCache.userCache.fetch(s.login) }
-                return when(promises)
-            }
+            return GetFollowingRequest(userName: userName, perPage: 30, page: page).send()
+                .then(fetchUsersDetail)
+        } else {
+            return Promise([])
+        }
+    }
+}
+
+class MembersPagination: Pagination<User> {
+    var organizationName: String?
+    
+    override func fetch(page: Int) -> Promise<[User]> {
+        if let orgName = organizationName {
+            return GetMembersRequest(organizationName: orgName, perPage: 30, page: page).send()
+                .then(fetchUsersDetail)
         } else {
             return Promise([])
         }

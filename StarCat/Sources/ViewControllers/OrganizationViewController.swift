@@ -17,6 +17,7 @@ class OrganizationViewController: RepoTableViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var homepageLabel: UILabel!
     @IBOutlet weak var membersLabel: UILabel!
+    @IBOutlet weak var membersArea: UIView!
     
     let viewModel = UserViewModel()
     
@@ -53,6 +54,9 @@ class OrganizationViewController: RepoTableViewController {
                 WebViewPopup.open(url, on: self)
             }
         }.addTo(bag)
+        membersArea.makeTappable().subscribe { [weak self] _ in
+            self?.showMembers()
+        }.addTo(bag)
         viewModel.login.bindTo(wwTitle).addTo(bag)
     }
 
@@ -64,6 +68,16 @@ class OrganizationViewController: RepoTableViewController {
     func showActivity() {
         if let url = viewModel.githubURL.value {
             WebViewPopup.openActivity(url, on: self)
+        }
+    }
+    
+    private func showMembers() {
+        navigationController?.pushStoryboard("UserTable", animated: true) { next in
+            let userTableVC = next as! UserTableViewController
+            let pagination = MembersPagination()
+            pagination.organizationName = self.viewModel.login.value
+            userTableVC.pagination = pagination
+            userTableVC.title = "Members"
         }
     }
 }

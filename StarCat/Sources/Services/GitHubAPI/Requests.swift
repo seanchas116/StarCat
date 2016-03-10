@@ -164,8 +164,34 @@ struct GetUserRequest: GitHubRequest {
     }
 }
 
+struct GetMembersRequest: GitHubRequest {
+    typealias Response = [UserSummary]
+    
+    let organizationName: String
+    let perPage: Int
+    let page: Int
+    
+    var parameters: [String: AnyObject] {
+        return ["per_page": perPage, "page": page]
+    }
+    
+    var path: String {
+        return "/orgs/\(organizationName)/members"
+    }
+    
+    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
+        do {
+            return try decodeArray(object)
+        } catch {
+            print("Error parsing response: \(error)")
+            return nil
+        }
+    }
+}
+
 struct GetCurrentUserRequest: GitHubRequest {
     typealias Response = User
+    
     var path: String {
         return "/user"
     }
