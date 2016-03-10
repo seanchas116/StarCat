@@ -33,6 +33,7 @@ class ReadmeView: UIView {
     private func setup() {
         let config = WKWebViewConfiguration()
         webView = WKWebView(frame: bounds, configuration: config)
+        webView.scrollView.scrollsToTop = false
         addSubview(webView)
     }
 }
