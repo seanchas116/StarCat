@@ -25,7 +25,7 @@ struct Highlighter {
         highlight = jsContext.evaluateScript("hljs.highlight")
     }
     
-    func highlight(value: String, name: String) -> String {
+    private func highlightSync(value: String, name: String) -> String {
         if let ext = name.componentsSeparatedByString(".").last {
             if hasLanguage.callWithArguments([ext]).toBool() {
                 return highlight.callWithArguments([ext, value]).valueForProperty("value").toString()
@@ -33,10 +33,12 @@ struct Highlighter {
         }
         return value
     }
+    
+    func highlight(value: String, name: String) -> Promise<String> {
+        return dispatch_promise(on: queue) {
+            self.highlightSync(value, name: name)
+        }
+    }
 }
 
 let highlighter = Highlighter()
-
-func highlight(value: String, name: String) -> String {
-    return highlighter.highlight(value, name: name)
-}

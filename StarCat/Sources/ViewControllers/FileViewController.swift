@@ -27,7 +27,7 @@ class FileViewController: UIViewController {
         viewModel.loadContent().then { content -> Void in
             let text = String(data: content, encoding: NSUTF8StringEncoding)
             if let text = text {
-                Promise(highlight(text, name: name))
+                highlighter.highlight(text, name: name)
                     .thenInBackground { highlighted in
                         renderAttributedStringFromHTML("<pre><code>\(highlighted)</code></pre>", css: githubHighlightCSS)
                     }.then { [weak self] (text: NSAttributedString?) -> Void in
