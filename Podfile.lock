@@ -32,6 +32,7 @@ PODS:
   - Result (1.0.2)
   - SVWebViewController (HEAD based on 1.0)
   - SwiftDate (3.0.6)
+  - UIColor_Hex_Swift (1.9)
   - Wirework (0.0.1)
   - WireworkFoundation (0.0.1):
     - Wirework
@@ -51,6 +52,7 @@ DEPENDENCIES:
   - Regex
   - SVWebViewController (HEAD)
   - SwiftDate
+  - UIColor_Hex_Swift
   - Wirework (from `https://github.com/seanchas116/Wirework.git`)
   - WireworkFoundation (from `https://github.com/seanchas116/Wirework.git`)
   - WireworkUIKit (from `https://github.com/seanchas116/Wirework.git`)
@@ -89,6 +91,7 @@ SPEC CHECKSUMS:
   Result: dd3dd71af3fa2e262f1a999e14fba2c25ec14f16
   SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
   SwiftDate: 520c0e7de224c881fe4213caeca72d482ed3d45f
+  UIColor_Hex_Swift: 2ee747c0fed8b72b2135ef474b80a6921e489daa
   Wirework: 1799742208b3cea13fa2f7a5ab8be4c4021b68f2
   WireworkFoundation: d27c0faf31a88fd5902c70fb408096e7a947350d
   WireworkUIKit: d01bbafbeea0a4e01da12efceb5b71992e7a4783
