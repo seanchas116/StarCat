@@ -17,14 +17,17 @@ class ContentViewManager {
     let textView = UITextView()
     let lineNumbersView = UITextView()
     let view = UIView()
+    let border = CALayer()
     
     init() {
         textView.editable = false
         textView.scrollEnabled = false
         lineNumbersView.editable = false
         lineNumbersView.scrollEnabled = false
+        border.backgroundColor = UIColor(rgba: "#F1F1F1").CGColor
         view.addSubview(textView)
         view.addSubview(lineNumbersView)
+        view.layer.addSublayer(border)
     }
     
     func loadContent(content: String, name: String) -> Promise<Void> {
@@ -48,12 +51,16 @@ class ContentViewManager {
     
     func adjustSize() {
         let maxSize = CGSizeMake(CGFloat.max, CGFloat.max)
-        let size = self.textView.sizeThatFits(maxSize)
-        let lineNumbersWidth = self.lineNumbersView.sizeThatFits(maxSize).width
+        let size = textView.sizeThatFits(maxSize)
+        let lineNumbersWidth = lineNumbersView.sizeThatFits(maxSize).width
         
-        self.lineNumbersView.frame = CGRectMake(0, 0, lineNumbersWidth, size.height)
-        self.textView.frame = CGRectMake(lineNumbersWidth, 0, size.width, size.height)
-        self.view.frame = CGRectMake(0, 0, lineNumbersWidth + size.width, size.height)
+        lineNumbersView.frame = CGRectMake(0, 0, lineNumbersWidth, size.height)
+        textView.frame = CGRectMake(lineNumbersWidth + 6, 0, size.width, size.height)
+        view.frame = CGRectMake(0, 0, lineNumbersWidth + 6 + size.width, size.height)
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        border.frame = CGRectMake(lineNumbersWidth + 2, 0, 2, size.height)
+        CATransaction.commit()
     }
 }
 
