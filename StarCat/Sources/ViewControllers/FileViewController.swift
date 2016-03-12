@@ -9,7 +9,7 @@
 import UIKit
 import PromiseKit
 import Wirework
-
+import UIColor_Hex_Swift
 
 private let highlightCSS = getBundleFile("highlight.xcode.min", ofType: "css")
 
@@ -35,10 +35,9 @@ class ContentViewManager {
             }
         let lineNumbersPromise: Promise<NSAttributedString?> = dispatch_promise {
             let count = content.countLines()
-            let digits = count.digitsCount
-            let text = (1...count).map { String($0).fillLeft(digits, by: " ") }.joinWithSeparator("\n")
+            let text = (1...count).map { String($0).fillLeft(4, by: " ") }.joinWithSeparator("\n")
             return renderAttributedStringFromHTML("<pre><code>\(text)</code></pre>",
-                css: " code { font-family: Menlo; } ")
+                css: " code { font-family: Menlo; color: 9B9B9B; } ")
         }
         return when(textPromise, lineNumbersPromise).then { (text, lineNumbers) -> Void in
             self.textView.attributedText = text
