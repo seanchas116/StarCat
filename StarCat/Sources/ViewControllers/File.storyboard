@@ -37,17 +37,9 @@
                     <connections>
                         <outlet property="loadingIndicator" destination="gTP-X6-AXr" id="wBc-9e-fTr"/>
                         <outlet property="scrollView" destination="QlC-BN-Xe1" id="08n-o8-9vK"/>
-                        <outlet property="textView" destination="MvH-yx-OHe" id="spe-aA-FJZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aLQ-cv-Tuk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" id="MvH-yx-OHe">
-                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
             </objects>
             <point key="canvasLocation" x="655" y="382"/>
         </scene>

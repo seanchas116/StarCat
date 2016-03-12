@@ -47,7 +47,7 @@
 		BE561EF61C5926AE0097D58E /* LoginButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE561EF51C5926AE0097D58E /* LoginButtonViewController.swift */; };
 		BE561EF91C5929E50097D58E /* LoginButton.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE561EF71C5929E50097D58E /* LoginButton.storyboard */; };
 		BE57ACC31C53D03700305A54 /* utilSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE57ACC21C53D03700305A54 /* utilSpec.swift */; };
-		BE57ACC51C53D6E600305A54 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE57ACC41C53D6E600305A54 /* StringUtils.swift */; };
+		BE57ACC51C53D6E600305A54 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE57ACC41C53D6E600305A54 /* Utils.swift */; };
 		BE598C251C4C8CC300E1A884 /* ColorizedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE598C241C4C8CC300E1A884 /* ColorizedImageView.swift */; };
 		BE699B941C59C34A004A9E7D /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE699B931C59C34A004A9E7D /* AccessToken.swift */; };
 		BE8C23191C452D8E00691005 /* UITableView+scrollToTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8C23181C452D8E00691005 /* UITableView+scrollToTop.swift */; };
@@ -157,7 +157,7 @@
 		BE561EF51C5926AE0097D58E /* LoginButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButtonViewController.swift; sourceTree = "<group>"; };
 		BE561EF81C5929E50097D58E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LoginButton.storyboard; sourceTree = "<group>"; };
 		BE57ACC21C53D03700305A54 /* utilSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = utilSpec.swift; sourceTree = "<group>"; };
-		BE57ACC41C53D6E600305A54 /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
+		BE57ACC41C53D6E600305A54 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		BE598C241C4C8CC300E1A884 /* ColorizedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorizedImageView.swift; sourceTree = "<group>"; };
 		BE699B931C59C34A004A9E7D /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		BE8C23181C452D8E00691005 /* UITableView+scrollToTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+scrollToTop.swift"; sourceTree = "<group>"; };
@@ -360,7 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				BE32404B1C57C8A200A9A87A /* QueryString.swift */,
-				BE57ACC41C53D6E600305A54 /* StringUtils.swift */,
+				BE57ACC41C53D6E600305A54 /* Utils.swift */,
 				BEAC0E7B1C904E390080A0C6 /* GetBundleFile.swift */,
 				BE1650271C9157D700DAA20A /* AttributedString.swift */,
 				BE16502D1C91631D00DAA20A /* StringIsErrorType.swift */,
@@ -770,7 +770,7 @@
 				BEF6051C1C3113F30014D633 /* Decoding.swift in Sources */,
 				BEF605191C30FCBB0014D633 /* RepoSummary.swift in Sources */,
 				BE16502E1C91631D00DAA20A /* StringIsErrorType.swift in Sources */,
-				BE57ACC51C53D6E600305A54 /* StringUtils.swift in Sources */,
+				BE57ACC51C53D6E600305A54 /* Utils.swift in Sources */,
 				BE4ECE2A1C8C74F9003DA31F /* FileViewController.swift in Sources */,
 				BE3F45491C2A994500DD1863 /* Event.swift in Sources */,
 				BEF6051E1C3114220014D633 /* Requests.swift in Sources */,

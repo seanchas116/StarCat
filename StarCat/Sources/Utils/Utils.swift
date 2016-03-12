@@ -34,4 +34,29 @@ extension String {
             return []
         }
     }
+    
+    func countLines() -> Int {
+        var count = 0
+        for c in self.characters {
+            if c == "\n" {
+                count += 1
+            }
+        }
+        return count
+    }
+    
+    func fillLeft(min: Int, by char: Character) -> String {
+        let remaining = min - self.characters.count
+        if remaining > 0 {
+            return String(count: remaining, repeatedValue: char) + self
+        } else {
+            return self
+        }
+    }
+}
+
+extension Int {
+    var digitsCount: Int {
+        return Int(log10(Double(self))) + 1
+    }
 }
