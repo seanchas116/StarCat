@@ -11,7 +11,7 @@ import PromiseKit
 import Wirework
 
 
-private let githubHighlightCSS = getBundleFile("highlight.xcode.min", ofType: "css")
+private let highlightCSS = getBundleFile("highlight.xcode.min", ofType: "css")
 
 class FileViewController: UIViewController {
 
@@ -32,7 +32,7 @@ class FileViewController: UIViewController {
             if let text = text {
                 highlighter.highlight(text, name: name)
                     .thenInBackground { highlighted in
-                        renderAttributedStringFromHTML("<pre><code>\(highlighted)</code></pre>", css: githubHighlightCSS + " code { font-family: Menlo; } ")
+                        renderAttributedStringFromHTML("<pre><code>\(highlighted)</code></pre>", css: highlightCSS + " code { font-family: Menlo; } ")
                     }.then { [weak self] in
                         self?.setText($0)
                     }
