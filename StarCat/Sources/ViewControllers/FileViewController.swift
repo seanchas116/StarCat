@@ -41,12 +41,10 @@ class FileViewController: UIViewController {
     }
     
     func setText(text: NSAttributedString?) {
-        if let text = text {
-            let size = text.boundingRectWithSize(CGSizeMake(CGFloat.infinity, CGFloat.infinity), options: .UsesLineFragmentOrigin, context: nil)
-            textHeightConstraint.constant = size.height
-            textWidthConstraint.constant = size.width
-        }
         textView.attributedText = text
+        let size = textView.sizeThatFits(CGSizeMake(CGFloat.max, CGFloat.max))
+        textHeightConstraint.constant = size.height
+        textWidthConstraint.constant = size.width
         loadingIndicator.stopAnimating()
     }
 
