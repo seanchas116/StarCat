@@ -13,20 +13,23 @@ import Wirework
 
 private let highlightCSS = getBundleFile("highlight.xcode.min", ofType: "css")
 
-class FileViewController: UIViewController {
+class FileViewController: UIViewController, UIScrollViewDelegate {
 
     let viewModel = FileViewModel()
     let bag = SubscriptionBag()
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet var textView: UITextView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var textHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var textWidthConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let name = viewModel.name.value
+        
+        scrollView.delegate = self
+        scrollView.addSubview(textView)
+        
         loadingIndicator.startAnimating()
+        
+        let name = viewModel.name.value
         viewModel.loadContent().then { content -> Void in
             let text = String(data: content, encoding: NSUTF8StringEncoding)
             if let text = text {
@@ -44,9 +47,12 @@ class FileViewController: UIViewController {
     func setText(text: NSAttributedString?) {
         textView.attributedText = text
         let size = textView.sizeThatFits(CGSizeMake(CGFloat.max, CGFloat.max))
-        textHeightConstraint.constant = size.height
-        textWidthConstraint.constant = size.width
+        textView.frame = CGRect(origin: CGPoint.zero, size: size)
+        scrollView.contentSize = size
         loadingIndicator.stopAnimating()
     }
-
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return textView
+    }
 }
