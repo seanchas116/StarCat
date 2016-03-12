@@ -38,6 +38,7 @@ class FileViewController: UIViewController {
                     }
             }
         }
+        viewModel.name.bindTo(wwTitle).addTo(bag)
     }
     
     func setText(text: NSAttributedString?) {
