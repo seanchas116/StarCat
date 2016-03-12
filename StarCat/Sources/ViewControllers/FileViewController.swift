@@ -11,7 +11,7 @@ import PromiseKit
 import Wirework
 
 
-private let githubHighlightCSS = getBundleFile("highlight.github.min", ofType: "css")
+private let githubHighlightCSS = getBundleFile("highlight.xcode.min", ofType: "css")
 
 class FileViewController: UIViewController {
 
@@ -29,7 +29,7 @@ class FileViewController: UIViewController {
             if let text = text {
                 highlighter.highlight(text, name: name)
                     .thenInBackground { highlighted in
-                        renderAttributedStringFromHTML("<pre><code>\(highlighted)</code></pre>", css: githubHighlightCSS)
+                        renderAttributedStringFromHTML("<pre><code>\(highlighted)</code></pre>", css: githubHighlightCSS + " code { font-family: Menlo; } ")
                     }.then { [weak self] (text: NSAttributedString?) -> Void in
                         self?.textView.attributedText = text
                         self?.loadingIndicator.stopAnimating()

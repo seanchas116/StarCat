@@ -13,7 +13,7 @@
 		BE16502A1C91584000DAA20A /* github.css in Resources */ = {isa = PBXBuildFile; fileRef = BE1650291C91584000DAA20A /* github.css */; };
 		BE16502C1C91589A00DAA20A /* Highlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE16502B1C91589A00DAA20A /* Highlighter.swift */; };
 		BE16502E1C91631D00DAA20A /* StringIsErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE16502D1C91631D00DAA20A /* StringIsErrorType.swift */; };
-		BE1650311C91878500DAA20A /* highlight.github.min.css in Resources */ = {isa = PBXBuildFile; fileRef = BE16502F1C91878500DAA20A /* highlight.github.min.css */; };
+		BE1650311C91878500DAA20A /* highlight.xcode.min.css in Resources */ = {isa = PBXBuildFile; fileRef = BE16502F1C91878500DAA20A /* highlight.xcode.min.css */; };
 		BE1650341C91D0DC00DAA20A /* highlight.pack.js in Resources */ = {isa = PBXBuildFile; fileRef = BE1650331C91D0DC00DAA20A /* highlight.pack.js */; };
 		BE176E621C41EFF700E29E4F /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE176E611C41EFF700E29E4F /* User.storyboard */; };
 		BE176E641C41F10200E29E4F /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE176E631C41F10200E29E4F /* UserViewController.swift */; };
@@ -123,7 +123,7 @@
 		BE1650291C91584000DAA20A /* github.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = github.css; path = node_modules/highlight.js/styles/github.css; sourceTree = SOURCE_ROOT; };
 		BE16502B1C91589A00DAA20A /* Highlighter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highlighter.swift; sourceTree = "<group>"; };
 		BE16502D1C91631D00DAA20A /* StringIsErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringIsErrorType.swift; sourceTree = "<group>"; };
-		BE16502F1C91878500DAA20A /* highlight.github.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = highlight.github.min.css; sourceTree = "<group>"; };
+		BE16502F1C91878500DAA20A /* highlight.xcode.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = highlight.xcode.min.css; sourceTree = "<group>"; };
 		BE1650331C91D0DC00DAA20A /* highlight.pack.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.pack.js; sourceTree = "<group>"; };
 		BE176E611C41EFF700E29E4F /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		BE176E631C41F10200E29E4F /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -292,7 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				BE1650331C91D0DC00DAA20A /* highlight.pack.js */,
-				BE16502F1C91878500DAA20A /* highlight.github.min.css */,
+				BE16502F1C91878500DAA20A /* highlight.xcode.min.css */,
 				BE2CAF201C3C0CFE00B51FBF /* github-markdown-custom.css */,
 			);
 			path = "Support Files";
@@ -632,7 +632,7 @@
 				BE47078F1C4A152D0069DA6F /* Organization.storyboard in Resources */,
 				BEB1B9AB1C414B4400A730A0 /* Repo.storyboard in Resources */,
 				BEE0C0AD1C33EF1A0014986D /* RepoCell.xib in Resources */,
-				BE1650311C91878500DAA20A /* highlight.github.min.css in Resources */,
+				BE1650311C91878500DAA20A /* highlight.xcode.min.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
