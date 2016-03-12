@@ -1,9 +1,9 @@
 {
   "name": "Wirework",
   "version": "0.0.1",
-  "summary": "A short description of Wirework.",
-  "description": "",
-  "homepage": "http://EXAMPLE/Wirework",
+  "summary": "A simple reactive programming & data binding utility",
+  "description": "Wirework is a reactive programming & data binding utility.",
+  "homepage": "https://github.com/seanchas116/Wirework",
   "license": "MIT",
   "authors": {
     "Ryohei Ikegami": "iofg2100@gmail.com"
@@ -13,7 +13,7 @@
     "osx": "10.9"
   },
   "source": {
-    "git": "http://EXAMPLE/Wirework.git",
+    "git": "https://github.com/seanchas116/Wirework.git",
     "tag": "0.0.1"
   },
   "source_files": "Wirework"

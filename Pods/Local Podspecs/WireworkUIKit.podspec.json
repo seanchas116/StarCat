@@ -1,9 +1,9 @@
 {
   "name": "WireworkUIKit",
   "version": "0.0.1",
-  "summary": "A short description of WireworkUIKit.",
-  "description": "",
-  "homepage": "http://EXAMPLE/WireworkUIKit",
+  "summary": "UIKit extensions for Wirework",
+  "description": "WireworkUIKit adds extensions to UIKit to be used with Wirework.",
+  "homepage": "https://github.com/seanchas116/Wirework",
   "license": "MIT",
   "authors": {
     "Ryohei Ikegami": "iofg2100@gmail.com"
@@ -12,7 +12,7 @@
     "ios": "8.0"
   },
   "source": {
-    "git": "http://EXAMPLE/WireworkUIKit.git",
+    "git": "https://github.com/seanchas116/Wirework.git",
     "tag": "0.0.1"
   },
   "source_files": "WireworkUIKit",

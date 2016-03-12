@@ -51,28 +51,28 @@ DEPENDENCIES:
   - Regex
   - SVWebViewController (HEAD)
   - SwiftDate
-  - Wirework (from `git@bitbucket.org:seanchas_t/wirework.git`)
-  - WireworkFoundation (from `git@bitbucket.org:seanchas_t/wirework.git`)
-  - WireworkUIKit (from `git@bitbucket.org:seanchas_t/wirework.git`)
+  - Wirework (from `https://github.com/seanchas116/Wirework.git`)
+  - WireworkFoundation (from `https://github.com/seanchas116/Wirework.git`)
+  - WireworkUIKit (from `https://github.com/seanchas116/Wirework.git`)
 
 EXTERNAL SOURCES:
   Wirework:
-    :git: git@bitbucket.org:seanchas_t/wirework.git
+    :git: https://github.com/seanchas116/Wirework.git
   WireworkFoundation:
-    :git: git@bitbucket.org:seanchas_t/wirework.git
+    :git: https://github.com/seanchas116/Wirework.git
   WireworkUIKit:
-    :git: git@bitbucket.org:seanchas_t/wirework.git
+    :git: https://github.com/seanchas116/Wirework.git
 
 CHECKOUT OPTIONS:
   Wirework:
-    :commit: f39c50988bf1bb9c2cb6d473f958ecb009b97af4
-    :git: git@bitbucket.org:seanchas_t/wirework.git
+    :commit: 0bb9278deba9461e9ef691e37d8eb4793ceca173
+    :git: https://github.com/seanchas116/Wirework.git
   WireworkFoundation:
-    :commit: f39c50988bf1bb9c2cb6d473f958ecb009b97af4
-    :git: git@bitbucket.org:seanchas_t/wirework.git
+    :commit: 0bb9278deba9461e9ef691e37d8eb4793ceca173
+    :git: https://github.com/seanchas116/Wirework.git
   WireworkUIKit:
-    :commit: f39c50988bf1bb9c2cb6d473f958ecb009b97af4
-    :git: git@bitbucket.org:seanchas_t/wirework.git
+    :commit: 0bb9278deba9461e9ef691e37d8eb4793ceca173
+    :git: https://github.com/seanchas116/Wirework.git
 
 SPEC CHECKSUMS:
   APIKit: d6e313f1ca3b0cae30a7059f872f7780d8a147ec
@@ -89,8 +89,8 @@ SPEC CHECKSUMS:
   Result: dd3dd71af3fa2e262f1a999e14fba2c25ec14f16
   SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
   SwiftDate: 520c0e7de224c881fe4213caeca72d482ed3d45f
-  Wirework: ae7632345dc533a1657da66950de174407bfd336
-  WireworkFoundation: 8588264f748c4b957f8c353ca0407d3d35ac2a0f
-  WireworkUIKit: efc4b5991bd331f78e95940033aef7cb0863f039
+  Wirework: 1799742208b3cea13fa2f7a5ab8be4c4021b68f2
+  WireworkFoundation: d27c0faf31a88fd5902c70fb408096e7a947350d
+  WireworkUIKit: d01bbafbeea0a4e01da12efceb5b71992e7a4783
 
 COCOAPODS: 0.39.0
