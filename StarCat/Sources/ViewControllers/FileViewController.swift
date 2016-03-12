@@ -22,6 +22,7 @@ class ContentViewManager {
     init() {
         textView.editable = false
         textView.scrollEnabled = false
+        lineNumbersView.selectable = false
         lineNumbersView.editable = false
         lineNumbersView.scrollEnabled = false
         border.backgroundColor = UIColor(rgba: "#F1F1F1").CGColor
