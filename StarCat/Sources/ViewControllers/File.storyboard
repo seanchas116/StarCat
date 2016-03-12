@@ -8,7 +8,7 @@
         <!--File View Controller-->
         <scene sceneID="qnr-ga-VZG">
             <objects>
-                <viewController id="PcE-z1-xhQ" customClass="FileViewController" customModule="StarCat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="PcE-z1-xhQ" customClass="FileViewController" customModule="StarCat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="42r-MO-2e6"/>
                         <viewControllerLayoutGuide type="bottom" id="utr-1d-VsK"/>
@@ -17,29 +17,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MvH-yx-OHe">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QlC-BN-Xe1">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MvH-yx-OHe">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="loJ-9y-PD4"/>
+                                            <constraint firstAttribute="width" constant="100" id="za3-0H-vOF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="MvH-yx-OHe" secondAttribute="bottom" id="2Hb-py-sss"/>
+                                    <constraint firstItem="MvH-yx-OHe" firstAttribute="top" secondItem="QlC-BN-Xe1" secondAttribute="top" id="AH4-xM-MOT"/>
+                                    <constraint firstAttribute="trailing" secondItem="MvH-yx-OHe" secondAttribute="trailing" id="Edf-pS-FCs"/>
+                                    <constraint firstItem="MvH-yx-OHe" firstAttribute="leading" secondItem="QlC-BN-Xe1" secondAttribute="leading" id="kXK-0x-70W"/>
+                                </constraints>
+                            </scrollView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gTP-X6-AXr">
                                 <rect key="frame" x="290" y="290" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="MvH-yx-OHe" firstAttribute="top" secondItem="vWh-LJ-1u2" secondAttribute="top" id="2zZ-2O-rt3"/>
-                            <constraint firstItem="MvH-yx-OHe" firstAttribute="leading" secondItem="vWh-LJ-1u2" secondAttribute="leading" id="aMk-XF-0mm"/>
-                            <constraint firstAttribute="trailing" secondItem="MvH-yx-OHe" secondAttribute="trailing" id="hoc-zU-0QG"/>
+                            <constraint firstItem="utr-1d-VsK" firstAttribute="top" secondItem="QlC-BN-Xe1" secondAttribute="bottom" id="5Gm-VC-ToO"/>
+                            <constraint firstItem="QlC-BN-Xe1" firstAttribute="leading" secondItem="vWh-LJ-1u2" secondAttribute="leading" id="Caq-1d-6QQ"/>
+                            <constraint firstAttribute="trailing" secondItem="QlC-BN-Xe1" secondAttribute="trailing" id="hke-n0-wJv"/>
+                            <constraint firstItem="QlC-BN-Xe1" firstAttribute="top" secondItem="42r-MO-2e6" secondAttribute="bottom" id="rK1-ab-okv"/>
                             <constraint firstItem="gTP-X6-AXr" firstAttribute="centerY" secondItem="vWh-LJ-1u2" secondAttribute="centerY" id="rQB-Cc-gxN"/>
-                            <constraint firstItem="utr-1d-VsK" firstAttribute="top" secondItem="MvH-yx-OHe" secondAttribute="bottom" id="roj-gC-lnn"/>
                             <constraint firstItem="gTP-X6-AXr" firstAttribute="centerX" secondItem="vWh-LJ-1u2" secondAttribute="centerX" id="z7U-dt-3CW"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="loadingIndicator" destination="gTP-X6-AXr" id="wBc-9e-fTr"/>
+                        <outlet property="scrollView" destination="QlC-BN-Xe1" id="08n-o8-9vK"/>
+                        <outlet property="textHeightConstraint" destination="loJ-9y-PD4" id="Laa-6U-MeW"/>
                         <outlet property="textView" destination="MvH-yx-OHe" id="spe-aA-FJZ"/>
+                        <outlet property="textWidthConstraint" destination="za3-0H-vOF" id="mbB-Tw-Qa6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aLQ-cv-Tuk" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -17,8 +17,11 @@ class FileViewController: UIViewController {
 
     let viewModel = FileViewModel()
     let bag = SubscriptionBag()
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet var textView: UITextView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var textHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var textWidthConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +33,21 @@ class FileViewController: UIViewController {
                 highlighter.highlight(text, name: name)
                     .thenInBackground { highlighted in
                         renderAttributedStringFromHTML("<pre><code>\(highlighted)</code></pre>", css: githubHighlightCSS + " code { font-family: Menlo; } ")
-                    }.then { [weak self] (text: NSAttributedString?) -> Void in
-                        self?.textView.attributedText = text
-                        self?.loadingIndicator.stopAnimating()
+                    }.then { [weak self] in
+                        self?.setText($0)
                     }
             }
         }
     }
+    
+    func setText(text: NSAttributedString?) {
+        if let text = text {
+            let size = text.boundingRectWithSize(CGSizeMake(CGFloat.infinity, CGFloat.infinity), options: .UsesLineFragmentOrigin, context: nil)
+            textHeightConstraint.constant = size.height
+            textWidthConstraint.constant = size.width
+        }
+        textView.attributedText = text
+        loadingIndicator.stopAnimating()
+    }
+
 }
