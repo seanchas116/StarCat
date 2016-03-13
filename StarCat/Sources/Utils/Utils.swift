@@ -36,7 +36,7 @@ extension String {
     }
     
     func countLines() -> Int {
-        var count = 0
+        var count = 1
         for c in self.characters {
             if c == "\n" {
                 count += 1
