@@ -74,6 +74,7 @@
 		BECB108C1C5CE09F00B0CB16 /* UIViewController+storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB108B1C5CE09F00B0CB16 /* UIViewController+storyboard.swift */; };
 		BECB108E1C5CEE8100B0CB16 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB108D1C5CEE8100B0CB16 /* KeychainManager.swift */; };
 		BED172F91C3E23E000C5A247 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED172F81C3E23E000C5A247 /* AppViewModel.swift */; };
+		BED72AEE1C95D46D00B82477 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED72AED1C95D46D00B82477 /* CodeView.swift */; };
 		BED813351C24EE6D0028F8B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED813341C24EE6D0028F8B0 /* AppDelegate.swift */; };
 		BED8133C1C24EE6D0028F8B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BED8133A1C24EE6D0028F8B0 /* Main.storyboard */; };
 		BED8133E1C24EE6D0028F8B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BED8133D1C24EE6D0028F8B0 /* Assets.xcassets */; };
@@ -184,6 +185,7 @@
 		BECB108B1C5CE09F00B0CB16 /* UIViewController+storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+storyboard.swift"; sourceTree = "<group>"; };
 		BECB108D1C5CEE8100B0CB16 /* KeychainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		BED172F81C3E23E000C5A247 /* AppViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		BED72AED1C95D46D00B82477 /* CodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		BED813311C24EE6D0028F8B0 /* StarCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BED813341C24EE6D0028F8B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BED8133B1C24EE6D0028F8B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 				BE29556D1C782A7000B10B1F /* UserCell.swift */,
 				BE29556E1C782A7000B10B1F /* UserCell.xib */,
 				BEC5F81C1C95A9E700213869 /* MarkdownView.swift */,
+				BED72AED1C95D46D00B82477 /* CodeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -756,6 +759,7 @@
 				BE176E681C4201B400E29E4F /* User.swift in Sources */,
 				BEBE3A6F1C76ADFD00E7FF0D /* Secrets.swift in Sources */,
 				BE9428B81C8BDE6000077615 /* FileViewModel.swift in Sources */,
+				BED72AEE1C95D46D00B82477 /* CodeView.swift in Sources */,
 				BEC5F81D1C95A9E700213869 /* MarkdownView.swift in Sources */,
 				BEAC0E7C1C904E390080A0C6 /* GetBundleFile.swift in Sources */,
 				BE561EF61C5926AE0097D58E /* LoginButtonViewController.swift in Sources */,
