@@ -11,34 +11,7 @@ import WebKit
 import Wirework
 import SwiftDate
 
-class ReadmeView: UIView {
-    var webView: WKWebView!
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
-    
-    override var bounds: CGRect {
-        didSet {
-            webView.frame = bounds
-        }
-    }
-    
-    private func setup() {
-        let config = WKWebViewConfiguration()
-        webView = WKWebView(frame: bounds, configuration: config)
-        webView.scrollView.scrollsToTop = false
-        addSubview(webView)
-    }
-}
-
-class RepoViewController: UIViewController, WKNavigationDelegate {
+class RepoViewController: UIViewController {
     @IBOutlet weak var header: UIView!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -47,10 +20,8 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var homepageLabel: UILabel!
     @IBOutlet weak var stargazersButton: RoundButton!
-    @IBOutlet weak var readmeLoadingIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var readmeView: ReadmeView!
-    @IBOutlet weak var readmeHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var viewCodeButton: RoundButton!
+    @IBOutlet weak var markdownView: MarkdownView!
     
     let bag = SubscriptionBag()
     let viewModel = RepoViewModel()
@@ -72,14 +43,8 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
         combine(viewModel.language, viewModel.pushedAt) { "\($0 ?? "")・\($1.formatForUI(withAgo: true))" }
             .bindTo(miscInfoLabel.wwText).addTo(bag)
         
-        readmeHeightConstraint.constant = 0
-        
-        viewModel.readme
-            .map(wrapReadme)
-            .bindTo { [unowned self] html in
-                self.readmeView.webView.loadHTMLString(html, baseURL: nil)
-            }.addTo(bag)
-        readmeView.webView.navigationDelegate = self
+        viewModel.readme.bindTo(markdownView.html).addTo(bag)
+        markdownView.header = header
         
         ownerLabel.makeTappable().subscribe { [weak self] _ in
             self?.showOwner()
@@ -118,51 +83,9 @@ class RepoViewController: UIViewController, WKNavigationDelegate {
         }
     }
     
-    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
-        webView.evaluateJavaScript("document.height") { (result, error) in
-            if error == nil {
-                if let height = result! as? Double {
-                    self.readmeHeightConstraint.constant = CGFloat(height)
-                }
-            }
-        }
-    }
-    
-    func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
-        if let URL = navigationAction.request.URL {
-            if URL.absoluteString != "about:blank" {
-                if let link = Link(URL: URL) {
-                    WebViewPopup.open(link, on: self)
-                    decisionHandler(.Cancel)
-                }
-                return
-            }
-        }
-        decisionHandler(.Allow)
-    }
-    
     func showActivity() {
         if let url = viewModel.githubURL.value {
             WebViewPopup.openActivity(url, on: self)
         }
     }
-}
-
-private let baseReadmeCSS = getBundleFile("github-markdown", ofType: "css")
-private let customReadmeCSS = getBundleFile("github-markdown-custom", ofType: "css")
-
-private func wrapReadme(htmlBody: String) -> String {
-    return "<html><head><meta name='viewport' content='initial-scale=1, maximum-scale=1'><style>\(baseReadmeCSS)\(customReadmeCSS)</style></head><body>\(htmlBody)</body></html>"
-}
-
-private func renderReadme(html: String) -> NSAttributedString? {
-    let fullHTML = "<html><head><style>\(baseReadmeCSS)\(customReadmeCSS)</style></head><body>\(html)</body></html>"
-    return try? NSAttributedString(
-        data: fullHTML.dataUsingEncoding(NSUTF8StringEncoding)!,
-        options: [
-            NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-            NSCharacterEncodingDocumentAttribute: NSNumber(unsignedLong: NSUTF8StringEncoding)
-        ],
-        documentAttributes: nil
-    )
 }
