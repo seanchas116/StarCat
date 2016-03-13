@@ -39,7 +39,8 @@ class ContentViewManager {
             }
         let lineNumbersPromise: Promise<NSAttributedString?> = dispatch_promise {
             let count = content.countLines()
-            let text = (1...count).map { String($0).fillLeft(4, by: " ") }.joinWithSeparator("\n")
+            let digits = count.digitsCount
+            let text = (1...count).map { String($0).fillLeft(digits, by: " ") }.joinWithSeparator("\n")
             return renderAttributedStringFromHTML("<pre><code>\(text)</code></pre>",
                 css: " code { font-family: Menlo; color: 9B9B9B; } ")
         }
