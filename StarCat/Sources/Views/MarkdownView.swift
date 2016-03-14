@@ -102,11 +102,19 @@ class MarkdownView: UIView, WKNavigationDelegate {
     }
     
     private func showContent() {
-        webView.evaluateJavaScript("document.body.style.visibility = 'visible'")  { res, err in print(err) }
+        webView.evaluateJavaScript("document.body.style.visibility = 'visible'")  { res, err in
+            if let err = err {
+                print(err)
+            }
+        }
     }
     
     private func setHeaderPaddingHeight() {
         let height = header?.bounds.height ?? 0
-        webView.evaluateJavaScript("var padding = document.getElementById('header-padding'); if (padding) { padding.style.height = '\(height)px'; }") { res, err in print(err) }
+        webView.evaluateJavaScript("var padding = document.getElementById('header-padding'); if (padding) { padding.style.height = '\(height)px'; }") { res, err in
+            if let err = err {
+                print(err)
+            }
+        }
     }
 }
