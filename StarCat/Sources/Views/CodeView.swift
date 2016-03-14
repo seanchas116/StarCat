@@ -58,7 +58,7 @@ class CodeView: UIView {
             self.textView.attributedText = text
             self.lineNumbersView.attributedText = lineNumbers
             self.adjustSizes()
-            self.setNeedsLayout()
+            self.invalidateIntrinsicContentSize()
         }
     }
     
