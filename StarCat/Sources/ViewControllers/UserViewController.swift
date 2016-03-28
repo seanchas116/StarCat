@@ -49,12 +49,12 @@ class UserViewController: RepoTableViewController {
             viewModel.loadCurrentUser()
             
             navigationItem.rightBarButtonItems = [
-                UIBarButtonItem(image: UIImage(named: "navigation-config"), style: .Plain, target: self, action: Selector("showProfileMenu")),
-                UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: Selector("showActivity"))
+                UIBarButtonItem(image: UIImage(named: "navigation-config"), style: .Plain, target: self, action: #selector(UserViewController.showProfileMenu)),
+                UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(UserViewController.showActivity))
             ]
             navigationItem.title = "Profile"
         } else {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: Selector("showActivity"))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(UserViewController.showActivity))
             viewModel.login.bindTo(navigationItem.wwTitle).addTo(bag)
         }
         

@@ -29,7 +29,7 @@ class RepoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: Selector("showActivity"))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(RepoViewController.showActivity))
         
         viewModel.name.bindTo(wwTitle).addTo(bag)
         viewModel.name.bindTo(titleLabel.wwText).addTo(bag)

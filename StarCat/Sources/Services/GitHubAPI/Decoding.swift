@@ -30,7 +30,7 @@ extension Link: Decodable {
 extension NSDate: Decodable {
     public static func decode(e: Extractor) throws -> NSDate {
         let str = try String.decode(e)
-        return str.toDate(DateFormat.ISO8601) ?? NSDate()
+        return str.toDate(DateFormat.ISO8601Format(.Full)) ?? NSDate()
     }
 }
 

@@ -39,7 +39,7 @@ class OrganizationViewController: RepoTableViewController {
             self?.header.resizeHeightToMinimum()
         }.addTo(bag)
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: Selector("showActivity"))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(OrganizationViewController.showActivity))
         
         viewModel.avatarImage.bindTo(avatarImageView.wwImage).addTo(bag)
         viewModel.name.bindTo(nameLabel.wwText).addTo(bag)

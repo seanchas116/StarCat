@@ -53,5 +53,6 @@ class RepoCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
+        print("reusing")
     }
 }
