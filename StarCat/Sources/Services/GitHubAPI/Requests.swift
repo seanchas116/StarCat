@@ -11,6 +11,7 @@ import APIKit
 import Himotoki
 
 protocol GitHubRequest: RequestType {
+    var contentLength: Int? { get }
 }
 
 struct GetAccessTokenRequest: RequestType {
@@ -45,6 +46,9 @@ struct GetAccessTokenRequest: RequestType {
 }
 
 extension GitHubRequest {
+    var contentLength: Int? {
+        return nil
+    }
     var baseURL: NSURL {
         return NSURL(string: "https://api.github.com")!
     }
@@ -54,6 +58,9 @@ extension GitHubRequest {
     func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
         if let token = Authentication.accessToken {
             URLRequest.setValue("token \(token.token)", forHTTPHeaderField: "Authorization")
+        }
+        if let contentLength = self.contentLength {
+            URLRequest.setValue("\(contentLength)", forHTTPHeaderField: "Content-Length")
         }
         return URLRequest
     }
@@ -378,6 +385,47 @@ struct SearchRepoRequest: GitHubRequest {
         } catch {
             print("Error parsing response: \(error)")
             return nil
+        }
+    }
+}
+
+struct AddStarRequest: GitHubRequest {
+    typealias Response = Bool
+    
+    let repoName: String
+    
+    var method: HTTPMethod {
+        return .PUT
+    }
+    var path: String {
+        return "/user/starred/\(repoName)"
+    }
+    var contentLength: Int? {
+        return 0
+    }
+    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
+        return true
+    }
+}
+
+struct CheckStarredRequest: GitHubRequest {
+    typealias Response = Bool
+    
+    let repoName: String
+    
+    var path: String {
+        return "/user/starred/\(repoName)"
+    }
+    
+    var acceptableStatusCodes: Set<Int> {
+        return Set([204, 404])
+    }
+    
+    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
+        if URLResponse.statusCode == 204 {
+            return true
+        } else {
+            return false
         }
     }
 }
