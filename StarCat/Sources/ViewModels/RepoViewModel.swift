@@ -16,7 +16,8 @@ class RepoViewModel {
     let repo = Variable<Repo?>(nil)
     let name: Property<String>
     let fullName: Property<String>
-    let starsCount: Property<Int>
+    let starsCount = Variable(0)
+    let starred = Variable(false)
     let description: Property<String>
     let language: Property<String?>
     let avatarImage: Property<UIImage?>
@@ -31,10 +32,12 @@ class RepoViewModel {
     let eventTime: Property<NSDate?>
     let readme = Variable<String>("")
     
+    let bag = SubscriptionBag()
+    
     init() {
         name = repo.map { $0?.name ?? "" }
         fullName = repo.map { $0?.fullName ?? "" }
-        starsCount = repo.map { $0?.starsCount ?? 0 }
+        repo.map { $0?.starsCount ?? 0 }.bindTo(starsCount).addTo(bag)
         description = repo.map { $0?.description ?? "" }
         language = repo.map { $0?.language }
         ownerName = repo.map { $0?.owner.login ?? "" }
@@ -61,6 +64,14 @@ class RepoViewModel {
                 return Promise(nil)
             }
         }
+        
+        repo.bindTo { [weak self] repo in
+            if let fullName = repo?.fullName {
+                CheckStarredRequest(repoName: fullName).send().then {
+                    self?.starred.value = $0
+                }
+            }
+        }.addTo(bag)
     }
     
     convenience init(repo: Repo) {
