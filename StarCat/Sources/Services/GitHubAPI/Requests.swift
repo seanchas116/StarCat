@@ -408,6 +408,25 @@ struct AddStarRequest: GitHubRequest {
     }
 }
 
+struct RemoveStarRequest: GitHubRequest {
+    typealias Response = Bool
+    
+    let repoName: String
+    
+    var method: HTTPMethod {
+        return .DELETE
+    }
+    var path: String {
+        return "/user/starred/\(repoName)"
+    }
+    var contentLength: Int? {
+        return 0
+    }
+    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
+        return true
+    }
+}
+
 struct CheckStarredRequest: GitHubRequest {
     typealias Response = Bool
     

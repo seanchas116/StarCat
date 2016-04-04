@@ -85,4 +85,21 @@ class RepoViewModel {
                 self.readme.value = readme
             }
     }
+    
+    func toggleStar() -> Promise<Void> {
+        if let fullName = self.repo.value?.fullName {
+            if self.starred.value {
+                return RemoveStarRequest(repoName: fullName).send().then { _ -> Void in
+                    self.starred.value = false
+                    self.starsCount.value -= 1
+                }
+            } else {
+                return AddStarRequest(repoName: fullName).send().then { _ -> Void in
+                    self.starred.value = true
+                    self.starsCount.value += 1
+                }
+            }
+        }
+        return Promise()
+    }
 }

@@ -39,6 +39,7 @@ class RepoViewController: UIViewController {
         viewModel.homepage.map { $0?.stringWithoutScheme ?? ""}.bindTo(homepageLabel.wwText).addTo(bag)
         viewModel.homepage.map { $0 == nil }.bindTo(homepageLabel.wwHidden).addTo(bag)
         viewModel.starsCount.map { "★  \($0)" }.bindTo(starsButton.wwState(.Normal).title).addTo(bag)
+        viewModel.starred.bindTo(starsButton.wwSelected).addTo(bag)
         
         combine(viewModel.language, viewModel.pushedAt) { "\($0 ?? "")・\($1.formatForUI(withAgo: true))" }
             .bindTo(miscInfoLabel.wwText).addTo(bag)
@@ -94,7 +95,6 @@ class RepoViewController: UIViewController {
     }
     
     func toggleStar() {
-        print("toggling star")
-        starsButton.selected = !starsButton.selected
+        viewModel.toggleStar()
     }
 }
