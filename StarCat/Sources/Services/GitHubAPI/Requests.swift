@@ -448,3 +448,41 @@ struct CheckStarredRequest: GitHubRequest {
         }
     }
 }
+
+struct FollowRequest: GitHubRequest {
+    typealias Response = Bool
+    
+    let userName: String
+    
+    var method: HTTPMethod {
+        return .PUT
+    }
+    var path: String {
+        return "/user/following/\(userName)"
+    }
+    var contentLength: Int? {
+        return 0
+    }
+    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
+        return true
+    }
+}
+
+struct UnfollowRequest: GitHubRequest {
+    typealias Response = Bool
+    
+    let userName: String
+    
+    var method: HTTPMethod {
+        return .DELETE
+    }
+    var path: String {
+        return "/user/following/\(userName)"
+    }
+    var contentLength: Int? {
+        return 0
+    }
+    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
+        return true
+    }
+}
