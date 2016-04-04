@@ -19,6 +19,13 @@ class RoundButton: UIButton {
     }
     
     @IBInspectable
+    var borderColor: UIColor! = UIColor.blackColor() {
+        didSet {
+            updateColor()
+        }
+    }
+    
+    @IBInspectable
     var borderWidth: CGFloat = 1 {
         didSet {
             updateShape()
@@ -78,8 +85,7 @@ class RoundButton: UIButton {
     }
     
     private func updateColor() {
-        let borderColor = titleColorForState(.Normal)?.CGColor
-        borderLayer.strokeColor = borderColor
+        borderLayer.strokeColor = borderColor.CGColor
         
         if selected {
             borderLayer.fillColor = selectedBackgroundColor.CGColor
