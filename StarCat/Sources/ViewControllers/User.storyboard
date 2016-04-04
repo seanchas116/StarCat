@@ -70,11 +70,12 @@
                                                 <constraint firstAttribute="height" constant="32" id="KqN-rd-CHx"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <inset key="contentEdgeInsets" minX="10" minY="6" maxX="10" maxY="6"/>
                                             <state key="normal" title="Follow">
                                                 <color key="titleColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
-                                            <state key="selected">
+                                            <state key="selected" title="Followed">
                                                 <color key="titleColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                             <userDefinedRuntimeAttributes>
