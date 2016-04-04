@@ -79,6 +79,7 @@ class UserViewController: RepoTableViewController {
         viewModel.followersCount.map { String($0) }.bindTo(followersLabel.wwText).addTo(bag)
         viewModel.followingCount.map { String($0) }.bindTo(followingLabel.wwText).addTo(bag)
         viewModel.starsCount.map { String($0) }.bindTo(starsLabel.wwText).addTo(bag)
+        viewModel.followed.bindTo(followButton.wwSelected).addTo(bag)
         
         followersArea.makeTappable().subscribe { [weak self] _ in
             self?.showFollowers()
@@ -88,6 +89,9 @@ class UserViewController: RepoTableViewController {
         }.addTo(bag)
         starsArea.makeTappable().subscribe { [weak self] _ in
             self?.showStars()
+        }.addTo(bag)
+        followButton.wwTapped.subscribe { [weak self] _ in
+            self?.viewModel.toggleFollowed()
         }.addTo(bag)
         
         viewModel.user.bindTo { [weak self] _ in

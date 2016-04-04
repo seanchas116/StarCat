@@ -486,3 +486,26 @@ struct UnfollowRequest: GitHubRequest {
         return true
     }
 }
+
+
+struct CheckFollowedRequest: GitHubRequest {
+    typealias Response = Bool
+    
+    let userName: String
+    
+    var path: String {
+        return "/user/following/\(userName)"
+    }
+    
+    var acceptableStatusCodes: Set<Int> {
+        return Set([204, 404])
+    }
+    
+    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
+        if URLResponse.statusCode == 204 {
+            return true
+        } else {
+            return false
+        }
+    }
+}

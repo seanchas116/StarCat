@@ -95,6 +95,7 @@ class UserViewModel {
     let followingCount: Property<Int>
     let starsCount: Property<Int>
     let githubURL: Property<Link?>
+    let followed = Variable(false)
     
     let bag = SubscriptionBag()
     
@@ -123,6 +124,14 @@ class UserViewModel {
         }
         
         githubURL = login.map { Link(string: "https://github.com/\($0)") }
+        
+        user.bindTo { [weak self] user in
+            if let userName = user?.login {
+                CheckFollowedRequest(userName: userName).send().then {
+                    self?.followed.value = $0
+                }
+            }
+        }.addTo(bag)
     }
     
     func load() -> Promise<Void> {
@@ -131,5 +140,20 @@ class UserViewModel {
     
     func loadCurrentUser() -> Promise<Void> {
         return GetCurrentUserRequest().send().then { self.user.value = $0 }
+    }
+    
+    func toggleFollowed() -> Promise<Void> {
+        if let userName = self.user.value?.login {
+            if self.followed.value {
+                return UnfollowRequest(userName: userName).send().then { _ -> Void in
+                    self.followed.value = false
+                }
+            } else {
+                return FollowRequest(userName: userName).send().then { _ -> Void in
+                    self.followed.value = true
+                }
+            }
+        }
+        return Promise()
     }
 }
