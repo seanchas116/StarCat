@@ -12,42 +12,49 @@ import UIKit
 class RoundButton: UIButton {
     
     @IBInspectable
+    var selectedBackgroundColor: UIColor! = UIColor.clearColor() {
+        didSet {
+            updateColor()
+        }
+    }
+    
+    @IBInspectable
     var borderWidth: CGFloat = 1 {
         didSet {
-            updateBorderShape()
+            updateShape()
         }
     }
     
     @IBInspectable
     var cornerRadius: CGFloat = 0 {
         didSet {
-            updateBorderShape()
+            updateShape()
         }
     }
     
     @IBInspectable
     var hasLeftBorder: Bool = true {
         didSet {
-            updateBorderShape()
+            updateShape()
         }
     }
     
     @IBInspectable
     var hasRightBorder: Bool = true {
         didSet {
-            updateBorderShape()
+            updateShape()
         }
     }
     
-    override var highlighted: Bool {
+    override var selected: Bool {
         didSet {
-            updateBorderColor()
+            updateColor()
         }
     }
     
     override var bounds: CGRect {
         didSet {
-            updateBorderShape()
+            updateShape()
         }
     }
     
@@ -66,16 +73,22 @@ class RoundButton: UIButton {
     private func setup() {
         borderLayer.fillColor = UIColor.clearColor().CGColor
         layer.addSublayer(borderLayer)
-        updateBorderColor()
-        updateBorderShape()
+        updateColor()
+        updateShape()
     }
     
-    private func updateBorderColor() {
-        let borderColor = (highlighted ? titleColorForState(.Highlighted) : titleColorForState(.Normal))?.CGColor
+    private func updateColor() {
+        let borderColor = titleColorForState(.Normal)?.CGColor
         borderLayer.strokeColor = borderColor
+        
+        if selected {
+            borderLayer.fillColor = selectedBackgroundColor.CGColor
+        } else {
+            borderLayer.fillColor = nil
+        }
     }
     
-    private func updateBorderShape() {
+    private func updateShape() {
         let roundingCorners: UIRectCorner = [.TopRight, .TopLeft, .BottomRight, .BottomLeft]
         let halfBorder = borderWidth * 0.5
         let path = UIBezierPath()

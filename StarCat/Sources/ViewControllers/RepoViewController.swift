@@ -19,7 +19,7 @@ class RepoViewController: UIViewController {
     @IBOutlet weak var miscInfoLabel: UILabel!
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var homepageLabel: UILabel!
-    @IBOutlet weak var stargazersButton: RoundButton!
+    @IBOutlet weak var starsButton: RoundButton!
     @IBOutlet weak var viewCodeButton: RoundButton!
     @IBOutlet weak var markdownView: MarkdownView!
     
@@ -38,7 +38,7 @@ class RepoViewController: UIViewController {
         viewModel.ownerName.bindTo(ownerLabel.wwText).addTo(bag)
         viewModel.homepage.map { $0?.stringWithoutScheme ?? ""}.bindTo(homepageLabel.wwText).addTo(bag)
         viewModel.homepage.map { $0 == nil }.bindTo(homepageLabel.wwHidden).addTo(bag)
-        viewModel.starsCount.map { String($0) }.bindTo(stargazersButton.wwState(.Normal).title).addTo(bag)
+        viewModel.starsCount.map { "★  \($0)" }.bindTo(starsButton.wwState(.Normal).title).addTo(bag)
         
         combine(viewModel.language, viewModel.pushedAt) { "\($0 ?? "")・\($1.formatForUI(withAgo: true))" }
             .bindTo(miscInfoLabel.wwText).addTo(bag)
@@ -56,6 +56,10 @@ class RepoViewController: UIViewController {
         
         viewCodeButton.wwTapped.subscribe { [weak self] in
             self?.showFiles()
+        }.addTo(bag)
+        
+        starsButton.wwTapped.subscribe { [weak self] in
+            self?.toggleStar()
         }.addTo(bag)
         
         viewModel.fetchReadme()
@@ -87,5 +91,10 @@ class RepoViewController: UIViewController {
         if let url = viewModel.githubURL.value {
             WebViewPopup.openActivity(url, on: self)
         }
+    }
+    
+    func toggleStar() {
+        print("toggling star")
+        starsButton.selected = !starsButton.selected
     }
 }
