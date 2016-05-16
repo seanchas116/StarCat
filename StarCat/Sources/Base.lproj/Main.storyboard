@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -39,22 +39,32 @@
             </objects>
             <point key="canvasLocation" x="-14" y="-261"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Stars Navigation Controller-->
         <scene sceneID="CYW-xs-Qya">
             <objects>
-                <navigationController id="Z7c-Ki-Ui7" sceneMemberID="viewController">
+                <navigationController id="Z7c-Ki-Ui7" customClass="StarsNavigationController" customModule="StarCat" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="star" id="JVH-S3-gcs"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qVK-c3-UUn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="hzF-rl-VBn" kind="relationship" relationship="rootViewController" id="7TJ-kA-vqa"/>
+                        <segue destination="IlO-Nn-UuP" kind="relationship" relationship="rootViewController" id="K1j-JR-cB2"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Br8-SN-2uI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-14" y="644"/>
+        </scene>
+        <!--RepoTable-->
+        <scene sceneID="OCA-Tc-IPE">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="RepoTable" storyboardName="RepoTable" id="IlO-Nn-UuP" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="HNm-pR-g6a"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ndn-k6-4Xu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="709.5" y="644"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u1J-aK-iRf">
@@ -82,25 +92,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vz5-02-1dB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="585.5" y="1574"/>
-        </scene>
-        <!--Stars View Controller-->
-        <scene sceneID="KxZ-SO-9dM">
-            <objects>
-                <viewController id="hzF-rl-VBn" userLabel="Stars View Controller" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qYV-4b-ZbW"/>
-                        <viewControllerLayoutGuide type="bottom" id="aD5-nX-NOS"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="mED-Ef-Li8">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Stars" id="c3B-IU-MGZ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fJ6-XQ-GXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="980" y="644"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
