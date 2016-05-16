@@ -10,8 +10,11 @@ import UIKit
 import Wirework
 
 class SettingsViewController: UITableViewController {
+    
     @IBOutlet weak var logoutCell: UITableViewCell!
     @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var feedbackCell: UITableViewCell!
+    @IBOutlet weak var sourceCodeCell: UITableViewCell!
     
     let bag = SubscriptionBag()
 
@@ -28,10 +31,17 @@ class SettingsViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        if cell == logoutCell {
+        guard let cell = tableView.cellForRowAtIndexPath(indexPath) else { return }
+        switch cell {
+        case logoutCell:
             AppViewModel.instance.logout()
             dismissViewControllerAnimated(true, completion: nil)
+        case feedbackCell:
+            WebViewPopup.open(Link(string: "https://github.com/seanchas116/StarCat/issues/new")!, on: self)
+        case sourceCodeCell:
+            WebViewPopup.open(Link(string: "https://github.com/seanchas116/StarCat")!, on: self)
+        default:
+            break
         }
     }
 }
