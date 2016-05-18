@@ -24,10 +24,10 @@ class Pagination<T> {
     }
     
     func fetchMore() -> Promise<Void> {
+        self.page += 1
         return self.fetch(self.page).then { events -> Void in
             if events.count > 0 {
                 self.items.value += events
-                self.page += 1
             } else {
                 self.canFetchMore = false
             }
