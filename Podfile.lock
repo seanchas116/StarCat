@@ -15,17 +15,17 @@ PODS:
     - OMGHTTPURLRQ/FormURLEncode
     - OMGHTTPURLRQ/UserAgent
   - OMGHTTPURLRQ/UserAgent (3.1.1)
-  - PromiseKit (3.0.3):
-    - PromiseKit/Foundation (= 3.0.3)
-    - PromiseKit/QuartzCore (= 3.0.3)
-    - PromiseKit/UIKit (= 3.0.3)
-  - PromiseKit/CorePromise (3.0.3)
-  - PromiseKit/Foundation (3.0.3):
+  - PromiseKit (3.1.1):
+    - PromiseKit/Foundation (= 3.1.1)
+    - PromiseKit/QuartzCore (= 3.1.1)
+    - PromiseKit/UIKit (= 3.1.1)
+  - PromiseKit/CorePromise (3.1.1)
+  - PromiseKit/Foundation (3.1.1):
     - OMGHTTPURLRQ (~> 3.1.0)
     - PromiseKit/CorePromise
-  - PromiseKit/QuartzCore (3.0.3):
+  - PromiseKit/QuartzCore (3.1.1):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (3.0.3):
+  - PromiseKit/UIKit (3.1.1):
     - PromiseKit/CorePromise
   - Quick (0.9.1)
   - Regex (0.3.0)
@@ -85,7 +85,7 @@ SPEC CHECKSUMS:
   Nimble: 79d40f4d69d47314229bbabacaa02b8838c779b9
   OctoKit.swift: dcd06e18fd5374055cbfb673d2e1a9c1c1505dfc
   OMGHTTPURLRQ: 633f98ee745aeda02345935a52eec1784cddb589
-  PromiseKit: 00ec2a219bf5ad2833f95977698e921932b8dfd3
+  PromiseKit: 4e8127c22a9b29d1b44958ab2ec762ea6115cbfb
   Quick: a5221fc21788b6aeda934805e68b061839bc3165
   Regex: 6bfb554ad7d5b1be9cfc57ab1fe2fb6cee45a344
   Result: dd3dd71af3fa2e262f1a999e14fba2c25ec14f16
