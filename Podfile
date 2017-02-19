@@ -11,7 +11,7 @@ pod 'Himotoki'
 pod 'HanekeSwift'
 pod 'SwiftDate'
 pod 'Regex'
-pod 'SVWebViewController', :head
+pod 'SVWebViewController', git: 'https://github.com/TransitApp/SVWebViewController.git'
 pod 'Wirework', git: 'https://github.com/seanchas116/Wirework.git'
 pod 'WireworkFoundation', git: 'https://github.com/seanchas116/Wirework.git'
 pod 'WireworkUIKit', git: 'https://github.com/seanchas116/Wirework.git'
