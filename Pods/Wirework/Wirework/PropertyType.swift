@@ -1,7 +1,7 @@
 import Foundation
 
 public protocol PropertyType {
-    typealias Value
+    associatedtype Value
     var changed: Signal<Value> { get }
     var value: Value { get }
 }

@@ -20,7 +20,7 @@ class WWGestureRecognizerTarget: NSObject {
         _recognizer = recognizer
         _callback = callback
         super.init()
-        recognizer.addTarget(self, action: Selector("action"))
+        recognizer.addTarget(self, action: #selector(WWGestureRecognizerTarget.action))
     }
     
     func action() {

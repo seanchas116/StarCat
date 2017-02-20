@@ -3,6 +3,7 @@
 </p>
 
 UIColor+Hex, now Swift.
+[![Build Status](https://travis-ci.org/yeahdongcn/UIColor-Hex-Swift.svg?branch=Swift-2.3)](https://travis-ci.org/yeahdongcn/UIColor-Hex-Swift) 
 =================
 Convenience method for creating autoreleased color using RGBA hex string.
 
@@ -25,7 +26,7 @@ Simply add the following lines to your `Podfile`:
 # required by CocoaPods 0.36.0.rc.1 for Swift Pods
 use_frameworks! 
 
-pod 'UIColor_Hex_Swift', '~> 1.9'
+pod 'UIColor_Hex_Swift', '~> 2.1'
 ```
 
 Then import it where you use it:
@@ -40,7 +41,7 @@ import UIColor_Hex_Swift
 Simply add the following line to your `Cartfile`:
 
 ```ruby
-github "yeahdongcn/UIColor-Hex-Swift" >= 1.9
+github "yeahdongcn/UIColor-Hex-Swift" >= 2.1
 ```
 =================
 See more in [RSBarcodes_Swift](https://github.com/yeahdongcn/RSBarcodes_Swift) and [objc version](https://github.com/yeahdongcn/RSBarcodes) 

@@ -9,7 +9,7 @@ public class Subscriber<T> {
 }
 
 public protocol SignalType {
-    typealias Value
+    associatedtype Value
     
     func addSubscriber(subscriber: Subscriber<Value>)
     func removeSubscriber(subscriber: Subscriber<Value>)

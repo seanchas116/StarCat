@@ -13,7 +13,7 @@ class WWControlTarget: NSObject {
         _control = control
         _callback = callback
         super.init()
-        control.addTarget(self, action: Selector("action"), forControlEvents: events)
+        control.addTarget(self, action: #selector(WWControlTarget.action), forControlEvents: events)
     }
     
     func action() {

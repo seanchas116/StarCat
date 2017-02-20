@@ -9,14 +9,8 @@
 import class Foundation.NSNumber
 
 extension NSNumber: Decodable {
-    public static func decode(e: Extractor) throws -> NSNumber {
+    public static func decode(e: Extractor) throws -> Self {
         return try castOrFail(e)
-    }
-}
-
-extension UInt: Decodable {
-    public static func decode(e: Extractor) throws -> UInt {
-        return try NSNumber.decode(e).unsignedLongValue
     }
 }
 

@@ -8,16 +8,28 @@
 
 import Foundation
 
+#if os(Linux)
+    public typealias AnyJSON = Any
+#else
+    public typealias AnyJSON = AnyObject
+#endif
+
 public struct Extractor {
-    public let rawValue: AnyObject
+    public let rawValue: AnyJSON
     private let isDictionary: Bool
 
-    internal init(_ rawValue: AnyObject) {
+    internal init(_ rawValue: AnyJSON) {
         self.rawValue = rawValue
-        self.isDictionary = rawValue is NSDictionary
+        #if os(Linux)
+            self.isDictionary = rawValue is [String: AnyJSON]
+        #else
+            self.isDictionary = rawValue is NSDictionary
+        #endif
     }
 
-    private func rawValue(keyPath: KeyPath) throws -> AnyObject? {
+    // If we use `rawValue` here, that would conflict with `let rawValue: AnyJSON`
+    // on Linux. This naming is avoiding the weird case.
+    private func _rawValue(keyPath: KeyPath) throws -> AnyJSON? {
         guard isDictionary else {
             throw typeMismatch("Dictionary", actual: rawValue, keyPath: keyPath)
         }
@@ -26,23 +38,23 @@ public struct Extractor {
         return valueFor(components, rawValue)
     }
 
-    /// - Throws: DecodeError
-    public func value<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> T {
-        guard let rawValue = try rawValue(keyPath) else {
+    /// - Throws: DecodeError or an arbitrary ErrorType
+    public func value<T: Decodable>(keyPath: KeyPath) throws -> T {
+        guard let rawValue = try _rawValue(keyPath) else {
             throw DecodeError.MissingKeyPath(keyPath)
         }
 
         do {
-            return try decode(rawValue)
+            return try T.decodeValue(rawValue)
         } catch let DecodeError.MissingKeyPath(missing) {
             throw DecodeError.MissingKeyPath(keyPath + missing)
-        } catch let DecodeError.TypeMismatch(expected, actual, _) {
-            throw DecodeError.TypeMismatch(expected: expected, actual: actual, keyPath: keyPath)
+        } catch let DecodeError.TypeMismatch(expected, actual, mismatched) {
+            throw DecodeError.TypeMismatch(expected: expected, actual: actual, keyPath: keyPath + mismatched)
         }
     }
 
-    /// - Throws: DecodeError
-    public func valueOptional<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> T? {
+    /// - Throws: DecodeError or an arbitrary ErrorType
+    public func valueOptional<T: Decodable>(keyPath: KeyPath) throws -> T? {
         do {
             return try value(keyPath) as T
         } catch let DecodeError.MissingKeyPath(missing) where missing == keyPath {
@@ -50,8 +62,8 @@ public struct Extractor {
         }
     }
 
-    /// - Throws: DecodeError
-    public func array<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> [T] {
+    /// - Throws: DecodeError or an arbitrary ErrorType
+    public func array<T: Decodable>(keyPath: KeyPath) throws -> [T] {
         guard let array: [T] = try arrayOptional(keyPath) else {
             throw DecodeError.MissingKeyPath(keyPath)
         }
@@ -59,13 +71,13 @@ public struct Extractor {
         return array
     }
 
-    /// - Throws: DecodeError
-    public func arrayOptional<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> [T]? {
-        return try rawValue(keyPath).map(decodeArray)
+    /// - Throws: DecodeError or an arbitrary ErrorType
+    public func arrayOptional<T: Decodable>(keyPath: KeyPath) throws -> [T]? {
+        return try _rawValue(keyPath).map([T].decode)
     }
 
-    /// - Throws: DecodeError
-    public func dictionary<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> [String: T] {
+    /// - Throws: DecodeError or an arbitrary ErrorType
+    public func dictionary<T: Decodable>(keyPath: KeyPath) throws -> [String: T] {
         guard let dictionary: [String: T] = try dictionaryOptional(keyPath) else {
             throw DecodeError.MissingKeyPath(keyPath)
         }
@@ -73,9 +85,9 @@ public struct Extractor {
         return dictionary
     }
 
-    /// - Throws: DecodeError
-    public func dictionaryOptional<T: Decodable where T.DecodedType == T>(keyPath: KeyPath) throws -> [String: T]? {
-        return try rawValue(keyPath).map(decodeDictionary)
+    /// - Throws: DecodeError or an arbitrary ErrorType
+    public func dictionaryOptional<T: Decodable>(keyPath: KeyPath) throws -> [String: T]? {
+        return try _rawValue(keyPath).map([String: T].decode)
     }
 }
 
@@ -95,17 +107,17 @@ extension Extractor: CustomStringConvertible {
 //
 // `ArraySlice` is used for performance optimization.
 // See https://gist.github.com/norio-nomura/d9ec7212f2cfde3fb662.
-private func valueFor<C: CollectionType where C.Generator.Element == String, C.SubSequence == C>(keyPathComponents: C, _ object: AnyObject) -> AnyObject? {
+private func valueFor<C: CollectionType where C.Generator.Element == String, C.SubSequence == C>(keyPathComponents: C, _ JSON: AnyJSON) -> AnyJSON? {
     #if os(Linux)
     guard let
         first = keyPathComponents.first,
-        let nativeDict = object as? [String: AnyObject],
+        let nativeDict = JSON as? [String: AnyJSON],
         case let nested? = nativeDict[first] where !(nested is NSNull) else
     {
         return nil
     }
     #else
-    guard let first = keyPathComponents.first, case let nested?? = object[first] where !(nested is NSNull) else {
+    guard let first = keyPathComponents.first, case let nested?? = JSON[first] where !(nested is NSNull) else {
         return nil
     }
     #endif
