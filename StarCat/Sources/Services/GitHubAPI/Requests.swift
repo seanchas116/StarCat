@@ -55,14 +55,15 @@ extension GitHubRequest {
     var method: HTTPMethod {
         return .get
     }
-    func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+    func intercept(urlRequest: URLRequest) throws -> URLRequest {
+        var newRequest = urlRequest
         if let token = Authentication.accessToken {
-            URLRequest.setValue("token \(token.token)", forHTTPHeaderField: "Authorization")
+            newRequest.setValue("token \(token.token)", forHTTPHeaderField: "Authorization")
         }
         if let contentLength = self.contentLength {
-            URLRequest.setValue("\(contentLength)", forHTTPHeaderField: "Content-Length")
+            newRequest.setValue("\(contentLength)", forHTTPHeaderField: "Content-Length")
         }
-        return URLRequest
+        return newRequest
     }
 }
 

@@ -76,14 +76,14 @@ class TableViewPaginator<T> {
     
     func refresh() {
         loading.value = true
-        pagination.refresh().always {
+        pagination.refresh().catch { print($0) }.always {
             self.loading.value = false
         }
     }
     
     func fetch() {
         loading.value = true
-        pagination.fetchAndReset().always {
+        pagination.fetchAndReset().catch { print($0) }.always {
             self.loading.value = false
         }
     }
@@ -93,7 +93,7 @@ class TableViewPaginator<T> {
             return
         }
         loadingMore.value = true
-        pagination.fetchMore().always {
+        pagination.fetchMore().catch { print($0) }.always {
             self.loadingMore.value = false
         }
     }
