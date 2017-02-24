@@ -14,6 +14,7 @@ pod 'Wirework', git: 'https://github.com/seanchas116/Wirework.git'
 pod 'WireworkFoundation', git: 'https://github.com/seanchas116/Wirework.git'
 pod 'WireworkUIKit', git: 'https://github.com/seanchas116/Wirework.git'
 pod 'UIColor_Hex_Swift'
+pod 'Kingfisher'
 
 target 'StarCat' do
 end

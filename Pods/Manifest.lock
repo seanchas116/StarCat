@@ -3,6 +3,7 @@ PODS:
     - Result (~> 3.0)
   - Himotoki (3.0.1)
   - KeychainAccess (3.0.1)
+  - Kingfisher (3.5.0)
   - NBNRequestKit (2.0.1)
   - Nimble (4.1.0)
   - OctoKit.swift (0.7.2):
@@ -34,6 +35,7 @@ DEPENDENCIES:
   - APIKit
   - Himotoki
   - KeychainAccess
+  - Kingfisher
   - Nimble (~> 4.1.0)
   - OctoKit.swift
   - PromiseKit
@@ -73,6 +75,7 @@ SPEC CHECKSUMS:
   APIKit: 7460983f490d3bde6aaaaa4164d18c9865a6f91d
   Himotoki: 85fda41d4d0e14f7228317a3b474175cdfb8f515
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
+  Kingfisher: 7c62087039d93d26c54c8dd9b0b588d2ce55cef6
   NBNRequestKit: af7f7ee45acff510138b63becd830501eea36e5d
   Nimble: 97a0a4cae5124c117115634b2d055d8c97d0af19
   OctoKit.swift: 5cf2ea7bff7b8027e05f277bdcdfda22a91ef616
@@ -86,6 +89,6 @@ SPEC CHECKSUMS:
   WireworkFoundation: d27c0faf31a88fd5902c70fb408096e7a947350d
   WireworkUIKit: d01bbafbeea0a4e01da12efceb5b71992e7a4783
 
-PODFILE CHECKSUM: a1272996455899384457b9939d5c273632e8397d
+PODFILE CHECKSUM: '0592b055a188e23713b1a3ee1a59f06fe9f9042b'
 
 COCOAPODS: 1.2.0
