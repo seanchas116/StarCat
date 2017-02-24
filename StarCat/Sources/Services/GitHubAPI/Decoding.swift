@@ -30,7 +30,7 @@ extension Link: Decodable {
 extension Date: Decodable {
     public static func decode(_ e: Extractor) throws -> Date {
         let str = try String.decode(e)
-        let date = try DateInRegion(string: str, format: DateFormat.iso8601(options: .withFullDate))
+        let date = try DateInRegion(string: str, format: .iso8601(options: [.withFullDate, .withFullTime]))
         return date.absoluteDate
     }
 }

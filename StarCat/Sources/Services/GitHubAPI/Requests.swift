@@ -28,7 +28,7 @@ struct GetAccessTokenRequest: Request {
     var method: HTTPMethod {
         return .post
     }
-    var parameters: [String : Any] {
+    var parameters: Any? {
         return [
             "client_id": Secrets.githubClientID,
             "client_secret": Secrets.githubClientSecret,
@@ -36,12 +36,8 @@ struct GetAccessTokenRequest: Request {
         ]
     }
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> AccessToken {
-        do {
-            let token: AccessToken = try decodeValue(object)
-            return token
-        } catch {
-            throw "Error parsing response: \(error)"
-        }
+        let token: AccessToken = try decodeValue(object)
+        return token
     }
 }
 
@@ -75,16 +71,12 @@ struct GetUserEventsRequest: GitHubRequest {
     var path: String {
         return "/users/\(userName)/received_events"
     }
-    var parameters: [String : Any]? {
+    var parameters: Any? {
         return ["page": page]
     }
     
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Array<Event> {
-        do {
-            return try decodeArray(object)
-        } catch {
-            throw "Error parsing response: \(error)"
-        }
+        return try decodeArray(object)
     }
 }
 
@@ -95,7 +87,7 @@ struct GetUserStarsCountRequest: GitHubRequest {
     var path: String {
         return "/users/\(userName)/starred"
     }
-    var parameters: [String : Any]? {
+    var parameters: Any? {
         return ["per_page": 1]
     }
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Int {
@@ -120,15 +112,11 @@ struct GetUserStarsRequest: GitHubRequest {
     var path: String {
         return "/users/\(userName)/starred"
     }
-    var parameters: [String : Any]? {
+    var parameters: Any? {
         return ["page": page, "per_page": perPage]
     }
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Array<Repo> {
-        do {
-            return try decodeArray(object)
-        } catch {
-            throw "Error parsing response: \(error)"
-        }
+        return try decodeArray(object)
     }
 }
 
@@ -141,12 +129,8 @@ struct GetRepoRequest: GitHubRequest {
     }
     
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Repo {
-        do {
-            let repo: Repo = try decodeValue(object)
-            return repo
-        } catch {
-            throw "Error parsing response: \(error)"
-        }
+        let repo: Repo = try decodeValue(object)
+        return repo
     }
 }
 
@@ -159,12 +143,8 @@ struct GetUserRequest: GitHubRequest {
     }
     
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> User {
-        do {
-            let user: User = try decodeValue(object)
-            return user
-        } catch {
-            throw "Error parsing response: \(error)"
-        }
+        let user: User = try decodeValue(object)
+        return user
     }
 }
 
@@ -175,7 +155,7 @@ struct GetMembersRequest: GitHubRequest {
     let perPage: Int
     let page: Int
     
-    var parameters: [String : Any]? {
+    var parameters: Any? {
         return ["per_page": perPage, "page": page]
     }
     
@@ -184,11 +164,7 @@ struct GetMembersRequest: GitHubRequest {
     }
     
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Array<UserSummary> {
-        do {
-            return try decodeArray(object)
-        } catch {
-            throw "Error parsing response: \(error)"
-        }
+        return try decodeArray(object)
     }
 }
 
@@ -200,12 +176,8 @@ struct GetCurrentUserRequest: GitHubRequest {
     }
     
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> User {
-        do {
-            let user: User = try decodeValue(object)
-            return user
-        } catch {
-            throw "Error parsing response: \(error)"
-        }
+        let user: User = try decodeValue(object)
+        return user
     }
 }
 
@@ -215,7 +187,7 @@ struct GetFollowersRequest: GitHubRequest {
     let perPage: Int
     let page: Int
     
-    var parameters: [String : Any]? {
+    var parameters: Any? {
         return ["per_page": perPage, "page": page]
     }
     
@@ -223,12 +195,8 @@ struct GetFollowersRequest: GitHubRequest {
         return "/users/\(userName)/followers"
     }
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Array<UserSummary> {
-        do {
-            let users: [UserSummary] = try decodeArray(object)
-            return users
-        } catch {
-            throw "Error parsing response: \(error)"
-        }
+        let users: [UserSummary] = try decodeArray(object)
+        return users
     }
 }
 
@@ -238,7 +206,7 @@ struct GetFollowingRequest: GitHubRequest {
     let perPage: Int
     let page: Int
     
-    var parameters: [String : Any]? {
+    var parameters: Any? {
         return ["per_page": perPage, "page": page]
     }
     
@@ -246,12 +214,8 @@ struct GetFollowingRequest: GitHubRequest {
         return "/users/\(userName)/following"
     }
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Array<UserSummary> {
-        do {
-            let users: [UserSummary] = try decodeArray(object)
-            return users
-        } catch {
-            throw "Error parsing response: \(error)"
-        }
+        let users: [UserSummary] = try decodeArray(object)
+        return users
     }
 }
 
@@ -296,12 +260,8 @@ struct GetDirectoryRequest: GitHubRequest {
     }
     
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
-        do {
-            let files: [File] = try decodeArray(object)
-            return files
-        } catch {
-            throw "Error parsing response: \(error)"
-        }
+        let files: [File] = try decodeArray(object)
+        return files
     }
 }
 
@@ -316,12 +276,8 @@ struct GetFileContentRequest: GitHubRequest {
     }
     
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
-        do {
-            let file: FileContent = try decodeValue(object)
-            return file
-        } catch {
-            throw "Error parsing response: \(error)"
-        }
+        let file: FileContent = try decodeValue(object)
+        return file
     }
 }
 
@@ -373,17 +329,13 @@ struct SearchRepoRequest: GitHubRequest {
         return "/search/repositories"
     }
     
-    var parameters: [String : Any]? {
+    var parameters: Any? {
         return ["q": query, "sort": sort.string, "per_page": perPage, "page": page]
     }
     
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Array<Repo> {
-        do {
-            let response: SearchRepoResponse = try decodeValue(object)
-            return response.items
-        } catch {
-            throw "Error parsing response: \(error)"
-        }
+        let response: SearchRepoResponse = try decodeValue(object)
+        return response.items
     }
 }
 
