@@ -8,67 +8,67 @@
 
 import Foundation
 
-public class Signal<T>: SignalType {
+open class Signal<T>: SignalType {
     #if MONITOR_RESOURCES
     private let _resourceMonitor = ResourceMonitor("Signal")
     #endif
     
     public typealias Value = T
     
-    public var subscribersCount: Int {
+    open var subscribersCount: Int {
         fatalError("not implemented")
     }
     
-    public func addSubscriber(subscriber: Subscriber<Value>) {
+    open func addSubscriber(_ subscriber: Subscriber<Value>) {
         fatalError("not implemented")
     }
     
-    public func removeSubscriber(subscriber: Subscriber<Value>) {
+    open func removeSubscriber(_ subscriber: Subscriber<Value>) {
         fatalError("not implemented")
     }
 }
 
-public class Event<T>: Signal<T> {
+open class Event<T>: Signal<T> {
     public typealias Value = T
     
-    private var _subscribers = [Subscriber<Value>]()
+    fileprivate var _subscribers = [Subscriber<Value>]()
     
     public override init() {
     }
     
-    public override var subscribersCount: Int {
+    open override var subscribersCount: Int {
         return _subscribers.count
     }
     
-    public func emit(value: T) {
+    open func emit(_ value: T) {
         for subscriber in _subscribers {
             subscriber.callback(value)
         }
     }
     
-    public override func addSubscriber(subscriber: Subscriber<Value>) {
+    open override func addSubscriber(_ subscriber: Subscriber<Value>) {
         _subscribers.append(subscriber)
     }
     
-    public override func removeSubscriber(subscriber: Subscriber<Value>) {
+    open override func removeSubscriber(_ subscriber: Subscriber<Value>) {
         _subscribers = _subscribers.filter { $0 !== subscriber }
     }
 }
 
-public class EventWithBag<T>: Event<T> {
-    public let bag = SubscriptionBag()
+open class EventWithBag<T>: Event<T> {
+    open let bag = SubscriptionBag()
 }
 
-public func createSignal<T>(subscribe: (SubscriptionBag, (T) -> Void) -> Void) -> Signal<T> {
+public func createSignal<T>(_ subscribe: @escaping (SubscriptionBag, @escaping (T) -> Void) -> Void) -> Signal<T> {
     return AdapterSignal(subscribe)
 }
 
 private class AdapterSignal<T>: Signal<T> {
-    private let _subscribe: (SubscriptionBag, (T) -> Void) -> Void
-    private var _bag = SubscriptionBag()
-    private let _event = Event<T>()
+    fileprivate let _subscribe: (SubscriptionBag, @escaping (T) -> Void) -> Void
+    fileprivate var _bag = SubscriptionBag()
+    fileprivate let _event = Event<T>()
     
-    init(_ subscribe: (SubscriptionBag, (T) -> Void) -> Void) {
+    init(_ subscribe: @escaping (SubscriptionBag, @escaping (T) -> Void) -> Void) {
         _subscribe = subscribe
     }
     
@@ -76,14 +76,14 @@ private class AdapterSignal<T>: Signal<T> {
         return _event.subscribersCount
     }
     
-    override func addSubscriber(subscriber: Subscriber<Value>) {
+    override func addSubscriber(_ subscriber: Subscriber<Value>) {
         _event.addSubscriber(subscriber)
         if _event.subscribersCount == 1 {
             _subscribe(_bag) { [weak self] in self?._event.emit($0) }
         }
     }
     
-    override func removeSubscriber(subscriber: Subscriber<Value>) {
+    override func removeSubscriber(_ subscriber: Subscriber<Value>) {
         _event.removeSubscriber(subscriber)
         if _event.subscribersCount == 0 {
             _bag = SubscriptionBag()

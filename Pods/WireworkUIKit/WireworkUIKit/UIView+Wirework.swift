@@ -23,13 +23,13 @@ extension UIView {
     
     public var wwHidden: (Bool) -> Void {
         return { [weak self] in
-            self?.hidden = $0
+            self?.isHidden = $0
         }
     }
     
     public var wwUserInteractionEnabled: (Bool) -> Void {
         return { [weak self] in
-            self?.userInteractionEnabled = $0
+            self?.isUserInteractionEnabled = $0
         }
     }
     

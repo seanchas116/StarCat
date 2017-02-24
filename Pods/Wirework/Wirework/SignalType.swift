@@ -1,9 +1,9 @@
 import Foundation
 
-public class Subscriber<T> {
+open class Subscriber<T> {
     let callback: (T) -> Void
     
-    init(callback: (T -> Void)) {
+    init(callback: @escaping ((T) -> Void)) {
         self.callback = callback
     }
 }
@@ -11,14 +11,14 @@ public class Subscriber<T> {
 public protocol SignalType {
     associatedtype Value
     
-    func addSubscriber(subscriber: Subscriber<Value>)
-    func removeSubscriber(subscriber: Subscriber<Value>)
+    func addSubscriber(_ subscriber: Subscriber<Value>)
+    func removeSubscriber(_ subscriber: Subscriber<Value>)
 }
 
 extension SignalType {
     
-    @warn_unused_result(message="Subscription must be stored in SubscriptionBag to keep it alive")
-    public func subscribe(callback: (Value) -> Void) -> Subscription {
+    
+    public func subscribe(_ callback: @escaping (Value) -> Void) -> Subscription {
         let subscriber = Subscriber(callback: callback)
         addSubscriber(subscriber)
         return Subscription {
@@ -26,7 +26,7 @@ extension SignalType {
         }
     }
     
-    public func map<T>(transform: (Value) -> T) -> Signal<T> {
+    public func map<T>(_ transform: @escaping (Value) -> T) -> Signal<T> {
         return createSignal { bag, emit in
             self.subscribe { value in
                 emit(transform(value))
@@ -34,7 +34,7 @@ extension SignalType {
         }
     }
     
-    public func mapAsync<T>(transform: (Value, (T) -> Void) -> Void) -> Signal<T> {
+    public func mapAsync<T>(_ transform: @escaping (Value, (T) -> Void) -> Void) -> Signal<T> {
         let event = EventWithBag<T>()
         subscribe { [weak event] value in
             transform(value) { event?.emit($0) }
@@ -42,7 +42,7 @@ extension SignalType {
         return event
     }
     
-    public func filter(predicate: (Value) -> Bool) -> Signal<Value> {
+    public func filter(_ predicate: @escaping (Value) -> Bool) -> Signal<Value> {
         return createSignal { bag, emit in
             self.subscribe { value in
                 if predicate(value) {
@@ -57,14 +57,14 @@ extension SignalType {
     }
 }
 
-public func merge<T: SignalType, U: SignalType where T.Value == U.Value>(s1: T, _ s2: U) -> Signal<T.Value> {
+public func merge<T: SignalType, U: SignalType>(_ s1: T, _ s2: U) -> Signal<T.Value> where T.Value == U.Value {
     return createSignal { bag, emit in
         s1.subscribe { emit($0) }.addTo(bag)
         s2.subscribe { emit($0) }.addTo(bag)
     }
 }
 
-public func merge<T: SignalType, U: SignalType, V: SignalType where T.Value == U.Value, U.Value == V.Value>(s1: T, _ s2: U, _ s3: V) -> Signal<T.Value> {
+public func merge<T: SignalType, U: SignalType, V: SignalType>(_ s1: T, _ s2: U, _ s3: V) -> Signal<T.Value> where T.Value == U.Value, U.Value == V.Value {
     return createSignal { bag, emit in
         s1.subscribe { emit($0) }.addTo(bag)
         s2.subscribe { emit($0) }.addTo(bag)

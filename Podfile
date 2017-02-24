@@ -4,19 +4,17 @@
 use_frameworks!
 swift_version = "2.3"
 
-pod 'KeychainAccess', '~> 2.4'
-pod 'OctoKit.swift', '~> 0.6.3'
-pod 'PromiseKit', '~> 3.5'
-pod 'APIKit', '~> 2.0'
-pod 'Himotoki', '~> 2.1'
-pod 'HanekeSwift', git: 'https://github.com/Haneke/HanekeSwift.git'
+pod 'KeychainAccess'
+pod 'OctoKit.swift'
+pod 'PromiseKit'
+pod 'APIKit'
+pod 'Himotoki'
 pod 'SwiftDate', git: 'https://github.com/malcommac/SwiftDate.git', branch: 'feature/swift_23'
-pod 'Regex', '~> 0.3.0'
 pod 'SVWebViewController', git: 'https://github.com/TransitApp/SVWebViewController.git'
 pod 'Wirework', git: 'https://github.com/seanchas116/Wirework.git'
 pod 'WireworkFoundation', git: 'https://github.com/seanchas116/Wirework.git'
 pod 'WireworkUIKit', git: 'https://github.com/seanchas116/Wirework.git'
-pod 'UIColor_Hex_Swift', '~> 2.3'
+pod 'UIColor_Hex_Swift'
 
 target 'StarCat' do
 end

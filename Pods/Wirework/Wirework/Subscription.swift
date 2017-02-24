@@ -1,18 +1,18 @@
 import Foundation
 
-public class Subscription {
-    private let _unsubscribe: () -> Void
+open class Subscription {
+    fileprivate let _unsubscribe: () -> Void
     
-    public init(unsubscribe: () -> Void) {
+    public init(unsubscribe: @escaping () -> Void) {
         _unsubscribe = unsubscribe
     }
     
-    public func unsubscribe() {
+    open func unsubscribe() {
         _unsubscribe()
     }
 }
 
-private func unused<T>(x: T) {}
+private func unused<T>(_ x: T) {}
 
 extension Subscription {
     public convenience init(object: AnyObject) {
@@ -23,7 +23,7 @@ extension Subscription {
         }
     }
     
-    public func addTo(bag: SubscriptionBag) {
+    public func addTo(_ bag: SubscriptionBag) {
         bag.add(self)
     }
 }
@@ -38,17 +38,17 @@ public func ==(left: Subscription, right: Subscription) -> Bool {
     return ObjectIdentifier(left) == ObjectIdentifier(right)
 }
 
-public class SubscriptionBag {
-    private var _subscriptions = Set<Subscription>()
+open class SubscriptionBag {
+    fileprivate var _subscriptions = Set<Subscription>()
     
     public init() {
     }
     
-    public func add(subscription: Subscription) {
+    open func add(_ subscription: Subscription) {
         _subscriptions.insert(subscription)
     }
     
-    public func remove(subscription: Subscription) {
+    open func remove(_ subscription: Subscription) {
         _subscriptions.remove(subscription)
     }
     

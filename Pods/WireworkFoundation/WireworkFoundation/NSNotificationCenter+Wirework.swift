@@ -9,10 +9,10 @@
 import Foundation
 import Wirework
 
-extension NSNotificationCenter {
-    public func wwNotification(name: String, object: AnyObject? = nil) -> Signal<NSNotification> {
+extension NotificationCenter {
+    public func wwNotification(_ name: Notification.Name, object: AnyObject? = nil) -> Signal<Notification> {
         return createSignal { bag, emit in
-            let observer = self.addObserverForName(name, object: object, queue: nil, usingBlock: {
+            let observer = self.addObserver(forName: name, object: object, queue: nil, using: {
                 emit($0)
             })
             Subscription {

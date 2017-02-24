@@ -23,7 +23,7 @@ extension UIBarItem {
     
     public var wwEnabled: (Bool) -> Void {
         return { [weak self] in
-            self?.enabled = $0
+            self?.isEnabled = $0
         }
     }
 }

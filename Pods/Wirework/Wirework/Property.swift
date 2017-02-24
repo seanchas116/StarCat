@@ -1,36 +1,36 @@
 import Foundation
 
-public class Property<T>: PropertyType {
+open class Property<T>: PropertyType {
     #if MONITOR_RESOURCES
     private let _resourceMonitor = ResourceMonitor("Property")
     #endif
     
     public typealias Value = T
     
-    public var changed: Signal<T> {
+    open var changed: Signal<T> {
         fatalError("not implemented")
     }
-    public var value: Value {
+    open var value: Value {
         fatalError("not implemented")
     }
 }
 
-public class MutableProperty<T>: Property<T>, MutablePropertyType {
-    public override var value: Value {
+open class MutableProperty<T>: Property<T>, MutablePropertyType {
+    open override var value: Value {
         get { fatalError("not implemented") }
         set { fatalError("not implemented") }
     }
 }
 
-public class Variable<T>: MutableProperty<T> {
-    private var _value: Value
-    private let _changed = Event<T>()
+open class Variable<T>: MutableProperty<T> {
+    fileprivate var _value: Value
+    fileprivate let _changed = Event<T>()
     
-    public override var changed: Signal<T> {
+    open override var changed: Signal<T> {
         return _changed
     }
     
-    public override var value: Value {
+    open override var value: Value {
         get { return _value }
         set {
             _value = newValue
@@ -44,19 +44,19 @@ public class Variable<T>: MutableProperty<T> {
 }
 
 
-public func createProperty<T>(changedSignal: Signal<T>, getValue: () -> T) -> Property<T> {
+public func createProperty<T>(_ changedSignal: Signal<T>, getValue: @escaping () -> T) -> Property<T> {
     return AdapterProperty(changedSignal, getValue)
 }
 
-public func createProperty<T>(changedSignal: Signal<Void>, getValue: () -> T) -> Property<T> {
+public func createProperty<T>(_ changedSignal: Signal<Void>, getValue: @escaping () -> T) -> Property<T> {
     return AdapterProperty(changedSignal.map(getValue), getValue)
 }
 
 private class AdapterProperty<T>: Property<T> {
-    private let _getValue: () -> T
-    private let _changed: Signal<T>
+    fileprivate let _getValue: () -> T
+    fileprivate let _changed: Signal<T>
     
-    init(_ changed: Signal<T>, _ getValue: () -> T) {
+    init(_ changed: Signal<T>, _ getValue: @escaping () -> T) {
         _getValue = getValue
         _changed = changed
     }
@@ -70,20 +70,20 @@ private class AdapterProperty<T>: Property<T> {
     }
 }
 
-public func createMutableProperty<T>(changedSignal: Signal<T>, getValue: () -> T, setValue: (T) -> Void) -> MutableProperty<T> {
+public func createMutableProperty<T>(_ changedSignal: Signal<T>, getValue: @escaping () -> T, setValue: @escaping (T) -> Void) -> MutableProperty<T> {
     return AdapterMutableProperty(changedSignal, getValue, setValue)
 }
 
-public func createMutableProperty<T>(changedSignal: Signal<Void>, getValue: () -> T, setValue: (T) -> Void) -> MutableProperty<T> {
+public func createMutableProperty<T>(_ changedSignal: Signal<Void>, getValue: @escaping () -> T, setValue: @escaping (T) -> Void) -> MutableProperty<T> {
     return AdapterMutableProperty(changedSignal.map(getValue), getValue, setValue)
 }
 
 private class AdapterMutableProperty<T>: MutableProperty<T> {
-    private let _getValue: () -> T
-    private let _setValue: (T) -> Void
-    private let _changed: Signal<T>
+    fileprivate let _getValue: () -> T
+    fileprivate let _setValue: (T) -> Void
+    fileprivate let _changed: Signal<T>
     
-    init(_ changed: Signal<T>, _ getValue: () -> T, _ setValue: (T) -> Void) {
+    init(_ changed: Signal<T>, _ getValue: @escaping () -> T, _ setValue: @escaping (T) -> Void) {
         _getValue = getValue
         _setValue = setValue
         _changed = changed

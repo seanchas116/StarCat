@@ -16,7 +16,7 @@ class WWGestureRecognizerTarget: NSObject {
     private let _resourceMonitor = ResourceMonitor("WWGestureRecognizerTarget")
     #endif
     
-    init(recognizer: UIGestureRecognizer, callback: () -> Void) {
+    init(recognizer: UIGestureRecognizer, callback: @escaping () -> Void) {
         _recognizer = recognizer
         _callback = callback
         super.init()

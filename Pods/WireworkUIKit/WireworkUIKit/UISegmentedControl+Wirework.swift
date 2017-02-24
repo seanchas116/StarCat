@@ -17,6 +17,6 @@ extension UISegmentedControl {
     }
     
     public var wwSelectedSegmentIndexChanged: Signal<Int> {
-        return wwControlEvent(.ValueChanged).map { [weak self] _ in self?.selectedSegmentIndex ?? 0 }
+        return wwControlEvent(.valueChanged).map { [weak self] _ in self?.selectedSegmentIndex ?? 0 }
     }
 }

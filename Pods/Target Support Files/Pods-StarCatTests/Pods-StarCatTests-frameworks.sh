@@ -90,14 +90,11 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/APIKit/APIKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/HanekeSwift/Haneke.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Himotoki/Himotoki.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KeychainAccess/KeychainAccess.framework"
   install_framework "$BUILT_PRODUCTS_DIR/NBNRequestKit/RequestKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/OMGHTTPURLRQ/OMGHTTPURLRQ.framework"
   install_framework "$BUILT_PRODUCTS_DIR/OctoKit.swift/Octokit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/PromiseKit/PromiseKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Regex/Regex.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Result/Result.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SVWebViewController/SVWebViewController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftDate/SwiftDate.framework"
@@ -110,14 +107,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/APIKit/APIKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/HanekeSwift/Haneke.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Himotoki/Himotoki.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KeychainAccess/KeychainAccess.framework"
   install_framework "$BUILT_PRODUCTS_DIR/NBNRequestKit/RequestKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/OMGHTTPURLRQ/OMGHTTPURLRQ.framework"
   install_framework "$BUILT_PRODUCTS_DIR/OctoKit.swift/Octokit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/PromiseKit/PromiseKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Regex/Regex.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Result/Result.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SVWebViewController/SVWebViewController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftDate/SwiftDate.framework"

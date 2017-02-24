@@ -11,41 +11,47 @@ APIKit
 APIKit is a type-safe networking abstraction layer that associates request type with response type.
 
 ```swift
-let request = SearchRepositoriesRequest(query: "APIKit", sort: .Stars)
+// SearchRepositoriesRequest conforms to Request protocol.
+let request = SearchRepositoriesRequest(query: "swift")
 
-Session.sendRequest(request) { result in
+// Session receives an instance of a type that conforms to Request.
+Session.send(request) { result in
     switch result {
-    case .Success(let repositories):
-        // Type of `repositories` is `[Repository]`,
+    case .success(let response):
+        // Type of `response` is `[Repository]`,
         // which is inferred from `SearchRepositoriesRequest`.
-        print(repositories)
+        print(response)
 
-    case .Failure(let error):
-        print(error)
+    case .failure(let error):
+        self.printError(error)
     }
 }
 ```
 
 ## Requirements
 
-- Swift 2.2, 2.3
+- Swift 3.0
 - iOS 8.0 or later
 - Mac OS 10.10 or later
 - watchOS 2.0 or later
 - tvOS 9.0 or later
 
+If you use Swift 2.2 or 2.3, try [APIKit 2.0.5](https://github.com/ishkawa/APIKit/tree/2.0.5).
+
 ## Installation
 
 #### [Carthage](https://github.com/Carthage/Carthage)
 
-- Insert `github "ishkawa/APIKit" ~> 2.0` to your Cartfile.
+- Insert `github "ishkawa/APIKit" ~> 3.0` to your Cartfile.
 - Run `carthage update`.
-- Link your app with `APIKit.framework` and `Result.framework` in `Carthage/Checkouts`.
+- Link your app with `APIKit.framework` and `Result.framework` in `Carthage/Build`.
 
 #### [CocoaPods](https://github.com/cocoapods/cocoapods)
 
-- Insert `pod 'APIKit', '~> 2.0'` to your Podfile.
+- Insert `pod 'APIKit', '~> 3.0'` to your Podfile.
 - Run `pod install`.
+
+Note: CocoaPods 1.1.0 is required to install APIKit 3.
 
 ## Documentation
 
@@ -59,4 +65,5 @@ Session.sendRequest(request) { result in
 
 ### Migration Guides
 
+- [APIKit 3 Migration Guide](Documentation/APIKit3MigrationGuide.md)
 - [APIKit 2 Migration Guide](Documentation/APIKit2MigrationGuide.md)
