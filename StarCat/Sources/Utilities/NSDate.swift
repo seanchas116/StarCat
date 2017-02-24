@@ -12,7 +12,7 @@ import SwiftDate
 extension NSDate {
     func formatForUI(withAgo withAgo: Bool) -> String {
         if NSDate() - 1.months < self {
-            let formatted = self.toRelativeString() ?? ""
+            let formatted = self.toString(relative: true)! ?? ""
             if withAgo {
                 return formatted + " ago"
             } else {

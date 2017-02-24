@@ -28,15 +28,15 @@ struct Link {
     }
     
     init?(URL: NSURL) {
-        self.init(string: URL.absoluteString)
+        self.init(string: URL.absoluteString!)
     }
 }
 
 extension Link {
     var string: String {
-        return URL.absoluteString
+        return URL.absoluteString!
     }
     var stringWithoutScheme: String {
-        return URL.absoluteString.replaceRegex(schemePattern, with: "")
+        return URL.absoluteString!.replaceRegex(schemePattern, with: "")
     }
 }

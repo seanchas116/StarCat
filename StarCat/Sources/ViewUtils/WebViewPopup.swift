@@ -56,8 +56,8 @@ class WebViewPopup: NSObject, SFSafariViewControllerDelegate {
 }
 
 func fixURL(URL: NSURL) -> NSURL? {
-    if !URL.absoluteString.grep("^https?") {
-        return NSURL(string: "http://" + URL.absoluteString)
+    if !URL.absoluteString!.grep("^https?") {
+        return NSURL(string: "http://" + URL.absoluteString!)
     }
     return URL
 }

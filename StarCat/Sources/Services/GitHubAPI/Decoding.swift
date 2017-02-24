@@ -28,9 +28,12 @@ extension Link: Decodable {
 }
 
 extension NSDate: Decodable {
-    public static func decode(e: Extractor) throws -> NSDate {
+    public static func decode(e: Extractor) throws -> Self {
         let str = try String.decode(e)
-        return str.toDate(DateFormat.ISO8601Format(.Full)) ?? NSDate()
+        guard let date = str.toDate(DateFormat.ISO8601Format(.Full)) else {
+            throw "cannot parse date"
+        }
+        return try castOrFail(date)
     }
 }
 
