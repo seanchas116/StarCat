@@ -2,7 +2,6 @@
 # platform :ios, '8.0'
 # Uncomment this line if you're using Swift
 use_frameworks!
-swift_version = "2.3"
 
 pod 'KeychainAccess'
 pod 'OctoKit.swift'
