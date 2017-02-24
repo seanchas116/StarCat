@@ -14,7 +14,7 @@ import WireworkUIKit
 class TableViewPaginator<T> {
     let tableView: UITableView
     let refreshControl = UIRefreshControl()
-    let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+    let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     let pagination: Pagination<T>
     var initialized = false
     let loading = Variable(false)
@@ -22,13 +22,13 @@ class TableViewPaginator<T> {
     let bag = SubscriptionBag()
     var whenSelected: Signal<T?>!
     
-    init(tableViewController: UITableViewController, pagination: Pagination<T>, cellIdentifier: String, bind: (Int, T, UITableViewCell) -> Void) {
+    init(tableViewController: UITableViewController, pagination: Pagination<T>, cellIdentifier: String, bind: @escaping (Int, T, UITableViewCell) -> Void) {
         tableView = tableViewController.tableView!
         
         tableViewController.refreshControl = refreshControl
         
         loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.frame = CGRectMake(0, 0, 64, 64)
+        loadingIndicator.frame = CGRect(x: 0, y: 0, width: 64, height: 64)
         tableView.tableFooterView = loadingIndicator
         
         self.pagination = pagination
@@ -45,7 +45,7 @@ class TableViewPaginator<T> {
         
         pagination.items.bindTo(tableView.wwRows(cellIdentifier, bind: bind)).addTo(bag)
         
-        refreshControl.wwControlEvent(UIControlEvents.ValueChanged).subscribe { _ in
+        refreshControl.wwControlEvent(UIControlEvents.valueChanged).subscribe { _ in
             self.fetch()
         }.addTo(bag)
         
@@ -65,7 +65,7 @@ class TableViewPaginator<T> {
         }
         let offset = tableView.contentOffset.y
         let height = tableView.frame.size.height
-        if let indexBottom = tableView.indexPathForRowAtPoint(CGPointMake(0, offset + height)) {
+        if let indexBottom = tableView.indexPathForRow(at: CGPoint(x: 0, y: offset + height)) {
             let itemCount = pagination.items.value.count
             if itemCount > 0 && itemCount - indexBottom.row > 8 {
                 return

@@ -22,7 +22,7 @@ class RepoTableViewController: UITableViewController {
         
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.registerNib(UINib(nibName: "RepoCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
+        tableView.register(UINib(nibName: "RepoCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
         
         paginator = TableViewPaginator<Repo>(
             tableViewController: self,
@@ -32,13 +32,13 @@ class RepoTableViewController: UITableViewController {
             let repoCell = cell as! RepoCell
             repoCell.viewModel.repo.value = repo
             repoCell.onActorTapped = { actor in
-                self?.navigationController?.pushUser(actor)
+                self?.navigationController?.push(userSummary: actor)
             }
         }
         
         paginator.whenSelected.subscribe { [unowned self] repo in
             if let repo = repo {
-                self.navigationController?.pushRepo(repo)
+                self.navigationController?.push(repo: repo)
             }
         }.addTo(bag)
     }

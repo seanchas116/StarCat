@@ -8,7 +8,6 @@
 
 import Foundation
 import SafariServices
-import Regex
 import SVWebViewController
 
 private var popups = Set<WebViewPopup>()
@@ -23,31 +22,31 @@ class WebViewPopup: NSObject, SFSafariViewControllerDelegate {
     }
     
     func show() {
-        let safari = SFSafariViewController(URL: link.URL)
+        let safari = SFSafariViewController(url: link.url)
         safari.delegate = self
         popups.insert(self)
-        root.presentViewController(safari, animated: true, completion: nil)
+        root.present(safari, animated: true, completion: nil)
     }
     
-    func safariViewControllerDidFinish(controller: SFSafariViewController) {
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         popups.remove(self)
     }
     
-    func safariViewController(controller: SFSafariViewController, activityItemsForURL URL: NSURL, title: String?) -> [UIActivity] {
+    func safariViewController(_ controller: SFSafariViewController, activityItemsFor url: URL, title: String?) -> [UIActivity] {
         let activities = WebViewPopup.activities
         for activity in activities {
-            activity.prepareWithActivityItems([URL])
+            activity.prepare(withActivityItems: [url])
         }
         return activities
     }
     
-    static func open(link: Link, on vc: UIViewController) {
+    static func open(_ link: Link, on vc: UIViewController) {
         WebViewPopup(link: link, root: vc).show()
     }
     
-    static func openActivity(link: Link, on vc: UIViewController) {
-        let activity = UIActivityViewController(activityItems: [link.URL], applicationActivities: activities)
-        vc.presentViewController(activity, animated: true, completion: nil)
+    static func openActivity(_ link: Link, on vc: UIViewController) {
+        let activity = UIActivityViewController(activityItems: [link.url], applicationActivities: activities)
+        vc.present(activity, animated: true, completion: nil)
     }
     
     static var activities: [UIActivity] {
@@ -55,9 +54,3 @@ class WebViewPopup: NSObject, SFSafariViewControllerDelegate {
     }
 }
 
-func fixURL(URL: NSURL) -> NSURL? {
-    if !URL.absoluteString!.grep("^https?") {
-        return NSURL(string: "http://" + URL.absoluteString!)
-    }
-    return URL
-}

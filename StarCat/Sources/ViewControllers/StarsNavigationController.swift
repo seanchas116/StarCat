@@ -25,15 +25,15 @@ class StarsNavigationController: UINavigationController {
         AppViewModel.instance.currentUser.bindTo { user in
             if user?.login != "" {
                 pagination.userName = user?.login
-                pagination.fetchAndReset()
+                pagination.fetchAndReset().catch { print($0) }
             }
         }.addTo(bag)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if !Authentication.isLoggedIn {
-            LoginButtonViewController.showOn(topViewController!)
+            LoginButtonViewController.show(on: topViewController!)
         }
     }
 

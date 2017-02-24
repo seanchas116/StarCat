@@ -90,6 +90,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/APIKit/APIKit.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/CrossroadRegex/Regex.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Himotoki/Himotoki.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KeychainAccess/KeychainAccess.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Kingfisher/Kingfisher.framework"
@@ -106,6 +107,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/APIKit/APIKit.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/CrossroadRegex/Regex.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Himotoki/Himotoki.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KeychainAccess/KeychainAccess.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Kingfisher/Kingfisher.framework"

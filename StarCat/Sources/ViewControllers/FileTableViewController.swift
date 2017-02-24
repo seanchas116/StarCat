@@ -20,14 +20,14 @@ class FileCell: UITableViewCell {
         super.awakeFromNib()
         viewModel.isDir
             .map { $0 ? "folder-24" : "file-24" }
-            .map { UIImage(named: $0)?.imageWithRenderingMode(.AlwaysTemplate) }
+            .map { UIImage(named: $0)?.withRenderingMode(.alwaysTemplate) }
             .bindTo(iconView.wwImage).addTo(bag)
         viewModel.name.bindTo(titleLabel.wwText).addTo(bag)
         viewModel.isDir.bindTo { [weak self] isDir in
             if isDir {
-                self?.accessoryType = .DisclosureIndicator
+                self?.accessoryType = .disclosureIndicator
             } else {
-                self?.accessoryType = .None
+                self?.accessoryType = .none
             }
         }.addTo(bag)
     }
@@ -48,7 +48,7 @@ class FileTableViewController: UITableViewController {
             guard let this = self else { return }
             guard let repo = this.viewModel.repoName.value else { return }
             let file = this.viewModel.files.value[index.row]
-            this.navigationController?.pushFile(file, repo: repo)
+            this.navigationController?.push(file: file, repo: repo)
         }.addTo(bag)
         viewModel.name.bindTo(wwTitle).addTo(bag)
     }

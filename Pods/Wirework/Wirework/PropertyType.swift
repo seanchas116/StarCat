@@ -15,7 +15,7 @@ extension PropertyType {
         return createProperty(changed.map { transform($0) }) { transform(self.value) }
     }
     
-    public func mapAsync<T>(_ initValue: T, transform: @escaping (Value, (T) -> Void) -> Void) -> Property<T> {
+    public func mapAsync<T>(_ initValue: T, transform: @escaping (Value, @escaping (T) -> Void) -> Void) -> Property<T> {
         var value = initValue
         let changed = EventWithBag<Void>()
         transform(self.value) { [weak changed] in

@@ -26,7 +26,7 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         centerTabBarItems()
-        UITabBar.appearance().tintColor = UIColor.whiteColor()
+        UITabBar.appearance().tintColor = UIColor.white
     }
     
     func centerTabBarItems() {
@@ -35,10 +35,10 @@ class TabBarController: UITabBarController {
         }
     }
     
-    override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
-        if let index = tabBar.items!.indexOf(item) {
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if let index = tabBar.items!.index(of: item) {
             if lastSelectedIndex == index {
-                tabBarDoubleTapped(index)
+                tabBarDoubleTapped(index: index)
             }
             lastSelectedIndex = index
         }

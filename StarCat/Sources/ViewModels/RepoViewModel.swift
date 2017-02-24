@@ -8,7 +8,6 @@
 
 import Foundation
 import Wirework
-import Haneke
 import SwiftDate
 import PromiseKit
 
@@ -20,16 +19,16 @@ class RepoViewModel {
     let starred = Variable(false)
     let description: Property<String>
     let language: Property<String?>
-    let avatarImage: Property<UIImage?>
+    let avatarURL: Property<Link?>
     let ownerName: Property<String>
     let homepage: Property<Link?>
-    let pushedAt: Property<NSDate>
+    let pushedAt: Property<Date>
     let githubURL: Property<Link?>
     
     let event = Variable<Event?>(nil)
     let eventActor: Property<UserSummary?>
     let eventActorName: Property<String>
-    let eventTime: Property<NSDate?>
+    let eventTime: Property<Date?>
     let readme = Variable<String>("")
     
     let bag = SubscriptionBag()
@@ -42,7 +41,7 @@ class RepoViewModel {
         language = repo.map { $0?.language }
         ownerName = repo.map { $0?.owner.login ?? "" }
         homepage = repo.map { $0?.homepage }
-        pushedAt = repo.map { $0?.pushedAt ?? NSDate() }
+        pushedAt = repo.map { $0?.pushedAt ?? Date() }
         githubURL = fullName.map { Link(string: "https://github.com/\($0)") }
         eventActor = event.map { event in
             event.flatMap { e -> UserSummary? in
@@ -56,20 +55,13 @@ class RepoViewModel {
         }
         eventActorName = eventActor.map { $0?.login ?? "" }
         eventTime = event.map { $0?.createdAt }
-        
-        avatarImage = repo.mapAsync(nil) { (repo: Repo?) in
-            if let repo = repo {
-                return Shared.imageCache.fetch(URL: repo.owner.avatarURL.URL).promise().then { $0 }
-            } else {
-                return Promise(nil)
-            }
-        }
+        avatarURL = repo.map { $0?.owner.avatarURL }
         
         repo.bindTo { [weak self] repo in
             if let fullName = repo?.fullName {
                 CheckStarredRequest(repoName: fullName).send().then {
                     self?.starred.value = $0
-                }
+                }.catch { print($0) }
             }
         }.addTo(bag)
     }
@@ -83,7 +75,7 @@ class RepoViewModel {
         GetReadmeRequest(fullName: "\(ownerName.value)/\(name.value)").send()
             .then { readme in
                 self.readme.value = readme
-            }
+            }.catch { print($0) }
     }
     
     func toggleStar() -> Promise<Void> {
@@ -100,6 +92,6 @@ class RepoViewModel {
                 }
             }
         }
-        return Promise()
+        return Promise(value: ())
     }
 }

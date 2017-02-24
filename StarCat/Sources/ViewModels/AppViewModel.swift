@@ -21,10 +21,10 @@ class AppViewModel {
             Authentication.accessToken = token
             return loadCurrentUser().then { true }
         }
-        return Promise(false)
+        return Promise(value: false)
     }
     
-    func loginWithCallbackURL(url: NSURL) -> Promise<Void>? {
+    func loginWithCallbackURL(_ url: URL) -> Promise<Void>? {
         if let tokenFetched = Authentication.handleCallbackURL(url) {
             return tokenFetched.then { token in
                 self.keychainManager.saveAccessToken(token)

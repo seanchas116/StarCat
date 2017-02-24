@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UINavigationController {
-    func pushStoryboard(name: String, animated: Bool, config: (UIViewController) -> Void) {
+    func push(storyboard name: String, animated: Bool, config: (UIViewController) -> Void) {
         let storyboard = UIStoryboard(name: name, bundle: nil)
         if let next = storyboard.instantiateInitialViewController() {
             config(next)
@@ -18,36 +18,36 @@ extension UINavigationController {
         }
     }
     
-    func pushRepo(repo: Repo) {
-        pushStoryboard("Repo", animated: true) { next in
+    func push(repo: Repo) {
+        push(storyboard: "Repo", animated: true) { next in
             (next as! RepoViewController).viewModel.repo.value = repo
         }
     }
     
-    func pushUser(userSummary: UserSummary) {
+    func push(userSummary: UserSummary) {
         if userSummary.type == .Organization {
-            pushStoryboard("Organization", animated: true) { next in
+            push(storyboard: "Organization", animated: true) { next in
                 let orgVC = next as! OrganizationViewController
                 orgVC.viewModel.summary.value = userSummary
-                orgVC.viewModel.load()
+                orgVC.viewModel.load().catch { print($0) }
             }
         } else {
-            pushStoryboard("User", animated: true) { next in
+            push(storyboard: "User", animated: true) { next in
                 let userVC = next as! UserViewController
                 userVC.mode = .User
                 userVC.viewModel.summary.value = userSummary
-                userVC.viewModel.load()
+                userVC.viewModel.load().catch { print($0) }
             }
         }
     }
     
-    func pushUser(user: User) {
+    func push(user: User) {
         if user.type == .Organization {
-            pushStoryboard("Organization", animated: true) { next in
+            push(storyboard: "Organization", animated: true) { next in
                 (next as! OrganizationViewController).viewModel.user.value = user
             }
         } else {
-            pushStoryboard("User", animated: true) { next in
+            push(storyboard: "User", animated: true) { next in
                 let userVC = next as! UserViewController
                 userVC.mode = .User
                 userVC.viewModel.user.value = user
@@ -55,15 +55,15 @@ extension UINavigationController {
         }
     }
     
-    func pushFile(file: File, repo: String) {
+    func push(file: File, repo: String) {
         if file.type == .Dir {
-            pushStoryboard("FileTable", animated: true) { next in
+            push(storyboard: "FileTable", animated: true) { next in
                 let fileTableViewController = next as! FileTableViewController
                 fileTableViewController.viewModel.repoName.value = repo
                 fileTableViewController.viewModel.file.value = file
             }
         } else {
-            pushStoryboard("File", animated: true) { next in
+            push(storyboard: "File", animated: true) { next in
                 let fileViewController = next as! FileViewController
                 fileViewController.viewModel.repoName.value = repo
                 fileViewController.viewModel.file.value = file

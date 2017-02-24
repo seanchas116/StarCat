@@ -12,7 +12,7 @@ import Wirework
 
 extension UIView {
     func makeTappable() -> Signal<Void> {
-        self.userInteractionEnabled = true
+        self.isUserInteractionEnabled = true
         let recognizer = UITapGestureRecognizer()
         self.addGestureRecognizer(recognizer)
         return recognizer.wwEvent

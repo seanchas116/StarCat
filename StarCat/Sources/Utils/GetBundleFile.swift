@@ -8,9 +8,9 @@
 
 import Foundation
 
-func getBundleFile(fileName: String, ofType: String) -> String {
-    if let path = NSBundle.mainBundle().pathForResource(fileName, ofType: ofType) {
-        return (try? String(contentsOfFile: path, encoding: NSUTF8StringEncoding)) ?? ""
+func getBundleFile(_ fileName: String, ofType: String) -> String {
+    if let path = Bundle.main.path(forResource: fileName, ofType: ofType) {
+        return (try? String(contentsOfFile: path, encoding: String.Encoding.utf8)) ?? ""
     }
     return ""
 }

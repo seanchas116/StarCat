@@ -1,3 +1,4 @@
+
 //
 //  UserCell.swift
 //  StarCat
@@ -8,6 +9,7 @@
 
 import UIKit
 import Wirework
+import Kingfisher
 
 class UserCell: UITableViewCell {
     @IBOutlet weak var avatarImage: UIImageView!
@@ -21,14 +23,16 @@ class UserCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        viewModel.avatarImage.bindTo(avatarImage.wwImage).addTo(bag)
+        viewModel.avatarURL.bindTo { [weak self] link in
+            self?.avatarImage.kf.setImage(with: link?.url)
+        }.addTo(bag)
         viewModel.name.bindTo(fullNameLabel.wwText).addTo(bag)
         viewModel.login.bindTo(loginLabel.wwText).addTo(bag)
         let detail = viewModel.location
         detail.bindTo(detailLabel.wwText).addTo(bag)
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

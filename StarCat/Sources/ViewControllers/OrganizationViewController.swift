@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class OrganizationViewController: RepoTableViewController {
     
@@ -30,7 +31,7 @@ class OrganizationViewController: RepoTableViewController {
         viewModel.login.bindTo { login in
             if login != "" {
                 pagination.userName = login
-                pagination.fetchAndReset()
+                pagination.fetchAndReset().catch { print($0) }
             }
         }.addTo(bag)
         
@@ -39,9 +40,11 @@ class OrganizationViewController: RepoTableViewController {
             self?.header.resizeHeightToMinimum()
         }.addTo(bag)
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(OrganizationViewController.showActivity))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(OrganizationViewController.showActivity))
         
-        viewModel.avatarImage.bindTo(avatarImageView.wwImage).addTo(bag)
+        viewModel.avatarURL.bindTo { [weak self] link in
+            self?.avatarImageView.kf.setImage(with: link?.url)
+        }.addTo(bag)
         viewModel.name.bindTo(nameLabel.wwText).addTo(bag)
         viewModel.login.bindTo(loginLabel.wwText).addTo(bag)
         
@@ -72,7 +75,7 @@ class OrganizationViewController: RepoTableViewController {
     }
     
     private func showMembers() {
-        navigationController?.pushStoryboard("UserTable", animated: true) { next in
+        navigationController?.push(storyboard: "UserTable", animated: true) { next in
             let userTableVC = next as! UserTableViewController
             let pagination = MembersPagination()
             pagination.organizationName = self.viewModel.login.value

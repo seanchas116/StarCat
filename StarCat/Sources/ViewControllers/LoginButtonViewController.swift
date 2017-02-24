@@ -20,7 +20,7 @@ class LoginButtonViewController: UIViewController {
         super.viewDidLoad()
         
         loginButton.wwTapped.subscribe { _ in
-            UIApplication.sharedApplication().openURL(Authentication.authURL)
+            UIApplication.shared.openURL(Authentication.authURL as URL)
         }.addTo(bag)
 
         // Do any additional setup after loading the view.
@@ -37,7 +37,7 @@ class LoginButtonViewController: UIViewController {
         return UIStoryboard(name: "LoginButton", bundle: nil).instantiateInitialViewController() as? LoginButtonViewController
     }
     
-    static func showOn(viewController: UIViewController) {
+    static func show(on viewController: UIViewController) {
         if let navVC = viewController.navigationController {
             if let loginButtonVC = instantiate() {
                 all.insert(loginButtonVC)

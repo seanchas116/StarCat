@@ -10,6 +10,7 @@ import UIKit
 import WebKit
 import Wirework
 import SwiftDate
+import Kingfisher
 
 class RepoViewController: UIViewController {
     @IBOutlet weak var header: UIView!
@@ -29,16 +30,18 @@ class RepoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(RepoViewController.showActivity))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(RepoViewController.showActivity))
         
         viewModel.name.bindTo(wwTitle).addTo(bag)
         viewModel.name.bindTo(titleLabel.wwText).addTo(bag)
         viewModel.description.bindTo(descriptionLabel.wwText).addTo(bag)
-        viewModel.avatarImage.bindTo(avatarImageView.wwImage).addTo(bag)
+        viewModel.avatarURL.bindTo { [weak self] link in
+            self?.avatarImageView.kf.setImage(with: link?.url)
+        }.addTo(bag)
         viewModel.ownerName.bindTo(ownerLabel.wwText).addTo(bag)
         viewModel.homepage.map { $0?.stringWithoutScheme ?? ""}.bindTo(homepageLabel.wwText).addTo(bag)
         viewModel.homepage.map { $0 == nil }.bindTo(homepageLabel.wwHidden).addTo(bag)
-        viewModel.starsCount.map { "★  \($0)" }.bindTo(starsButton.wwState(.Normal).title).addTo(bag)
+        viewModel.starsCount.map { "★  \($0)" }.bindTo(starsButton.wwState(.normal).title).addTo(bag)
         viewModel.starred.bindTo(starsButton.wwSelected).addTo(bag)
         
         combine(viewModel.language, viewModel.pushedAt) { "\($0 ?? "")・\($1.formatForUI(withAgo: true))" }
@@ -77,14 +80,14 @@ class RepoViewController: UIViewController {
     
     private func showOwner() {
         if let owner = viewModel.repo.value?.owner {
-            navigationController?.pushUser(owner)
+            navigationController?.push(userSummary: owner)
         }
     }
     
     private func showFiles() {
         if let fullName = viewModel.repo.value?.fullName {
             let file = File(type: .Dir, name: "Files", path: "")
-            navigationController?.pushFile(file, repo: fullName)
+            navigationController?.push(file: file, repo: fullName)
         }
     }
     
@@ -95,6 +98,6 @@ class RepoViewController: UIViewController {
     }
     
     func toggleStar() {
-        viewModel.toggleStar()
+        viewModel.toggleStar().catch { print($0) }
     }
 }

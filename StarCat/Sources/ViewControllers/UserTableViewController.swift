@@ -22,7 +22,7 @@ class UserTableViewController: UITableViewController {
         
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.registerNib(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
+        tableView.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
         
         paginator = TableViewPaginator<User>(
             tableViewController: self,
@@ -35,7 +35,7 @@ class UserTableViewController: UITableViewController {
         
         paginator.whenSelected.subscribe { [weak self] user in
             if let user = user {
-                self?.navigationController?.pushUser(user)
+                self?.navigationController?.push(user: user)
             }
         }.addTo(bag)
     }

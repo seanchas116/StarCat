@@ -10,35 +10,33 @@ import Foundation
 import Himotoki
 import SwiftDate
 
-enum DecodeError: ErrorType {
-    case WrongURL(String)
-    case WrongUserType(String)
-    case WrongFileType(String)
+enum DecodeError: Error {
+    case wrongURL(String)
+    case wrongUserType(String)
+    case wrongFileType(String)
 }
 
 extension Link: Decodable {
-    static func decode(e: Extractor) throws -> Link {
+    static func decode(_ e: Extractor) throws -> Link {
         let str = try String.decode(e)
         if let link = Link(string: str) {
             return link
         } else {
-            throw Himotoki.DecodeError.MissingKeyPath(KeyPath())
+            throw Himotoki.DecodeError.missingKeyPath(KeyPath())
         }
     }
 }
 
-extension NSDate: Decodable {
-    public static func decode(e: Extractor) throws -> Self {
+extension Date: Decodable {
+    public static func decode(_ e: Extractor) throws -> Date {
         let str = try String.decode(e)
-        guard let date = str.toDate(DateFormat.ISO8601Format(.Full)) else {
-            throw "cannot parse date"
-        }
-        return try castOrFail(date)
+        let date = try DateInRegion(string: str, format: DateFormat.iso8601(options: .withFullDate))
+        return date.absoluteDate
     }
 }
 
 extension UserType: Decodable {
-    static func decode(e: Extractor) throws -> UserType {
+    static func decode(_ e: Extractor) throws -> UserType {
         let str = try String.decode(e)
         switch str {
         case "User":
@@ -46,13 +44,13 @@ extension UserType: Decodable {
         case "Organization":
             return .Organization
         default:
-            throw DecodeError.WrongUserType(str)
+            throw DecodeError.wrongUserType(str)
         }
     }
 }
 
 extension User: Decodable {
-    static func decode(e: Extractor) throws -> User {
+    static func decode(_ e: Extractor) throws -> User {
         return try User(
             type: e <| "type",
             id: e <| "id",
@@ -70,7 +68,7 @@ extension User: Decodable {
 }
 
 extension UserSummary: Decodable {
-    static func decode(e: Extractor) throws -> UserSummary {
+    static func decode(_ e: Extractor) throws -> UserSummary {
         return try UserSummary(
             id: e <| "id",
             login: e <| "login",
@@ -81,7 +79,7 @@ extension UserSummary: Decodable {
 }
 
 extension Repo: Decodable {
-    static func decode(e: Extractor) throws -> Repo {
+    static func decode(_ e: Extractor) throws -> Repo {
         return try Repo(
             id: e <| "id",
             owner: e <| "owner",
@@ -97,7 +95,7 @@ extension Repo: Decodable {
 }
 
 extension RepoSummary: Decodable {
-    static func decode(e: Extractor) throws -> RepoSummary {
+    static func decode(_ e: Extractor) throws -> RepoSummary {
         return try RepoSummary(
             id: e <| "id",
             fullName: e <| "name"
@@ -106,7 +104,7 @@ extension RepoSummary: Decodable {
 }
 
 extension FileType: Decodable {
-    static func decode(e: Extractor) throws -> FileType {
+    static func decode(_ e: Extractor) throws -> FileType {
         let str = try String.decode(e)
         switch str {
         case "file":
@@ -114,13 +112,13 @@ extension FileType: Decodable {
         case "dir":
             return .Dir
         default:
-            throw DecodeError.WrongFileType(str)
+            throw DecodeError.wrongFileType(str)
         }
     }
 }
 
 extension File: Decodable {
-    static func decode(e: Extractor) throws -> File {
+    static func decode(_ e: Extractor) throws -> File {
         return try File(
             type: e <| "type",
             name: e <| "name",
@@ -130,7 +128,7 @@ extension File: Decodable {
 }
 
 extension FileContent: Decodable {
-    static func decode(e: Extractor) throws -> FileContent {
+    static func decode(_ e: Extractor) throws -> FileContent {
         return try FileContent(
             content: e <| "content"
         )
@@ -138,9 +136,9 @@ extension FileContent: Decodable {
 }
 
 extension Event: Decodable {
-    static func decode(e: Extractor) throws -> Event {
+    static func decode(_ e: Extractor) throws -> Event {
         let type: String = try e <| "type"
-        let createdAt: NSDate = try e <| "created_at"
+        let createdAt: Date = try e <| "created_at"
         switch type {
         case "WatchEvent":
             let actor: UserSummary = try e <| "actor"
@@ -153,7 +151,7 @@ extension Event: Decodable {
 }
 
 extension AccessToken: Decodable {
-    static func decode(e: Extractor) throws -> AccessToken {
+    static func decode(_ e: Extractor) throws -> AccessToken {
         return try AccessToken(
             token: e <| "access_token",
             scope: e <| "scope"

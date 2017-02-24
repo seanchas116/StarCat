@@ -8,7 +8,6 @@
 
 import Foundation
 import Wirework
-import Haneke
 import PromiseKit
 
 class UserRepoPagination: Pagination<Repo> {
@@ -18,14 +17,14 @@ class UserRepoPagination: Pagination<Repo> {
         if let userName = userName {
             return SearchRepoRequest(query: "user:\(userName)", sort: .Stars, perPage: 30, page: page).send()
         } else {
-            return Promise([])
+            return Promise(value: [])
         }
     }
 }
 
 func fetchUsersDetail(summaries: [UserSummary]) -> Promise<[User]> {
-    let promises = summaries.map { s in SharedModelCache.userCache.fetch(s.login) }
-    return when(promises)
+    let promises = summaries.map { s in SharedModelCache.userCache.fetch(key: s.login) }
+    return when(fulfilled: promises)
 }
 
 class FollowersPagination: Pagination<User> {
@@ -34,9 +33,9 @@ class FollowersPagination: Pagination<User> {
     override func fetch(page: Int) -> Promise<[User]> {
         if let userName = userName {
             return GetFollowersRequest(userName: userName, perPage: 30, page: page).send()
-                .then(fetchUsersDetail)
+                .then(execute: fetchUsersDetail)
         } else {
-            return Promise([])
+            return Promise(value: [])
         }
     }
 }
@@ -47,9 +46,9 @@ class FollowingPagination: Pagination<User> {
     override func fetch(page: Int) -> Promise<[User]> {
         if let userName = userName {
             return GetFollowingRequest(userName: userName, perPage: 30, page: page).send()
-                .then(fetchUsersDetail)
+                .then(execute: fetchUsersDetail)
         } else {
-            return Promise([])
+            return Promise(value: [])
         }
     }
 }
@@ -60,9 +59,9 @@ class MembersPagination: Pagination<User> {
     override func fetch(page: Int) -> Promise<[User]> {
         if let orgName = organizationName {
             return GetMembersRequest(organizationName: orgName, perPage: 30, page: page).send()
-                .then(fetchUsersDetail)
+                .then(execute: fetchUsersDetail)
         } else {
-            return Promise([])
+            return Promise(value: [])
         }
     }
 }
@@ -73,11 +72,11 @@ class StarsPagination: Pagination<Repo> {
     override func fetch(page: Int) -> Promise<[Repo]> {
         if let userName = userName {
             return GetUserStarsRequest(userName: userName, perPage: 30, page: page).send().then { repos in
-                let promises = repos.map { r in SharedModelCache.repoCache.fetch(r.fullName) }
-                return when(promises)
+                let promises = repos.map { r in SharedModelCache.repoCache.fetch(key: r.fullName) }
+                return when(fulfilled: promises)
             }
         } else {
-            return Promise([])
+            return Promise(value: [])
         }
     }
 }
@@ -86,14 +85,14 @@ class UserViewModel {
     let user = Variable<User?>(nil)
     let summary = Variable<UserSummary?>(nil)
     let name: Property<String>
-    let avatarImage: Property<UIImage?>
+    let avatarURL: Property<Link?>
     let login: Property<String>
     let company: Property<String?>
     let location: Property<String?>
     let homepage: Property<Link?>
     let followersCount: Property<Int>
     let followingCount: Property<Int>
-    let starsCount: Property<Int>
+    let starsCount = Variable(0)
     let githubURL: Property<Link?>
     let followed = Variable(false)
     
@@ -103,33 +102,27 @@ class UserViewModel {
         let summary = combine(user, self.summary) { $0?.summary ?? $1 }
         login = summary.map { $0?.login ?? "" }
         name = user.map { $0?.name ?? $0?.login ?? "" }
-        avatarImage = summary.mapAsync(nil) { summary -> Promise<UIImage?> in
-            if let summary = summary {
-                return Shared.imageCache.fetch(URL: summary.avatarURL.URL).promise().then { $0 }
-            } else {
-                return Promise(nil)
-            }
-        }
+        avatarURL = user.map { $0?.avatarURL }
         company = user.map { $0?.company }
         location = user.map { $0?.location }
         homepage = user.map { $0?.blog }
         followersCount = user.map { $0?.followers ?? 0 }
         followingCount = user.map { $0?.following ?? 0 }
-        starsCount = summary.mapAsync(0) { summary -> Promise<Int> in
-            if let summary = summary {
-                return GetUserStarsCountRequest(userName: summary.login).send()
-            } else {
-                return Promise(0)
-            }
-        }
-        
         githubURL = login.map { Link(string: "https://github.com/\($0)") }
+        
+        summary.changed.subscribe { [weak self] summary in
+            if let summary = summary {
+                GetUserStarsCountRequest(userName: summary.login).send().then { count in
+                    self?.starsCount.value = count
+                }.catch { print($0) }
+            }
+        }.addTo(bag)
         
         user.bindTo { [weak self] user in
             if let userName = user?.login {
-                CheckFollowedRequest(userName: userName).send().then {
-                    self?.followed.value = $0
-                }
+                CheckFollowedRequest(userName: userName).send().then { followed in
+                    self?.followed.value = followed
+                }.catch { print($0) }
             }
         }.addTo(bag)
     }
@@ -154,6 +147,6 @@ class UserViewModel {
                 }
             }
         }
-        return Promise()
+        return Promise(value: ())
     }
 }

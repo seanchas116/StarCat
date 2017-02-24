@@ -9,21 +9,21 @@
 import Foundation
 import SwiftDate
 
-extension NSDate {
-    func formatForUI(withAgo withAgo: Bool) -> String {
-        if NSDate() - 1.months < self {
-            let formatted = self.toString(relative: true)! ?? ""
+extension Date {
+    func formatForUI(withAgo: Bool) -> String {
+        if Date() - 1.months < self {
+            let formatted = (try? self.colloquialSinceNow())?.colloquial ?? ""
             if withAgo {
                 return formatted + " ago"
             } else {
                 return formatted
             }
         } else {
-            let formatter = NSDateFormatter()
-            formatter.dateStyle = .MediumStyle
-            formatter.timeStyle = .NoStyle
-            formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-            return formatter.stringFromDate(self)
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .none
+            formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
+            return formatter.string(from: self)
         }
     }
 }

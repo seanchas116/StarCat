@@ -29,6 +29,6 @@ class DirectoryViewModel: FileViewModel {
         GetDirectoryRequest(repoName: repoName, dirPath: path).send().then { files -> Void in
             self.files.value = files
             self.isLoading.value = false
-        }
+        }.catch { print($0) }
     }
 }

@@ -12,14 +12,14 @@ import UIKit
 class RoundButton: UIButton {
     
     @IBInspectable
-    var selectedBackgroundColor: UIColor! = UIColor.clearColor() {
+    var selectedBackgroundColor: UIColor! = UIColor.clear {
         didSet {
             updateColor()
         }
     }
     
     @IBInspectable
-    var borderColor: UIColor! = UIColor.blackColor() {
+    var borderColor: UIColor! = UIColor.black {
         didSet {
             updateColor()
         }
@@ -53,7 +53,7 @@ class RoundButton: UIButton {
         }
     }
     
-    override var selected: Bool {
+    override var isSelected: Bool {
         didSet {
             updateColor()
         }
@@ -78,24 +78,24 @@ class RoundButton: UIButton {
     }
     
     private func setup() {
-        borderLayer.fillColor = UIColor.clearColor().CGColor
+        borderLayer.fillColor = UIColor.clear.cgColor
         layer.addSublayer(borderLayer)
         updateColor()
         updateShape()
     }
     
     private func updateColor() {
-        borderLayer.strokeColor = borderColor.CGColor
+        borderLayer.strokeColor = borderColor.cgColor
         
-        if selected {
-            borderLayer.fillColor = selectedBackgroundColor.CGColor
+        if isSelected {
+            borderLayer.fillColor = selectedBackgroundColor.cgColor
         } else {
             borderLayer.fillColor = nil
         }
     }
     
     private func updateShape() {
-        let roundingCorners: UIRectCorner = [.TopRight, .TopLeft, .BottomRight, .BottomLeft]
+        let roundingCorners: UIRectCorner = [.topRight, .topLeft, .bottomRight, .bottomLeft]
         let halfBorder = borderWidth * 0.5
         let path = UIBezierPath()
         let width = bounds.width
@@ -104,38 +104,38 @@ class RoundButton: UIButton {
         let cornerRadius = min(self.cornerRadius, width * 0.5)
         
         func addRightBorder() {
-            path.addLineToPoint(CGPoint(x: width - cornerRadius, y: halfBorder))
-            path.addArcWithCenter(CGPoint(x: width - cornerRadius, y: cornerRadius), radius: cornerRadius - halfBorder, startAngle: pi*1.5, endAngle: 0, clockwise: true)
-            path.addLineToPoint(CGPoint(x: width - halfBorder, y: height - cornerRadius))
-            path.addArcWithCenter(CGPoint(x: width - cornerRadius, y: height - cornerRadius), radius: cornerRadius - halfBorder, startAngle: 0, endAngle: pi*0.5, clockwise: true)
+            path.addLine(to: CGPoint(x: width - cornerRadius, y: halfBorder))
+            path.addArc(withCenter: CGPoint(x: width - cornerRadius, y: cornerRadius), radius: cornerRadius - halfBorder, startAngle: pi*1.5, endAngle: 0, clockwise: true)
+            path.addLine(to: CGPoint(x: width - halfBorder, y: height - cornerRadius))
+            path.addArc(withCenter: CGPoint(x: width - cornerRadius, y: height - cornerRadius), radius: cornerRadius - halfBorder, startAngle: 0, endAngle: pi*0.5, clockwise: true)
         }
         func addLeftBorder() {
-            path.addLineToPoint(CGPoint(x: cornerRadius, y: height - halfBorder))
-            path.addArcWithCenter(CGPoint(x: cornerRadius, y: height - cornerRadius), radius: cornerRadius - halfBorder, startAngle: pi*0.5, endAngle: pi, clockwise: true)
-            path.addLineToPoint(CGPoint(x: halfBorder, y: cornerRadius))
-            path.addArcWithCenter(CGPoint(x: cornerRadius, y: cornerRadius), radius: cornerRadius - halfBorder, startAngle: pi, endAngle: pi*1.5, clockwise: true)
+            path.addLine(to: CGPoint(x: cornerRadius, y: height - halfBorder))
+            path.addArc(withCenter: CGPoint(x: cornerRadius, y: height - cornerRadius), radius: cornerRadius - halfBorder, startAngle: pi*0.5, endAngle: pi, clockwise: true)
+            path.addLine(to: CGPoint(x: halfBorder, y: cornerRadius))
+            path.addArc(withCenter: CGPoint(x: cornerRadius, y: cornerRadius), radius: cornerRadius - halfBorder, startAngle: pi, endAngle: pi*1.5, clockwise: true)
         }
         
         switch (hasLeftBorder, hasRightBorder) {
         case (false, false):
-            path.moveToPoint(CGPoint(x: 0, y: halfBorder))
-            path.addLineToPoint(CGPoint(x: width, y: halfBorder))
-            path.moveToPoint(CGPoint(x: width, y: height - halfBorder))
-            path.addLineToPoint(CGPoint(x: 0, y: height - halfBorder))
+            path.move(to: CGPoint(x: 0, y: halfBorder))
+            path.addLine(to: CGPoint(x: width, y: halfBorder))
+            path.move(to: CGPoint(x: width, y: height - halfBorder))
+            path.addLine(to: CGPoint(x: 0, y: height - halfBorder))
         case (false, true):
-            path.moveToPoint(CGPoint(x: 0, y: halfBorder))
+            path.move(to: CGPoint(x: 0, y: halfBorder))
             addRightBorder()
-            path.addLineToPoint(CGPoint(x: 0, y: height - halfBorder))
+            path.addLine(to: CGPoint(x: 0, y: height - halfBorder))
         case (true, false):
-            path.moveToPoint(CGPoint(x: width, y: height - halfBorder))
+            path.move(to: CGPoint(x: width, y: height - halfBorder))
             addLeftBorder()
-            path.addLineToPoint(CGPoint(x: width, y: halfBorder))
+            path.addLine(to: CGPoint(x: width, y: halfBorder))
         case (true, true):
-            path.moveToPoint(CGPoint(x: cornerRadius, y: halfBorder))
+            path.move(to: CGPoint(x: cornerRadius, y: halfBorder))
             addRightBorder()
             addLeftBorder()
         }
-        borderLayer.path = path.CGPath
+        borderLayer.path = path.cgPath
         borderLayer.lineWidth = borderWidth
     }
 }

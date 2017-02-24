@@ -23,11 +23,11 @@ class FileViewModel {
         isDir = file.map { $0?.type == .Dir }
     }
     
-    func loadContent() -> Promise<NSData> {
+    func loadContent() -> Promise<Data> {
         guard let repoName = repoName.value else { return Promise(error: "no repoName") }
         guard let filePath = file.value?.path else { return Promise(error: "no filePath") }
         return GetFileContentRequest(repoName: repoName, filePath: filePath).send().then { content in
-            content.decoded ?? NSData()
+            content.decoded ?? Data()
         }
     }
 }

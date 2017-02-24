@@ -10,7 +10,7 @@ import Foundation
 
 struct Event {
     let content: EventContent
-    let createdAt: NSDate
+    let createdAt: Date
 }
 
 enum EventContent {

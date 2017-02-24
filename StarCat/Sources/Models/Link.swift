@@ -7,36 +7,35 @@
 //
 
 import Foundation
-import Regex
 
-let schemePattern = "^https?://"
+let schemePattern = "^https?://".r!
 
 struct Link {
-    let URL: NSURL
+    let url: URL
     
     init?(string: String) {
-        let trimmed = string.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        let trimmed = string.trimmingCharacters(in: NSCharacterSet.whitespaces)
         if trimmed == "" {
             return nil
         }
-        let withHTTP = trimmed.grep(schemePattern) ? trimmed : "http://\(trimmed)"
-        if let URL = NSURL(string: withHTTP) {
-            self.URL = URL
+        let withHTTP = schemePattern.matches(trimmed) ? trimmed : "http://\(trimmed)"
+        if let url = URL(string: withHTTP) {
+            self.url = url
         } else {
             return nil
         }
     }
     
-    init?(URL: NSURL) {
-        self.init(string: URL.absoluteString!)
+    init?(url: URL) {
+        self.init(string: url.absoluteString)
     }
 }
 
 extension Link {
     var string: String {
-        return URL.absoluteString!
+        return url.absoluteString
     }
     var stringWithoutScheme: String {
-        return URL.absoluteString!.replaceRegex(schemePattern, with: "")
+        return schemePattern.replaceAll(in: url.absoluteString, with: "")
     }
 }

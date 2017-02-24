@@ -8,13 +8,13 @@
 
 import UIKit
 
-func renderAttributedStringFromHTML(html: String, css: String) -> NSAttributedString? {
+func renderAttributedStringFromHTML(_ html: String, css: String) -> NSAttributedString? {
     let fullHTML = "<html><head><style>\(css)</style></head><body>\(html)</body></html>"
     return try? NSAttributedString(
-        data: fullHTML.dataUsingEncoding(NSUTF8StringEncoding)!,
+        data: fullHTML.data(using: String.Encoding.utf8)!,
         options: [
             NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-            NSCharacterEncodingDocumentAttribute: NSNumber(unsignedLong: NSUTF8StringEncoding)
+            NSCharacterEncodingDocumentAttribute: String.Encoding.utf8
         ],
         documentAttributes: nil
     )

@@ -8,12 +8,12 @@
 
 import Foundation
 
-func parseQueryString(string: String) -> [String: String] {
-    let keyValues = string.componentsSeparatedByString("&")
+func parseQueryString(_ string: String) -> [String: String] {
+    let keyValues = string.components(separatedBy: "&")
     var results = [String: String]()
     if keyValues.count > 0 {
         for pair in keyValues {
-            let kv = pair.componentsSeparatedByString("=")
+            let kv = pair.components(separatedBy: "=")
             if kv.count > 1 {
                 results.updateValue(kv[1], forKey: kv[0])
             }
@@ -23,18 +23,18 @@ func parseQueryString(string: String) -> [String: String] {
     return results
 }
 
-func stringifyQueryString(params: [String: AnyObject]) -> String {
-    return params.map { "\($0)=\($1)" }.joinWithSeparator("&")
+func stringifyQueryString(_ params: [String: Any]) -> String {
+    return params.map { "\($0)=\($1)" }.joined(separator: "&")
 }
 
-extension NSURL {
+extension URL {
     var queries: [String: String] {
         return parseQueryString(query ?? "")
     }
     var fragments: [String: String] {
         return parseQueryString(fragment ?? "")
     }
-    convenience init?(string: String, queries: [String: AnyObject]) {
+    init?(string: String, queries: [String: Any]) {
         self.init(string: "\(string)?\(stringifyQueryString(queries))")
     }
 }

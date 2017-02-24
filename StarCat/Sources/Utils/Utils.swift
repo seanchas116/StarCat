@@ -9,32 +9,6 @@
 import Foundation
 
 extension String {
-    func splitRegex(regex: String) -> [String] {
-        do {
-            let regEx = try NSRegularExpression(pattern: regex, options: NSRegularExpressionOptions())
-            var parts: [String] = []
-            var lastIndex = 0
-            let count = utf16.count
-            
-            func appendPart(range: Range<Int>) {
-                let strRange = utf16.startIndex.advancedBy(range.startIndex) ..< utf16.startIndex.advancedBy(range.endIndex)
-                parts.append(String(utf16[strRange]))
-            }
-            
-            regEx.enumerateMatchesInString(
-                self, options: [], range: NSMakeRange(0, count)
-            ) { result, flags, stop in
-                let range = result!.range
-                appendPart(lastIndex ..< range.location)
-                lastIndex = range.location + range.length
-            }
-            appendPart(lastIndex ..< count)
-            return parts
-        } catch {
-            return []
-        }
-    }
-    
     func countLines() -> Int {
         var count = 1
         for c in self.characters {
@@ -48,7 +22,7 @@ extension String {
     func fillLeft(min: Int, by char: Character) -> String {
         let remaining = min - self.characters.count
         if remaining > 0 {
-            return String(count: remaining, repeatedValue: char) + self
+            return String(repeating: String([char]), count: remaining) + self
         } else {
             return self
         }

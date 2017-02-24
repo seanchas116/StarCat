@@ -1,6 +1,7 @@
 PODS:
   - APIKit (3.1.1):
     - Result (~> 3.0)
+  - CrossroadRegex (1.0.0-alpha.1)
   - Himotoki (3.0.1)
   - KeychainAccess (3.0.1)
   - Kingfisher (3.5.0)
@@ -33,6 +34,7 @@ PODS:
 
 DEPENDENCIES:
   - APIKit
+  - CrossroadRegex (= 1.0.0-alpha.1)
   - Himotoki
   - KeychainAccess
   - Kingfisher
@@ -62,7 +64,7 @@ CHECKOUT OPTIONS:
     :commit: 9abad6b852b6c2ad19bb3c28532cce53719e2a7f
     :git: https://github.com/TransitApp/SVWebViewController.git
   Wirework:
-    :commit: 6b5abbcca53d8a7c5afab9fe0ff27d8fe3ebef11
+    :commit: 840bb0d6b9e4d66be66ae2254a3059cc8adc23f1
     :git: https://github.com/seanchas116/Wirework.git
   WireworkFoundation:
     :commit: 6b5abbcca53d8a7c5afab9fe0ff27d8fe3ebef11
@@ -73,6 +75,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   APIKit: 7460983f490d3bde6aaaaa4164d18c9865a6f91d
+  CrossroadRegex: 93dac3d83c1192e568f5679668958155e8694b79
   Himotoki: 85fda41d4d0e14f7228317a3b474175cdfb8f515
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
   Kingfisher: 7c62087039d93d26c54c8dd9b0b588d2ce55cef6
@@ -89,6 +92,6 @@ SPEC CHECKSUMS:
   WireworkFoundation: d27c0faf31a88fd5902c70fb408096e7a947350d
   WireworkUIKit: d01bbafbeea0a4e01da12efceb5b71992e7a4783
 
-PODFILE CHECKSUM: '0592b055a188e23713b1a3ee1a59f06fe9f9042b'
+PODFILE CHECKSUM: a9385c792ed0757cc02a49c8d0e238b45180057c
 
 COCOAPODS: 1.2.0
