@@ -27,7 +27,7 @@
 		BE2955701C782A7000B10B1F /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE29556E1C782A7000B10B1F /* UserCell.xib */; };
 		BE2CAF1D1C3C0AC800B51FBF /* github-markdown.css in Resources */ = {isa = PBXBuildFile; fileRef = BE2CAF1C1C3C0AC800B51FBF /* github-markdown.css */; };
 		BE2CAF211C3C0CFE00B51FBF /* github-markdown-custom.css in Resources */ = {isa = PBXBuildFile; fileRef = BE2CAF201C3C0CFE00B51FBF /* github-markdown-custom.css */; };
-		BE32404C1C57C8A200A9A87A /* QueryString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE32404B1C57C8A200A9A87A /* QueryString.swift */; };
+		BE32404C1C57C8A200A9A87A /* URL+QueryString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE32404B1C57C8A200A9A87A /* URL+QueryString.swift */; };
 		BE39BA221C291BF40000A87F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE39BA211C291BF40000A87F /* TabBarController.swift */; };
 		BE3F45441C2A992500DD1863 /* UserSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F45431C2A992500DD1863 /* UserSummary.swift */; };
 		BE3F45461C2A993400DD1863 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F45451C2A993400DD1863 /* Repo.swift */; };
@@ -47,7 +47,6 @@
 		BE546A651C4E30B500C71C0A /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE546A641C4E30B500C71C0A /* URL.swift */; };
 		BE561EF61C5926AE0097D58E /* LoginButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE561EF51C5926AE0097D58E /* LoginButtonViewController.swift */; };
 		BE561EF91C5929E50097D58E /* LoginButton.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE561EF71C5929E50097D58E /* LoginButton.storyboard */; };
-		BE57ACC31C53D03700305A54 /* utilSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE57ACC21C53D03700305A54 /* utilSpec.swift */; };
 		BE57ACC51C53D6E600305A54 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE57ACC41C53D6E600305A54 /* Utils.swift */; };
 		BE598C251C4C8CC300E1A884 /* ColorizedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE598C241C4C8CC300E1A884 /* ColorizedImageView.swift */; };
 		BE699B941C59C34A004A9E7D /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE699B931C59C34A004A9E7D /* AccessToken.swift */; };
@@ -65,12 +64,12 @@
 		BE9A484D1C36234B00406DA6 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */; };
 		BEAC0E7A1C904DEC0080A0C6 /* highlight.js in Resources */ = {isa = PBXBuildFile; fileRef = BEAC0E791C904DEC0080A0C6 /* highlight.js */; };
 		BEAC0E7C1C904E390080A0C6 /* GetBundleFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAC0E7B1C904E390080A0C6 /* GetBundleFile.swift */; };
+		BEB1686D1E61787B00D24909 /* URL+QueryStringSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1686C1E61787B00D24909 /* URL+QueryStringSpec.swift */; };
 		BEB1B9AB1C414B4400A730A0 /* Repo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */; };
 		BEB7705C1C476FC40000E9A8 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7705B1C476FC40000E9A8 /* Pagination.swift */; };
 		BEBA2A711C26AACB00F64F05 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA2A701C26AACB00F64F05 /* Constants.swift */; };
 		BEBE3A6F1C76ADFD00E7FF0D /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE3A6E1C76ADFD00E7FF0D /* Secrets.swift */; };
 		BEC5F81D1C95A9E700213869 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5F81C1C95A9E700213869 /* MarkdownView.swift */; };
-		BEC803D01C51F80C00594AA4 /* LinkSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC803CF1C51F80C00594AA4 /* LinkSpec.swift */; };
 		BECB108C1C5CE09F00B0CB16 /* UIViewController+storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB108B1C5CE09F00B0CB16 /* UIViewController+storyboard.swift */; };
 		BECB108E1C5CEE8100B0CB16 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB108D1C5CEE8100B0CB16 /* KeychainManager.swift */; };
 		BED172F91C3E23E000C5A247 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED172F81C3E23E000C5A247 /* AppViewModel.swift */; };
@@ -142,7 +141,7 @@
 		BE29556E1C782A7000B10B1F /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		BE2CAF1C1C3C0AC800B51FBF /* github-markdown.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = "github-markdown.css"; path = "node_modules/github-markdown-css/github-markdown.css"; sourceTree = SOURCE_ROOT; };
 		BE2CAF201C3C0CFE00B51FBF /* github-markdown-custom.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "github-markdown-custom.css"; sourceTree = "<group>"; };
-		BE32404B1C57C8A200A9A87A /* QueryString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryString.swift; sourceTree = "<group>"; };
+		BE32404B1C57C8A200A9A87A /* URL+QueryString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+QueryString.swift"; sourceTree = "<group>"; };
 		BE39BA211C291BF40000A87F /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		BE3F45431C2A992500DD1863 /* UserSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSummary.swift; sourceTree = "<group>"; };
 		BE3F45451C2A993400DD1863 /* Repo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
@@ -162,7 +161,6 @@
 		BE546A641C4E30B500C71C0A /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URL.swift; path = ../Models/URL.swift; sourceTree = "<group>"; };
 		BE561EF51C5926AE0097D58E /* LoginButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButtonViewController.swift; sourceTree = "<group>"; };
 		BE561EF81C5929E50097D58E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LoginButton.storyboard; sourceTree = "<group>"; };
-		BE57ACC21C53D03700305A54 /* utilSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = utilSpec.swift; sourceTree = "<group>"; };
 		BE57ACC41C53D6E600305A54 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		BE598C241C4C8CC300E1A884 /* ColorizedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorizedImageView.swift; sourceTree = "<group>"; };
 		BE699B931C59C34A004A9E7D /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
@@ -180,12 +178,12 @@
 		BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		BEAC0E791C904DEC0080A0C6 /* highlight.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = highlight.js; path = node_modules/highlight.js/lib/highlight.js; sourceTree = SOURCE_ROOT; };
 		BEAC0E7B1C904E390080A0C6 /* GetBundleFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetBundleFile.swift; sourceTree = "<group>"; };
+		BEB1686C1E61787B00D24909 /* URL+QueryStringSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "URL+QueryStringSpec.swift"; path = "Utils/URL+QueryStringSpec.swift"; sourceTree = "<group>"; };
 		BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Repo.storyboard; sourceTree = "<group>"; };
 		BEB7705B1C476FC40000E9A8 /* Pagination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		BEBA2A701C26AACB00F64F05 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BEBE3A6E1C76ADFD00E7FF0D /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		BEC5F81C1C95A9E700213869 /* MarkdownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
-		BEC803CF1C51F80C00594AA4 /* LinkSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkSpec.swift; sourceTree = "<group>"; };
 		BECB108B1C5CE09F00B0CB16 /* UIViewController+storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+storyboard.swift"; sourceTree = "<group>"; };
 		BECB108D1C5CEE8100B0CB16 /* KeychainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		BED172F81C3E23E000C5A247 /* AppViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
@@ -373,19 +371,11 @@
 		BE57ACBE1C53CE5600305A54 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				BE32404B1C57C8A200A9A87A /* QueryString.swift */,
+				BE32404B1C57C8A200A9A87A /* URL+QueryString.swift */,
 				BE57ACC41C53D6E600305A54 /* Utils.swift */,
 				BEAC0E7B1C904E390080A0C6 /* GetBundleFile.swift */,
 				BE1650271C9157D700DAA20A /* AttributedString.swift */,
 				BE16502D1C91631D00DAA20A /* StringIsErrorType.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		BE57ACC11C53D02B00305A54 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				BE57ACC21C53D03700305A54 /* utilSpec.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -404,12 +394,12 @@
 			path = ViewUtils;
 			sourceTree = "<group>";
 		};
-		BEC803CE1C51F7E200594AA4 /* Models */ = {
+		BEB1686B1E61784C00D24909 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				BEC803CF1C51F80C00594AA4 /* LinkSpec.swift */,
+				BEB1686C1E61787B00D24909 /* URL+QueryStringSpec.swift */,
 			);
-			path = Models;
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		BED813281C24EE6D0028F8B0 = {
@@ -449,8 +439,7 @@
 		BED8134A1C24EE6D0028F8B0 /* StarCatTests */ = {
 			isa = PBXGroup;
 			children = (
-				BEC803CE1C51F7E200594AA4 /* Models */,
-				BE57ACC11C53D02B00305A54 /* Utils */,
+				BEB1686B1E61784C00D24909 /* Utils */,
 				BED8134D1C24EE6D0028F8B0 /* Info.plist */,
 				BED8134B1C24EE6D0028F8B0 /* StarCatSpec.swift */,
 			);
@@ -853,7 +842,7 @@
 				BEB7705C1C476FC40000E9A8 /* Pagination.swift in Sources */,
 				BEF605221C3116950014D633 /* Authentication.swift in Sources */,
 				BE3F45461C2A993400DD1863 /* Repo.swift in Sources */,
-				BE32404C1C57C8A200A9A87A /* QueryString.swift in Sources */,
+				BE32404C1C57C8A200A9A87A /* URL+QueryString.swift in Sources */,
 				BED813351C24EE6D0028F8B0 /* AppDelegate.swift in Sources */,
 				BE9A484D1C36234B00406DA6 /* NewsTableViewController.swift in Sources */,
 				BE39BA221C291BF40000A87F /* TabBarController.swift in Sources */,
@@ -881,9 +870,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE57ACC31C53D03700305A54 /* utilSpec.swift in Sources */,
+				BEB1686D1E61787B00D24909 /* URL+QueryStringSpec.swift in Sources */,
 				BED8134C1C24EE6D0028F8B0 /* StarCatSpec.swift in Sources */,
-				BEC803D01C51F80C00594AA4 /* LinkSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 //
-//  NSURL+.swift
+//  URL+QueryString.swift
 //  StarCat
 //
 //  Created by Ryohei Ikegami on 2016/01/27.
