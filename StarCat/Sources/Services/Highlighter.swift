@@ -34,7 +34,7 @@ struct Highlighter {
     }
     
     func highlight(value: String, name: String) -> Promise<String> {
-        return dispatch_promise(.global()) {
+        return DispatchQueue.global().promise {
             self.highlightSync(value, name: name)
         }
     }

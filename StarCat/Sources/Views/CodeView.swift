@@ -47,7 +47,7 @@ class CodeView: UIView {
                 renderAttributedStringFromHTML("<pre><code>\(highlighted)</code></pre>",
                     css: highlightCSS + " code { font-family: Menlo; } ")
         }
-        let lineNumbersPromise: Promise<NSAttributedString?> = dispatch_promise(.global()) {
+        let lineNumbersPromise: Promise<NSAttributedString?> = DispatchQueue.global().promise {
             let count = content.countLines()
             let digits = count.digitsCount
             let text = (1...count).map { String($0).fillLeft(min: digits, by: " ") }.joined(separator: "\n")
