@@ -92,7 +92,7 @@ struct GetUserStarsCountRequest: GitHubRequest {
     }
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Int {
         if let link = urlResponse.allHeaderFields["Link"] as? String {
-            let lastLinkStr = "<([^>]*)>;\\srel=\"last\"".r?.findFirst(in: link)?.matched
+            let lastLinkStr = "<([^>]*)>;\\srel=\"last\"".r?.findFirst(in: link)?.group(at: 1)
             if let lastLinkStr = lastLinkStr {
                 if let lastLink = URL(string: lastLinkStr) {
                     return lastLink.queries["page"].flatMap { Int($0) }!
