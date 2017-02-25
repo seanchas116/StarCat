@@ -19,7 +19,6 @@ enum DecodeError: Error {
 extension URL: Decodable {
     public static func decode(_ e: Extractor) throws -> URL {
         let str = try String.decode(e)
-        print(str)
         if let url = URL(string: str) {
             return url
         } else {
