@@ -77,12 +77,10 @@ class MarkdownView: UIView, WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if let url = navigationAction.request.url {
             if url.absoluteString != "about:blank" {
-                if let link = Link(url: url) {
-                    if let viewController = viewController {
-                        WebViewPopup.open(link, on: viewController)
-                    }
-                    decisionHandler(.cancel)
+                if let viewController = viewController {
+                    WebViewPopup.open(url, on: viewController)
                 }
+                decisionHandler(.cancel)
                 return
             }
         }

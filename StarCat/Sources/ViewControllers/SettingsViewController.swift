@@ -37,9 +37,9 @@ class SettingsViewController: UITableViewController {
             AppViewModel.instance.logout()
             dismiss(animated: true, completion: nil)
         case feedbackCell:
-            WebViewPopup.open(Link(string: "https://github.com/seanchas116/StarCat/issues/new")!, on: self)
+            WebViewPopup.open(URL(string: "https://github.com/seanchas116/StarCat/issues/new")!, on: self)
         case sourceCodeCell:
-            WebViewPopup.open(Link(string: "https://github.com/seanchas116/StarCat")!, on: self)
+            WebViewPopup.open(URL(string: "https://github.com/seanchas116/StarCat")!, on: self)
         default:
             break
         }

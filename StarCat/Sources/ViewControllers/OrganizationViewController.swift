@@ -42,8 +42,8 @@ class OrganizationViewController: RepoTableViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(OrganizationViewController.showActivity))
         
-        viewModel.avatarURL.bindTo { [weak self] link in
-            self?.avatarImageView.kf.setImage(with: link?.url)
+        viewModel.avatarURL.bindTo { [weak self] url in
+            self?.avatarImageView.kf.setImage(with: url)
         }.addTo(bag)
         viewModel.name.bindTo(nameLabel.wwText).addTo(bag)
         viewModel.login.bindTo(loginLabel.wwText).addTo(bag)

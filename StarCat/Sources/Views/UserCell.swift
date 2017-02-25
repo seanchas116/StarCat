@@ -23,8 +23,8 @@ class UserCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        viewModel.avatarURL.bindTo { [weak self] link in
-            self?.avatarImage.kf.setImage(with: link?.url)
+        viewModel.avatarURL.bindTo { [weak self] url in
+            self?.avatarImage.kf.setImage(with: url)
         }.addTo(bag)
         viewModel.name.bindTo(fullNameLabel.wwText).addTo(bag)
         viewModel.login.bindTo(loginLabel.wwText).addTo(bag)

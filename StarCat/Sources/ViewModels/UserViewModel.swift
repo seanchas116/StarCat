@@ -85,15 +85,15 @@ class UserViewModel {
     let user = Variable<User?>(nil)
     let summary = Variable<UserSummary?>(nil)
     let name: Property<String>
-    let avatarURL: Property<Link?>
+    let avatarURL: Property<URL?>
     let login: Property<String>
     let company: Property<String?>
     let location: Property<String?>
-    let homepage: Property<Link?>
+    let homepage: Property<URL?>
     let followersCount: Property<Int>
     let followingCount: Property<Int>
     let starsCount = Variable(0)
-    let githubURL: Property<Link?>
+    let githubURL: Property<URL?>
     let followed = Variable(false)
     
     let bag = SubscriptionBag()
@@ -108,7 +108,7 @@ class UserViewModel {
         homepage = user.map { $0?.blog }
         followersCount = user.map { $0?.followers ?? 0 }
         followingCount = user.map { $0?.following ?? 0 }
-        githubURL = login.map { Link(string: "https://github.com/\($0)") }
+        githubURL = login.map { URL(string: "https://github.com/\($0)") }
         
         summary.changed.subscribe { [weak self] summary in
             if let summary = summary {

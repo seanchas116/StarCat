@@ -31,8 +31,8 @@ class RepoCell: UITableViewCell {
         super.awakeFromNib()
         viewModel.name.bindTo(titleLabel.wwText).addTo(bag)
         viewModel.description.bindTo(descriptionLabel.wwText).addTo(bag)
-        viewModel.avatarURL.bindTo { [weak self] link in
-            self?.avatarImage.kf.setImage(with: link?.url)
+        viewModel.avatarURL.bindTo { [weak self] url in
+            self?.avatarImage.kf.setImage(with: url)
         }.addTo(bag)
         viewModel.ownerName.bindTo(ownerNameLabel.wwText).addTo(bag)
         viewModel.event.map { $0 == nil }.bindTo(eventInfoView.wwHidden).addTo(bag)

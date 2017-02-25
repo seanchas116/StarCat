@@ -14,15 +14,15 @@ private var popups = Set<WebViewPopup>()
 
 class WebViewPopup: NSObject, SFSafariViewControllerDelegate {
     let root: UIViewController
-    let link: Link
+    let url: URL
     
-    init(link: Link, root: UIViewController) {
+    init(url: URL, root: UIViewController) {
         self.root = root
-        self.link = link
+        self.url = url
     }
     
     func show() {
-        let safari = SFSafariViewController(url: link.url)
+        let safari = SFSafariViewController(url: url)
         safari.delegate = self
         popups.insert(self)
         root.present(safari, animated: true, completion: nil)
@@ -40,12 +40,12 @@ class WebViewPopup: NSObject, SFSafariViewControllerDelegate {
         return activities
     }
     
-    static func open(_ link: Link, on vc: UIViewController) {
-        WebViewPopup(link: link, root: vc).show()
+    static func open(_ url: URL, on vc: UIViewController) {
+        WebViewPopup(url: url, root: vc).show()
     }
     
-    static func openActivity(_ link: Link, on vc: UIViewController) {
-        let activity = UIActivityViewController(activityItems: [link.url], applicationActivities: activities)
+    static func openActivity(_ url: URL, on vc: UIViewController) {
+        let activity = UIActivityViewController(activityItems: [url], applicationActivities: activities)
         vc.present(activity, animated: true, completion: nil)
     }
     

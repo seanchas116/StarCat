@@ -18,10 +18,10 @@ struct User {
     let id: Int
     let login: String
     let name: String?
-    let avatarURL: Link
+    let avatarURL: URL
     let company: String?
     let location: String?
-    let blog: Link?
+    let blog: URL?
     let email: String?
     let followers: Int
     let following: Int

@@ -35,8 +35,8 @@ class RepoViewController: UIViewController {
         viewModel.name.bindTo(wwTitle).addTo(bag)
         viewModel.name.bindTo(titleLabel.wwText).addTo(bag)
         viewModel.description.bindTo(descriptionLabel.wwText).addTo(bag)
-        viewModel.avatarURL.bindTo { [weak self] link in
-            self?.avatarImageView.kf.setImage(with: link?.url)
+        viewModel.avatarURL.bindTo { [weak self] url in
+            self?.avatarImageView.kf.setImage(with: url)
         }.addTo(bag)
         viewModel.ownerName.bindTo(ownerLabel.wwText).addTo(bag)
         viewModel.homepage.map { $0?.stringWithoutScheme ?? ""}.bindTo(homepageLabel.wwText).addTo(bag)

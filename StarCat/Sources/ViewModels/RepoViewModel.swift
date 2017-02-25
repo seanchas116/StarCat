@@ -19,11 +19,11 @@ class RepoViewModel {
     let starred = Variable(false)
     let description: Property<String>
     let language: Property<String?>
-    let avatarURL: Property<Link?>
+    let avatarURL: Property<URL?>
     let ownerName: Property<String>
-    let homepage: Property<Link?>
+    let homepage: Property<URL?>
     let pushedAt: Property<Date>
-    let githubURL: Property<Link?>
+    let githubURL: Property<URL?>
     
     let event = Variable<Event?>(nil)
     let eventActor: Property<UserSummary?>
@@ -42,7 +42,7 @@ class RepoViewModel {
         ownerName = repo.map { $0?.owner.login ?? "" }
         homepage = repo.map { $0?.homepage }
         pushedAt = repo.map { $0?.pushedAt ?? Date() }
-        githubURL = fullName.map { Link(string: "https://github.com/\($0)") }
+        githubURL = fullName.map { URL(string: "https://github.com/\($0)") }
         eventActor = event.map { event in
             event.flatMap { e -> UserSummary? in
                 switch e.content {

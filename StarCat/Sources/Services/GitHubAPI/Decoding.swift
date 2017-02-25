@@ -16,13 +16,14 @@ enum DecodeError: Error {
     case wrongFileType(String)
 }
 
-extension Link: Decodable {
-    static func decode(_ e: Extractor) throws -> Link {
+extension URL: Decodable {
+    public static func decode(_ e: Extractor) throws -> URL {
         let str = try String.decode(e)
-        if let link = Link(string: str) {
-            return link
+        print(str)
+        if let url = URL(string: str) {
+            return url
         } else {
-            throw Himotoki.DecodeError.missingKeyPath(KeyPath())
+            throw "Invalid URL"
         }
     }
 }
@@ -88,7 +89,7 @@ extension Repo: Decodable {
             description: e <|? "description",
             starsCount: e <| "stargazers_count",
             language: e <|? "language",
-            homepage: e <|? "homepage",
+            homepage: (try? e <|? "homepage") ?? nil,
             pushedAt: e <| "pushed_at"
         )
     }
