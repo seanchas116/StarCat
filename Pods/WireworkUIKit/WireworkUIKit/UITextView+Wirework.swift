@@ -29,14 +29,14 @@ extension UITextView {
     }
     
     public var wwTextDidChange: Signal<Void> {
-        return NSNotificationCenter.defaultCenter().wwNotification(UITextViewTextDidChangeNotification, object: self).voidSignal
+        return NotificationCenter.default.wwNotification(NSNotification.Name.UITextViewTextDidChange, object: self).voidSignal
     }
     
     public var wwTextDidEndEditing: Signal<Void> {
-        return NSNotificationCenter.defaultCenter().wwNotification(UITextViewTextDidEndEditingNotification, object: self).voidSignal
+        return NotificationCenter.default.wwNotification(NSNotification.Name.UITextViewTextDidEndEditing, object: self).voidSignal
     }
     
     public var wwTextDidBeginEditing: Signal<Void> {
-        return NSNotificationCenter.defaultCenter().wwNotification(UITextViewTextDidBeginEditingNotification, object: self).voidSignal
+        return NotificationCenter.default.wwNotification(NSNotification.Name.UITextViewTextDidBeginEditing, object: self).voidSignal
     }
 }

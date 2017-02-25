@@ -23,11 +23,11 @@ extension UITextField {
     }
     
     public var wwTextChanged: Signal<String?> {
-        return wwControlEvent(.ValueChanged).map { [weak self] _ in self?.text }
+        return wwControlEvent(.valueChanged).map { [weak self] _ in self?.text }
     }
     
     public var wwAttributedTextChanged: Signal<NSAttributedString?> {
-        return wwControlEvent(.ValueChanged).map { [weak self] _ in self?.attributedText }
+        return wwControlEvent(.valueChanged).map { [weak self] _ in self?.attributedText }
     }
     
     public var wwTextColor: (UIColor?) -> Void {

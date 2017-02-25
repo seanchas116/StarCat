@@ -18,16 +18,16 @@ struct Authentication {
         return accessToken != nil
     }
     
-    static var authURL: NSURL {
+    static var authURL: URL {
         let options = [
             "client_id": Secrets.githubClientID,
             "redirect_uri": redirectURL,
             "scope": "user:follow,public_repo"
         ]
-        return NSURL(string: "https://github.com/login/oauth/authorize?", queries: options)!
+        return URL(string: "https://github.com/login/oauth/authorize?", queries: options)!
     }
     
-    static func handleCallbackURL(url: NSURL) -> Promise<AccessToken>? {
+    static func handleCallbackURL(_ url: URL) -> Promise<AccessToken>? {
         print("handling \(url)")
         if url.scheme == Constants.appURLScheme && url.path == "/auth" {
             if let code = url.queries["code"] {

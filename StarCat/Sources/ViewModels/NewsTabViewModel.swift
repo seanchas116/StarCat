@@ -23,13 +23,13 @@ class NewsPagination: Pagination<News> {
             let promises = events.flatMap { event -> Promise<News>? in
                 switch event.content {
                 case .Star(_, let repoSummary):
-                    return SharedModelCache.repoCache.fetch(repoSummary.fullName)
+                    return SharedModelCache.repoCache.fetch(key: repoSummary.fullName)
                         .then { repo in News(repo: repo, event: event) }
                 default:
                     return nil
                 }
             }
-            return when(promises)
+            return when(fulfilled: promises)
         }
     }
 }

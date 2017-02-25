@@ -14,14 +14,14 @@ import Wirework
 private let baseReadmeCSS = getBundleFile("github-markdown", ofType: "css")
 private let customReadmeCSS = getBundleFile("github-markdown-custom", ofType: "css")
 
-private func wrapReadme(htmlBody: String) -> String {
+private func wrapReadme(_ htmlBody: String) -> String {
     return "<html><head><meta name='viewport' content='initial-scale=1, maximum-scale=1'><style>\(baseReadmeCSS)\(customReadmeCSS)</style></head><body style=' visibility: hidden;'><div id='header-padding'></div>\(htmlBody)</body></html>"
 }
 
 class MarkdownView: UIView, WKNavigationDelegate {
     var webView: WKWebView!
     var viewController: UIViewController?
-    let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+    let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     
     let html = Variable<String?>(nil)
     let loading = Variable(true)
@@ -61,32 +61,30 @@ class MarkdownView: UIView, WKNavigationDelegate {
         html.bindTo { [weak self] html in
             self?.loading.value = true
             if let html = html {
-                self?.webView.loadHTMLString(wrapReadme(html), baseURL: nil)
+                let _ = self?.webView.loadHTMLString(wrapReadme(html), baseURL: nil)
             }
         }.addTo(bag)
         loading.bindTo(loadingIndicator.wwAnimating).addTo(bag)
         loading.map { !$0 }.bindTo(loadingIndicator.wwHidden).addTo(bag)
     }
     
-    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         loading.value = false
         setHeaderPaddingHeight()
         showContent()
     }
     
-    func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
-        if let URL = navigationAction.request.URL {
-            if URL.absoluteString != "about:blank" {
-                if let link = Link(URL: URL) {
-                    if let viewController = viewController {
-                        WebViewPopup.open(link, on: viewController)
-                    }
-                    decisionHandler(.Cancel)
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if let url = navigationAction.request.url {
+            if url.absoluteString != "about:blank" {
+                if let viewController = viewController {
+                    WebViewPopup.open(url, on: viewController)
                 }
+                decisionHandler(.cancel)
                 return
             }
         }
-        decisionHandler(.Allow)
+        decisionHandler(.allow)
     }
     
     override func layoutSubviews() {
@@ -94,11 +92,11 @@ class MarkdownView: UIView, WKNavigationDelegate {
         webView.frame = bounds
         var headerHeight = CGFloat(0)
         if let header = header {
-            headerHeight = header.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
-            header.frame = CGRect(origin: CGPoint.zero, size: CGSizeMake(frame.width, headerHeight))
+            headerHeight = header.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+            header.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: frame.width, height: headerHeight))
         }
         setHeaderPaddingHeight()
-        loadingIndicator.center = CGPointMake(frame.width * 0.5, headerHeight + 16 + loadingIndicator.bounds.height * 0.5)
+        loadingIndicator.center = CGPoint(x: frame.width * 0.5, y: headerHeight + 16 + loadingIndicator.bounds.height * 0.5)
     }
     
     private func showContent() {

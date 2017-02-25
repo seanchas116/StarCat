@@ -8,6 +8,7 @@
 
 import UIKit
 import Wirework
+import Kingfisher
 
 class RepoCell: UITableViewCell {
     @IBOutlet weak var avatarImage: UIImageView!
@@ -30,7 +31,9 @@ class RepoCell: UITableViewCell {
         super.awakeFromNib()
         viewModel.name.bindTo(titleLabel.wwText).addTo(bag)
         viewModel.description.bindTo(descriptionLabel.wwText).addTo(bag)
-        viewModel.avatarImage.bindTo(avatarImage.wwImage).addTo(bag)
+        viewModel.avatarURL.bindTo { [weak self] url in
+            self?.avatarImage.kf.setImage(with: url)
+        }.addTo(bag)
         viewModel.ownerName.bindTo(ownerNameLabel.wwText).addTo(bag)
         viewModel.event.map { $0 == nil }.bindTo(eventInfoView.wwHidden).addTo(bag)
         viewModel.eventActorName.bindTo(eventActorLabel.wwText).addTo(bag)
@@ -45,7 +48,7 @@ class RepoCell: UITableViewCell {
             }.addTo(bag)
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

@@ -5,6 +5,7 @@
 [![GitHub release](https://img.shields.io/github/release/ikesyo/Himotoki.svg)](https://github.com/ikesyo/Himotoki/releases)
 [![CI Status](https://travis-ci.org/ikesyo/Himotoki.svg)](https://travis-ci.org/ikesyo/Himotoki)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 
 Himotoki (紐解き) is a type-safe JSON decoding library purely written in Swift. This library is highly inspired by popular JSON parsing libraries in Swift: [Argo](https://github.com/thoughtbot/Argo) and [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper).
 
@@ -26,7 +27,7 @@ struct Group: Decodable {
 
     // MARK: Decodable
 
-    static func decode(e: Extractor) throws -> Group {
+    static func decode(_ e: Extractor) throws -> Group {
         return try Group(
             name: e <| "name",
             floor: e <| "floor",
@@ -39,7 +40,7 @@ struct Group: Decodable {
 func testGroup() {
     var JSON: [String: AnyObject] = [ "name": "Himotoki", "floor": 12 ]
     
-    let g: Group? = try? decode(JSON)
+    let g = try? Group.decodeValue(JSON)
     XCTAssert(g != nil)
     XCTAssert(g?.name == "Himotoki")
     XCTAssert(g?.floor == 12)
@@ -47,7 +48,7 @@ func testGroup() {
 
     JSON["name"] = nil
     do {
-        try decode(JSON) as Group
+        try Group.decodeValue(JSON)
     } catch let DecodeError.MissingKeyPath(keyPath) {
         XCTAssert(keyPath == "name")
     } catch {
@@ -56,9 +57,20 @@ func testGroup() {
 }
 ```
 
-## Operators
+## Implementing the `decode` method for your models
 
-Himotoki supports the following operators to decode JSON elements, where `T` is a generic type conforming to `Decodable` protocol.
+To implement the `decode` method for you models conforming to the `Decodable` protocol, you can use the following `Extractor`'s extraction methods:
+
+- `public func value<T: Decodable>(_ keyPath: KeyPath) throws -> T`
+- `public func valueOptional<T: Decodable>(_ keyPath: KeyPath) throws -> T?`
+- `public func array<T: Decodable>(_ keyPath: KeyPath) throws -> [T]`
+- `public func arrayOptional<T: Decodable>(_ keyPath: KeyPath) throws -> [T]?`
+- `public func dictionary<T: Decodable>(_ keyPath: KeyPath) throws -> [String: T]`
+- `public func dictionaryOptional<T: Decodable>(_ keyPath: KeyPath) throws -> [String: T]?`
+
+### Extraction Operators
+
+Himotoki also supports the following operators to decode JSON elements, where `T` is a generic type conforming to the `Decodable` protocol.
 
 | Operator                        | Decode element as | Remarks                          |
 |:--------------------------------|:------------------|:---------------------------------|
@@ -69,26 +81,47 @@ Himotoki supports the following operators to decode JSON elements, where `T` is 
 | <code>&lt;&#124;-&#124;</code>  | `[String: T]`     | A dictionary of values           |
 | <code>&lt;&#124;-&#124;?</code> | `[String: T]?`    | An optional dictionary of values |
 
+## Value Transformation
+
+You can transform an extracted value to an instance of non-`Decodable` types by passing the value to a `Transformer` instance as follows:
+
+```swift
+// Creates a `Transformer` instance.
+let URLTransformer = Transformer<String, NSURL> { URLString throws -> NSURL in
+    if let URL = NSURL(string: URLString) {
+        return URL
+    }
+    
+    throw customError("Invalid URL string: \(URLString)")
+}
+
+let URL = try URLTransformer.apply(e <| "foo_url")
+let otherURLs = try URLTransformer.apply(e <|| "bar_urls")
+```
+
 ## Requirements
 
-- Swift 2.1 / Xcode 7.2
+Himotoki 3.x requires / supports the following environments:
+
+- Swift 3.0.1 / Xcode 8.1
+    - If you use Swift 2.2 (Xcode 7.3) or Swift 2.3 (Xcode 8), you can use [2.1.1](https://github.com/ikesyo/Himotoki/releases/tag/2.1.1) instead.
 - OS X 10.9 or later
-- iOS 8.0 or later (by Carthage or CocoaPods) / iOS 7 (by copying the source files directly)
+- iOS 8.0 or later
 - tvOS 9.0 or later
 - watchOS 2.0 or later
 
 ## Installation
 
-There are 3 options. If your app support iOS 7, you can only use the last way.
+There are 2 options.
 
-### Framework with Carthage (preferable)
+### Carthage
 
 Himotoki is [Carthage](https://github.com/Carthage/Carthage) compatible.
 
-- Add `github "ikesyo/Himotoki" ~> 1.5` to your Cartfile.
+- Add `github "ikesyo/Himotoki" ~> 3.0` to your Cartfile.
 - Run `carthage update`.
 
-### Framework with CocoaPods
+### CocoaPods
 
 Himotoki also can be used by [CocoaPods](https://cocoapods.org/).
 
@@ -96,24 +129,10 @@ Himotoki also can be used by [CocoaPods](https://cocoapods.org/).
 
     ```ruby
     use_frameworks!
-    pod "Himotoki", "~> 1.5"
+    pod "Himotoki", "~> 3.0"
     ```
 
 - Run `pod install`.
-
-### Copying the source files directly
-
-- Add this repository as a git submodule:
-
-    ```swift
-    $ git submodule add https://github.com/ikesyo/Himotoki.git PATH_TO_SUBMODULE
-    
-    // or
-    
-    $ carthage update --use-submodules
-    ```
-
-- Then just add references of `Sources/*.swift` to your Xcode project.
 
 ## License
 

@@ -1,38 +1,30 @@
 PODS:
-  - APIKit (1.1.2):
-    - Result (~> 1.0.1)
-  - HanekeSwift (0.10.1)
-  - Himotoki (1.5.0)
-  - KeychainAccess (2.3.3)
-  - NBNRequestKit (0.2.2)
-  - Nimble (3.1.0)
-  - OctoKit.swift (0.5.2):
-    - NBNRequestKit (~> 0.2.2)
-  - OMGHTTPURLRQ (3.1.1):
-    - OMGHTTPURLRQ/RQ (= 3.1.1)
-  - OMGHTTPURLRQ/FormURLEncode (3.1.1)
-  - OMGHTTPURLRQ/RQ (3.1.1):
-    - OMGHTTPURLRQ/FormURLEncode
-    - OMGHTTPURLRQ/UserAgent
-  - OMGHTTPURLRQ/UserAgent (3.1.1)
-  - PromiseKit (3.1.1):
-    - PromiseKit/Foundation (= 3.1.1)
-    - PromiseKit/QuartzCore (= 3.1.1)
-    - PromiseKit/UIKit (= 3.1.1)
-  - PromiseKit/CorePromise (3.1.1)
-  - PromiseKit/Foundation (3.1.1):
-    - OMGHTTPURLRQ (~> 3.1.0)
+  - APIKit (3.1.1):
+    - Result (~> 3.0)
+  - CrossroadRegex (1.0.0-alpha.1)
+  - Himotoki (3.0.1)
+  - KeychainAccess (3.0.1)
+  - Kingfisher (3.5.0)
+  - NBNRequestKit (2.0.1)
+  - Nimble (6.0.1)
+  - OctoKit.swift (0.7.2):
+    - NBNRequestKit (~> 2.0)
+  - PromiseKit (4.1.7):
+    - PromiseKit/Foundation (= 4.1.7)
+    - PromiseKit/QuartzCore (= 4.1.7)
+    - PromiseKit/UIKit (= 4.1.7)
+  - PromiseKit/CorePromise (4.1.7)
+  - PromiseKit/Foundation (4.1.7):
     - PromiseKit/CorePromise
-  - PromiseKit/QuartzCore (3.1.1):
+  - PromiseKit/QuartzCore (4.1.7):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (3.1.1):
+  - PromiseKit/UIKit (4.1.7):
     - PromiseKit/CorePromise
-  - Quick (0.9.1)
-  - Regex (0.3.0)
-  - Result (1.0.2)
-  - SVWebViewController (HEAD based on 1.0)
-  - SwiftDate (3.0.6)
-  - UIColor_Hex_Swift (1.9)
+  - Quick (1.1.0)
+  - Result (3.1.0)
+  - SVWebViewController (1.0)
+  - SwiftDate (4.0.13)
+  - UIColor_Hex_Swift (3.0.2)
   - Wirework (0.0.1)
   - WireworkFoundation (0.0.1):
     - Wirework
@@ -42,15 +34,15 @@ PODS:
 
 DEPENDENCIES:
   - APIKit
-  - HanekeSwift
+  - CrossroadRegex (= 1.0.0-alpha.1)
   - Himotoki
   - KeychainAccess
+  - Kingfisher
   - Nimble
   - OctoKit.swift
   - PromiseKit
   - Quick
-  - Regex
-  - SVWebViewController (HEAD)
+  - SVWebViewController (from `https://github.com/TransitApp/SVWebViewController.git`)
   - SwiftDate
   - UIColor_Hex_Swift
   - Wirework (from `https://github.com/seanchas116/Wirework.git`)
@@ -58,6 +50,8 @@ DEPENDENCIES:
   - WireworkUIKit (from `https://github.com/seanchas116/Wirework.git`)
 
 EXTERNAL SOURCES:
+  SVWebViewController:
+    :git: https://github.com/TransitApp/SVWebViewController.git
   Wirework:
     :git: https://github.com/seanchas116/Wirework.git
   WireworkFoundation:
@@ -66,34 +60,38 @@ EXTERNAL SOURCES:
     :git: https://github.com/seanchas116/Wirework.git
 
 CHECKOUT OPTIONS:
+  SVWebViewController:
+    :commit: 9abad6b852b6c2ad19bb3c28532cce53719e2a7f
+    :git: https://github.com/TransitApp/SVWebViewController.git
   Wirework:
-    :commit: 0bb9278deba9461e9ef691e37d8eb4793ceca173
+    :commit: 840bb0d6b9e4d66be66ae2254a3059cc8adc23f1
     :git: https://github.com/seanchas116/Wirework.git
   WireworkFoundation:
-    :commit: 0bb9278deba9461e9ef691e37d8eb4793ceca173
+    :commit: 6b5abbcca53d8a7c5afab9fe0ff27d8fe3ebef11
     :git: https://github.com/seanchas116/Wirework.git
   WireworkUIKit:
-    :commit: 0bb9278deba9461e9ef691e37d8eb4793ceca173
+    :commit: 6b5abbcca53d8a7c5afab9fe0ff27d8fe3ebef11
     :git: https://github.com/seanchas116/Wirework.git
 
 SPEC CHECKSUMS:
-  APIKit: d6e313f1ca3b0cae30a7059f872f7780d8a147ec
-  HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
-  Himotoki: 7506d0a42c59ca4f7e348f22aee89e22c76c5711
-  KeychainAccess: 9b7e49e48277e329b1b3195e54697ed313d30acf
-  NBNRequestKit: d00bad4cb6ac80daa9479e5f35e98a263bae6166
-  Nimble: 79d40f4d69d47314229bbabacaa02b8838c779b9
-  OctoKit.swift: dcd06e18fd5374055cbfb673d2e1a9c1c1505dfc
-  OMGHTTPURLRQ: 633f98ee745aeda02345935a52eec1784cddb589
-  PromiseKit: 4e8127c22a9b29d1b44958ab2ec762ea6115cbfb
-  Quick: a5221fc21788b6aeda934805e68b061839bc3165
-  Regex: 6bfb554ad7d5b1be9cfc57ab1fe2fb6cee45a344
-  Result: dd3dd71af3fa2e262f1a999e14fba2c25ec14f16
-  SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
-  SwiftDate: 520c0e7de224c881fe4213caeca72d482ed3d45f
-  UIColor_Hex_Swift: 2ee747c0fed8b72b2135ef474b80a6921e489daa
+  APIKit: 7460983f490d3bde6aaaaa4164d18c9865a6f91d
+  CrossroadRegex: 93dac3d83c1192e568f5679668958155e8694b79
+  Himotoki: 85fda41d4d0e14f7228317a3b474175cdfb8f515
+  KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
+  Kingfisher: 7c62087039d93d26c54c8dd9b0b588d2ce55cef6
+  NBNRequestKit: af7f7ee45acff510138b63becd830501eea36e5d
+  Nimble: 1527fd1bd2b4cf0636251a36bc8ab37e81da8347
+  OctoKit.swift: 5cf2ea7bff7b8027e05f277bdcdfda22a91ef616
+  PromiseKit: 779f2e41faf62d854e7593026ddbcb0bb5c5002d
+  Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
+  Result: 4e3ed5995ed94d0cd6a09be9a431fce3f3624bbf
+  SVWebViewController: aa2e18a41ff5f45be7aeec8e92ca5bcc50b5ebb1
+  SwiftDate: 8ec416bb1b5129d1f35e8efaed720421f41d42df
+  UIColor_Hex_Swift: 95f718452092a3efc8a827dffd2c04d3237be02d
   Wirework: 1799742208b3cea13fa2f7a5ab8be4c4021b68f2
   WireworkFoundation: d27c0faf31a88fd5902c70fb408096e7a947350d
   WireworkUIKit: d01bbafbeea0a4e01da12efceb5b71992e7a4783
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 2dbf2e2c804ff76d18ce2db60f20d72f108c3c42
+
+COCOAPODS: 1.2.0

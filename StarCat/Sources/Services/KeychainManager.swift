@@ -18,14 +18,14 @@ class KeychainManager {
     func loadAccessToken() -> AccessToken? {
         let token = keychain[githubTokenKey]
         let scope = keychain[githubScopeKey]
-        if let token = token, scope = scope {
+        if let token = token, let scope = scope {
             return AccessToken(token: token, scope: scope)
         } else {
             return nil
         }
     }
     
-    func saveAccessToken(token: AccessToken) {
+    func saveAccessToken(_ token: AccessToken) {
         self.keychain[githubTokenKey] = token.token
         self.keychain[githubScopeKey] = token.scope
     }

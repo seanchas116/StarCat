@@ -22,7 +22,7 @@ class WWBarButtonItemTarget: NSObject {
         _barButtonItem = barButtonItem
         super.init()
         barButtonItem.target = self
-        barButtonItem.action = Selector("action")
+        barButtonItem.action = #selector(WWBarButtonItemTarget.action)
     }
     
     func action() {

@@ -12,9 +12,9 @@ import UIKit
 extension UITableView {
     func scrollToTop() {
         if let source = dataSource {
-            if source.numberOfSectionsInTableView!(self) > 0 {
-                let top = NSIndexPath(forRow: NSNotFound, inSection: 0)
-                scrollToRowAtIndexPath(top, atScrollPosition: .Top, animated: true)
+            if source.numberOfSections!(in: self) > 0 {
+                let top = IndexPath(row: NSNotFound, section: 0)
+                scrollToRow(at: top, at: .top, animated: true)
             }
         }
     }

@@ -21,6 +21,6 @@ extension UIRefreshControl {
     }
     
     public var wwRefreshingChanged: Signal<Bool> {
-        return wwControlEvent(.ValueChanged).map { [weak self] _ in self?.refreshing ?? false }
+        return wwControlEvent(.valueChanged).map { [weak self] _ in self?.isRefreshing ?? false }
     }
 }

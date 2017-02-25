@@ -14,18 +14,18 @@ import SwiftDate
 class Pagination<T> {
     typealias Item = T
     let items = Variable<[Item]>([])
-    var lastFetched: NSDate?
+    var lastFetched: Date?
     var page = 1
     var refreshInterval = 10.minutes
     var canFetchMore = true
     
     func fetch(page: Int) -> Promise<[T]> {
-        return Promise([])
+        return Promise(value: [])
     }
     
     func fetchMore() -> Promise<Void> {
         self.page += 1
-        return self.fetch(self.page).then { events -> Void in
+        return self.fetch(page: self.page).then { events -> Void in
             if events.count > 0 {
                 self.items.value += events
             } else {
@@ -35,18 +35,18 @@ class Pagination<T> {
     }
     
     func fetchAndReset() -> Promise<Void> {
-        return self.fetch(1).then { events -> Void in
+        return self.fetch(page: 1).then { events -> Void in
             self.page = 1
             self.items.value = events
-            self.lastFetched = NSDate()
+            self.lastFetched = Date()
             self.canFetchMore = true
         }
     }
     
     func refresh() -> Promise<Void> {
         if let last = lastFetched {
-            if NSDate() - refreshInterval < last {
-                return Promise()
+            if Date() - refreshInterval < last {
+                return Promise(value: ())
             }
         }
         return fetchAndReset()

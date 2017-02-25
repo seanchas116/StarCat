@@ -9,17 +9,16 @@
 import Foundation
 import PromiseKit
 import APIKit
-import Haneke
 import Wirework
 
 extension Session {
-    static func sendRequestPromise<T: RequestType>(request: T) -> Promise<T.Response> {
+    static func sendPromise<T: Request>(_ request: T) -> Promise<T.Response> {
         return Promise { fulfill, reject in
-            sendRequest(request) { result in
+            send(request) { result in
                 switch result {
-                case .Success(let res):
+                case .success(let res):
                     fulfill(res)
-                case .Failure(let err):
+                case .failure(let err):
                     reject(err)
                 }
             }
@@ -28,25 +27,9 @@ extension Session {
     }
 }
 
-extension RequestType {
+extension Request {
     func send() -> Promise<Response> {
-        return Session.sendRequestPromise(self)
+        return Session.sendPromise(self)
     }
 }
 
-extension Fetch {
-    func promise() -> Promise<T> {
-        return Promise { fulfill, reject in
-            self.onSuccess(fulfill)
-            self.onFailure { failure in
-                reject(failure!)
-            }
-        }
-    }
-}
-
-extension PropertyType {
-    func mapAsync<T>(initValue: T, transform: (Value) -> Promise<T>) -> Property<T> {
-        return mapAsync(initValue) { value, callback in transform(value).then(callback) }
-    }
-}

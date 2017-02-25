@@ -27,14 +27,14 @@ class RoundButtonBorder: UIView {
     }
     
     @IBInspectable
-    var color: UIColor = UIColor.blackColor() {
+    var color: UIColor = UIColor.black {
         didSet {
             updateColor()
         }
     }
     
     @IBInspectable
-    var highlightedColor: UIColor = UIColor.blueColor() {
+    var highlightedColor: UIColor = UIColor.blue {
         didSet {
             updateColor()
         }
@@ -66,26 +66,26 @@ class RoundButtonBorder: UIView {
     private func setup() {
         updateColor()
         updateShape()
-        layer.backgroundColor = UIColor.clearColor().CGColor
+        layer.backgroundColor = UIColor.clear.cgColor
         shapeLayer.lineCap = kCALineCapButt
         layer.addSublayer(shapeLayer)
     }
     
     private func updateColor() {
-        shapeLayer.strokeColor = (highlighted ? highlightedColor : color).CGColor
+        shapeLayer.strokeColor = (highlighted ? highlightedColor : color).cgColor
     }
     
     private func updateShape() {
         let path = UIBezierPath()
         let center = bounds.width * 0.5
         let height = bounds.height
-        path.moveToPoint(CGPoint(x: center, y: 0))
-        path.addLineToPoint(CGPoint(x: center, y: borderWidth))
-        path.moveToPoint(CGPoint(x: center, y: borderWidth + spacing))
-        path.addLineToPoint(CGPoint(x: center, y: height - borderWidth - spacing))
-        path.moveToPoint(CGPoint(x: center, y: height - borderWidth))
-        path.addLineToPoint(CGPoint(x: center, y: height))
-        shapeLayer.path = path.CGPath
+        path.move(to: CGPoint(x: center, y: 0))
+        path.addLine(to: CGPoint(x: center, y: borderWidth))
+        path.move(to: CGPoint(x: center, y: borderWidth + spacing))
+        path.addLine(to: CGPoint(x: center, y: height - borderWidth - spacing))
+        path.move(to: CGPoint(x: center, y: height - borderWidth))
+        path.addLine(to: CGPoint(x: center, y: height))
+        shapeLayer.path = path.cgPath
         shapeLayer.lineWidth = bounds.width
     }
 }

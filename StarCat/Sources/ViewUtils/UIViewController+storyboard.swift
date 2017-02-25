@@ -10,11 +10,11 @@ import UIKit
 import PromiseKit
 
 extension UIViewController {
-    func presentStoryboard(name: String, animated: Bool) -> Promise<UIViewController> {
+    func presentStoryboard(_ name: String, animated: Bool) -> Promise<UIViewController> {
         return Promise { resolve, reject in
             let storyboard = UIStoryboard(name: name, bundle: nil)
             let next = storyboard.instantiateInitialViewController()!
-            presentViewController(next, animated: animated) {
+            present(next, animated: animated) {
                 resolve(next)
             }
         }

@@ -8,4 +8,4 @@
 
 import Foundation
 
-extension String: ErrorType {}
+extension String: Error {}

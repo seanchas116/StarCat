@@ -12,15 +12,15 @@ import SwiftDate
 
 class ModelCacheEntry<T> {
     let item: T
-    let addedAt: NSDate
+    let addedAt: Date
     init(item: T) {
         self.item = item
-        self.addedAt = NSDate()
+        self.addedAt = Date()
     }
 }
 
 class ModelCache<T> {
-    private let cache = NSCache()
+    private let cache = NSCache<NSString, ModelCacheEntry<T>>()
     
     var expiry = 1.hours
     
@@ -35,22 +35,22 @@ class ModelCache<T> {
     
     var fetchNew: (String) -> Promise<T>
     
-    init(fetchNew: (String) -> Promise<T>) {
+    init(fetchNew: @escaping (String) -> Promise<T>) {
         self.fetchNew = fetchNew
         self.countLimit = 100
     }
     
     func add(item: T, forKey key: String) {
-        cache.setObject(ModelCacheEntry(item: item), forKey: key)
+        cache.setObject(ModelCacheEntry(item: item), forKey: key as NSString)
     }
     func fetch(key: String) -> Promise<T> {
-        if let entry = cache.objectForKey(key) as? ModelCacheEntry<T> {
-            if NSDate() - expiry < entry.addedAt {
-                return Promise(entry.item)
+        if let entry = cache.object(forKey: key as NSString) {
+            if Date() - expiry < entry.addedAt {
+                return Promise(value: entry.item)
             }
         }
         return self.fetchNew(key).then { item -> T in
-            self.add(item, forKey: key)
+            self.add(item: item, forKey: key)
             return item
         }
     }

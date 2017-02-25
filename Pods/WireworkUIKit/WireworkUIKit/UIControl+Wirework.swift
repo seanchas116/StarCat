@@ -9,11 +9,11 @@ class WWControlTarget: NSObject {
     private let _resourceMonitor = ResourceMonitor("WWControlTarget")
     #endif
     
-    init(control: UIControl, events: UIControlEvents, callback: () -> Void) {
+    init(control: UIControl, events: UIControlEvents, callback: @escaping () -> Void) {
         _control = control
         _callback = callback
         super.init()
-        control.addTarget(self, action: Selector("action"), forControlEvents: events)
+        control.addTarget(self, action: #selector(WWControlTarget.action), for: events)
     }
     
     func action() {
@@ -21,12 +21,12 @@ class WWControlTarget: NSObject {
     }
     
     deinit {
-        _control?.removeTarget(self, action: nil, forControlEvents: UIControlEvents.AllEvents)
+        _control?.removeTarget(self, action: nil, for: UIControlEvents.allEvents)
     }
 }
 
 extension UIControl {
-    public func wwControlEvent(events: UIControlEvents) -> Signal<UIControlEvents> {
+    public func wwControlEvent(_ events: UIControlEvents) -> Signal<UIControlEvents> {
         return createSignal { bag, emit in
             let target = WWControlTarget(control: self, events: events) {
                 emit(events)
@@ -37,19 +37,19 @@ extension UIControl {
     
     public var wwEnabled: (Bool) -> Void {
         return { [weak self] in
-            self?.enabled = $0
+            self?.isEnabled = $0
         }
     }
     
     public var wwSelected: (Bool) -> Void {
         return { [weak self] in
-            self?.selected = $0
+            self?.isSelected = $0
         }
     }
     
     public var wwHighlighted: (Bool) -> Void {
         return { [weak self] in
-            self?.highlighted = $0
+            self?.isHighlighted = $0
         }
     }
 }

@@ -18,7 +18,7 @@ class SearchPagination: Pagination<Repo> {
         if let query = query {
             return SearchRepoRequest(query: query, sort: .Stars, perPage: 30, page: page).send()
         } else {
-            return Promise([])
+            return Promise(value: [])
         }
     }
 }

@@ -10,8 +10,8 @@ import Foundation
 
 private var _totalCount = 0
 
-public class ResourceMonitor {
-    private let _type: String
+open class ResourceMonitor {
+    fileprivate let _type: String
     
     public init(_ type: String) {
         _type = type
@@ -22,7 +22,7 @@ public class ResourceMonitor {
         _totalCount -= 1
     }
     
-    public static var totalCount: Int {
+    open static var totalCount: Int {
         return _totalCount
     }
 }

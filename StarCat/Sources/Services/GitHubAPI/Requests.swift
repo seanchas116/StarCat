@@ -9,39 +9,35 @@
 import Foundation
 import APIKit
 import Himotoki
+import Regex
 
-protocol GitHubRequest: RequestType {
+protocol GitHubRequest: Request {
     var contentLength: Int? { get }
 }
 
-struct GetAccessTokenRequest: RequestType {
+struct GetAccessTokenRequest: Request {
     let code: String
     
     typealias Response = AccessToken
-    var baseURL: NSURL {
-        return NSURL(string: "https://github.com")!
+    var baseURL: URL {
+        return URL(string: "https://github.com")!
     }
     var path: String {
         return "/login/oauth/access_token"
     }
     var method: HTTPMethod {
-        return .POST
+        return .post
     }
-    var parameters: [String: AnyObject] {
+    var parameters: Any? {
         return [
             "client_id": Secrets.githubClientID,
             "client_secret": Secrets.githubClientSecret,
             "code": code
         ]
     }
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> AccessToken? {
-        do {
-            let token: AccessToken = try decode(object)
-            return token
-        } catch {
-            print("Error parsing response: \(error)")
-            return nil
-        }
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> AccessToken {
+        let token: AccessToken = try decodeValue(object)
+        return token
     }
 }
 
@@ -49,20 +45,21 @@ extension GitHubRequest {
     var contentLength: Int? {
         return nil
     }
-    var baseURL: NSURL {
-        return NSURL(string: "https://api.github.com")!
+    var baseURL: URL {
+        return URL(string: "https://api.github.com")!
     }
     var method: HTTPMethod {
-        return .GET
+        return .get
     }
-    func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+    func intercept(urlRequest: URLRequest) throws -> URLRequest {
+        var newRequest = urlRequest
         if let token = Authentication.accessToken {
-            URLRequest.setValue("token \(token.token)", forHTTPHeaderField: "Authorization")
+            newRequest.setValue("token \(token.token)", forHTTPHeaderField: "Authorization")
         }
         if let contentLength = self.contentLength {
-            URLRequest.setValue("\(contentLength)", forHTTPHeaderField: "Content-Length")
+            newRequest.setValue("\(contentLength)", forHTTPHeaderField: "Content-Length")
         }
-        return URLRequest
+        return newRequest
     }
 }
 
@@ -74,17 +71,12 @@ struct GetUserEventsRequest: GitHubRequest {
     var path: String {
         return "/users/\(userName)/received_events"
     }
-    var parameters: [String: AnyObject] {
+    var parameters: Any? {
         return ["page": page]
     }
     
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
-        do {
-            return try decodeArray(object)
-        } catch {
-            print("Error parsing response: \(error)")
-            return nil
-        }
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Array<Event> {
+        return try decodeArray(object)
     }
 }
 
@@ -95,19 +87,19 @@ struct GetUserStarsCountRequest: GitHubRequest {
     var path: String {
         return "/users/\(userName)/starred"
     }
-    var parameters: [String: AnyObject] {
+    var parameters: Any? {
         return ["per_page": 1]
     }
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Int? {
-        if let link = URLResponse.allHeaderFields["Link"] as? String {
-            let match = link.grep("<([^>]*)>;\\srel=\"last\"")
-            if match {
-                if let lastLink = NSURL(string: match.captures[1]) {
-                    return lastLink.queries["page"].flatMap { Int($0) }
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Int {
+        if let link = urlResponse.allHeaderFields["Link"] as? String {
+            let lastLinkStr = "<([^>]*)>;\\srel=\"last\"".r?.findFirst(in: link)?.group(at: 1)
+            if let lastLinkStr = lastLinkStr {
+                if let lastLink = URL(string: lastLinkStr) {
+                    return lastLink.queries["page"].flatMap { Int($0) }!
                 }
             }
         }
-        return nil
+        throw "Error parsing header"
     }
 }
 
@@ -120,16 +112,11 @@ struct GetUserStarsRequest: GitHubRequest {
     var path: String {
         return "/users/\(userName)/starred"
     }
-    var parameters: [String: AnyObject] {
+    var parameters: Any? {
         return ["page": page, "per_page": perPage]
     }
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
-        do {
-            return try decodeArray(object)
-        } catch {
-            print("Error parsing response: \(error)")
-            return nil
-        }
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Array<Repo> {
+        return try decodeArray(object)
     }
 }
 
@@ -141,14 +128,9 @@ struct GetRepoRequest: GitHubRequest {
         return "/repos/\(fullName)"
     }
     
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
-        do {
-            let repo: Repo = try decode(object)
-            return repo
-        } catch {
-            print("Error parsing response: \(error)")
-            return nil
-        }
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Repo {
+        let repo: Repo = try decodeValue(object)
+        return repo
     }
 }
 
@@ -160,14 +142,9 @@ struct GetUserRequest: GitHubRequest {
         return "/users/\(login)"
     }
     
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
-        do {
-            let user: User = try decode(object)
-            return user
-        } catch {
-            print("Error parsing response: \(error)")
-            return nil
-        }
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> User {
+        let user: User = try decodeValue(object)
+        return user
     }
 }
 
@@ -178,7 +155,7 @@ struct GetMembersRequest: GitHubRequest {
     let perPage: Int
     let page: Int
     
-    var parameters: [String: AnyObject] {
+    var parameters: Any? {
         return ["per_page": perPage, "page": page]
     }
     
@@ -186,13 +163,8 @@ struct GetMembersRequest: GitHubRequest {
         return "/orgs/\(organizationName)/members"
     }
     
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
-        do {
-            return try decodeArray(object)
-        } catch {
-            print("Error parsing response: \(error)")
-            return nil
-        }
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Array<UserSummary> {
+        return try decodeArray(object)
     }
 }
 
@@ -203,14 +175,9 @@ struct GetCurrentUserRequest: GitHubRequest {
         return "/user"
     }
     
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
-        do {
-            let user: User = try decode(object)
-            return user
-        } catch {
-            print("Error parsing response: \(error)")
-            return nil
-        }
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> User {
+        let user: User = try decodeValue(object)
+        return user
     }
 }
 
@@ -220,21 +187,16 @@ struct GetFollowersRequest: GitHubRequest {
     let perPage: Int
     let page: Int
     
-    var parameters: [String: AnyObject] {
+    var parameters: Any? {
         return ["per_page": perPage, "page": page]
     }
     
     var path: String {
         return "/users/\(userName)/followers"
     }
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
-        do {
-            let users: [UserSummary] = try decodeArray(object)
-            return users
-        } catch {
-            print("Error parsing response: \(error)")
-            return nil
-        }
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Array<UserSummary> {
+        let users: [UserSummary] = try decodeArray(object)
+        return users
     }
 }
 
@@ -244,21 +206,25 @@ struct GetFollowingRequest: GitHubRequest {
     let perPage: Int
     let page: Int
     
-    var parameters: [String: AnyObject] {
+    var parameters: Any? {
         return ["per_page": perPage, "page": page]
     }
     
     var path: String {
         return "/users/\(userName)/following"
     }
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
-        do {
-            let users: [UserSummary] = try decodeArray(object)
-            return users
-        } catch {
-            print("Error parsing response: \(error)")
-            return nil
-        }
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Array<UserSummary> {
+        let users: [UserSummary] = try decodeArray(object)
+        return users
+    }
+}
+
+struct ReadmeParser: DataParser {
+    var contentType: String? {
+        return "application/vnd.github.v3.html"
+    }
+    func parse(data: Data) throws -> Any {
+        return String(data: data, encoding: String.Encoding.utf8) ?? ""
     }
 }
 
@@ -271,16 +237,15 @@ struct GetReadmeRequest: GitHubRequest {
         return "/repos/\(fullName)/readme"
     }
     
-    var responseBodyParser: ResponseBodyParser {
-        get {
-            return .Custom(acceptHeader: "application/vnd.github.v3.html", parseData: { data in
-                return NSString(data: data, encoding: NSUTF8StringEncoding) ?? ""
-            })
-        }
+    var dataParser: DataParser {
+        return ReadmeParser()
     }
     
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
-        return object as? String
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> String {
+        guard let str = object as? String else {
+            throw "Error converting to string"
+        }
+        return str
     }
 }
 
@@ -294,14 +259,9 @@ struct GetDirectoryRequest: GitHubRequest {
         return "/repos/\(repoName)/contents/\(dirPath)"
     }
     
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
-        do {
-            let files: [File] = try decodeArray(object)
-            return files
-        } catch {
-            print("Error parsing response: \(error)")
-            return nil
-        }
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
+        let files: [File] = try decodeArray(object)
+        return files
     }
 }
 
@@ -315,14 +275,9 @@ struct GetFileContentRequest: GitHubRequest {
         return "/repos/\(repoName)/contents/\(filePath)"
     }
     
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
-        do {
-            let file: FileContent = try decode(object)
-            return file
-        } catch {
-            print("Error parsing response: \(error)")
-            return nil
-        }
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
+        let file: FileContent = try decodeValue(object)
+        return file
     }
 }
 
@@ -333,7 +288,7 @@ struct SearchRepoResponse {
 }
 
 extension SearchRepoResponse: Decodable {
-    static func decode(e: Extractor) throws -> SearchRepoResponse {
+    static func decode(_ e: Extractor) throws -> SearchRepoResponse {
         return try SearchRepoResponse(
             totalCount: e <| "total_count",
             hasIncompleteResults: e <| "incomplete_results",
@@ -374,18 +329,13 @@ struct SearchRepoRequest: GitHubRequest {
         return "/search/repositories"
     }
     
-    var parameters: [String: AnyObject] {
+    var parameters: Any? {
         return ["q": query, "sort": sort.string, "per_page": perPage, "page": page]
     }
     
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
-        do {
-            let response: SearchRepoResponse = try decode(object)
-            return response.items
-        } catch {
-            print("Error parsing response: \(error)")
-            return nil
-        }
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Array<Repo> {
+        let response: SearchRepoResponse = try decodeValue(object)
+        return response.items
     }
 }
 
@@ -395,7 +345,7 @@ struct AddStarRequest: GitHubRequest {
     let repoName: String
     
     var method: HTTPMethod {
-        return .PUT
+        return .put
     }
     var path: String {
         return "/user/starred/\(repoName)"
@@ -403,7 +353,7 @@ struct AddStarRequest: GitHubRequest {
     var contentLength: Int? {
         return 0
     }
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Bool {
         return true
     }
 }
@@ -414,7 +364,7 @@ struct RemoveStarRequest: GitHubRequest {
     let repoName: String
     
     var method: HTTPMethod {
-        return .DELETE
+        return .delete
     }
     var path: String {
         return "/user/starred/\(repoName)"
@@ -422,7 +372,7 @@ struct RemoveStarRequest: GitHubRequest {
     var contentLength: Int? {
         return 0
     }
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Bool {
         return true
     }
 }
@@ -440,8 +390,8 @@ struct CheckStarredRequest: GitHubRequest {
         return Set([204, 404])
     }
     
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
-        if URLResponse.statusCode == 204 {
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Bool {
+        if urlResponse.statusCode == 204 {
             return true
         } else {
             return false
@@ -455,7 +405,7 @@ struct FollowRequest: GitHubRequest {
     let userName: String
     
     var method: HTTPMethod {
-        return .PUT
+        return .put
     }
     var path: String {
         return "/user/following/\(userName)"
@@ -463,7 +413,7 @@ struct FollowRequest: GitHubRequest {
     var contentLength: Int? {
         return 0
     }
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Bool {
         return true
     }
 }
@@ -474,7 +424,7 @@ struct UnfollowRequest: GitHubRequest {
     let userName: String
     
     var method: HTTPMethod {
-        return .DELETE
+        return .delete
     }
     var path: String {
         return "/user/following/\(userName)"
@@ -482,7 +432,7 @@ struct UnfollowRequest: GitHubRequest {
     var contentLength: Int? {
         return 0
     }
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Bool {
         return true
     }
 }
@@ -501,8 +451,8 @@ struct CheckFollowedRequest: GitHubRequest {
         return Set([204, 404])
     }
     
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
-        if URLResponse.statusCode == 204 {
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Bool {
+        if urlResponse.statusCode == 204 {
             return true
         } else {
             return false

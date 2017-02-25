@@ -17,6 +17,6 @@ extension UISlider {
     }
     
     public var wwValueChanged: Signal<Float> {
-        return wwControlEvent(.ValueChanged).map { [weak self] _ in self?.value ?? 0.0 }
+        return wwControlEvent(.valueChanged).map { [weak self] _ in self?.value ?? 0.0 }
     }
 }

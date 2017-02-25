@@ -27,13 +27,13 @@ class FileViewController: UIViewController, UIScrollViewDelegate {
         
         let name = viewModel.name.value
         viewModel.loadContent().then { content -> Void in
-            let text = String(data: content, encoding: NSUTF8StringEncoding)
+            let text = String(data: content, encoding: String.Encoding.utf8)
             if let text = text {
                 self.codeView.loadContent(text, name: name).then {
                     self.loadingIndicator.stopAnimating()
-                }
+                }.catch { print($0) }
             }
-        }
+        }.catch { print($0) }
         viewModel.name.bindTo(wwTitle).addTo(bag)
     }
     

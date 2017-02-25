@@ -41,25 +41,26 @@ class UserViewController: RepoTableViewController {
         viewModel.login.bindTo { login in
             if login != "" {
                 pagination.userName = login
-                pagination.fetchAndReset()
+                pagination.fetchAndReset().catch { print($0) }
             }
         }.addTo(bag)
         
         if mode == .Profile {
-            viewModel.loadCurrentUser()
+            viewModel.loadCurrentUser().catch { print($0) }
             
             navigationItem.rightBarButtonItems = [
-                UIBarButtonItem(image: UIImage(named: "navigation-config"), style: .Plain, target: self, action: #selector(UserViewController.showProfileMenu)),
-                UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(UserViewController.showActivity))
+                UIBarButtonItem(image: UIImage(named: "navigation-config"), style: .plain, target: self, action: #selector(UserViewController.showProfileMenu)),
+                UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(UserViewController.showActivity))
             ]
             navigationItem.title = "Profile"
         } else {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(UserViewController.showActivity))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(UserViewController.showActivity))
             viewModel.login.bindTo(navigationItem.wwTitle).addTo(bag)
         }
         
-        
-        viewModel.avatarImage.bindTo(avatarImageView.wwImage).addTo(bag)
+        viewModel.avatarURL.bindTo { [weak self] url in
+            self?.avatarImageView.kf.setImage(with: url)
+        }.addTo(bag)
         viewModel.name.bindTo(nameLabel.wwText).addTo(bag)
         viewModel.login.bindTo(loginLabel.wwText).addTo(bag)
         
@@ -91,7 +92,7 @@ class UserViewController: RepoTableViewController {
             self?.showStars()
         }.addTo(bag)
         followButton.wwTapped.subscribe { [weak self] _ in
-            self?.viewModel.toggleFollowed()
+            self?.viewModel.toggleFollowed().catch { print($0) }
         }.addTo(bag)
         
         viewModel.user.bindTo { [weak self] _ in
@@ -100,10 +101,10 @@ class UserViewController: RepoTableViewController {
         }.addTo(bag)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if mode == .Profile && !Authentication.isLoggedIn {
-            LoginButtonViewController.showOn(self)
+            LoginButtonViewController.show(on: self)
         }
     }
     
@@ -119,11 +120,11 @@ class UserViewController: RepoTableViewController {
     }
     
     func showProfileMenu() {
-        presentStoryboard("Settings", animated: true)
+        presentStoryboard("Settings", animated: true).catch { print($0) }
     }
     
     func showFollowers() {
-        navigationController?.pushStoryboard("UserTable", animated: true) { next in
+        navigationController?.push(storyboard: "UserTable", animated: true) { next in
             let userTableVC = next as! UserTableViewController
             let pagination = FollowersPagination()
             pagination.userName = self.viewModel.login.value
@@ -133,7 +134,7 @@ class UserViewController: RepoTableViewController {
     }
     
     func showFollowing() {
-        navigationController?.pushStoryboard("UserTable", animated: true) { next in
+        navigationController?.push(storyboard: "UserTable", animated: true) { next in
             let userTableVC = next as! UserTableViewController
             let pagination = FollowingPagination()
             pagination.userName = self.viewModel.login.value
@@ -143,7 +144,7 @@ class UserViewController: RepoTableViewController {
     }
     
     func showStars() {
-        navigationController?.pushStoryboard("RepoTable", animated: true) { next in
+        navigationController?.push(storyboard: "RepoTable", animated: true) { next in
             let repoTableVC = next as! RepoTableViewController
             let pagination = StarsPagination()
             pagination.userName = self.viewModel.login.value

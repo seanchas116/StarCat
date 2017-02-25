@@ -12,30 +12,29 @@ import PromiseKit
 
 struct Highlighter {
     private let highlightJS = getBundleFile("highlight.pack", ofType: "js")
-    private let jsContext = JSContext()
+    private let jsContext = JSContext()!
     private let hasLanguage: JSValue
     private let highlight: JSValue
-    private let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
     
     init() {
-        let global = jsContext.globalObject
+        let global = jsContext.globalObject!
         global.setValue(global, forProperty: "window")
         jsContext.evaluateScript(highlightJS)
         hasLanguage = jsContext.evaluateScript("(function(lang) { return !!hljs.getLanguage(lang); })")
         highlight = jsContext.evaluateScript("hljs.highlight")
     }
     
-    private func highlightSync(value: String, name: String) -> String {
-        if let ext = name.componentsSeparatedByString(".").last {
-            if hasLanguage.callWithArguments([ext]).toBool() {
-                return highlight.callWithArguments([ext, value]).valueForProperty("value").toString()
+    private func highlightSync(_ value: String, name: String) -> String {
+        if let ext = name.components(separatedBy: ".").last {
+            if hasLanguage.call(withArguments: [ext]).toBool() {
+                return highlight.call(withArguments: [ext, value]).forProperty("value").toString()
             }
         }
         return value
     }
     
     func highlight(value: String, name: String) -> Promise<String> {
-        return dispatch_promise(on: queue) {
+        return DispatchQueue.global().promise {
             self.highlightSync(value, name: name)
         }
     }

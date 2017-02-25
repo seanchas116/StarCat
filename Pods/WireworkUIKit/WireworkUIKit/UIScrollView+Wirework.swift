@@ -20,11 +20,12 @@ class WWScrollViewDelegate: NSObject, UIScrollViewDelegate {
         cascaded.first = self
     }
     
-    func forwardToDelegate(delegate: UIScrollViewDelegate?) {
+    func forward(to delegate: UIScrollViewDelegate?) {
         cascaded.second = delegate
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func
+        scrollViewDidScroll(_ scrollView: UIScrollView) {
         didScroll.emit(scrollView.contentOffset)
     }
 }
@@ -37,7 +38,7 @@ extension UIScrollView {
         let delegate = wwAssociatedObject(&delegateKey, create: create)
         self.delegate = delegate.cascaded
         if !(old is WWDelegateCascader) {
-            delegate.forwardToDelegate(old)
+            delegate.forward(to: old)
         }
         return delegate
     }
@@ -46,17 +47,17 @@ extension UIScrollView {
         return installDelegate { WWScrollViewDelegate() }
     }
     
-    public func wwForwardToDelegate(delegate: UIScrollViewDelegate) {
-        wwDelegate.forwardToDelegate(delegate)
+    public func wwForward(to delegate: UIScrollViewDelegate) {
+        wwDelegate.forward(to: delegate)
     }
     
     public var wwScrollEnabled: (Bool) -> Void {
         return { [weak self] in
-            self?.scrollEnabled = $0
+            self?.isScrollEnabled = $0
         }
     }
     
-    public func wwContentOffset(animated animated: Bool) -> (CGPoint) -> Void {
+    public func wwContentOffset(animated: Bool) -> (CGPoint) -> Void {
         return { [weak self] in
             self?.setContentOffset($0, animated: animated)
         }

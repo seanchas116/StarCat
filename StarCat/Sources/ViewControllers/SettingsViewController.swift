@@ -21,7 +21,7 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         doneButton.wwTapped.subscribe { [weak self] in
-            self?.dismissViewControllerAnimated(true, completion: nil)
+            self?.dismiss(animated: true, completion: nil)
         }.addTo(bag)
     }
 
@@ -30,16 +30,16 @@ class SettingsViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        guard let cell = tableView.cellForRowAtIndexPath(indexPath) else { return }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
         switch cell {
         case logoutCell:
             AppViewModel.instance.logout()
-            dismissViewControllerAnimated(true, completion: nil)
+            dismiss(animated: true, completion: nil)
         case feedbackCell:
-            WebViewPopup.open(Link(string: "https://github.com/seanchas116/StarCat/issues/new")!, on: self)
+            WebViewPopup.open(URL(string: "https://github.com/seanchas116/StarCat/issues/new")!, on: self)
         case sourceCodeCell:
-            WebViewPopup.open(Link(string: "https://github.com/seanchas116/StarCat")!, on: self)
+            WebViewPopup.open(URL(string: "https://github.com/seanchas116/StarCat")!, on: self)
         default:
             break
         }

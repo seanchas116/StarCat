@@ -19,7 +19,7 @@ class ColorizedImageView: UIImageView {
     }
     
     @IBInspectable
-    var color: UIColor = UIColor.blackColor() {
+    var color: UIColor = UIColor.black {
         didSet {
             updateImage()
         }
@@ -41,7 +41,7 @@ class ColorizedImageView: UIImageView {
     
     
     private func updateImage() {
-        image = colorizedImage?.imageWithRenderingMode(.AlwaysTemplate)
+        image = colorizedImage?.withRenderingMode(.alwaysTemplate)
         tintColor = color
     }
 }

@@ -11,6 +11,6 @@ import Foundation
 struct UserSummary {
     let id: Int
     let login: String
-    let avatarURL: Link
+    let avatarURL: URL
     let type: UserType?
 }

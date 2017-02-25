@@ -26,7 +26,7 @@ class SearchViewController: RepoTableViewController, UISearchBarDelegate {
         let searchBar = searchController.searchBar
         searchBar.delegate = self
         searchBar.sizeToFit()
-        searchBar.searchBarStyle = UISearchBarStyle.Minimal
+        searchBar.searchBarStyle = UISearchBarStyle.minimal
         navigationItem.titleView = searchBar
         
         definesPresentationContext = true
@@ -37,7 +37,7 @@ class SearchViewController: RepoTableViewController, UISearchBarDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         viewModel.pagination.query = searchBar.text
         paginator.fetch()
     }

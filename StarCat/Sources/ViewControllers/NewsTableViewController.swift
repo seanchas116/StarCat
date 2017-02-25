@@ -23,7 +23,7 @@ class NewsTableViewController: UITableViewController {
         
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.registerNib(UINib(nibName: "RepoCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
+        tableView.register(UINib(nibName: "RepoCell", bundle: nil), forCellReuseIdentifier: "RepoCell")
         
         paginator = TableViewPaginator<News>(
             tableViewController: self,
@@ -34,19 +34,19 @@ class NewsTableViewController: UITableViewController {
                 repoCell.viewModel.repo.value = news.repo
                 repoCell.viewModel.event.value = news.event
                 repoCell.onActorTapped = { actor in
-                    self?.navigationController?.pushUser(actor)
+                    self?.navigationController?.push(userSummary: actor)
                 }
         }
         
         paginator.whenSelected.subscribe { [unowned self] news in
             if let news = news {
-                self.navigationController?.pushRepo(news.repo)
+                self.navigationController?.push(repo: news.repo)
             }
         }.addTo(bag)
         paginator.loading.value = true
         
-        NSNotificationCenter.defaultCenter()
-            .wwNotification(UIApplicationDidBecomeActiveNotification)
+        NotificationCenter.default
+            .wwNotification(NSNotification.Name.UIApplicationDidBecomeActive)
             .subscribe { [weak self] _ in
                 print("activated")
                 self?.paginator.refresh()
@@ -54,20 +54,20 @@ class NewsTableViewController: UITableViewController {
         .addTo(bag)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         appeared.value = true
         if !Authentication.isLoggedIn {
-            LoginButtonViewController.showOn(self)
+            LoginButtonViewController.show(on: self)
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         paginator.refresh()
     }
 
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         appeared.value = false
     }

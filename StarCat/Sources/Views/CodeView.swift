@@ -17,7 +17,7 @@ class CodeView: UIView {
     private let textView = UITextView()
     private let lineNumbersView = UITextView()
     private let border = CALayer()
-    private var size = CGSizeMake(0, 0)
+    private var size = CGSize(width: 0, height: 0)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,31 +30,31 @@ class CodeView: UIView {
     }
     
     private func setup() {
-        textView.editable = false
-        textView.scrollEnabled = false
-        lineNumbersView.selectable = false
-        lineNumbersView.editable = false
-        lineNumbersView.scrollEnabled = false
-        border.backgroundColor = UIColor(rgba: "#F1F1F1").CGColor
+        textView.isEditable = false
+        textView.isScrollEnabled = false
+        lineNumbersView.isSelectable = false
+        lineNumbersView.isEditable = false
+        lineNumbersView.isScrollEnabled = false
+        border.backgroundColor = UIColor("#F1F1F1").cgColor
         addSubview(textView)
         addSubview(lineNumbersView)
         layer.addSublayer(border)
     }
 
-    func loadContent(content: String, name: String) -> Promise<Void> {
-        let textPromise = highlighter.highlight(content, name: name)
-            .thenInBackground { highlighted in
+    func loadContent(_ content: String, name: String) -> Promise<Void> {
+        let textPromise = highlighter.highlight(value: content, name: name)
+            .then(on: .global()) { highlighted in
                 renderAttributedStringFromHTML("<pre><code>\(highlighted)</code></pre>",
                     css: highlightCSS + " code { font-family: Menlo; } ")
         }
-        let lineNumbersPromise: Promise<NSAttributedString?> = dispatch_promise {
+        let lineNumbersPromise: Promise<NSAttributedString?> = DispatchQueue.global().promise {
             let count = content.countLines()
             let digits = count.digitsCount
-            let text = (1...count).map { String($0).fillLeft(digits, by: " ") }.joinWithSeparator("\n")
+            let text = (1...count).map { String($0).fillLeft(min: digits, by: " ") }.joined(separator: "\n")
             return renderAttributedStringFromHTML("<pre><code>\(text)</code></pre>",
                 css: " code { font-family: Menlo; color: 9B9B9B; } ")
         }
-        return when(textPromise, lineNumbersPromise).then { (text, lineNumbers) -> Void in
+        return when(fulfilled: textPromise, lineNumbersPromise).then { (text, lineNumbers) -> Void in
             self.textView.attributedText = text
             self.lineNumbersView.attributedText = lineNumbers
             self.adjustSizes()
@@ -62,27 +62,27 @@ class CodeView: UIView {
         }
     }
     
-    override func intrinsicContentSize() -> CGSize {
+    override public var intrinsicContentSize: CGSize {
         return size
     }
     
     private func adjustSizes() {
         super.layoutSubviews()
         
-        let maxSize = CGSizeMake(CGFloat.max, CGFloat.max)
+        let maxSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
         let textSize = textView.sizeThatFits(maxSize)
         let lineNumbersSize = lineNumbersView.sizeThatFits(maxSize)
         
-        size = CGSizeMake(lineNumbersSize.width + 6 + textSize.width, textSize.height)
+        size = CGSize(width: lineNumbersSize.width + 6 + textSize.width, height: textSize.height)
         
-        lineNumbersView.frame = CGRectMake(0, 0, lineNumbersSize.width, lineNumbersSize.height)
-        textView.frame = CGRectMake(lineNumbersSize.width + 6, 0, textSize.width, textSize.height)
+        lineNumbersView.frame = CGRect(x: 0, y: 0, width: lineNumbersSize.width, height: lineNumbersSize.height)
+        textView.frame = CGRect(x: lineNumbersSize.width + 6, y: 0, width: textSize.width, height: textSize.height)
         
-        frame = CGRectMake(0, 0, size.width, size.height)
+        frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         
         CATransaction.begin()
         CATransaction.setDisableActions(true)
-        border.frame = CGRectMake(lineNumbersSize.width + 2, 0, 2, textSize.height)
+        border.frame = CGRect(x: lineNumbersSize.width + 2, y: 0, width: 2, height: textSize.height)
         CATransaction.commit()
     }
 }
