@@ -6,7 +6,7 @@ PODS:
   - KeychainAccess (3.0.1)
   - Kingfisher (3.5.0)
   - NBNRequestKit (2.0.1)
-  - Nimble (4.1.0)
+  - Nimble (6.0.1)
   - OctoKit.swift (0.7.2):
     - NBNRequestKit (~> 2.0)
   - PromiseKit (4.1.7):
@@ -20,7 +20,7 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (4.1.7):
     - PromiseKit/CorePromise
-  - Quick (0.9.3)
+  - Quick (1.1.0)
   - Result (3.1.0)
   - SVWebViewController (1.0)
   - SwiftDate (4.0.13)
@@ -38,10 +38,10 @@ DEPENDENCIES:
   - Himotoki
   - KeychainAccess
   - Kingfisher
-  - Nimble (~> 4.1.0)
+  - Nimble
   - OctoKit.swift
   - PromiseKit
-  - Quick (~> 0.9.3)
+  - Quick
   - SVWebViewController (from `https://github.com/TransitApp/SVWebViewController.git`)
   - SwiftDate
   - UIColor_Hex_Swift
@@ -80,10 +80,10 @@ SPEC CHECKSUMS:
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
   Kingfisher: 7c62087039d93d26c54c8dd9b0b588d2ce55cef6
   NBNRequestKit: af7f7ee45acff510138b63becd830501eea36e5d
-  Nimble: 97a0a4cae5124c117115634b2d055d8c97d0af19
+  Nimble: 1527fd1bd2b4cf0636251a36bc8ab37e81da8347
   OctoKit.swift: 5cf2ea7bff7b8027e05f277bdcdfda22a91ef616
   PromiseKit: 779f2e41faf62d854e7593026ddbcb0bb5c5002d
-  Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
+  Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
   Result: 4e3ed5995ed94d0cd6a09be9a431fce3f3624bbf
   SVWebViewController: aa2e18a41ff5f45be7aeec8e92ca5bcc50b5ebb1
   SwiftDate: 8ec416bb1b5129d1f35e8efaed720421f41d42df
@@ -92,6 +92,6 @@ SPEC CHECKSUMS:
   WireworkFoundation: d27c0faf31a88fd5902c70fb408096e7a947350d
   WireworkUIKit: d01bbafbeea0a4e01da12efceb5b71992e7a4783
 
-PODFILE CHECKSUM: a9385c792ed0757cc02a49c8d0e238b45180057c
+PODFILE CHECKSUM: 2dbf2e2c804ff76d18ce2db60f20d72f108c3c42
 
 COCOAPODS: 1.2.0
