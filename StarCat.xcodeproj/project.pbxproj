@@ -125,7 +125,7 @@
 		81D215CFEA707FDA02C1D983 /* Pods-StarCat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarCat.release.xcconfig"; path = "Pods/Target Support Files/Pods-StarCat/Pods-StarCat.release.xcconfig"; sourceTree = "<group>"; };
 		AF613DEA726870DE0C071F39 /* Pods-StarCat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarCat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StarCat/Pods-StarCat.debug.xcconfig"; sourceTree = "<group>"; };
 		BE1650271C9157D700DAA20A /* AttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedString.swift; sourceTree = "<group>"; };
-		BE1650291C91584000DAA20A /* github.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = github.css; path = node_modules/highlight.js/styles/github.css; sourceTree = SOURCE_ROOT; };
+		BE1650291C91584000DAA20A /* github.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = github.css; path = github.css; sourceTree = "<group>"; };
 		BE16502B1C91589A00DAA20A /* Highlighter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highlighter.swift; sourceTree = "<group>"; };
 		BE16502D1C91631D00DAA20A /* StringIsErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringIsErrorType.swift; sourceTree = "<group>"; };
 		BE16502F1C91878500DAA20A /* highlight.xcode.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = highlight.xcode.min.css; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 		BE20D28E1C5CC9E6003C4926 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BE29556D1C782A7000B10B1F /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		BE29556E1C782A7000B10B1F /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
-		BE2CAF1C1C3C0AC800B51FBF /* github-markdown.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = "github-markdown.css"; path = "node_modules/github-markdown-css/github-markdown.css"; sourceTree = SOURCE_ROOT; };
+		BE2CAF1C1C3C0AC800B51FBF /* github-markdown.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = "github-markdown.css"; path = "github-markdown.css"; sourceTree = "<group>"; };
 		BE2CAF201C3C0CFE00B51FBF /* github-markdown-custom.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "github-markdown-custom.css"; sourceTree = "<group>"; };
 		BE32404B1C57C8A200A9A87A /* URL+QueryString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+QueryString.swift"; sourceTree = "<group>"; };
 		BE39BA211C291BF40000A87F /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 		BE4E4EE51C46A39C009FCBE8 /* ModelCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelCache.swift; sourceTree = "<group>"; };
 		BE4ECE291C8C74F9003DA31F /* FileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileViewController.swift; sourceTree = "<group>"; };
 		BE4ECE2B1C8C7519003DA31F /* File.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = File.storyboard; sourceTree = "<group>"; };
-		BE546A641C4E30B500C71C0A /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URL.swift; path = ../Models/URL.swift; sourceTree = "<group>"; };
+		BE546A641C4E30B500C71C0A /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URL.swift; path = URL.swift; sourceTree = "<group>"; };
 		BE561EF51C5926AE0097D58E /* LoginButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButtonViewController.swift; sourceTree = "<group>"; };
 		BE561EF81C5929E50097D58E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LoginButton.storyboard; sourceTree = "<group>"; };
 		BE57ACC41C53D6E600305A54 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -176,9 +176,9 @@
 		BE9428B71C8BDE6000077615 /* FileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileViewModel.swift; sourceTree = "<group>"; };
 		BE9428B91C8BDE9300077615 /* DirectoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryViewModel.swift; sourceTree = "<group>"; };
 		BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
-		BEAC0E791C904DEC0080A0C6 /* highlight.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = highlight.js; path = node_modules/highlight.js/lib/highlight.js; sourceTree = SOURCE_ROOT; };
+		BEAC0E791C904DEC0080A0C6 /* highlight.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = highlight.js; path = highlight.js; sourceTree = "<group>"; };
 		BEAC0E7B1C904E390080A0C6 /* GetBundleFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetBundleFile.swift; sourceTree = "<group>"; };
-		BEB1686C1E61787B00D24909 /* URL+QueryStringSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "URL+QueryStringSpec.swift"; path = "Utils/URL+QueryStringSpec.swift"; sourceTree = "<group>"; };
+		BEB1686C1E61787B00D24909 /* URL+QueryStringSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "URL+QueryStringSpec.swift"; path = "URL+QueryStringSpec.swift"; sourceTree = "<group>"; };
 		BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Repo.storyboard; sourceTree = "<group>"; };
 		BEB7705B1C476FC40000E9A8 /* Pagination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		BEBA2A701C26AACB00F64F05 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -273,11 +273,12 @@
 		BE2CAF191C3C087100B51FBF /* Vendor Files */ = {
 			isa = PBXGroup;
 			children = (
+				BE2CAF1C1C3C0AC800B51FBF /* github-markdown.css */,
 				BE1650291C91584000DAA20A /* github.css */,
 				BEAC0E791C904DEC0080A0C6 /* highlight.js */,
-				BE2CAF1C1C3C0AC800B51FBF /* github-markdown.css */,
 			);
 			name = "Vendor Files";
+			path = "Vendor Files";
 			sourceTree = "<group>";
 		};
 		BE2CAF1E1C3C0C5400B51FBF /* Sources */ = {
@@ -303,9 +304,9 @@
 		BE2CAF1F1C3C0CE600B51FBF /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				BE2CAF201C3C0CFE00B51FBF /* github-markdown-custom.css */,
 				BE1650331C91D0DC00DAA20A /* highlight.pack.js */,
 				BE16502F1C91878500DAA20A /* highlight.xcode.min.css */,
-				BE2CAF201C3C0CFE00B51FBF /* github-markdown-custom.css */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -313,6 +314,10 @@
 		BE3F45401C2A98FC00DD1863 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BE4ECE2B1C8C7519003DA31F /* File.storyboard */,
+				BE9428AF1C8B35A800077615 /* FileTable.storyboard */,
+				BE9428AD1C8B359D00077615 /* FileTableViewController.swift */,
+				BE4ECE291C8C74F9003DA31F /* FileViewController.swift */,
 				BE561EF71C5929E50097D58E /* LoginButton.storyboard */,
 				BE561EF51C5926AE0097D58E /* LoginButtonViewController.swift */,
 				BE9428A91C8AAE3000077615 /* News.storyboard */,
@@ -327,16 +332,12 @@
 				BE4707941C4A45680069DA6F /* SearchViewController.swift */,
 				BE20D28C1C5CBA8B003C4926 /* Settings.storyboard */,
 				BE20D28E1C5CC9E6003C4926 /* SettingsViewController.swift */,
+				BEE9DE181CE9853B00AD361B /* StarsNavigationController.swift */,
 				BE39BA211C291BF40000A87F /* TabBarController.swift */,
 				BE176E611C41EFF700E29E4F /* User.storyboard */,
 				BEF8C95C1C81C393007C1107 /* UserTable.storyboard */,
 				BEF8C95A1C8045A2007C1107 /* UserTableViewController.swift */,
 				BE176E631C41F10200E29E4F /* UserViewController.swift */,
-				BE9428AD1C8B359D00077615 /* FileTableViewController.swift */,
-				BE9428AF1C8B35A800077615 /* FileTable.storyboard */,
-				BE4ECE291C8C74F9003DA31F /* FileViewController.swift */,
-				BE4ECE2B1C8C7519003DA31F /* File.storyboard */,
-				BEE9DE181CE9853B00AD361B /* StarsNavigationController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -345,10 +346,10 @@
 			isa = PBXGroup;
 			children = (
 				BEF6051A1C3113DF0014D633 /* GitHubAPI */,
+				BE16502B1C91589A00DAA20A /* Highlighter.swift */,
 				BECB108D1C5CEE8100B0CB16 /* KeychainManager.swift */,
 				BE4E4EE51C46A39C009FCBE8 /* ModelCache.swift */,
 				BEB7705B1C476FC40000E9A8 /* Pagination.swift */,
-				BE16502B1C91589A00DAA20A /* Highlighter.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -358,12 +359,12 @@
 			children = (
 				BE699B931C59C34A004A9E7D /* AccessToken.swift */,
 				BE3F45481C2A994500DD1863 /* Event.swift */,
+				BE9428B11C8BD0FF00077615 /* File.swift */,
 				BEF8C9581C8043A3007C1107 /* News.swift */,
 				BE3F45451C2A993400DD1863 /* Repo.swift */,
 				BEF605181C30FCBB0014D633 /* RepoSummary.swift */,
 				BE176E671C4201B400E29E4F /* User.swift */,
 				BE3F45431C2A992500DD1863 /* UserSummary.swift */,
-				BE9428B11C8BD0FF00077615 /* File.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -371,11 +372,11 @@
 		BE57ACBE1C53CE5600305A54 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				BE1650271C9157D700DAA20A /* AttributedString.swift */,
+				BEAC0E7B1C904E390080A0C6 /* GetBundleFile.swift */,
+				BE16502D1C91631D00DAA20A /* StringIsErrorType.swift */,
 				BE32404B1C57C8A200A9A87A /* URL+QueryString.swift */,
 				BE57ACC41C53D6E600305A54 /* Utils.swift */,
-				BEAC0E7B1C904E390080A0C6 /* GetBundleFile.swift */,
-				BE1650271C9157D700DAA20A /* AttributedString.swift */,
-				BE16502D1C91631D00DAA20A /* StringIsErrorType.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -400,17 +401,18 @@
 				BEB1686C1E61787B00D24909 /* URL+QueryStringSpec.swift */,
 			);
 			name = Utils;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		BED813281C24EE6D0028F8B0 = {
 			isa = PBXGroup;
 			children = (
 				2060859843867025B484F1E3 /* Frameworks */,
+				768EE6A50368C94BD4638E9A /* Pods */,
 				BED813321C24EE6D0028F8B0 /* Products */,
 				BED813331C24EE6D0028F8B0 /* StarCat */,
 				BED8134A1C24EE6D0028F8B0 /* StarCatTests */,
 				BED813551C24EE6D0028F8B0 /* StarCatUITests */,
-				768EE6A50368C94BD4638E9A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -458,15 +460,15 @@
 		BEE0C0A41C33E0210014986D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BED72AED1C95D46D00B82477 /* CodeView.swift */,
 				BE598C241C4C8CC300E1A884 /* ColorizedImageView.swift */,
+				BEC5F81C1C95A9E700213869 /* MarkdownView.swift */,
 				BEE0C0AA1C33EF1A0014986D /* RepoCell.swift */,
 				BEE0C0AB1C33EF1A0014986D /* RepoCell.xib */,
 				BE18EEE61C3A2BD900B92291 /* RoundButton.swift */,
 				BEF5907F1C3A940600633417 /* RoundButtonBorder.swift */,
 				BE29556D1C782A7000B10B1F /* UserCell.swift */,
 				BE29556E1C782A7000B10B1F /* UserCell.xib */,
-				BEC5F81C1C95A9E700213869 /* MarkdownView.swift */,
-				BED72AED1C95D46D00B82477 /* CodeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -474,9 +476,9 @@
 		BEE0C0AE1C3408A00014986D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				BE546A641C4E30B500C71C0A /* URL.swift */,
 				BE3FCD781C3D74F4008A9B32 /* NSDate.swift */,
 				BEE0C0B11C3408F80014986D /* PromiseResults.swift */,
+				BE546A641C4E30B500C71C0A /* URL.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -485,12 +487,12 @@
 			isa = PBXGroup;
 			children = (
 				BED172F81C3E23E000C5A247 /* AppViewModel.swift */,
+				BE9428B91C8BDE9300077615 /* DirectoryViewModel.swift */,
+				BE9428B71C8BDE6000077615 /* FileViewModel.swift */,
 				BEF605121C3023F70014D633 /* NewsTabViewModel.swift */,
 				BEF605161C3034820014D633 /* RepoViewModel.swift */,
 				BE4707981C4B64B10069DA6F /* SearchViewModel.swift */,
 				BE176E651C42010C00E29E4F /* UserViewModel.swift */,
-				BE9428B71C8BDE6000077615 /* FileViewModel.swift */,
-				BE9428B91C8BDE9300077615 /* DirectoryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
