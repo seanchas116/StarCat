@@ -1,12 +1,13 @@
 //
-//  URL+QueryString.swift
+//  URL.swift
 //  StarCat
 //
-//  Created by Ryohei Ikegami on 2016/01/27.
+//  Created by Ryohei Ikegami on 2016/01/19.
 //  Copyright © 2016年 seanchas116. All rights reserved.
 //
 
 import Foundation
+
 
 func parseQueryString(_ string: String) -> [String: String] {
     let keyValues = string.components(separatedBy: "&")
@@ -27,14 +28,23 @@ func stringifyQueryString(_ params: [String: Any]) -> String {
     return params.map { "\($0)=\($1)" }.joined(separator: "&")
 }
 
+let schemePattern = "^https?://".r!
+
+
 extension URL {
+    init?(string: String, queries: [String: Any]) {
+        self.init(string: "\(string)?\(stringifyQueryString(queries))")
+    }
+    
     var queries: [String: String] {
         return parseQueryString(query ?? "")
     }
+    
     var fragments: [String: String] {
         return parseQueryString(fragment ?? "")
     }
-    init?(string: String, queries: [String: Any]) {
-        self.init(string: "\(string)?\(stringifyQueryString(queries))")
+    
+    var stringWithoutScheme: String {
+        return schemePattern.replaceAll(in: absoluteString, with: "")
     }
 }

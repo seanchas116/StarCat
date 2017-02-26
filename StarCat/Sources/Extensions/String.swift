@@ -1,5 +1,5 @@
 //
-//  String+SplitRegex.swift
+//  String.swift
 //  StarCat
 //
 //  Created by Ryohei Ikegami on 2016/01/24.
@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+extension String: Error {}
 
 extension String {
     func countLines() -> Int {
@@ -26,11 +28,5 @@ extension String {
         } else {
             return self
         }
-    }
-}
-
-extension Int {
-    var digitsCount: Int {
-        return Int(log10(Double(self))) + 1
     }
 }
