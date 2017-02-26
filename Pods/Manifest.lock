@@ -70,7 +70,7 @@ CHECKOUT OPTIONS:
     :commit: 6b5abbcca53d8a7c5afab9fe0ff27d8fe3ebef11
     :git: https://github.com/seanchas116/Wirework.git
   WireworkUIKit:
-    :commit: 6b5abbcca53d8a7c5afab9fe0ff27d8fe3ebef11
+    :commit: 74b806ec85bd0dfcffb83a0ea4f42e152f348757
     :git: https://github.com/seanchas116/Wirework.git
 
 SPEC CHECKSUMS:

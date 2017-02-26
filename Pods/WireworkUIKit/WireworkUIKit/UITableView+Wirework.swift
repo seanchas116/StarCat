@@ -24,7 +24,7 @@ class WWTableViewDataSource<Element>: NSObject, UITableViewDataSource {
         _bind = bind
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
