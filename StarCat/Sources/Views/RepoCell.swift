@@ -45,7 +45,7 @@ class RepoCell: UITableViewCell {
             if let actor = self.viewModel.eventActor.value {
                 self.onActorTapped?(actor)
             }
-            }.addTo(bag)
+        }.addTo(bag)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
