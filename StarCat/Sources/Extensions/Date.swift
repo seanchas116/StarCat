@@ -10,14 +10,9 @@ import Foundation
 import SwiftDate
 
 extension Date {
-    func formatForUI(withAgo: Bool) -> String {
+    func formatForUI() -> String {
         if Date() - 1.months < self {
-            let formatted = (try? self.colloquialSinceNow())?.colloquial ?? ""
-            if withAgo {
-                return formatted + " ago"
-            } else {
-                return formatted
-            }
+            return (try? self.colloquialSinceNow())?.colloquial ?? ""
         } else {
             let formatter = DateFormatter()
             formatter.dateStyle = .medium

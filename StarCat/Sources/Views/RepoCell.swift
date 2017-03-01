@@ -37,7 +37,7 @@ class RepoCell: UITableViewCell {
         viewModel.ownerName.bindTo(ownerNameLabel.wwText).addTo(bag)
         viewModel.event.map { $0 == nil }.bindTo(eventInfoView.wwHidden).addTo(bag)
         viewModel.eventActorName.bindTo(eventActorLabel.wwText).addTo(bag)
-        viewModel.eventTime.map { $0?.formatForUI(withAgo: false) ?? "" }.bindTo(eventTimeLabel.wwText).addTo(bag)
+        viewModel.eventTime.map { $0?.formatForUI() }.bindTo(eventTimeLabel.wwText).addTo(bag)
         viewModel.language.map { l in l ?? "" }.bindTo(languageLabel.wwText).addTo(bag)
         viewModel.language.map { l in l == nil }.bindTo(languageLabel.wwHidden).addTo(bag)
         viewModel.starsCount.map { "\($0) ★" }.bindTo(starsLabel.wwText).addTo(bag)

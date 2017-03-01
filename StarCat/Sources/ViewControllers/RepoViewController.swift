@@ -44,7 +44,7 @@ class RepoViewController: UIViewController {
         viewModel.starsCount.map { "★  \($0)" }.bindTo(starsButton.wwState(.normal).title).addTo(bag)
         viewModel.starred.bindTo(starsButton.wwSelected).addTo(bag)
         
-        combine(viewModel.language, viewModel.pushedAt) { "\($0 ?? "")・\($1.formatForUI(withAgo: true))" }
+        combine(viewModel.language, viewModel.pushedAt) { "\($0 ?? "")・\($1.formatForUI())" }
             .bindTo(miscInfoLabel.wwText).addTo(bag)
         
         viewModel.readme.bindTo(markdownView.html).addTo(bag)
