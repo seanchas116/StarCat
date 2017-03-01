@@ -11,13 +11,15 @@ import SwiftDate
 
 extension Date {
     func formatForUI() -> String {
+        let locale = Locale(identifier: "en_US_POSIX")
         if Date() - 1.months < self {
-            return (try? self.colloquialSinceNow())?.colloquial ?? ""
+            let region = Region(tz: .current, cal: .current, loc: locale)
+            return (try? self.colloquialSinceNow(in: region))?.colloquial ?? ""
         } else {
             let formatter = DateFormatter()
             formatter.dateStyle = .medium
             formatter.timeStyle = .none
-            formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
+            formatter.locale = locale
             return formatter.string(from: self)
         }
     }
