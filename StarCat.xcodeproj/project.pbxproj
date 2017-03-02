@@ -12,8 +12,6 @@
 		A6CAFBC5E8DF5B67DCF6ADE8 /* Pods_StarCatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D2D19C11A711A062D8981C /* Pods_StarCatTests.framework */; };
 		BE1650281C9157D700DAA20A /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1650271C9157D700DAA20A /* AttributedString.swift */; };
 		BE16502C1C91589A00DAA20A /* Highlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE16502B1C91589A00DAA20A /* Highlighter.swift */; };
-		BE1650311C91878500DAA20A /* highlight.xcode.min.css in Resources */ = {isa = PBXBuildFile; fileRef = BE16502F1C91878500DAA20A /* highlight.xcode.min.css */; };
-		BE1650341C91D0DC00DAA20A /* highlight.pack.js in Resources */ = {isa = PBXBuildFile; fileRef = BE1650331C91D0DC00DAA20A /* highlight.pack.js */; };
 		BE176E621C41EFF700E29E4F /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE176E611C41EFF700E29E4F /* User.storyboard */; };
 		BE176E641C41F10200E29E4F /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE176E631C41F10200E29E4F /* UserViewController.swift */; };
 		BE176E661C42010C00E29E4F /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE176E651C42010C00E29E4F /* UserViewModel.swift */; };
@@ -66,6 +64,8 @@
 		BEB1B9AB1C414B4400A730A0 /* Repo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */; };
 		BEB7705C1C476FC40000E9A8 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7705B1C476FC40000E9A8 /* Pagination.swift */; };
 		BEBA2A711C26AACB00F64F05 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA2A701C26AACB00F64F05 /* Constants.swift */; };
+		BEBBF3171E67FF33003D4560 /* highlight.pack.js in Resources */ = {isa = PBXBuildFile; fileRef = BEBBF3151E67FF33003D4560 /* highlight.pack.js */; };
+		BEBBF3181E67FF33003D4560 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = BEBBF3161E67FF33003D4560 /* xcode.css */; };
 		BEBE3A6F1C76ADFD00E7FF0D /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE3A6E1C76ADFD00E7FF0D /* Secrets.swift */; };
 		BEC5F81D1C95A9E700213869 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5F81C1C95A9E700213869 /* MarkdownView.swift */; };
 		BECB108C1C5CE09F00B0CB16 /* UIViewController+storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB108B1C5CE09F00B0CB16 /* UIViewController+storyboard.swift */; };
@@ -124,8 +124,6 @@
 		AF613DEA726870DE0C071F39 /* Pods-StarCat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarCat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StarCat/Pods-StarCat.debug.xcconfig"; sourceTree = "<group>"; };
 		BE1650271C9157D700DAA20A /* AttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedString.swift; sourceTree = "<group>"; };
 		BE16502B1C91589A00DAA20A /* Highlighter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highlighter.swift; sourceTree = "<group>"; };
-		BE16502F1C91878500DAA20A /* highlight.xcode.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = highlight.xcode.min.css; sourceTree = "<group>"; };
-		BE1650331C91D0DC00DAA20A /* highlight.pack.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.pack.js; sourceTree = "<group>"; };
 		BE176E611C41EFF700E29E4F /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		BE176E631C41F10200E29E4F /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		BE176E651C42010C00E29E4F /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
@@ -178,6 +176,8 @@
 		BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Repo.storyboard; sourceTree = "<group>"; };
 		BEB7705B1C476FC40000E9A8 /* Pagination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		BEBA2A701C26AACB00F64F05 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BEBBF3151E67FF33003D4560 /* highlight.pack.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.pack.js; sourceTree = "<group>"; };
+		BEBBF3161E67FF33003D4560 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
 		BEBE3A6E1C76ADFD00E7FF0D /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		BEC5F81C1C95A9E700213869 /* MarkdownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
 		BECB108B1C5CE09F00B0CB16 /* UIViewController+storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+storyboard.swift"; sourceTree = "<group>"; };
@@ -270,6 +270,8 @@
 			isa = PBXGroup;
 			children = (
 				BE2CAF1C1C3C0AC800B51FBF /* github-markdown.css */,
+				BEBBF3151E67FF33003D4560 /* highlight.pack.js */,
+				BEBBF3161E67FF33003D4560 /* xcode.css */,
 			);
 			path = "Vendor Files";
 			sourceTree = "<group>";
@@ -298,8 +300,6 @@
 			isa = PBXGroup;
 			children = (
 				BE2CAF201C3C0CFE00B51FBF /* github-markdown-custom.css */,
-				BE1650331C91D0DC00DAA20A /* highlight.pack.js */,
-				BE16502F1C91878500DAA20A /* highlight.xcode.min.css */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -617,7 +617,6 @@
 				BEF8C95D1C81C393007C1107 /* UserTable.storyboard in Resources */,
 				BE2CAF1D1C3C0AC800B51FBF /* github-markdown.css in Resources */,
 				BED813411C24EE6D0028F8B0 /* LaunchScreen.storyboard in Resources */,
-				BE1650341C91D0DC00DAA20A /* highlight.pack.js in Resources */,
 				BE4ECE2C1C8C7519003DA31F /* File.storyboard in Resources */,
 				BE9428A81C8AAE2000077615 /* Search.storyboard in Resources */,
 				BED8133E1C24EE6D0028F8B0 /* Assets.xcassets in Resources */,
@@ -625,6 +624,8 @@
 				BE9428AA1C8AAE3000077615 /* News.storyboard in Resources */,
 				BE2CAF211C3C0CFE00B51FBF /* github-markdown-custom.css in Resources */,
 				BE9428AC1C8AAED300077615 /* RepoTable.storyboard in Resources */,
+				BEBBF3181E67FF33003D4560 /* xcode.css in Resources */,
+				BEBBF3171E67FF33003D4560 /* highlight.pack.js in Resources */,
 				BE20D28D1C5CBA8B003C4926 /* Settings.storyboard in Resources */,
 				BE176E621C41EFF700E29E4F /* User.storyboard in Resources */,
 				BE9428B01C8B35A800077615 /* FileTable.storyboard in Resources */,
@@ -632,7 +633,6 @@
 				BE47078F1C4A152D0069DA6F /* Organization.storyboard in Resources */,
 				BEB1B9AB1C414B4400A730A0 /* Repo.storyboard in Resources */,
 				BEE0C0AD1C33EF1A0014986D /* RepoCell.xib in Resources */,
-				BE1650311C91878500DAA20A /* highlight.xcode.min.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

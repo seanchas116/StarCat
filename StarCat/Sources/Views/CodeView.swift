@@ -11,7 +11,7 @@ import PromiseKit
 import Wirework
 import UIColor_Hex_Swift
 
-private let highlightCSS = getBundleFile("highlight.xcode.min", ofType: "css")
+private let highlightCSS = getBundleFile("xcode", ofType: "css")
 
 class CodeView: UIView {
     private let textView = UITextView()
