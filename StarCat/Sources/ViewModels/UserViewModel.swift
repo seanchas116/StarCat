@@ -117,7 +117,6 @@ class UserViewModel {
             print("summary is empty")
             return Promise(value: ())
         }
-        print(summary.type)
         if summary.type == .user {
             return when(fulfilled: [
                 GetUserStarsCountRequest(userName: summary.login).send().then { count in
