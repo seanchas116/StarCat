@@ -26,13 +26,12 @@ class FileViewController: UIViewController, UIScrollViewDelegate {
         loadingIndicator.startAnimating()
         
         let name = viewModel.name.value
-        viewModel.loadContent().then { content -> Void in
-            let text = String(data: content, encoding: String.Encoding.utf8)
-            if let text = text {
-                self.codeView.loadContent(text, name: name).then {
-                    self.loadingIndicator.stopAnimating()
-                }.catch { print($0) }
-            }
+        viewModel.loadContent().then { content in
+            return String(data: content, encoding: String.Encoding.utf8) ?? "Binary File"
+        }.then { text in
+            return self.codeView.loadContent(text, name: name)
+        }.then {
+            self.loadingIndicator.stopAnimating()
         }.catch { print($0) }
         viewModel.name.bindTo(wwTitle).addTo(bag)
     }
