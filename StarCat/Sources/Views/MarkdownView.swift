@@ -10,6 +10,7 @@ import UIKit
 import WebKit
 import PromiseKit
 import Wirework
+import Regex
 
 private let baseReadmeCSS = getBundleFile("github-markdown", ofType: "css")
 private let customReadmeCSS = getBundleFile("github-markdown-custom", ofType: "css")
@@ -78,7 +79,8 @@ class MarkdownView: UIView, WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if let url = navigationAction.request.url {
-            if url.absoluteString != "about:blank" {
+            let str = url.absoluteString
+            if str != "about:blank" && "https?://".r!.matches(str) {
                 if let viewController = UIApplication.topViewController() {
                     WebViewPopup.open(url, on: viewController)
                 }
