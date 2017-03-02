@@ -51,6 +51,7 @@
 		BE699B941C59C34A004A9E7D /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE699B931C59C34A004A9E7D /* AccessToken.swift */; };
 		BE8C23191C452D8E00691005 /* UITableView+scrollToTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8C23181C452D8E00691005 /* UITableView+scrollToTop.swift */; };
 		BE8C231B1C45E15E00691005 /* TableViewPaginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8C231A1C45E15E00691005 /* TableViewPaginator.swift */; };
+		BE8F90631E67BC9D008E0690 /* UIApplication+topViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F90621E67BC9D008E0690 /* UIApplication+topViewController.swift */; };
 		BE9428A61C894E9800077615 /* UIView+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9428A51C894E9800077615 /* UIView+Resize.swift */; };
 		BE9428A81C8AAE2000077615 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE9428A71C8AAE2000077615 /* Search.storyboard */; };
 		BE9428AA1C8AAE3000077615 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE9428A91C8AAE3000077615 /* News.storyboard */; };
@@ -164,6 +165,7 @@
 		BE699B931C59C34A004A9E7D /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		BE8C23181C452D8E00691005 /* UITableView+scrollToTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+scrollToTop.swift"; sourceTree = "<group>"; };
 		BE8C231A1C45E15E00691005 /* TableViewPaginator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewPaginator.swift; sourceTree = "<group>"; };
+		BE8F90621E67BC9D008E0690 /* UIApplication+topViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+topViewController.swift"; sourceTree = "<group>"; };
 		BE9428A51C894E9800077615 /* UIView+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Resize.swift"; sourceTree = "<group>"; };
 		BE9428A71C8AAE2000077615 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		BE9428A91C8AAE3000077615 /* News.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				BE8C231A1C45E15E00691005 /* TableViewPaginator.swift */,
+				BE8F90621E67BC9D008E0690 /* UIApplication+topViewController.swift */,
 				BE4707921C4A2F640069DA6F /* UINavigationController+storyboard.swift */,
 				BE8C23181C452D8E00691005 /* UITableView+scrollToTop.swift */,
 				BE9428A51C894E9800077615 /* UIView+Resize.swift */,
@@ -815,6 +818,7 @@
 				BE16502C1C91589A00DAA20A /* Highlighter.swift in Sources */,
 				BE45FFFD1E6278E900BA27E1 /* Int.swift in Sources */,
 				BE4707991C4B64B10069DA6F /* SearchViewModel.swift in Sources */,
+				BE8F90631E67BC9D008E0690 /* UIApplication+topViewController.swift in Sources */,
 				BE9428A61C894E9800077615 /* UIView+Resize.swift in Sources */,
 				BE9428AE1C8B359D00077615 /* FileTableViewController.swift in Sources */,
 				BED172F91C3E23E000C5A247 /* AppViewModel.swift in Sources */,

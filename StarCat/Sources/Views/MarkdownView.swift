@@ -20,7 +20,6 @@ private func wrapReadme(_ htmlBody: String) -> String {
 
 class MarkdownView: UIView, WKNavigationDelegate {
     var webView: WKWebView!
-    var viewController: UIViewController?
     let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     
     let html = Variable<String?>(nil)
@@ -77,7 +76,7 @@ class MarkdownView: UIView, WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if let url = navigationAction.request.url {
             if url.absoluteString != "about:blank" {
-                if let viewController = viewController {
+                if let viewController = UIApplication.topViewController() {
                     WebViewPopup.open(url, on: viewController)
                 }
                 decisionHandler(.cancel)
