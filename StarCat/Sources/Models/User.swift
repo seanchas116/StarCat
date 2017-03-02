@@ -9,8 +9,8 @@
 import Foundation
 
 enum UserType {
-    case User
-    case Organization
+    case user
+    case organization
 }
 
 struct User {

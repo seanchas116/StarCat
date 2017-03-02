@@ -25,7 +25,7 @@ extension UINavigationController {
     }
     
     func push(userSummary: UserSummary) {
-        if userSummary.type == .Organization {
+        if userSummary.type == .organization {
             push(storyboard: "Organization", animated: true) { next in
                 let orgVC = next as! OrganizationViewController
                 orgVC.viewModel.summary.value = userSummary
@@ -42,7 +42,7 @@ extension UINavigationController {
     }
     
     func push(user: User) {
-        if user.type == .Organization {
+        if user.type == .organization {
             push(storyboard: "Organization", animated: true) { next in
                 (next as! OrganizationViewController).viewModel.user.value = user
             }

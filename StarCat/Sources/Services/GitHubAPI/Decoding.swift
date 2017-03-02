@@ -40,9 +40,9 @@ extension UserType: Decodable {
         let str = try String.decode(e)
         switch str {
         case "User":
-            return .User
+            return .user
         case "Organization":
-            return .Organization
+            return .organization
         default:
             throw DecodeError.wrongUserType(str)
         }

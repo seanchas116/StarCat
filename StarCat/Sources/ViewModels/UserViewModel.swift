@@ -95,6 +95,7 @@ class UserViewModel {
     let starsCount = Variable(0)
     let githubURL: Property<URL?>
     let followed = Variable(false)
+    let membersCount = Variable(0)
     
     let bag = SubscriptionBag()
     
@@ -119,9 +120,15 @@ class UserViewModel {
         }.addTo(bag)
         
         user.bindTo { [weak self] user in
-            if let userName = user?.login {
-                CheckFollowedRequest(userName: userName).send().then { followed in
-                    self?.followed.value = followed
+            guard let user = user else {
+                return
+            }
+            CheckFollowedRequest(userName: user.login).send().then { followed in
+                self?.followed.value = followed
+            }.catch { print($0) }
+            if user.type == .organization {
+                GetMemberCountRequest(organizationName: user.login).send().then { count in
+                    self?.membersCount.value = count
                 }.catch { print($0) }
             }
         }.addTo(bag)

@@ -57,6 +57,7 @@ class OrganizationViewController: RepoTableViewController {
                 WebViewPopup.open(url, on: self)
             }
         }.addTo(bag)
+        viewModel.membersCount.map { String($0) }.bindTo(membersLabel.wwText).addTo(bag)
         membersArea.makeTappable().subscribe { [weak self] _ in
             self?.showMembers()
         }.addTo(bag)

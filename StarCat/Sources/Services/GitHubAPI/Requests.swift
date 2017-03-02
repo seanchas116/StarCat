@@ -80,26 +80,39 @@ struct GetUserEventsRequest: GitHubRequest {
     }
 }
 
-struct GetUserStarsCountRequest: GitHubRequest {
+protocol CountFromPaginationRequest: GitHubRequest {
+}
+
+extension CountFromPaginationRequest {
     typealias Response = Int
-    let userName: String
-    
-    var path: String {
-        return "/users/\(userName)/starred"
-    }
     var parameters: Any? {
         return ["per_page": 1]
     }
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Int {
-        if let link = urlResponse.allHeaderFields["Link"] as? String {
-            let lastLinkStr = "<([^>]*)>;\\srel=\"last\"".r?.findFirst(in: link)?.group(at: 1)
-            if let lastLinkStr = lastLinkStr {
-                if let lastLink = URL(string: lastLinkStr) {
-                    return lastLink.queries["page"].flatMap { Int($0) }!
-                }
-            }
+        guard let link = urlResponse.allHeaderFields["Link"] as? String else {
+            throw "Header 'Link' not found"
         }
-        throw "Error parsing header"
+        guard let lastLinkStr = "<([^>]*)>;\\srel=\"last\"".r?.findFirst(in: link)?.group(at: 1) else {
+            throw "Header format wrong"
+        }
+        guard let lastLink = URL(string: lastLinkStr) else {
+            throw "'last' link invalid"
+        }
+        guard let page = lastLink.queries["page"] else {
+            throw "'page' query not found"
+        }
+        guard let num = Int(page) else {
+            throw "Cannot parse 'page' query as int"
+        }
+        return num
+    }
+}
+
+struct GetUserStarsCountRequest: CountFromPaginationRequest {
+    let userName: String
+    
+    var path: String {
+        return "/users/\(userName)/starred"
     }
 }
 
@@ -145,6 +158,14 @@ struct GetUserRequest: GitHubRequest {
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> User {
         let user: User = try decodeValue(object)
         return user
+    }
+}
+
+struct GetMemberCountRequest: CountFromPaginationRequest {
+    let organizationName: String
+    
+    var path: String {
+        return "/orgs/\(organizationName)/members"
     }
 }
 
