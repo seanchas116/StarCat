@@ -13,9 +13,10 @@ import Wirework
 
 private let baseReadmeCSS = getBundleFile("github-markdown", ofType: "css")
 private let customReadmeCSS = getBundleFile("github-markdown-custom", ofType: "css")
+private let markdownViewJS = getBundleFile("markdown-view", ofType: "js")
 
 private func wrapReadme(_ htmlBody: String) -> String {
-    return "<html><head><meta name='viewport' content='initial-scale=1, maximum-scale=1'><style>\(baseReadmeCSS)\(customReadmeCSS)</style></head><body style=' visibility: hidden;'><div id='header-padding'></div>\(htmlBody)</body></html>"
+    return "<html><head><meta name='viewport' content='initial-scale=1, maximum-scale=1'><style>\(baseReadmeCSS)\(customReadmeCSS)</style></head><body style=' visibility: hidden;'><div id='header-padding'></div>\(htmlBody)</body><script>\(markdownViewJS)</script></html>"
 }
 
 class MarkdownView: UIView, WKNavigationDelegate {
@@ -23,6 +24,7 @@ class MarkdownView: UIView, WKNavigationDelegate {
     let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     
     let html = Variable<String?>(nil)
+    var repoFullName = ""
     let loading = Variable(true)
     let bag = SubscriptionBag()
     
@@ -69,6 +71,7 @@ class MarkdownView: UIView, WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         loading.value = false
+        resolveURLs()
         setHeaderPaddingHeight()
         showContent()
     }
@@ -108,7 +111,15 @@ class MarkdownView: UIView, WKNavigationDelegate {
     
     private func setHeaderPaddingHeight() {
         let height = header?.bounds.height ?? 0
-        webView.evaluateJavaScript("var padding = document.getElementById('header-padding'); if (padding) { padding.style.height = '\(height)px'; }") { res, err in
+        webView.evaluateJavaScript("setHeaderPadding(\(height))") { res, err in
+            if let err = err {
+                print(err)
+            }
+        }
+    }
+    
+    private func resolveURLs() {
+        webView.evaluateJavaScript("resolveURLs('\(repoFullName)')") { res, err in
             if let err = err {
                 print(err)
             }

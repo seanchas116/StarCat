@@ -66,6 +66,7 @@
 		BEBA2A711C26AACB00F64F05 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA2A701C26AACB00F64F05 /* Constants.swift */; };
 		BEBBF3171E67FF33003D4560 /* highlight.pack.js in Resources */ = {isa = PBXBuildFile; fileRef = BEBBF3151E67FF33003D4560 /* highlight.pack.js */; };
 		BEBBF3181E67FF33003D4560 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = BEBBF3161E67FF33003D4560 /* xcode.css */; };
+		BEBBF31A1E6802A9003D4560 /* markdown-view.js in Resources */ = {isa = PBXBuildFile; fileRef = BEBBF3191E6802A9003D4560 /* markdown-view.js */; };
 		BEBE3A6F1C76ADFD00E7FF0D /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE3A6E1C76ADFD00E7FF0D /* Secrets.swift */; };
 		BEC5F81D1C95A9E700213869 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5F81C1C95A9E700213869 /* MarkdownView.swift */; };
 		BECB108C1C5CE09F00B0CB16 /* UIViewController+storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB108B1C5CE09F00B0CB16 /* UIViewController+storyboard.swift */; };
@@ -178,6 +179,7 @@
 		BEBA2A701C26AACB00F64F05 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BEBBF3151E67FF33003D4560 /* highlight.pack.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.pack.js; sourceTree = "<group>"; };
 		BEBBF3161E67FF33003D4560 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
+		BEBBF3191E6802A9003D4560 /* markdown-view.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "markdown-view.js"; sourceTree = "<group>"; };
 		BEBE3A6E1C76ADFD00E7FF0D /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		BEC5F81C1C95A9E700213869 /* MarkdownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
 		BECB108B1C5CE09F00B0CB16 /* UIViewController+storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+storyboard.swift"; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				BE2CAF201C3C0CFE00B51FBF /* github-markdown-custom.css */,
+				BEBBF3191E6802A9003D4560 /* markdown-view.js */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				BE47078F1C4A152D0069DA6F /* Organization.storyboard in Resources */,
 				BEB1B9AB1C414B4400A730A0 /* Repo.storyboard in Resources */,
 				BEE0C0AD1C33EF1A0014986D /* RepoCell.xib in Resources */,
+				BEBBF31A1E6802A9003D4560 /* markdown-view.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

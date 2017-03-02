@@ -49,6 +49,9 @@ class RepoViewController: UIViewController {
         
         viewModel.readme.bindTo(markdownView.html).addTo(bag)
         markdownView.header = header
+        viewModel.fullName.bindTo { [weak self] name in
+            self?.markdownView.repoFullName = name
+        }.addTo(bag)
         
         ownerLabel.makeTappable().subscribe { [weak self] _ in
             self?.showOwner()
