@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Wirework
 
 class UserViewController: RepoTableViewController {
     enum Mode {
@@ -99,6 +100,9 @@ class UserViewController: RepoTableViewController {
             self?.tableView.layoutIfNeeded()
             self?.header.resizeHeightToMinimum()
         }.addTo(bag)
+        
+        let isLoginUser = combine(viewModel.login, AppViewModel.instance.currentUser.map { $0?.login }) { $0 == $1 }
+        isLoginUser.bindTo(followButton.wwHidden).addTo(bag)
     }
     
     override func viewDidAppear(_ animated: Bool) {
