@@ -11,7 +11,6 @@
 		86522EA46E6ADE14236780CB /* Pods_StarCatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7079D535A589E8C88EA63D8A /* Pods_StarCatUITests.framework */; };
 		A6CAFBC5E8DF5B67DCF6ADE8 /* Pods_StarCatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D2D19C11A711A062D8981C /* Pods_StarCatTests.framework */; };
 		BE1650281C9157D700DAA20A /* AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1650271C9157D700DAA20A /* AttributedString.swift */; };
-		BE16502A1C91584000DAA20A /* github.css in Resources */ = {isa = PBXBuildFile; fileRef = BE1650291C91584000DAA20A /* github.css */; };
 		BE16502C1C91589A00DAA20A /* Highlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE16502B1C91589A00DAA20A /* Highlighter.swift */; };
 		BE1650311C91878500DAA20A /* highlight.xcode.min.css in Resources */ = {isa = PBXBuildFile; fileRef = BE16502F1C91878500DAA20A /* highlight.xcode.min.css */; };
 		BE1650341C91D0DC00DAA20A /* highlight.pack.js in Resources */ = {isa = PBXBuildFile; fileRef = BE1650331C91D0DC00DAA20A /* highlight.pack.js */; };
@@ -62,7 +61,6 @@
 		BE9428B81C8BDE6000077615 /* FileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9428B71C8BDE6000077615 /* FileViewModel.swift */; };
 		BE9428BA1C8BDE9300077615 /* DirectoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9428B91C8BDE9300077615 /* DirectoryViewModel.swift */; };
 		BE9A484D1C36234B00406DA6 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */; };
-		BEAC0E7A1C904DEC0080A0C6 /* highlight.js in Resources */ = {isa = PBXBuildFile; fileRef = BEAC0E791C904DEC0080A0C6 /* highlight.js */; };
 		BEAC0E7C1C904E390080A0C6 /* GetBundleFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAC0E7B1C904E390080A0C6 /* GetBundleFile.swift */; };
 		BEB1686D1E61787B00D24909 /* URL+QueryStringSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB1686C1E61787B00D24909 /* URL+QueryStringSpec.swift */; };
 		BEB1B9AB1C414B4400A730A0 /* Repo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */; };
@@ -125,7 +123,6 @@
 		81D215CFEA707FDA02C1D983 /* Pods-StarCat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarCat.release.xcconfig"; path = "Pods/Target Support Files/Pods-StarCat/Pods-StarCat.release.xcconfig"; sourceTree = "<group>"; };
 		AF613DEA726870DE0C071F39 /* Pods-StarCat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarCat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StarCat/Pods-StarCat.debug.xcconfig"; sourceTree = "<group>"; };
 		BE1650271C9157D700DAA20A /* AttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedString.swift; sourceTree = "<group>"; };
-		BE1650291C91584000DAA20A /* github.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = github.css; sourceTree = "<group>"; };
 		BE16502B1C91589A00DAA20A /* Highlighter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highlighter.swift; sourceTree = "<group>"; };
 		BE16502F1C91878500DAA20A /* highlight.xcode.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = highlight.xcode.min.css; sourceTree = "<group>"; };
 		BE1650331C91D0DC00DAA20A /* highlight.pack.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.pack.js; sourceTree = "<group>"; };
@@ -176,7 +173,6 @@
 		BE9428B71C8BDE6000077615 /* FileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileViewModel.swift; sourceTree = "<group>"; };
 		BE9428B91C8BDE9300077615 /* DirectoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryViewModel.swift; sourceTree = "<group>"; };
 		BE9A484C1C36234B00406DA6 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
-		BEAC0E791C904DEC0080A0C6 /* highlight.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.js; sourceTree = "<group>"; };
 		BEAC0E7B1C904E390080A0C6 /* GetBundleFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetBundleFile.swift; sourceTree = "<group>"; };
 		BEB1686C1E61787B00D24909 /* URL+QueryStringSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+QueryStringSpec.swift"; sourceTree = "<group>"; };
 		BEB1B9AA1C414B4400A730A0 /* Repo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Repo.storyboard; sourceTree = "<group>"; };
@@ -274,8 +270,6 @@
 			isa = PBXGroup;
 			children = (
 				BE2CAF1C1C3C0AC800B51FBF /* github-markdown.css */,
-				BE1650291C91584000DAA20A /* github.css */,
-				BEAC0E791C904DEC0080A0C6 /* highlight.js */,
 			);
 			path = "Vendor Files";
 			sourceTree = "<group>";
@@ -620,7 +614,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE561EF91C5929E50097D58E /* LoginButton.storyboard in Resources */,
-				BEAC0E7A1C904DEC0080A0C6 /* highlight.js in Resources */,
 				BEF8C95D1C81C393007C1107 /* UserTable.storyboard in Resources */,
 				BE2CAF1D1C3C0AC800B51FBF /* github-markdown.css in Resources */,
 				BED813411C24EE6D0028F8B0 /* LaunchScreen.storyboard in Resources */,
@@ -636,7 +629,6 @@
 				BE176E621C41EFF700E29E4F /* User.storyboard in Resources */,
 				BE9428B01C8B35A800077615 /* FileTable.storyboard in Resources */,
 				BE2955701C782A7000B10B1F /* UserCell.xib in Resources */,
-				BE16502A1C91584000DAA20A /* github.css in Resources */,
 				BE47078F1C4A152D0069DA6F /* Organization.storyboard in Resources */,
 				BEB1B9AB1C414B4400A730A0 /* Repo.storyboard in Resources */,
 				BEE0C0AD1C33EF1A0014986D /* RepoCell.xib in Resources */,
