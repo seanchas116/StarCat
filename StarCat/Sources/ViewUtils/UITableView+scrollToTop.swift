@@ -11,11 +11,6 @@ import UIKit
 
 extension UITableView {
     func scrollToTop() {
-        if let source = dataSource {
-            if source.numberOfSections!(in: self) > 0 {
-                let top = IndexPath(row: NSNotFound, section: 0)
-                scrollToRow(at: top, at: .top, animated: true)
-            }
-        }
+        setContentOffset(CGPoint(x: 0, y: -contentInset.top), animated: true)
     }
 }
