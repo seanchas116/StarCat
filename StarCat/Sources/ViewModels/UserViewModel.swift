@@ -110,36 +110,52 @@ class UserViewModel {
         followersCount = user.map { $0?.followers ?? 0 }
         followingCount = user.map { $0?.following ?? 0 }
         githubURL = login.map { URL(string: "https://github.com/\($0)") }
-        
-        summary.changed.subscribe { [weak self] summary in
-            if let summary = summary {
-                GetUserStarsCountRequest(userName: summary.login).send().then { count in
-                    self?.starsCount.value = count
-                }.catch { print($0) }
-            }
-        }.addTo(bag)
-        
-        user.bindTo { [weak self] user in
-            guard let user = user else {
-                return
-            }
-            CheckFollowedRequest(userName: user.login).send().then { followed in
-                self?.followed.value = followed
-            }.catch { print($0) }
-            if user.type == .organization {
-                GetMemberCountRequest(organizationName: user.login).send().then { count in
-                    self?.membersCount.value = count
-                }.catch { print($0) }
-            }
-        }.addTo(bag)
     }
     
-    func load() -> Promise<Void> {
-        return GetUserRequest(login: login.value).send().then { self.user.value = $0 }
+    func loadMiscInfo() -> Promise<Void> {
+        guard let summary = summary.value else {
+            print("summary is empty")
+            return Promise(value: ())
+        }
+        print(summary.type)
+        if summary.type == .user {
+            return when(fulfilled: [
+                GetUserStarsCountRequest(userName: summary.login).send().then { count in
+                    self.starsCount.value = count
+                },
+                CheckFollowedRequest(userName: summary.login).send().then { followed in
+                    self.followed.value = followed
+                }
+            ])
+        } else {
+            return when(fulfilled: [
+                GetMemberCountRequest(organizationName: summary.login).send().then { count in
+                    self.membersCount.value = count
+                }
+            ])
+        }
+    }
+    
+    func loadFrom(user: User) -> Promise<Void> {
+        self.summary.value = user.summary
+        self.user.value = user
+        return loadMiscInfo()
+    }
+    
+    func loadFrom(summary: UserSummary) -> Promise<Void> {
+        self.summary.value = summary
+        return when(fulfilled: [
+            GetUserRequest(login: summary.login).send().then { user in
+                self.user.value = user
+            },
+            loadMiscInfo()
+        ])
     }
     
     func loadCurrentUser() -> Promise<Void> {
-        return GetCurrentUserRequest().send().then { self.user.value = $0 }
+        return GetCurrentUserRequest().send().then { user in
+            self.loadFrom(user: user)
+        }
     }
     
     func toggleFollowed() -> Promise<Void> {

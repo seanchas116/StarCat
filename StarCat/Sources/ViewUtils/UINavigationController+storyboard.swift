@@ -28,15 +28,13 @@ extension UINavigationController {
         if userSummary.type == .organization {
             push(storyboard: "Organization", animated: true) { next in
                 let orgVC = next as! OrganizationViewController
-                orgVC.viewModel.summary.value = userSummary
-                orgVC.viewModel.load().catch { print($0) }
+                orgVC.viewModel.loadFrom(summary: userSummary).catch { print($0) }
             }
         } else {
             push(storyboard: "User", animated: true) { next in
                 let userVC = next as! UserViewController
                 userVC.mode = .User
-                userVC.viewModel.summary.value = userSummary
-                userVC.viewModel.load().catch { print($0) }
+                userVC.viewModel.loadFrom(summary: userSummary).catch { print($0) }
             }
         }
     }
@@ -44,13 +42,13 @@ extension UINavigationController {
     func push(user: User) {
         if user.type == .organization {
             push(storyboard: "Organization", animated: true) { next in
-                (next as! OrganizationViewController).viewModel.user.value = user
+                (next as! OrganizationViewController).viewModel.loadFrom(user: user).catch { print($0) }
             }
         } else {
             push(storyboard: "User", animated: true) { next in
                 let userVC = next as! UserViewController
                 userVC.mode = .User
-                userVC.viewModel.user.value = user
+                userVC.viewModel.loadFrom(user: user).catch { print($0) }
             }
         }
     }

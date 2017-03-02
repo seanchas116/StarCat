@@ -90,7 +90,7 @@ extension CountFromPaginationRequest {
     }
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Int {
         guard let link = urlResponse.allHeaderFields["Link"] as? String else {
-            throw "Header 'Link' not found"
+            throw "Header 'Link' not found in \(urlResponse.url?.absoluteString ?? "")"
         }
         guard let lastLinkStr = "<([^>]*)>;\\srel=\"last\"".r?.findFirst(in: link)?.group(at: 1) else {
             throw "Header format wrong"

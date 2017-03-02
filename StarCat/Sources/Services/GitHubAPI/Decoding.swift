@@ -73,7 +73,7 @@ extension UserSummary: Decodable {
             id: e <| "id",
             login: e <| "login",
             avatarURL: e <| "avatar_url",
-            type: e <|? "type"
+            type: (e <|? "type") ?? .user
         )
     }
 }

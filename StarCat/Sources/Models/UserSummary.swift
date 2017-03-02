@@ -12,5 +12,5 @@ struct UserSummary {
     let id: Int
     let login: String
     let avatarURL: URL
-    let type: UserType?
+    let type: UserType
 }
