@@ -472,8 +472,12 @@ struct CheckFollowedRequest: GitHubRequest {
         return "/user/following/\(userName)"
     }
     
-    var acceptableStatusCodes: Set<Int> {
-        return Set([204, 404])
+    func intercept(object: Any, urlResponse: HTTPURLResponse) throws -> Any {
+        let statusCode = urlResponse.statusCode
+        if statusCode != 204 && statusCode != 404 {
+            throw APIKit.ResponseError.unacceptableStatusCode(statusCode)
+        }
+        return object
     }
     
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Bool {
