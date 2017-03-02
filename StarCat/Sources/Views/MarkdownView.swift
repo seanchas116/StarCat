@@ -99,7 +99,9 @@ class MarkdownView: UIView, WKNavigationDelegate {
             headerHeight = header.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
             header.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: frame.width, height: headerHeight))
         }
-        setHeaderPaddingHeight()
+        if (!loading.value) {
+            setHeaderPaddingHeight()
+        }
         loadingIndicator.center = CGPoint(x: frame.width * 0.5, y: headerHeight + 16 + loadingIndicator.bounds.height * 0.5)
     }
     
