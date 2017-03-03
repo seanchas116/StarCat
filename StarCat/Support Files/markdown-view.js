@@ -24,3 +24,18 @@ function resolveURLs(projectName) {
         }
     }
 }
+
+function wrapTable() {
+    const tables = [...document.querySelectorAll("table")];
+    for (const table of tables) {
+        const tableWrapper = document.createElement("div");
+        tableWrapper.className = "table-wrapper";
+        table.parentElement.insertBefore(tableWrapper, table);
+        tableWrapper.insertBefore(table, null);
+    }
+}
+
+function adjustContent(projectName) {
+    resolveURLs(projectName);
+    wrapTable();
+}

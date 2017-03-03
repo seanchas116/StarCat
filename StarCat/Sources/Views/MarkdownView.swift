@@ -72,7 +72,7 @@ class MarkdownView: UIView, WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         loading.value = false
-        resolveURLs()
+        adjustContent()
         setHeaderPaddingHeight()
         showContent()
     }
@@ -122,8 +122,8 @@ class MarkdownView: UIView, WKNavigationDelegate {
         }
     }
     
-    private func resolveURLs() {
-        webView.evaluateJavaScript("resolveURLs('\(repoFullName)')") { res, err in
+    private func adjustContent() {
+        webView.evaluateJavaScript("adjustContent('\(repoFullName)')") { res, err in
             if let err = err {
                 print(err)
             }
