@@ -68,6 +68,7 @@
 		BEBBF3181E67FF33003D4560 /* xcode.css in Resources */ = {isa = PBXBuildFile; fileRef = BEBBF3161E67FF33003D4560 /* xcode.css */; };
 		BEBBF31A1E6802A9003D4560 /* markdown-view.js in Resources */ = {isa = PBXBuildFile; fileRef = BEBBF3191E6802A9003D4560 /* markdown-view.js */; };
 		BEBE3A6F1C76ADFD00E7FF0D /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE3A6E1C76ADFD00E7FF0D /* Secrets.swift */; };
+		BEC5D1661E69801900846EB7 /* StarsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5D1651E69801900846EB7 /* StarsViewModel.swift */; };
 		BEC5F81D1C95A9E700213869 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5F81C1C95A9E700213869 /* MarkdownView.swift */; };
 		BECB108C1C5CE09F00B0CB16 /* UIViewController+storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB108B1C5CE09F00B0CB16 /* UIViewController+storyboard.swift */; };
 		BECB108E1C5CEE8100B0CB16 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECB108D1C5CEE8100B0CB16 /* KeychainManager.swift */; };
@@ -85,7 +86,7 @@
 		BEE9DE191CE9853B00AD361B /* StarsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE9DE181CE9853B00AD361B /* StarsNavigationController.swift */; };
 		BEF289551C429D9000F50A2A /* UIView+Tap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF289541C429D9000F50A2A /* UIView+Tap.swift */; };
 		BEF590801C3A940600633417 /* RoundButtonBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5907F1C3A940600633417 /* RoundButtonBorder.swift */; };
-		BEF605131C3023F70014D633 /* NewsTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF605121C3023F70014D633 /* NewsTabViewModel.swift */; };
+		BEF605131C3023F70014D633 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF605121C3023F70014D633 /* NewsViewModel.swift */; };
 		BEF605171C3034820014D633 /* RepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF605161C3034820014D633 /* RepoViewModel.swift */; };
 		BEF605191C30FCBB0014D633 /* RepoSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF605181C30FCBB0014D633 /* RepoSummary.swift */; };
 		BEF6051C1C3113F30014D633 /* Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF6051B1C3113F30014D633 /* Decoding.swift */; };
@@ -181,6 +182,7 @@
 		BEBBF3161E67FF33003D4560 /* xcode.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = xcode.css; sourceTree = "<group>"; };
 		BEBBF3191E6802A9003D4560 /* markdown-view.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "markdown-view.js"; sourceTree = "<group>"; };
 		BEBE3A6E1C76ADFD00E7FF0D /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		BEC5D1651E69801900846EB7 /* StarsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarsViewModel.swift; sourceTree = "<group>"; };
 		BEC5F81C1C95A9E700213869 /* MarkdownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
 		BECB108B1C5CE09F00B0CB16 /* UIViewController+storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+storyboard.swift"; sourceTree = "<group>"; };
 		BECB108D1C5CEE8100B0CB16 /* KeychainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
@@ -204,7 +206,7 @@
 		BEE9DE181CE9853B00AD361B /* StarsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarsNavigationController.swift; sourceTree = "<group>"; };
 		BEF289541C429D9000F50A2A /* UIView+Tap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Tap.swift"; sourceTree = "<group>"; };
 		BEF5907F1C3A940600633417 /* RoundButtonBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButtonBorder.swift; sourceTree = "<group>"; };
-		BEF605121C3023F70014D633 /* NewsTabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTabViewModel.swift; sourceTree = "<group>"; };
+		BEF605121C3023F70014D633 /* NewsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		BEF605161C3034820014D633 /* RepoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoViewModel.swift; sourceTree = "<group>"; };
 		BEF605181C30FCBB0014D633 /* RepoSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoSummary.swift; sourceTree = "<group>"; };
 		BEF6051B1C3113F30014D633 /* Decoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoding.swift; sourceTree = "<group>"; };
@@ -484,10 +486,11 @@
 				BED172F81C3E23E000C5A247 /* AppViewModel.swift */,
 				BE9428B91C8BDE9300077615 /* DirectoryViewModel.swift */,
 				BE9428B71C8BDE6000077615 /* FileViewModel.swift */,
-				BEF605121C3023F70014D633 /* NewsTabViewModel.swift */,
+				BEF605121C3023F70014D633 /* NewsViewModel.swift */,
 				BEF605161C3034820014D633 /* RepoViewModel.swift */,
 				BE4707981C4B64B10069DA6F /* SearchViewModel.swift */,
 				BE176E651C42010C00E29E4F /* UserViewModel.swift */,
+				BEC5D1651E69801900846EB7 /* StarsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -831,13 +834,14 @@
 				BEF605171C3034820014D633 /* RepoViewModel.swift in Sources */,
 				BE546A651C4E30B500C71C0A /* URL.swift in Sources */,
 				BE598C251C4C8CC300E1A884 /* ColorizedImageView.swift in Sources */,
-				BEF605131C3023F70014D633 /* NewsTabViewModel.swift in Sources */,
+				BEF605131C3023F70014D633 /* NewsViewModel.swift in Sources */,
 				BE4707951C4A45680069DA6F /* SearchViewController.swift in Sources */,
 				BE4E4EE61C46A39C009FCBE8 /* ModelCache.swift in Sources */,
 				BE46B0041C38281400C8242C /* RepoViewController.swift in Sources */,
 				BE4707931C4A2F640069DA6F /* UINavigationController+storyboard.swift in Sources */,
 				BEB7705C1C476FC40000E9A8 /* Pagination.swift in Sources */,
 				BEF605221C3116950014D633 /* Authentication.swift in Sources */,
+				BEC5D1661E69801900846EB7 /* StarsViewModel.swift in Sources */,
 				BE3F45461C2A993400DD1863 /* Repo.swift in Sources */,
 				BED813351C24EE6D0028F8B0 /* AppDelegate.swift in Sources */,
 				BE9A484D1C36234B00406DA6 /* NewsTableViewController.swift in Sources */,

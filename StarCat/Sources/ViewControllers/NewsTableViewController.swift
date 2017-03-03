@@ -11,7 +11,7 @@ import Wirework
 
 class NewsTableViewController: UITableViewController {
     
-    let viewModel = NewsTabViewModel()
+    let viewModel = NewsViewModel()
     let appeared = Variable(false)
     var paginator: TableViewPaginator<News>!
     let bag = SubscriptionBag()
@@ -27,7 +27,7 @@ class NewsTableViewController: UITableViewController {
         
         paginator = TableViewPaginator<News>(
             tableViewController: self,
-            pagination: viewModel.newsPagination,
+            pagination: viewModel.pagination,
             cellIdentifier: "RepoCell"
             ) { [weak self] row, news, cell in
                 let repoCell = cell as! RepoCell

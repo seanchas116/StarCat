@@ -66,21 +66,6 @@ class MembersPagination: Pagination<User> {
     }
 }
 
-class StarsPagination: Pagination<Repo> {
-    var userName: String?
-    
-    override func fetch(page: Int) -> Promise<[Repo]> {
-        if let userName = userName {
-            return GetUserStarsRequest(userName: userName, perPage: 30, page: page).send().then { repos in
-                let promises = repos.map { r in SharedModelCache.repoCache.fetch(key: r.fullName) }
-                return when(fulfilled: promises)
-            }
-        } else {
-            return Promise(value: [])
-        }
-    }
-}
-
 class UserViewModel {
     let user = Variable<User?>(nil)
     let summary = Variable<UserSummary?>(nil)

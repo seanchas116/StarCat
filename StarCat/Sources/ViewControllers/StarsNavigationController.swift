@@ -12,22 +12,15 @@ import Wirework
 class StarsNavigationController: UINavigationController {
     
     let bag = SubscriptionBag()
+    let viewModel = StarsViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let repoTableVC = topViewController as! RepoTableViewController
-        let pagination = StarsPagination()
-        repoTableVC.pagination = pagination
+        repoTableVC.pagination = viewModel.pagination
         repoTableVC.title = "Stars"
         tabBarItem.title = ""
-        
-        AppViewModel.instance.currentUser.bindTo { user in
-            if user?.login != "" {
-                pagination.userName = user?.login
-                pagination.fetchAndReset().catch { print($0) }
-            }
-        }.addTo(bag)
     }
     
     override func viewDidAppear(_ animated: Bool) {

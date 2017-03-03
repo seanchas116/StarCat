@@ -12,14 +12,13 @@ import PromiseKit
 import SwiftDate
 
 class NewsPagination: Pagination<News> {
-    let userName: String
-    
-    init(userName: String) {
-        self.userName = userName
-    }
+    var userName: String?
     
     override func fetch(page: Int) -> Promise<[Item]> {
-        return GetUserEventsRequest(userName: "seanchas116", page: page).send().then { events -> Promise<[News]> in
+        guard let userName = userName else {
+            return Promise(value: [])
+        }
+        return GetUserEventsRequest(userName: userName, page: page).send().then { events -> Promise<[News]> in
             let promises = events.flatMap { event -> Promise<News>? in
                 switch event.content {
                 case .Star(_, let repoSummary):
@@ -34,6 +33,16 @@ class NewsPagination: Pagination<News> {
     }
 }
 
-class NewsTabViewModel {
-    let newsPagination = NewsPagination(userName: "seanchas116")
+class NewsViewModel {
+    let pagination = NewsPagination()
+    let bag = SubscriptionBag()
+    
+    init() {
+        AppViewModel.instance.currentUser.bindTo { [weak self] user in
+            if let login = user?.login {
+                self?.pagination.userName = login
+                self?.pagination.fetchAndReset().catch { print($0) }
+            }
+        }.addTo(bag)
+    }
 }
