@@ -158,3 +158,9 @@ extension AccessToken: Decodable {
         )
     }
 }
+
+struct EmptyDecodable: Decodable {
+    static func decode(_ e: Extractor) throws -> EmptyDecodable {
+        return EmptyDecodable()
+    }
+}
