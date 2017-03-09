@@ -15,12 +15,21 @@ class LoginButtonViewController: UIViewController {
     
     let bag = SubscriptionBag()
     private var onLoggedIn: (() -> Void)?
+    var popup: WebViewPopup?
+    
+    private func popupLogin() {
+        if (self.popup == nil) {
+            let popup = WebViewPopup(url: Authentication.authURL, root: self)
+            self.popup = popup
+            popup.show()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loginButton.wwTapped.subscribe { _ in
-            UIApplication.shared.openURL(Authentication.authURL as URL)
+        loginButton.wwTapped.subscribe { [weak self] _ in
+            self?.popupLogin()
         }.addTo(bag)
 
         // Do any additional setup after loading the view.
@@ -52,6 +61,7 @@ class LoginButtonViewController: UIViewController {
     
     static func hideAll() {
         for vc in all {
+            vc.popup?.dismiss()
             vc.onLoggedIn?()
         }
         all.removeAll()

@@ -27,7 +27,7 @@ struct Authentication {
         return URL(string: "https://github.com/login/oauth/authorize?", queries: options)!
     }
     
-    static func handleCallbackURL(_ url: URL) -> Promise<AccessToken>? {
+    static func handleCallbackURL(_ url: URL) -> Promise<AccessToken> {
         print("handling \(url)")
         if url.scheme == Constants.appURLScheme && url.path == "/auth" {
             if let code = url.queries["code"] {
@@ -38,6 +38,6 @@ struct Authentication {
                 }
             }
         }
-        return nil
+        return Promise(error: "Cannot handle callback URL \(url)")
     }
 }

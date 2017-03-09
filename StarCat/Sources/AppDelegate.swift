@@ -26,14 +26,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
-        if let login = viewModel.loginWithCallbackURL(url) {
-            login.then {
-                LoginButtonViewController.hideAll()
-            }.catch { print($0) }
-            return true
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        guard let sourceApp = options[.sourceApplication] as? String else {
+            return false
         }
-        return false
+        guard sourceApp == "com.apple.SafariViewService" else {
+            return false
+        }
+        viewModel.loginWithCallbackURL(url).then {
+            LoginButtonViewController.hideAll()
+        }.catch { print($0) }
+        return true
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

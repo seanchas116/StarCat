@@ -10,11 +10,12 @@ import Foundation
 import SafariServices
 import SVWebViewController
 
-private var popups = Set<WebViewPopup>()
 
 class WebViewPopup: NSObject, SFSafariViewControllerDelegate {
     let root: UIViewController
     let url: URL
+    var safariViewController: SFSafariViewController?
+    static var popups = Set<WebViewPopup>()
     
     init(url: URL, root: UIViewController) {
         self.root = root
@@ -23,13 +24,20 @@ class WebViewPopup: NSObject, SFSafariViewControllerDelegate {
     
     func show() {
         let safari = SFSafariViewController(url: url)
+        self.safariViewController = safari
         safari.delegate = self
-        popups.insert(self)
+        WebViewPopup.popups.insert(self)
         root.present(safari, animated: true, completion: nil)
     }
     
+    func dismiss() {
+        safariViewController?.dismiss(animated: true) {
+            WebViewPopup.popups.remove(self)
+        }
+    }
+    
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        popups.remove(self)
+        WebViewPopup.popups.remove(self)
     }
     
     func safariViewController(_ controller: SFSafariViewController, activityItemsFor url: URL, title: String?) -> [UIActivity] {

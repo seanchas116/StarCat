@@ -24,14 +24,11 @@ class AppViewModel {
         return Promise(value: false)
     }
     
-    func loginWithCallbackURL(_ url: URL) -> Promise<Void>? {
-        if let tokenFetched = Authentication.handleCallbackURL(url) {
-            return tokenFetched.then { token in
-                self.keychainManager.saveAccessToken(token)
-                return self.loadCurrentUser()
-            }
+    func loginWithCallbackURL(_ url: URL) -> Promise<Void> {
+        return Authentication.handleCallbackURL(url).then { token in
+            self.keychainManager.saveAccessToken(token)
+            return self.loadCurrentUser()
         }
-        return nil
     }
     
     func logout() {
