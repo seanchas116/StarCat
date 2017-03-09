@@ -28,10 +28,8 @@ struct Authentication {
     }
     
     static func handleCallbackURL(_ url: URL) -> Promise<AccessToken> {
-        print("handling \(url)")
         if url.scheme == Constants.appURLScheme && url.path == "/auth" {
             if let code = url.queries["code"] {
-                print("code: \(code)")
                 return GetAccessTokenRequest(code: code).send().then { accessToken -> AccessToken in
                     self.accessToken = accessToken
                     return accessToken
