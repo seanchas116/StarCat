@@ -36,6 +36,13 @@ extension URL {
         self.init(string: "\(string)?\(stringifyQueryString(queries))")
     }
     
+    init?(stringMaybeWithoutScheme: String) {
+        let str = schemePattern.matches(stringMaybeWithoutScheme)
+            ? stringMaybeWithoutScheme
+            : "http://" + stringMaybeWithoutScheme
+        self.init(string: str)
+    }
+    
     var queries: [String: String] {
         return parseQueryString(query ?? "")
     }

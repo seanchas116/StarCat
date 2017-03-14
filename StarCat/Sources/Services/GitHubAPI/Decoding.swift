@@ -16,10 +16,12 @@ enum DecodeError: Error {
     case wrongFileType(String)
 }
 
+private let schemaPattern = "^https?://".r!
+
 extension URL: Decodable {
     public static func decode(_ e: Extractor) throws -> URL {
         let str = try String.decode(e)
-        if let url = URL(string: str) {
+        if let url = URL(stringMaybeWithoutScheme: str) {
             return url
         } else {
             throw "Invalid URL"
