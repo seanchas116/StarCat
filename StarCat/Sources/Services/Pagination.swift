@@ -24,14 +24,18 @@ class Pagination<T> {
     }
     
     func fetchMore() -> Promise<Void> {
-        return self.fetch(page: self.page).then { items -> Void in
-            self.page += 1
-            self.items.value += items
-            self.canFetchMore = items.count > 0
+        let page = self.page
+        return self.fetch(page: page).then { items -> Void in
+            if self.page == page {
+                self.page += 1
+                self.items.value += items
+                self.canFetchMore = items.count > 0
+            }
         }
     }
     
     func fetchAndReset() -> Promise<Void> {
+        self.page = 1
         return self.fetch(page: 1).then { items -> Void in
             self.page = 2
             self.items.value = items
