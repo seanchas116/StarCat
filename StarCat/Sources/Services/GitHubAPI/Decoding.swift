@@ -32,7 +32,9 @@ extension URL: Decodable {
 extension Date: Decodable {
     public static func decode(_ e: Extractor) throws -> Date {
         let str = try String.decode(e)
-        let date = try DateInRegion(string: str, format: .iso8601(options: [.withFullDate, .withFullTime]))
+		guard let date = DateInRegion(string: str, format: .iso8601(options: [.withFullDate, .withFullTime])) else {
+			throw "Cannot decode Date"
+		}
         return date.absoluteDate
     }
 }
