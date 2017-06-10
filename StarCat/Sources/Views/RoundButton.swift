@@ -100,7 +100,7 @@ class RoundButton: UIButton {
         let path = UIBezierPath()
         let width = bounds.width
         let height = bounds.height
-        let pi = CGFloat(M_PI)
+        let pi = CGFloat.pi
         let cornerRadius = min(self.cornerRadius, width * 0.5)
         
         func addRightBorder() {
